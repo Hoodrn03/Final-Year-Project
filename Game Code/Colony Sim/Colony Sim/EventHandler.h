@@ -36,5 +36,9 @@ private:
 
 public:
 
+	//--------------------------------------------------------
+	/*! \fn CheckForEvents : This will be used to process any events which happened during this loop. 
+	*Param One : RenderWindow - This will be the current game window. 
+	*/
 	void m_CheckForEvents(sf::RenderWindow & window);
 };

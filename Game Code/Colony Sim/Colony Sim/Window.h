@@ -47,6 +47,10 @@ public:
 	*/
 	int m_InitWindow(int windowWidth, int windowHeight, std::string windowName); 
 
+	//--------------------------------------------------------
+	/*! \fn GetWindow : This will return the value of the window, this will for the window to be referenced oustide of the class.
+	*
+	*/
 	sf::RenderWindow & m_GetWindow(); 
 
 };

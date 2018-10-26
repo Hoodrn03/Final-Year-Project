@@ -31,8 +31,10 @@ public:
 
 	// Data Members 
 
+	/*! \var This Class will control the game window. */
 	Window m_clWindow;
 
+	/*! \var This Class will handle all of the events within the game. */
 	EventHandler m_clEventHandler; 
 
 private:
@@ -41,10 +43,22 @@ private:
 
 public:
 
+	//--------------------------------------------------------
+	/*! \fn SetUp : This will be used at startup to initalize any data for the game.
+	*
+	*/
 	int m_SetUp();
 
+	//--------------------------------------------------------
+	/*! \fn Update : This will house the game loop and be used to update any logic.
+	*
+	*/
 	void m_Update(); 
 
+	//--------------------------------------------------------
+	/*! \fn Render : This will be used to draw all of the objects into the window.
+	*
+	*/
 	void m_Render();
 
 
