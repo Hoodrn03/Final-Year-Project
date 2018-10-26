@@ -4,7 +4,7 @@
 *
 */
 
-#include "GameLoop.h"
+#include "../inc/GameLoop.h"
 
 int main()
 {

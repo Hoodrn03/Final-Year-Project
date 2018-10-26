@@ -4,7 +4,7 @@
 *
 */
 
-#include "Window.h"
+#include "../inc/Window.h"
 
 //--------------------------------------------------------
 /*! \fn Constructor 

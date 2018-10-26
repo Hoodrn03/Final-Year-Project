@@ -18,6 +18,33 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="openal32.dll" />
+    <None Include="sfgui-d.dll" />
+    <None Include="sfgui.dll" />
+    <None Include="sfml-audio-2.dll" />
+    <None Include="sfml-audio-d-2.dll" />
+    <None Include="sfml-graphics-2.dll" />
+    <None Include="sfml-graphics-d-2.dll" />
+    <None Include="sfml-network-2.dll" />
+    <None Include="sfml-network-d-2.dll" />
+    <None Include="sfml-system-2.dll" />
+    <None Include="sfml-system-d-2.dll" />
+    <None Include="sfml-window-2.dll" />
+    <None Include="sfml-window-d-2.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\defs.h" />
+    <ClInclude Include="inc\EventHandler.h" />
+    <ClInclude Include="inc\GameLoop.h" />
+    <ClInclude Include="inc\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\EventHandler.cpp" />
+    <ClCompile Include="src\GameLoop.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Window.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9DBC7B04-F677-4B76-B9DB-7E696866C2B7}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -107,11 +134,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\inc;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\inc;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -151,18 +179,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="EventHandler.cpp" />
-    <ClCompile Include="GameLoop.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Window.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="defs.h" />
-    <ClInclude Include="EventHandler.h" />
-    <ClInclude Include="GameLoop.h" />
-    <ClInclude Include="Window.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

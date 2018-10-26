@@ -4,7 +4,7 @@
 *
 */
 
-#include "GameLoop.h"
+#include "../inc/GameLoop.h"
 
 //--------------------------------------------------------
 /*! \fn Constructor
@@ -53,8 +53,10 @@ void Gameloop::m_Update()
 	while (m_clWindow.m_GetWindow().isOpen())
 	{
 
+		// Handle Events. 
 		m_clEventHandler.m_CheckForEvents(m_clWindow.m_GetWindow()); 
 
+		// Draw Items. 
 		m_Render(); 
 	}
 
@@ -67,6 +69,8 @@ void Gameloop::m_Update()
 void Gameloop::m_Render()
 {
 	m_clWindow.m_GetWindow().clear();
+
+	// Todo: Add items to draw. 
 
 	m_clWindow.m_GetWindow().display(); 
 }

@@ -30,6 +30,7 @@ public:
 
 private:
 
+	/*! \var This will be used to detect an event within the game. */
 	sf::Event m_Event; 
 
 	// Member Functions

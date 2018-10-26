@@ -4,7 +4,7 @@
 *
 */
 
-#include "EventHandler.h"
+#include "../inc/EventHandler.h"
 
 //--------------------------------------------------------
 /*! \fn Constructor
@@ -30,8 +30,12 @@ void EventHandler::m_CheckForEvents(sf::RenderWindow & window)
 {
 	while (window.pollEvent(m_Event))
 	{
+
+		// Event : Check for window close. 
 		if (m_Event.type == sf::Event::Closed)
 		{
+			std::cout << "Window Closed" << std::endl;
+
 			window.close(); 
 		}
 	}
