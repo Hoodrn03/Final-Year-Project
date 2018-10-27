@@ -37,11 +37,15 @@
     <ClInclude Include="inc\defs.h" />
     <ClInclude Include="inc\EventHandler.h" />
     <ClInclude Include="inc\GameLoop.h" />
+    <ClInclude Include="inc\GameMap.h" />
+    <ClInclude Include="inc\GameObject.h" />
     <ClInclude Include="inc\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EventHandler.cpp" />
     <ClCompile Include="src\GameLoop.cpp" />
+    <ClCompile Include="src\GameMap.cpp" />
+    <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
@@ -102,9 +106,10 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(IncludePath)</IncludePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\lib;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\bin</OutDir>
+    <SourcePath>lib;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -134,12 +139,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\inc;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\lib;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\inc;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\inc;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\lib;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\inc;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

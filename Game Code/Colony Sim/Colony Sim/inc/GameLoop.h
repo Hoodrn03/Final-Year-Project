@@ -10,6 +10,8 @@
 #include "Window.h"
 #include "EventHandler.h"
 
+#include "GameMap.h"
+
 class Gameloop
 {
 
@@ -36,6 +38,10 @@ public:
 
 	/*! \var This Class will handle all of the events within the game. */
 	EventHandler m_clEventHandler; 
+
+	Map m_clMap; 
+
+	sf::RectangleShape tempShape; 
 
 private:
 

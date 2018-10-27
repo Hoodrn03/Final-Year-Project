@@ -15,7 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="sfml-window-d-2.dll" />
     <None Include="openal32.dll" />
     <None Include="sfgui.dll" />
     <None Include="sfgui-d.dll" />
@@ -28,6 +27,7 @@
     <None Include="sfml-system-2.dll" />
     <None Include="sfml-system-d-2.dll" />
     <None Include="sfml-window-2.dll" />
+    <None Include="sfml-window-d-2.dll" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\defs.h">
@@ -42,6 +42,12 @@
     <ClInclude Include="inc\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="inc\GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\GameMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EventHandler.cpp">
@@ -54,6 +60,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

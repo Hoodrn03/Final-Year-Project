@@ -35,6 +35,10 @@ private:
 	/*! \var This will be the main game window for the game. */
 	sf::RenderWindow m_Window;
 
+	sf::View m_GameView; 
+
+	float m_fViewMoveAmount = 1.f; 
+
 	// Member Functions
 
 public: 
@@ -52,5 +56,15 @@ public:
 	*
 	*/
 	sf::RenderWindow & m_GetWindow(); 
+
+	void m_CheckForViewMove(int moveValue);
+
+	void m_MoveViewUp();
+
+	void m_MoveViewDown(); 
+
+	void m_MoveViewLeft(); 
+
+	void m_MoveViewRight(); 
 
 };

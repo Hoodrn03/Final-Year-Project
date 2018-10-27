@@ -31,10 +31,18 @@ int Gameloop::m_SetUp()
 
 	// Setup game items. 
 
-	if (m_clWindow.m_InitWindow(500, 500, "Colony Sim") != 0)
+	if (m_clWindow.m_InitWindow(800, 800, "Colony Sim") != 0)
 	{
 		return 1;
 	}
+
+	m_clMap.m_SetUpGameMap(sf::Vector2f(1600, 1600), sf::Vector2f(0, 0)); 
+
+	tempShape.setSize(sf::Vector2f(50.f, 50.f)); 
+
+	tempShape.setPosition(100.f, 100.f); 
+
+	tempShape.setFillColor(sf::Color::Blue); 
 
 	// Begin game. 
 
@@ -56,6 +64,8 @@ void Gameloop::m_Update()
 		// Handle Events. 
 		m_clEventHandler.m_CheckForEvents(m_clWindow.m_GetWindow()); 
 
+		m_clWindow.m_CheckForViewMove(m_clEventHandler.m_CurentViewMoveValue()); 
+
 		// Draw Items. 
 		m_Render(); 
 	}
@@ -71,6 +81,10 @@ void Gameloop::m_Render()
 	m_clWindow.m_GetWindow().clear();
 
 	// Todo: Add items to draw. 
+
+	m_clMap.m_DrawGameObject(m_clWindow.m_GetWindow()); 
+
+	m_clWindow.m_GetWindow().draw(tempShape); 
 
 	m_clWindow.m_GetWindow().display(); 
 }
