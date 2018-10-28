@@ -39,9 +39,8 @@ public:
 	/*! \var This Class will handle all of the events within the game. */
 	EventHandler m_clEventHandler; 
 
+	/*! \var This class will be used to manage the game map. */
 	Map m_clMap; 
-
-	sf::RectangleShape tempShape; 
 
 private:
 

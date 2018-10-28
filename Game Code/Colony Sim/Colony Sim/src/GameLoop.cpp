@@ -38,12 +38,6 @@ int Gameloop::m_SetUp()
 
 	m_clMap.m_SetUpGameMap(sf::Vector2f(1600, 1600), sf::Vector2f(0, 0)); 
 
-	tempShape.setSize(sf::Vector2f(50.f, 50.f)); 
-
-	tempShape.setPosition(100.f, 100.f); 
-
-	tempShape.setFillColor(sf::Color::Blue); 
-
 	// Begin game. 
 
 	m_Update(); 
@@ -83,8 +77,6 @@ void Gameloop::m_Render()
 	// Todo: Add items to draw. 
 
 	m_clMap.m_DrawGameObject(m_clWindow.m_GetWindow()); 
-
-	m_clWindow.m_GetWindow().draw(tempShape); 
 
 	m_clWindow.m_GetWindow().display(); 
 }

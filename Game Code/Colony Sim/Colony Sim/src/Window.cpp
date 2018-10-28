@@ -58,6 +58,10 @@ sf::RenderWindow & Window::m_GetWindow()
 	return m_Window; 
 }
 
+//--------------------------------------------------------
+/*! \fn CheckForViewMove : This will b eused to check if the view should be moved this frame.
+*Param One : int - The current key being pressed, if none are pressed it recives 0.
+*/
 void Window::m_CheckForViewMove(int moveValue)
 {
 	switch (moveValue)
@@ -85,6 +89,10 @@ void Window::m_CheckForViewMove(int moveValue)
 	m_Window.setView(m_GameView);
 }
 
+//--------------------------------------------------------
+/*! \fn MoveViewUp : Moves the view in a direction.
+*
+*/
 void Window::m_MoveViewUp()
 {
 	sf::Vector2f l_NewLocale = m_GameView.getCenter() + sf::Vector2f(0, -m_fViewMoveAmount); 
@@ -92,6 +100,10 @@ void Window::m_MoveViewUp()
 	m_GameView.setCenter(l_NewLocale); 
 }
 
+//--------------------------------------------------------
+/*! \fn MoveViewDown : Moves the view in a direction.
+*
+*/
 void Window::m_MoveViewDown()
 {
 	sf::Vector2f l_NewLocale = m_GameView.getCenter() + sf::Vector2f(0, m_fViewMoveAmount);
@@ -99,13 +111,20 @@ void Window::m_MoveViewDown()
 	m_GameView.setCenter(l_NewLocale);
 }
 
+//--------------------------------------------------------
+/*! \fn MoveViewLeft : Moves the view in a direction.
+*
+*/
 void Window::m_MoveViewLeft()
 {
 	sf::Vector2f l_NewLocale = m_GameView.getCenter() + sf::Vector2f(-m_fViewMoveAmount, 0);
 
 	m_GameView.setCenter(l_NewLocale);
 }
-
+//--------------------------------------------------------
+/*! \fn MoveViewRight : Moves the view in a direction.
+*
+*/
 void Window::m_MoveViewRight()
 {
 	sf::Vector2f l_NewLocale = m_GameView.getCenter() + sf::Vector2f(m_fViewMoveAmount, 0);

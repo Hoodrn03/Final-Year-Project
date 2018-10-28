@@ -35,9 +35,11 @@ private:
 	/*! \var This will be the main game window for the game. */
 	sf::RenderWindow m_Window;
 
+	/*! \var This is the game's view, it will act as a camera showing the game world. */
 	sf::View m_GameView; 
 
-	float m_fViewMoveAmount = 1.f; 
+	/*! \var This will determine the amount the view should move at a given time. */
+	const float m_fViewMoveAmount = 1.f; 
 
 	// Member Functions
 
@@ -57,14 +59,34 @@ public:
 	*/
 	sf::RenderWindow & m_GetWindow(); 
 
+	//--------------------------------------------------------
+	/*! \fn CheckForViewMove : This will b eused to check if the view should be moved this frame. 
+	*Param One : int - The current key being pressed, if none are pressed it recives 0. 
+	*/
 	void m_CheckForViewMove(int moveValue);
 
+	//--------------------------------------------------------
+	/*! \fn MoveViewUp : Moves the view in a direction. 
+	*
+	*/
 	void m_MoveViewUp();
 
+	//--------------------------------------------------------
+	/*! \fn MoveViewDown : Moves the view in a direction.
+	*
+	*/
 	void m_MoveViewDown(); 
 
+	//--------------------------------------------------------
+	/*! \fn MoveViewLeft : Moves the view in a direction.
+	*
+	*/
 	void m_MoveViewLeft(); 
 
+	//--------------------------------------------------------
+	/*! \fn MoveViewRight : Moves the view in a direction.
+	*
+	*/
 	void m_MoveViewRight(); 
 
 };
