@@ -59,6 +59,10 @@ public:
 	*/
 	sf::RenderWindow & m_GetWindow(); 
 
+	sf::Vector2f m_GetViewUpperBounds(); 
+
+	sf::Vector2f m_GetViewLowerBounds(); 
+
 	//--------------------------------------------------------
 	/*! \fn CheckForViewMove : This will b eused to check if the view should be moved this frame. 
 	*Param One : int - The current key being pressed, if none are pressed it recives 0. 

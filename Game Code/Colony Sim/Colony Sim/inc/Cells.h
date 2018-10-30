@@ -48,6 +48,8 @@ public:
 	*/
 	void m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition); 
 
+	void m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, int r, int g, int b);
+
 	//--------------------------------------------------------
 	/*! \fn Constructor
 	*
@@ -65,6 +67,8 @@ public:
 	*
 	*/
 	void m_DrawGameObject(sf::RenderWindow & window) override; 
+
+	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight) override; 
 
 	//--------------------------------------------------------
 	/*! \fn Constructor

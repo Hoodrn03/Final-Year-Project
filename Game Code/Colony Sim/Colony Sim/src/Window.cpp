@@ -58,6 +58,16 @@ sf::RenderWindow & Window::m_GetWindow()
 	return m_Window; 
 }
 
+sf::Vector2f Window::m_GetViewUpperBounds()
+{
+	return sf::Vector2f(m_GameView.getCenter().x - (m_GameView.getSize().x * 0.5f), m_GameView.getCenter().y - (m_GameView.getSize().y * 0.5f)); 
+}
+
+sf::Vector2f Window::m_GetViewLowerBounds()
+{
+	return sf::Vector2f(m_GameView.getCenter().x + (m_GameView.getSize().x * 0.5f), m_GameView.getCenter().y + (m_GameView.getSize().y * 0.5f));
+}
+
 //--------------------------------------------------------
 /*! \fn CheckForViewMove : This will b eused to check if the view should be moved this frame.
 *Param One : int - The current key being pressed, if none are pressed it recives 0.

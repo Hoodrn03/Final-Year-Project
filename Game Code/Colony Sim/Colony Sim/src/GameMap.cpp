@@ -45,7 +45,7 @@ void Map::m_SetUpGameMap(sf::Vector2f dimentions, sf::Vector2f position)
 */
 void Map::m_CreateGrid()
 {
-	m_clGrid.m_CreateGrid(25, 25, m_MapObject); 
+	m_clGrid.m_CreateGrid(5, 5, 5, m_MapObject);
 }
 
 //--------------------------------------------------------
@@ -56,7 +56,12 @@ void Map::m_DrawGameObject(sf::RenderWindow & window)
 {
 	window.draw(m_MapObject); 
 
-	m_clGrid.m_DrawGrid(window); 
+	m_clGrid.m_DrawGrid(window, m_iCurrentLayer); 
+}
+
+void Map::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight)
+{
+	m_clGrid.m_CheckItemsForRender(topLeft + sf::Vector2f(-100, -100), bottomRight + sf::Vector2f(100, 100), m_iCurrentLayer);
 }
 
 //--------------------------------------------------------
@@ -69,4 +74,44 @@ void Map::m_SetObjectPos(float x, float y)
 	m_GameObjectPos = sf::Vector2f(x, y); 
 
 	m_MapObject.setPosition(m_GameObjectPos);
+}
+
+void Map::m_CheckForLayerChange(int &inputValue)
+{
+	switch (inputValue)
+	{
+	case 1: 
+		m_IncreaseLayer(); 
+		break;
+
+	case 2: 
+		m_DescreaseLayer();
+		break;
+
+	default:
+		break;
+	}
+
+	// Prevent multiple triggers. 
+	inputValue = 0;
+}
+
+void Map::m_IncreaseLayer()
+{
+	if (m_iCurrentLayer < (m_clGrid.m_GetNumberOfLayers() - 1))
+	{
+		m_iCurrentLayer++;
+
+		std::cout << m_iCurrentLayer << std::endl;
+	}
+}
+
+void Map::m_DescreaseLayer()
+{
+	if (m_iCurrentLayer > 0)
+	{
+		m_iCurrentLayer--; 
+
+		std::cout << m_iCurrentLayer << std::endl;
+	}
 }

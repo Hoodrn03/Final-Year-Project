@@ -38,8 +38,9 @@ private:
 	/*! \var This will be used to house the main map object, this will have the grid created overtop of it. */
 	sf::RectangleShape m_MapObject; 
 
-	/*! \var This class will be used to create the grad and allow for the management of all cell objects. */
-	Grid m_clGrid; 
+	Grid m_clGrid;
+
+	unsigned int m_iCurrentLayer = 0; 
 
 	// Member Functions 
 
@@ -64,6 +65,8 @@ public:
 	*/
 	void m_DrawGameObject(sf::RenderWindow & window) override; 
 
+	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight);
+
 	//--------------------------------------------------------
 	/*! \fn SetObjectPos : This will allow for the map object to be moved within the game world. 
 	*Param One : Float - The X coordinate for the map object.
@@ -71,4 +74,9 @@ public:
 	*/
 	void m_SetObjectPos(float x, float y) override; 
 
+	void m_CheckForLayerChange(int &inputValue); 
+
+	void m_IncreaseLayer();
+
+	void m_DescreaseLayer(); 
 };

@@ -30,6 +30,7 @@ void EventHandler::m_CheckForEvents(sf::RenderWindow & window)
 {
 	while (window.pollEvent(m_Event))
 	{
+		window.setKeyRepeatEnabled(false); 
 
 		// Event : Check for window close. 
 		if (m_Event.type == sf::Event::Closed)
@@ -40,6 +41,8 @@ void EventHandler::m_CheckForEvents(sf::RenderWindow & window)
 		}
 
 		m_CheckForViewMoveKeys(); 
+
+		m_CheckForLayerChange(); 
 	}
 }
 
@@ -70,7 +73,33 @@ void EventHandler::m_CheckForViewMoveKeys()
 	}
 }
 
+void EventHandler::m_CheckForLayerChange()
+{
+	if (m_Event.type == sf::Event::KeyPressed)
+	{
+		if (m_Event.key.code == m_LayerUp)
+		{
+			m_iLayerMoveValue = 1;
+
+		}
+		else if (m_Event.key.code == m_LayerDown)
+		{
+			m_iLayerMoveValue = 2;
+
+		}
+	}
+	else
+	{
+		m_iLayerMoveValue = 0;
+	}
+}
+
 int EventHandler::m_CurentViewMoveValue()
 {
 	return m_iViewMoveValue;
+}
+
+int & EventHandler::m_CurrentLayerChangeValue()
+{
+	return m_iLayerMoveValue;
 }

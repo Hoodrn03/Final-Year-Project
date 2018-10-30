@@ -39,7 +39,12 @@ private:
 	sf::Keyboard::Key m_ViewLeft = sf::Keyboard::A;
 	sf::Keyboard::Key m_ViewRight = sf::Keyboard::D; 
 
+	sf::Keyboard::Key m_LayerUp = sf::Keyboard::PageUp;
+	sf::Keyboard::Key m_LayerDown = sf::Keyboard::PageDown; 
+
 	int m_iViewMoveValue = 0; 
+
+	int m_iLayerMoveValue = 0; 
 
 	// Member Functions
 
@@ -53,5 +58,9 @@ public:
 
 	void m_CheckForViewMoveKeys(); 
 
+	void m_CheckForLayerChange(); 
+
 	int m_CurentViewMoveValue(); 
+
+	int & m_CurrentLayerChangeValue(); 
 };

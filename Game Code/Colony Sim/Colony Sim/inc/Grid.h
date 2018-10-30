@@ -27,7 +27,7 @@ private:
 
 	// Data Members 
 
-	std::vector<std::vector<Cells>> m_Grid; 
+	std::vector<std::vector<std::vector<Cells>>> m_GridMulti; 
 
 public:
 
@@ -37,14 +37,17 @@ public:
 	/*! \fn Constructor
 	*
 	*/
-	void m_CreateGrid(unsigned int rows, unsigned int columns, sf::RectangleShape gridLocation);
+	void m_CreateGrid(unsigned int rows, unsigned int columns, unsigned int layers, sf::RectangleShape gridLocation);
 
 	//--------------------------------------------------------
 	/*! \fn Constructor
 	*
 	*/
-	void m_DrawGrid(sf::RenderWindow & window); 
+	void m_DrawGrid(sf::RenderWindow & window, unsigned int layer); 
 
+	void m_CheckItemsForRender(sf::Vector2f topLeft, sf::Vector2f bottomRight, unsigned int layer);
+
+	unsigned int m_GetNumberOfLayers(); 
 
 };
 

@@ -36,7 +36,11 @@ int Gameloop::m_SetUp()
 		return 1;
 	}
 
-	m_clMap.m_SetUpGameMap(sf::Vector2f(1600, 1600), sf::Vector2f(0, 0)); 
+	m_clMap.m_SetUpGameMap(sf::Vector2f(200, 200), sf::Vector2f(0, 0)); 
+
+	m_clWindow.m_GetWindow().setKeyRepeatEnabled(false);
+
+	m_clWindow.m_GetWindow().setFramerateLimit(60);
 
 	// Begin game. 
 
@@ -59,6 +63,10 @@ void Gameloop::m_Update()
 		m_clEventHandler.m_CheckForEvents(m_clWindow.m_GetWindow()); 
 
 		m_clWindow.m_CheckForViewMove(m_clEventHandler.m_CurentViewMoveValue()); 
+
+		m_clMap.m_CheckForLayerChange(m_clEventHandler.m_CurrentLayerChangeValue());
+
+		m_clMap.m_DrawFilter(m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds()); 
 
 		// Draw Items. 
 		m_Render(); 
