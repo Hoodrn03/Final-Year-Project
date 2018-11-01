@@ -39,6 +39,12 @@ public:
 	*/
 	void m_CreateGrid(unsigned int rows, unsigned int columns, unsigned int layers, sf::RectangleShape gridLocation);
 
+	void m_AssignNeighbours(); 
+
+	void m_CreateLake(int cellX, int cellY, int layer);
+
+	void m_AssignTextures(); 
+
 	//--------------------------------------------------------
 	/*! \fn Constructor
 	*

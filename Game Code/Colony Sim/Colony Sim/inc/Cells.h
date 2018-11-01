@@ -11,6 +11,13 @@
 
 #include "GameObject.h"
 
+enum tileSet
+{
+	_DIRT = 0x2000,
+	_WATER = 0x3000,
+	_ROCK = 0x4000
+};
+
 class Cells : public GameObject
 {
 
@@ -38,6 +45,10 @@ private:
 
 	int m_iCellId; 
 
+	tileSet m_CurrentTile; 
+
+	std::vector<Cells*> m_Neighbours; 
+
 public:
 
 	// Member Functions
@@ -49,6 +60,12 @@ public:
 	void m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition); 
 
 	void m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, int r, int g, int b);
+
+	void m_AssignTile(unsigned int whichTile); 
+
+	void m_AssignTexture(); 
+
+	void m_AssignNeighbour(Cells &neighbour); 
 
 	//--------------------------------------------------------
 	/*! \fn Constructor
@@ -75,5 +92,7 @@ public:
 	*
 	*/
 	void m_SetObjectPos(float x, float y) override; 
+
+	std::vector<Cells*> & m_GetNeighbours(); 
 
 };

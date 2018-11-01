@@ -14,8 +14,6 @@ void Grid::m_CreateGrid(unsigned int rows, unsigned int columns, unsigned int la
 	float l_fCellWidth = gridLocation.getGlobalBounds().width / rows;
 	float l_fCellHeight = gridLocation.getGlobalBounds().height / columns;
 
-	sf::Color l_CellColour = sf::Color(66, 244, 244, 200); 
-
 	// Create a variable which will be used to give the cells a unique identifier. 
 	int l_iCurrentId = 0;
 
@@ -26,23 +24,23 @@ void Grid::m_CreateGrid(unsigned int rows, unsigned int columns, unsigned int la
 
 		std::vector<std::vector<Cells>> l_Grid;
 
-		std::cout << "Current Layer : " << i << std::endl;
+		// std::cout << "Current Layer : " << i << std::endl;
 
 		for (unsigned int j = 0; j < rows; j++)
 		{
 			// Create a stand-in vector to create the rows for the grid. 
 			std::vector<Cells> l_CurrentRow;
 
-			std::cout << "Current Row : " << j << std::endl;
+			// std::cout << "Current Row : " << j << std::endl;
 
 			for (unsigned int k = 0; k < columns; k++)
 			{
 				// Create a temporary cell for assignement of values. 
 				Cells l_CurrentCell;
 
-				std::cout << "Current Column : " << k << std::endl;
+				// std::cout << "Current Column : " << k << std::endl;
 
-				l_CurrentCell.m_CreateCellBody(sf::Vector2f(l_fCellWidth, l_fCellHeight), l_CurrentCellPos, (int)l_CellColour.r, (int)l_CellColour.g, (int)l_CellColour.b);
+				l_CurrentCell.m_CreateCellBody(sf::Vector2f(l_fCellWidth, l_fCellHeight), l_CurrentCellPos);
 
 				l_CurrentCell.m_AssignCellId(l_iCurrentId);
 
@@ -66,9 +64,111 @@ void Grid::m_CreateGrid(unsigned int rows, unsigned int columns, unsigned int la
 		}
 
 		m_GridMulti.push_back(l_Grid); 
+	}
 
-		l_CellColour.b -= 50; 
+	m_AssignNeighbours(); 
 
+}
+
+void Grid::m_AssignNeighbours()
+{
+	if (m_GridMulti.size() > 0)
+	{
+		for (int i = 0; i < (int)m_GridMulti.size(); i++)
+		{
+			for (int j = 0; j < (int)m_GridMulti[i].size(); j++)
+			{
+				for (int k = 0; k < (int)m_GridMulti[i][j].size(); k++)
+				{
+
+					if (j - 1 >= 0)
+					{
+						// West Cell
+
+						m_GridMulti[i][j][k].m_AssignNeighbour(m_GridMulti[i][j - 1][k]); 
+					}
+
+					if (k - 1 >= 0)
+					{
+						// North Cell
+
+						m_GridMulti[i][j][k].m_AssignNeighbour(m_GridMulti[i][j][k - 1]);
+					}
+
+					if (j + 1 < (int)m_GridMulti[i].size())
+					{
+						// East Cell
+
+						m_GridMulti[i][j][k].m_AssignNeighbour(m_GridMulti[i][j + 1][k]);
+					}
+
+					if (k + 1 < (int)m_GridMulti[i][j].size())
+					{
+						// South Cell
+
+						m_GridMulti[i][j][k].m_AssignNeighbour(m_GridMulti[i][j][k + 1]);
+					}
+
+					if (k - 1 >= 0 && j - 1 >= 0)
+					{
+						// North West Cell
+
+						m_GridMulti[i][j][k].m_AssignNeighbour(m_GridMulti[i][j - 1][k - 1]);
+					}
+
+					if (k - 1 >= 0 && j + 1 < (int)m_GridMulti[i].size())
+					{
+						// North East Cell
+
+						m_GridMulti[i][j][k].m_AssignNeighbour(m_GridMulti[i][j + 1][k - 1]);
+					}
+
+					if (k + 1 < (int)m_GridMulti[i][j].size() && j - 1 >= 0)
+					{
+						// South West Cell
+
+						m_GridMulti[i][j][k].m_AssignNeighbour(m_GridMulti[i][j - 1][k + 1]);
+					}
+
+					if (k + 1 < (int)m_GridMulti[i][j].size() && j + 1 < (int)m_GridMulti[i].size())
+					{
+						// South East Cell
+
+						m_GridMulti[i][j][k].m_AssignNeighbour(m_GridMulti[i][j + 1][k + 1]);
+					}
+
+				}
+			}
+		}
+	}
+}
+
+void Grid::m_CreateLake(int cellX, int cellY, int layer)
+{
+
+	m_GridMulti[layer][cellX][cellY].m_AssignTile(2); 
+
+	for (int i = 0; i < m_GridMulti[layer][cellX][cellY].m_GetNeighbours().size(); i++)
+	{
+		m_GridMulti[layer][cellX][cellY].m_GetNeighbours()[i]->m_AssignTile(2); 
+	}
+
+}
+
+void Grid::m_AssignTextures()
+{
+	if (m_GridMulti.size() > 0)
+	{
+		for (int i = 0; i < (int)m_GridMulti.size(); i++)
+		{
+			for (int j = 0; j < (int)m_GridMulti[i].size(); j++)
+			{
+				for (int k = 0; k < (int)m_GridMulti[i][j].size(); k++)
+				{
+					m_GridMulti[i][j][k].m_AssignTexture(); 
+				}
+			}
+		}
 	}
 }
 

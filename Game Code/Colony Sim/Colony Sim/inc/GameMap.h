@@ -59,6 +59,8 @@ public:
 	*/
 	void m_CreateGrid(); 
 
+	void m_CreateLakeForMap(); 
+
 	//--------------------------------------------------------
 	/*! \fn DrawGameObject : This will be used to draw all of the items required for the map. 
 	*Param One : RenderWindow : This is the current game window the objects should be drawn onto. 
@@ -73,6 +75,8 @@ public:
 	*Param Two : Float - The Y coordinate for the map object.
 	*/
 	void m_SetObjectPos(float x, float y) override; 
+
+
 
 	void m_CheckForLayerChange(int &inputValue); 
 
