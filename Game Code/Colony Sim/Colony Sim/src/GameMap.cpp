@@ -49,7 +49,7 @@ void Map::m_SetUpGameMap(sf::Vector2f dimentions, sf::Vector2f position)
 */
 void Map::m_CreateGrid()
 {
-	m_clGrid.m_CreateGrid(5, 5, 5, m_MapObject);
+	m_clGrid.m_CreateGrid(25, 25, 5, m_MapObject);
 }
 
 void Map::m_CreateLakeForMap()

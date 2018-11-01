@@ -145,14 +145,87 @@ void Grid::m_AssignNeighbours()
 
 void Grid::m_CreateLake(int cellX, int cellY, int layer)
 {
+	// Local Variables. 
+
+	int l_iTilePlacement = 10;
+
+	int l_iNumberOfIterations = 5;
+
+	int l_iChanceDegridation = 15; 
+
+	int l_iTotalChance = l_iNumberOfIterations * l_iChanceDegridation; 
+
+	std::vector<Cells*> l_WaterTiles;
+
+	std::vector<Cells*> l_CellsToAdd;
+
+	// Set Start of lake. 
 
 	m_GridMulti[layer][cellX][cellY].m_AssignTile(2); 
 
-	for (int i = 0; i < m_GridMulti[layer][cellX][cellY].m_GetNeighbours().size(); i++)
-	{
-		m_GridMulti[layer][cellX][cellY].m_GetNeighbours()[i]->m_AssignTile(2); 
-	}
+	l_CellsToAdd.push_back(&m_GridMulti[layer][cellX][cellY]); 
+ 
+	// Begin Lake Generation. 
 
+	for (int i = 0; i < l_iNumberOfIterations; i++)
+	{
+		for (int j = 0; j < l_CellsToAdd.size(); j++)
+		{
+			// Loop throgh the neighbours of cells to add and add them into the water tiles. 
+
+			for (int k = 0; k < l_CellsToAdd[j]->m_GetNeighbours().size(); k++)
+			{
+				// If the neighbour is already inside the water tiles, don't add multiple copies of them
+
+				if (std::find(l_WaterTiles.begin(), l_WaterTiles.end(), l_CellsToAdd[j]->m_GetNeighbours()[k]) != l_WaterTiles.end())
+				{
+					
+				}
+				else
+				{
+					l_WaterTiles.push_back(l_CellsToAdd[j]->m_GetNeighbours()[k]);
+				}
+			}
+		}
+
+		// Clear cells to add to prevent multiple copies being added. 
+
+		l_CellsToAdd.clear(); 
+
+		for (int j = 0; j < l_WaterTiles.size(); j++)
+		{
+			int l_iRandom;
+
+			// Generate a Random Number. 
+
+			l_iRandom = rand() % l_iTilePlacement + 1;
+
+			// std::cout << "Current Chance : " << l_iRandom << std::endl;
+
+
+			// The chance for a water tile to be placed will be a third of the total chance. 
+			// The first couple will be guarenteed to be a water tile, but the chance of them 
+			// being placed will be lowered with each iteration. 
+			if (l_iRandom <= l_iTotalChance / 3)
+			{
+				l_WaterTiles[j]->m_AssignTile(2);
+			}
+
+			for (int k = 0; k < l_WaterTiles[j]->m_GetNeighbours().size(); k++)
+			{
+				// Loop through the water tiles and add the neighbours of the current water tiles into the cells to add.
+				// This will allow for more tiles to become water. 
+
+				l_CellsToAdd.push_back(l_WaterTiles[j]->m_GetNeighbours()[k]); 
+			}
+		}
+
+		// Add to the current tile placement value lowering the chance for a tile to be placed as water. 
+
+		l_iTilePlacement += l_iChanceDegridation; 
+
+
+	}
 }
 
 void Grid::m_AssignTextures()
