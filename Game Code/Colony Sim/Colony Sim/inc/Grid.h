@@ -41,7 +41,7 @@ public:
 
 	void m_AssignNeighbours(); 
 
-	void m_CreateLake(int cellX, int cellY, int layer);
+	void m_CreateLake(int cellX, int cellY, int layer, int numberOfIterations);
 
 	void m_AssignTextures(); 
 
@@ -54,6 +54,10 @@ public:
 	void m_CheckItemsForRender(sf::Vector2f topLeft, sf::Vector2f bottomRight, unsigned int layer);
 
 	unsigned int m_GetNumberOfLayers(); 
+
+	unsigned int m_GetNumberOfRows();
+
+	unsigned int m_GetNumberOfColumns(); 
 
 };
 

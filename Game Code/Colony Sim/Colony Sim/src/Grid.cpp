@@ -143,17 +143,15 @@ void Grid::m_AssignNeighbours()
 	}
 }
 
-void Grid::m_CreateLake(int cellX, int cellY, int layer)
+void Grid::m_CreateLake(int cellX, int cellY, int layer, int numberOfIterations)
 {
 	// Local Variables. 
 
 	int l_iTilePlacement = 10;
 
-	int l_iNumberOfIterations = 5;
-
 	int l_iChanceDegridation = 15; 
 
-	int l_iTotalChance = l_iNumberOfIterations * l_iChanceDegridation; 
+	int l_iTotalChance = numberOfIterations * l_iChanceDegridation;
 
 	std::vector<Cells*> l_WaterTiles;
 
@@ -167,7 +165,7 @@ void Grid::m_CreateLake(int cellX, int cellY, int layer)
  
 	// Begin Lake Generation. 
 
-	for (int i = 0; i < l_iNumberOfIterations; i++)
+	for (int i = 0; i < numberOfIterations; i++)
 	{
 		for (int j = 0; j < l_CellsToAdd.size(); j++)
 		{
@@ -275,5 +273,36 @@ void Grid::m_CheckItemsForRender(sf::Vector2f topLeft, sf::Vector2f bottomRight,
 
 unsigned int Grid::m_GetNumberOfLayers()
 {
-	return m_GridMulti.size();
+	if (m_GridMulti.size() > 0)
+	{
+		return m_GridMulti.size();
+	}
+	else
+	{
+		return NULL; 
+	}
+}
+
+unsigned int Grid::m_GetNumberOfRows()
+{
+	if (m_GridMulti[0].size() > 0)
+	{
+		return m_GridMulti[0].size();
+	}
+	else
+	{
+		return NULL;
+	}
+}
+
+unsigned int Grid::m_GetNumberOfColumns()
+{
+	if (m_GridMulti[0][0].size() > 0)
+	{
+		return m_GridMulti[0][0].size();
+	}
+	else
+	{
+		return NULL;
+	}
 }

@@ -9,11 +9,14 @@
 
 #include "defs.h"
 
+// Components 
 #include "GameObject.h"
+#include "RandGen.h"
 
+// Associates 
 #include "Grid.h"
 
-class Map : public GameObject
+class Map : public GameObject, public RandGen
 {
 public: 
 	

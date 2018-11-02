@@ -29,6 +29,12 @@ Gameloop::~Gameloop()
 int Gameloop::m_SetUp()
 {
 
+	// Generate a new seed for the program. 
+
+	std::srand(time(0)); 
+
+	std::cout << "Current time : " << time(0) << std::endl;
+
 	// Setup game items. 
 
 	if (m_clWindow.m_InitWindow(800, 800, "Colony Sim") != 0)
