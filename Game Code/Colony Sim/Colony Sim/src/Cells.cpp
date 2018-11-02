@@ -6,14 +6,27 @@
 
 #include "../inc/Cells.h"
 
+//--------------------------------------------------------
+/*! \fn Constructor
+*
+*/
 Cells::Cells()
 {
 }
 
+//--------------------------------------------------------
+/*! \fn Deconstructor
+*
+*/
 Cells::~Cells()
 {
 }
 
+//--------------------------------------------------------
+/*! \fn Create Cell Body : This will be used to initalize this cell.
+*Param One : Vector2f - The height and width of the cell.
+*Param Two : Vector2f - The x and y coordinates for the cell.
+*/
 void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition)
 {
 	m_CellBody.setSize(dimentions); 
@@ -27,6 +40,14 @@ void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition)
 	m_CellBody.setOutlineThickness(m_CellBody.getGlobalBounds().width * 0.1f); 
 }
 
+//--------------------------------------------------------
+/*! \fn Create Cell Body : This will be used to initalize this cell, Overload to set colour.
+*Param One : Vector2f - The height and width of the cell.
+*Param Two : Vector2f - The x and y coordinates for the cell.
+*Param Three : int - Red value.
+*Param Four : int - Green value.
+*Param FIve : int - Blue value.
+*/
 void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, int r, int g, int b)
 {
 	m_CellBody.setSize(dimentions);
@@ -40,6 +61,10 @@ void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, in
 	m_CellBody.setOutlineThickness(m_CellBody.getGlobalBounds().width * 0.01f);
 }
 
+//--------------------------------------------------------
+/*! \fn Assign Tile : This will be used to set tile value for this cell.
+*Param One : unsigned int - 1 Dirt, 2 Water, 3 Rock, else null.
+*/
 void Cells::m_AssignTile(unsigned int whichTile)
 {
 	switch (whichTile)
@@ -64,6 +89,10 @@ void Cells::m_AssignTile(unsigned int whichTile)
 	}
 }
 
+//--------------------------------------------------------
+/*! \fn Assign Texture : This will be used to change the colour of the cell equil to its assigned tile.
+*
+*/
 void Cells::m_AssignTexture()
 {
 	switch (m_CurrentTile)
@@ -87,21 +116,37 @@ void Cells::m_AssignTexture()
 
 }
 
+//--------------------------------------------------------
+/*! \fn Assign Neighbour : This will allow for a neighbour to be added to the vector.
+*Param One : Cells - A cell next to this one.
+*/
 void Cells::m_AssignNeighbour(Cells &neighbour)
 {
 	m_Neighbours.push_back(&neighbour); 
 }
 
+//--------------------------------------------------------
+/*! \fn Assign Cell Id : Add a unique identifier to this cell.
+*Param One : int : a number identifier for this cell.
+*/
 void Cells::m_AssignCellId(int id)
 {
 	m_iCellId = id; 
 }
 
+//--------------------------------------------------------
+/*! \fn Get Cell Id : This will be used to read the cell's id.
+*
+*/
 int Cells::m_GetCellId()
 {
 	return m_iCellId;
 }
 
+//--------------------------------------------------------
+/*! \fn Draw Game Object : Used to draw the cell onto the game window.
+*Param One : RenderWindow - The game window the object is being drawn onto.
+*/
 void Cells::m_DrawGameObject(sf::RenderWindow & window)
 {
 	if (m_DrawItem == _DRAW)
@@ -110,6 +155,11 @@ void Cells::m_DrawGameObject(sf::RenderWindow & window)
 	} 
 }
 
+//--------------------------------------------------------
+/*! \fn Draw Filter : This will be used to check if this cell should be draw.
+*Param One : Vector2f - The top left of the view.
+*Param Two : Vector2f - The bottom right of the view.
+*/
 void Cells::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight)
 {
 	if (((m_CellBody.getPosition().x > topLeft.x) && (m_CellBody.getPosition().y > topLeft.y))
@@ -123,6 +173,11 @@ void Cells::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight)
 	}
 }
 
+//--------------------------------------------------------
+/*! \fn Set Object Pos : This will place the cell in the game world.
+*Param One : float - x Coordinate.
+*Param Two : float - y Coordinate.
+*/
 void Cells::m_SetObjectPos(float x, float y)
 {
 	m_GameObjectPos = sf::Vector2f(x, y); 
@@ -130,6 +185,10 @@ void Cells::m_SetObjectPos(float x, float y)
 	m_CellBody.setPosition(m_GameObjectPos); 
 }
 
+//--------------------------------------------------------
+/*! \fn Get Neighbours : This will be used to get access to the list of neighbours.
+*
+*/
 std::vector<Cells*>& Cells::m_GetNeighbours()
 {
 	return m_Neighbours;

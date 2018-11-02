@@ -52,6 +52,10 @@ void Map::m_CreateGrid()
 	m_clGrid.m_CreateGrid(25, 25, 5, m_MapObject);
 }
 
+//--------------------------------------------------------
+/*! \fn Create Lake for Map : This will initiate the lake generation for the map.
+*
+*/
 void Map::m_CreateLakeForMap()
 {
 	m_clGrid.m_CreateLake(2, 2, 1); 
@@ -68,6 +72,11 @@ void Map::m_DrawGameObject(sf::RenderWindow & window)
 	m_clGrid.m_DrawGrid(window, m_iCurrentLayer); 
 }
 
+//--------------------------------------------------------
+/*! \fn Draw Filter : This will be used to limit what is drawn on the screen.
+*Param One : Vector2f : The topleft of the game view.
+*Param Two : Vector2f : The bottomRight of the game view.
+*/
 void Map::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight)
 {
 	m_clGrid.m_CheckItemsForRender(topLeft + sf::Vector2f(-100, -100), bottomRight + sf::Vector2f(100, 100), m_iCurrentLayer);
@@ -85,6 +94,10 @@ void Map::m_SetObjectPos(float x, float y)
 	m_MapObject.setPosition(m_GameObjectPos);
 }
 
+//--------------------------------------------------------
+/*! \fn Check for layer change : This will check if the map's layer shoul be changed.
+*Param One : int - The key which was pressed to chnge the layer.
+*/
 void Map::m_CheckForLayerChange(int &inputValue)
 {
 	switch (inputValue)
@@ -105,6 +118,10 @@ void Map::m_CheckForLayerChange(int &inputValue)
 	inputValue = 0;
 }
 
+//--------------------------------------------------------
+/*! \fn Check for layer change : This will check if the map's layer shoul be changed.
+*Param One : int - The key which was pressed to chnge the layer.
+*/
 void Map::m_IncreaseLayer()
 {
 	if (m_iCurrentLayer < (m_clGrid.m_GetNumberOfLayers() - 1))
@@ -115,6 +132,10 @@ void Map::m_IncreaseLayer()
 	}
 }
 
+//--------------------------------------------------------
+/*! \fn Decrease Layer : Move down one layer on the map.
+*
+*/
 void Map::m_DescreaseLayer()
 {
 	if (m_iCurrentLayer > 0)

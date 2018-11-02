@@ -46,6 +46,10 @@ void EventHandler::m_CheckForEvents(sf::RenderWindow & window)
 	}
 }
 
+//--------------------------------------------------------
+/*! \fn Check for view move keys : This will be used to see if a movement key was pressed this frame.
+*
+*/
 void EventHandler::m_CheckForViewMoveKeys()
 {
 	if (m_Event.type == sf::Event::KeyPressed)
@@ -73,6 +77,10 @@ void EventHandler::m_CheckForViewMoveKeys()
 	}
 }
 
+//--------------------------------------------------------
+/*! \fn Check for layer change : This will see if a layer chnage key was pressed.
+*
+*/
 void EventHandler::m_CheckForLayerChange()
 {
 	if (m_Event.type == sf::Event::KeyPressed)
@@ -94,11 +102,19 @@ void EventHandler::m_CheckForLayerChange()
 	}
 }
 
+//--------------------------------------------------------
+/*! \fn Check view move value : Will return the current movemnt key value.
+*
+*/
 int EventHandler::m_CurentViewMoveValue()
 {
 	return m_iViewMoveValue;
 }
 
+//--------------------------------------------------------
+/*! \fn Current layer change value : Will return the layer change key value.
+*
+*/
 int & EventHandler::m_CurrentLayerChangeValue()
 {
 	return m_iLayerMoveValue;

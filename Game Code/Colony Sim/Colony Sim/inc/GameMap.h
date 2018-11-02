@@ -38,8 +38,10 @@ private:
 	/*! \var This will be used to house the main map object, this will have the grid created overtop of it. */
 	sf::RectangleShape m_MapObject; 
 
+	/*! \var This class will hold the grid which will be used for the map. */
 	Grid m_clGrid;
 
+	/*! \var The current layer on the map, will be used for drawing a single layer. */
 	unsigned int m_iCurrentLayer = 0; 
 
 	// Member Functions 
@@ -59,6 +61,10 @@ public:
 	*/
 	void m_CreateGrid(); 
 
+	//--------------------------------------------------------
+	/*! \fn Create Lake for Map : This will initiate the lake generation for the map. 
+	*
+	*/
 	void m_CreateLakeForMap(); 
 
 	//--------------------------------------------------------
@@ -67,6 +73,11 @@ public:
 	*/
 	void m_DrawGameObject(sf::RenderWindow & window) override; 
 
+	//--------------------------------------------------------
+	/*! \fn Draw Filter : This will be used to limit what is drawn on the screen.
+	*Param One : Vector2f : The topleft of the game view. 
+	*Param Two : Vector2f : The bottomRight of the game view. 
+	*/
 	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight);
 
 	//--------------------------------------------------------
@@ -76,11 +87,21 @@ public:
 	*/
 	void m_SetObjectPos(float x, float y) override; 
 
-
-
+	//--------------------------------------------------------
+	/*! \fn Check for layer change : This will check if the map's layer shoul be changed. 
+	*Param One : int - The key which was pressed to chnge the layer. 
+	*/
 	void m_CheckForLayerChange(int &inputValue); 
 
+	//--------------------------------------------------------
+	/*! \fn Check for layer change : This will check if the map's layer shoul be changed.
+	*Param One : int - The key which was pressed to chnge the layer.
+	*/
 	void m_IncreaseLayer();
 
+	//--------------------------------------------------------
+	/*! \fn Decrease Layer : Move down one layer on the map. 
+	*
+	*/
 	void m_DescreaseLayer(); 
 };
