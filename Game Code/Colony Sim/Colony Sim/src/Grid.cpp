@@ -44,6 +44,8 @@ void Grid::m_CreateGrid(unsigned int rows, unsigned int columns, unsigned int la
 
 				l_CurrentCell.m_AssignCellId(l_iCurrentId);
 
+				l_CurrentCell.m_SetGridPos(j, k); 
+
 				l_iCurrentId++;
 
 				// Move down on the grid for the next cell.
@@ -167,7 +169,7 @@ void Grid::m_CreateLake(int cellX, int cellY, int layer, int numberOfIterations)
 
 	for (int i = 0; i < numberOfIterations; i++)
 	{
-		for (int j = 0; j < l_CellsToAdd.size(); j++)
+		for (unsigned int j = 0; j < l_CellsToAdd.size(); j++)
 		{
 			// Loop throgh the neighbours of cells to add and add them into the water tiles. 
 
@@ -190,7 +192,7 @@ void Grid::m_CreateLake(int cellX, int cellY, int layer, int numberOfIterations)
 
 		l_CellsToAdd.clear(); 
 
-		for (int j = 0; j < l_WaterTiles.size(); j++)
+		for (unsigned int j = 0; j < l_WaterTiles.size(); j++)
 		{
 			int l_iRandom;
 
@@ -209,7 +211,7 @@ void Grid::m_CreateLake(int cellX, int cellY, int layer, int numberOfIterations)
 				l_WaterTiles[j]->m_AssignTile(2);
 			}
 
-			for (int k = 0; k < l_WaterTiles[j]->m_GetNeighbours().size(); k++)
+			for (unsigned int k = 0; k < l_WaterTiles[j]->m_GetNeighbours().size(); k++)
 			{
 				// Loop through the water tiles and add the neighbours of the current water tiles into the cells to add.
 				// This will allow for more tiles to become water. 
@@ -224,6 +226,17 @@ void Grid::m_CreateLake(int cellX, int cellY, int layer, int numberOfIterations)
 
 
 	}
+}
+
+void Grid::m_CreateRiver(int startCellX, int startCellY, int endCellX, int endCellY, int layer)
+{
+	Cells * l_StartCell = &m_GridMulti[layer][startCellX][startCellY];
+	Cells * l_EndCell = &m_GridMulti[layer][endCellX][endCellY];
+
+	std::cout << l_StartCell->m_GetCellId() << std::endl;
+
+	std::cout << l_EndCell->m_GetCellId() << std::endl;
+
 }
 
 void Grid::m_AssignTextures()
@@ -241,6 +254,11 @@ void Grid::m_AssignTextures()
 			}
 		}
 	}
+}
+
+Cells * Grid::m_GetCell(int layer, int x, int y)
+{
+	return &m_GridMulti[layer][x][y];
 }
 
 void Grid::m_DrawGrid(sf::RenderWindow & window, unsigned int layer)

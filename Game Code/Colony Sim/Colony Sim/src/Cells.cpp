@@ -40,6 +40,17 @@ void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition)
 	m_CellBody.setOutlineThickness(m_CellBody.getGlobalBounds().width * 0.1f); 
 }
 
+void Cells::m_SetGridPos(int x, int y)
+{
+	m_GridPosition.x = x;
+	m_GridPosition.y = y; 
+}
+
+gridPos Cells::m_GetGridPos()
+{
+	return m_GridPosition;
+}
+
 //--------------------------------------------------------
 /*! \fn Create Cell Body : This will be used to initalize this cell, Overload to set colour.
 *Param One : Vector2f - The height and width of the cell.
@@ -59,6 +70,11 @@ void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, in
 	m_CellBody.setOutlineColor(sf::Color::Black);
 
 	m_CellBody.setOutlineThickness(m_CellBody.getGlobalBounds().width * 0.01f);
+}
+
+void Cells::m_SetCellColour(int r, int g, int b)
+{
+	m_CellBody.setFillColor(sf::Color(r, g, b, 255)); 
 }
 
 //--------------------------------------------------------

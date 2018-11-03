@@ -31,7 +31,7 @@ int Gameloop::m_SetUp()
 
 	// Generate a new seed for the program. 
 
-	std::srand(time(0)); 
+	std::srand((unsigned int)time(0)); 
 
 	std::cout << "Current time : " << time(0) << std::endl;
 
@@ -73,6 +73,8 @@ void Gameloop::m_Update()
 		m_clMap.m_CheckForLayerChange(m_clEventHandler.m_CurrentLayerChangeValue());
 
 		m_clMap.m_DrawFilter(m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds()); 
+
+		m_clMap.m_Update(); 
 
 		// Draw Items. 
 		m_Render(); 

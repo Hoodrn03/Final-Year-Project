@@ -41,6 +41,7 @@
     <ClInclude Include="inc\GameMap.h" />
     <ClInclude Include="inc\GameObject.h" />
     <ClInclude Include="inc\Grid.h" />
+    <ClInclude Include="inc\Pathfinding.h" />
     <ClInclude Include="inc\RandGen.h" />
     <ClInclude Include="inc\Window.h" />
   </ItemGroup>
@@ -52,6 +53,7 @@
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\Grid.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Pathfinding.cpp" />
     <ClCompile Include="src\RandGen.cpp" />
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>

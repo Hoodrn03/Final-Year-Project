@@ -15,6 +15,7 @@
 
 // Associates 
 #include "Grid.h"
+#include "Pathfinding.h"
 
 class Map : public GameObject, public RandGen
 {
@@ -44,6 +45,8 @@ private:
 	/*! \var This class will hold the grid which will be used for the map. */
 	Grid m_clGrid;
 
+	Pathfinding m_clPathfinding;
+
 	/*! \var The current layer on the map, will be used for drawing a single layer. */
 	unsigned int m_iCurrentLayer = 0; 
 
@@ -58,6 +61,8 @@ public:
 	*/
 	void m_SetUpGameMap(sf::Vector2f dimentions, sf::Vector2f position); 
 
+	void m_Update(); 
+
 	//--------------------------------------------------------
 	/*! \fn CreateGrid : This will facilitate the formation of all of the cells into a grid object. 
 	*
@@ -69,6 +74,10 @@ public:
 	*
 	*/
 	void m_CreateLakeForMap(); 
+
+	void m_CreateRiverForMap(); 
+
+	void m_ChooseLakeOrRiver(int selection);
 
 	//--------------------------------------------------------
 	/*! \fn DrawGameObject : This will be used to draw all of the items required for the map. 

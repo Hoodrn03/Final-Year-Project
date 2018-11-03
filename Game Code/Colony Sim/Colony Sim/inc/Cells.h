@@ -19,6 +19,17 @@ enum tileSet
 	_ROCK = 0x4000 /*!< This will make the tile Rock. */
 };
 
+enum huristicCost
+{
+	_DIAGONAL = 14,
+	_ACROSS = 10
+};
+
+struct gridPos
+{
+	float x, y; 
+};
+
 class Cells : public GameObject
 {
 
@@ -54,6 +65,19 @@ private:
 	/*! \var A list of all the cells around this one Max 8, Min 3*/
 	std::vector<Cells*> m_Neighbours; 
 
+	gridPos m_GridPosition; 
+
+public:
+
+	/*! \var This will hold a reference to a cell that leads to this one. */
+	Cells * m_ParentCell;
+
+	int m_iGScore; 
+
+	int m_iHScore; 
+
+	int m_iFScore; 
+
 public:
 
 	// Member Functions
@@ -65,6 +89,10 @@ public:
 	*/
 	void m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition); 
 
+	void m_SetGridPos(int x, int y);
+
+	gridPos m_GetGridPos(); 
+
 	//--------------------------------------------------------
 	/*! \fn Create Cell Body : This will be used to initalize this cell, Overload to set colour.
 	*Param One : Vector2f - The height and width of the cell.
@@ -74,6 +102,8 @@ public:
 	*Param FIve : int - Blue value. 
 	*/
 	void m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, int r, int g, int b);
+
+	void m_SetCellColour(int r, int g, int b); 
 
 	//--------------------------------------------------------
 	/*! \fn Assign Tile : This will be used to set tile value for this cell.

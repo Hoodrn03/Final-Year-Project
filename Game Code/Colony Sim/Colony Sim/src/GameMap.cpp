@@ -37,9 +37,21 @@ void Map::m_SetUpGameMap(sf::Vector2f dimentions, sf::Vector2f position)
 
 	m_CreateGrid(); 
 
-	m_CreateLakeForMap(); 
+	m_ChooseLakeOrRiver(1); 
 
 	m_clGrid.m_AssignTextures(); 
+
+	m_clPathfinding.m_InitAlgorithm(m_clGrid.m_GetCell(0, 0, 0), m_clGrid.m_GetCell(0, 24, 22));
+
+}
+
+void Map::m_Update()
+{
+
+	if (!m_clPathfinding.m_CheckForCompletion())
+	{
+		m_clPathfinding.m_RunAStarAlgorithm();
+	}
 
 }
 
@@ -49,7 +61,7 @@ void Map::m_SetUpGameMap(sf::Vector2f dimentions, sf::Vector2f position)
 */
 void Map::m_CreateGrid()
 {
-	m_clGrid.m_CreateGrid(5, 5, 5, m_MapObject);
+	m_clGrid.m_CreateGrid(25, 25, 5, m_MapObject);
 }
 
 //--------------------------------------------------------
@@ -59,7 +71,36 @@ void Map::m_CreateGrid()
 void Map::m_CreateLakeForMap()
 {
 	m_clGrid.m_CreateLake(m_GenerateInt(0, m_clGrid.m_GetNumberOfRows()), m_GenerateInt(0, m_clGrid.m_GetNumberOfColumns()), 0, 2);
+
+	std::cout << "Lake Created" << std::endl;
 }
+
+void Map::m_CreateRiverForMap()
+{
+	m_clGrid.m_CreateRiver(0, 3, 1, 3, 0); 
+
+	std::cout << "River Created" << std::endl;
+}
+
+void Map::m_ChooseLakeOrRiver(int selection)
+{
+	switch (selection)
+	{
+	case 0: 
+		m_CreateLakeForMap();
+		break;
+
+	case 1:
+		m_CreateRiverForMap(); 
+			break;
+
+	default:
+		std::cout << "Invalid Selection." << std::endl;
+		break;
+	}
+}
+
+
 
 //--------------------------------------------------------
 /*! \fn DrawGameObject : This will be used to draw all of the items required for the map.

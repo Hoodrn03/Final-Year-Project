@@ -43,7 +43,11 @@ public:
 
 	void m_CreateLake(int cellX, int cellY, int layer, int numberOfIterations);
 
+	void m_CreateRiver(int startCellX, int startCellY, int endCellX, int endCellY, int layer); 
+
 	void m_AssignTextures(); 
+
+	Cells * m_GetCell(int layer, int x, int y); 
 
 	//--------------------------------------------------------
 	/*! \fn Constructor
