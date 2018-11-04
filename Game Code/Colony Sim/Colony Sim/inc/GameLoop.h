@@ -42,6 +42,10 @@ public:
 	/*! \var This class will be used to manage the game map. */
 	Map m_clMap; 
 
+	int m_FrameRate = 0;
+
+	sf::Clock m_FrameRateCounter; 
+
 private:
 
 	// Member Functions
@@ -66,5 +70,6 @@ public:
 	*/
 	void m_Render();
 
+	void m_CheckFramerate(); 
 
 };

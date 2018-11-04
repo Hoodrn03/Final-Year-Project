@@ -45,8 +45,6 @@ private:
 	/*! \var This class will hold the grid which will be used for the map. */
 	Grid m_clGrid;
 
-	Pathfinding m_clPathfinding;
-
 	/*! \var The current layer on the map, will be used for drawing a single layer. */
 	unsigned int m_iCurrentLayer = 0; 
 

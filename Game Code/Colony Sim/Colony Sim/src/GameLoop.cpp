@@ -42,7 +42,7 @@ int Gameloop::m_SetUp()
 		return 1;
 	}
 
-	m_clMap.m_SetUpGameMap(sf::Vector2f(200, 200), sf::Vector2f(0, 0)); 
+	m_clMap.m_SetUpGameMap(sf::Vector2f(800, 800), sf::Vector2f(0, 0)); 
 
 	m_clWindow.m_GetWindow().setKeyRepeatEnabled(false);
 
@@ -64,6 +64,8 @@ void Gameloop::m_Update()
 {
 	while (m_clWindow.m_GetWindow().isOpen())
 	{
+
+		m_CheckFramerate(); 
 
 		// Handle Events. 
 		m_clEventHandler.m_CheckForEvents(m_clWindow.m_GetWindow()); 
@@ -96,3 +98,18 @@ void Gameloop::m_Render()
 
 	m_clWindow.m_GetWindow().display(); 
 }
+
+void Gameloop::m_CheckFramerate()
+{
+	m_FrameRate++;
+
+	if (m_FrameRateCounter.getElapsedTime().asSeconds() >= 1)
+	{
+		m_FrameRateCounter.restart(); 
+
+		std::cout << "Frame Rate : " << m_FrameRate << std::endl;
+
+		m_FrameRate = 0; 
+	}
+}
+

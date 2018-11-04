@@ -39,7 +39,7 @@ private:
 	sf::View m_GameView; 
 
 	/*! \var This will determine the amount the view should move at a given time. */
-	const float m_fViewMoveAmount = 1.f; 
+	const float m_fViewMoveAmount = 15.f; 
 
 	// Member Functions
 

@@ -220,6 +220,8 @@ void Pathfinding::m_TracePath()
 		l_Path[i]->m_SetCellColour(0, 0, 255);
 	}
 
+	m_FinalPath = l_Path; 
+
 }
 
 bool Pathfinding::m_CheckForCompletion()
@@ -230,4 +232,9 @@ bool Pathfinding::m_CheckForCompletion()
 	}
 
 	return false;
+}
+
+std::vector<Cells*> Pathfinding::m_GetCurrentPath()
+{
+	return m_FinalPath;
 }

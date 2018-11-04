@@ -173,7 +173,7 @@ void Grid::m_CreateLake(int cellX, int cellY, int layer, int numberOfIterations)
 		{
 			// Loop throgh the neighbours of cells to add and add them into the water tiles. 
 
-			for (int k = 0; k < l_CellsToAdd[j]->m_GetNeighbours().size(); k++)
+			for (unsigned int k = 0; k < l_CellsToAdd[j]->m_GetNeighbours().size(); k++)
 			{
 				// If the neighbour is already inside the water tiles, don't add multiple copies of them
 
@@ -228,14 +228,25 @@ void Grid::m_CreateLake(int cellX, int cellY, int layer, int numberOfIterations)
 	}
 }
 
-void Grid::m_CreateRiver(int startCellX, int startCellY, int endCellX, int endCellY, int layer)
+void Grid::m_CreateRiver(std::vector<Cells*> riverPath, int riverWidth, int layer)
 {
-	Cells * l_StartCell = &m_GridMulti[layer][startCellX][startCellY];
-	Cells * l_EndCell = &m_GridMulti[layer][endCellX][endCellY];
+	std::cout << "Width " << riverWidth << std::endl;
 
-	std::cout << l_StartCell->m_GetCellId() << std::endl;
+	for (unsigned int i = 0; i < riverPath.size(); i++)
+	{
+		for (int j = 0; j < riverWidth; j++)
+		{
+			if (riverPath[i]->m_GetGridPos().x + j < m_GridMulti[layer].size())
+			{
+				m_GridMulti[layer][(unsigned int)riverPath[i]->m_GetGridPos().x + j][(unsigned int)riverPath[i]->m_GetGridPos().y].m_AssignTile(2);
+			}
 
-	std::cout << l_EndCell->m_GetCellId() << std::endl;
+			if (riverPath[i]->m_GetGridPos().y + j < m_GridMulti[layer][0].size())
+			{
+				m_GridMulti[layer][(unsigned int)riverPath[i]->m_GetGridPos().x][(unsigned int)riverPath[i]->m_GetGridPos().y + j].m_AssignTile(2);
+			}
+		}
+	}
 
 }
 

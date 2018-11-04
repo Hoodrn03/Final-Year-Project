@@ -31,6 +31,8 @@ private:
 
 	Cells * m_EndCell; 
 
+	std::vector<Cells*> m_FinalPath; 
+
 	// Member Functions
 
 public:
@@ -50,6 +52,8 @@ public:
 	void m_TracePath(); 
 
 	bool m_CheckForCompletion(); 
+
+	std::vector<Cells*> m_GetCurrentPath(); 
 
 
 };

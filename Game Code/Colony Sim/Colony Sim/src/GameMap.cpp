@@ -29,29 +29,31 @@ Map::~Map()
 */
 void Map::m_SetUpGameMap(sf::Vector2f dimentions, sf::Vector2f position)
 {
-	m_MapObject.setSize(dimentions); 
+	m_MapObject.setSize(dimentions);
 
-	m_SetObjectPos(position.x, position.y); 
+	m_SetObjectPos(position.x, position.y);
 
-	m_MapObject.setFillColor(sf::Color::Green); 
+	m_MapObject.setFillColor(sf::Color::Green);
 
-	m_CreateGrid(); 
+	m_CreateGrid();
 
-	m_ChooseLakeOrRiver(1); 
+	if (m_GenerateInt(0, 100) <= 50)
+	{
+		m_ChooseLakeOrRiver(0);
+	}
+	else
+	{
+		m_ChooseLakeOrRiver(1); 
+	}
 
-	m_clGrid.m_AssignTextures(); 
-
-	m_clPathfinding.m_InitAlgorithm(m_clGrid.m_GetCell(0, 0, 0), m_clGrid.m_GetCell(0, 24, 22));
+	m_clGrid.m_AssignTextures();
 
 }
 
 void Map::m_Update()
 {
 
-	if (!m_clPathfinding.m_CheckForCompletion())
-	{
-		m_clPathfinding.m_RunAStarAlgorithm();
-	}
+
 
 }
 
@@ -61,7 +63,7 @@ void Map::m_Update()
 */
 void Map::m_CreateGrid()
 {
-	m_clGrid.m_CreateGrid(25, 25, 5, m_MapObject);
+	m_clGrid.m_CreateGrid(50, 50, 5, m_MapObject);
 }
 
 //--------------------------------------------------------
@@ -70,14 +72,56 @@ void Map::m_CreateGrid()
 */
 void Map::m_CreateLakeForMap()
 {
-	m_clGrid.m_CreateLake(m_GenerateInt(0, m_clGrid.m_GetNumberOfRows()), m_GenerateInt(0, m_clGrid.m_GetNumberOfColumns()), 0, 2);
+	m_clGrid.m_CreateLake(m_GenerateInt(0, m_clGrid.m_GetNumberOfRows()), m_GenerateInt(0, m_clGrid.m_GetNumberOfColumns()), 0, 5);
 
 	std::cout << "Lake Created" << std::endl;
 }
 
 void Map::m_CreateRiverForMap()
 {
-	m_clGrid.m_CreateRiver(0, 3, 1, 3, 0); 
+	sf::Vector2i l_StartCell;
+	sf::Vector2i l_EndCell;
+
+	if (m_GenerateInt(0, 100) <= 50)
+	{
+		l_StartCell.y = (m_GenerateInt(0, m_clGrid.m_GetNumberOfColumns()));
+
+		l_StartCell.x = 0;
+
+	}
+	else
+	{
+		l_StartCell.y = 0;
+
+		l_StartCell.x = (m_GenerateInt(0, m_clGrid.m_GetNumberOfRows()));
+
+	}
+
+
+	if (m_GenerateInt(0, 100) <= 50)
+	{
+		l_EndCell.y = m_clGrid.m_GetNumberOfColumns() - 1;
+
+		l_EndCell.x = (m_GenerateInt(0, m_clGrid.m_GetNumberOfRows()));
+	}
+	else
+	{
+		l_EndCell.y = (m_GenerateInt(0, m_clGrid.m_GetNumberOfColumns()));
+
+		l_EndCell.x = m_clGrid.m_GetNumberOfRows() - 1;
+	}
+
+	Pathfinding l_clPathfinding; 
+
+	l_clPathfinding.m_InitAlgorithm(m_clGrid.m_GetCell(0, l_StartCell.x, l_StartCell.y), m_clGrid.m_GetCell(0, l_EndCell.x, l_EndCell.y));
+
+	do
+	{
+		l_clPathfinding.m_RunAStarAlgorithm();
+
+	} while (!l_clPathfinding.m_CheckForCompletion());
+
+	m_clGrid.m_CreateRiver(l_clPathfinding.m_GetCurrentPath(), m_GenerateInt(2, 5), 0);
 
 	std::cout << "River Created" << std::endl;
 }
@@ -120,7 +164,7 @@ void Map::m_DrawGameObject(sf::RenderWindow & window)
 */
 void Map::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight)
 {
-	m_clGrid.m_CheckItemsForRender(topLeft + sf::Vector2f(-100, -100), bottomRight + sf::Vector2f(100, 100), m_iCurrentLayer);
+	m_clGrid.m_CheckItemsForRender(topLeft + sf::Vector2f(-50, -50), bottomRight + sf::Vector2f(50, 50), m_iCurrentLayer);
 }
 
 //--------------------------------------------------------
