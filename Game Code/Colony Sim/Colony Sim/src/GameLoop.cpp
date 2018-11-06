@@ -99,6 +99,10 @@ void Gameloop::m_Render()
 	m_clWindow.m_GetWindow().display(); 
 }
 
+//--------------------------------------------------------
+/*! \fn CheckFramerate : Every frame this will check the current framerate of the game and output it.
+*
+*/
 void Gameloop::m_CheckFramerate()
 {
 	m_FrameRate++;

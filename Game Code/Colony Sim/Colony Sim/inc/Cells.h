@@ -1,6 +1,6 @@
 /*! \file Cells.h
 *
-* This will class will hold the information for a single cell within the game. 
+* This will hold the information for a single cell within the game. 
 * A group of cells will form a either a row or a column.
 *
 */
@@ -19,17 +19,20 @@ enum tileSet
 	_ROCK = 0x4000 /*!< This will make the tile Rock. */
 };
 
+/*! \enum This will be used to easily distinguish between the different huristic costs for the game. */
 enum huristicCost
 {
 	_DIAGONAL = 14,
 	_ACROSS = 10
 };
 
+/*! \struct This will allow for the cell to be given a theoretical position in the grid. */
 struct gridPos
 {
 	float x, y; 
 };
 
+/*! \class Cells when grouped up form a grid, each cell will represent a single point within a grid. */
 class Cells : public GameObject
 {
 
@@ -65,6 +68,7 @@ private:
 	/*! \var A list of all the cells around this one Max 8, Min 3*/
 	std::vector<Cells*> m_Neighbours; 
 
+	/*! \var This is the cells position within a grid, holds X and Y values.*/
 	gridPos m_GridPosition; 
 
 public:
@@ -72,10 +76,13 @@ public:
 	/*! \var This will hold a reference to a cell that leads to this one. */
 	Cells * m_ParentCell;
 
+	/*! \var This is the current G Score for this cell. */
 	int m_iGScore; 
 
+	/*! \var This is the current H Score for this cell. */
 	int m_iHScore; 
 
+	/*! \var This is the current F Score for this cell. */
 	int m_iFScore; 
 
 public:
@@ -89,8 +96,17 @@ public:
 	*/
 	void m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition); 
 
+	//--------------------------------------------------------
+	/*! \fn SetGridPos : This will be used to assign a position to the cell. 
+	*Param One : int - The x position on for the cell on the grid. 
+	*Param Two : int - The y position on for the cell on the grid.
+	*/
 	void m_SetGridPos(int x, int y);
 
+	//--------------------------------------------------------
+	/*! \fn GetGridPos : This will return the current position of the cell. 
+	*
+	*/
 	gridPos m_GetGridPos(); 
 
 	//--------------------------------------------------------
@@ -103,6 +119,12 @@ public:
 	*/
 	void m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, int r, int g, int b);
 
+	//--------------------------------------------------------
+	/*! \fn SetCellColour : This will change the colour of the cell. 
+	*Param One - int : THe amount of red in the cell.
+	*Param Two - int : THe amount of green in the cell.
+	*Param Three - int : THe amount of blue in the cell.
+	*/
 	void m_SetCellColour(int r, int g, int b); 
 
 	//--------------------------------------------------------

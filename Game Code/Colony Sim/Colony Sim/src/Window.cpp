@@ -58,11 +58,19 @@ sf::RenderWindow & Window::m_GetWindow()
 	return m_Window; 
 }
 
+//--------------------------------------------------------
+/*! \fn GetViewUpperBounds : This will return the top left of the game view.
+*
+*/
 sf::Vector2f Window::m_GetViewUpperBounds()
 {
 	return sf::Vector2f(m_GameView.getCenter().x - (m_GameView.getSize().x * 0.5f), m_GameView.getCenter().y - (m_GameView.getSize().y * 0.5f)); 
 }
 
+//--------------------------------------------------------
+/*! \fn GetViewLowerBounds : Thiis will return the bottom right of the game view.
+*
+*/
 sf::Vector2f Window::m_GetViewLowerBounds()
 {
 	return sf::Vector2f(m_GameView.getCenter().x + (m_GameView.getSize().x * 0.5f), m_GameView.getCenter().y + (m_GameView.getSize().y * 0.5f));

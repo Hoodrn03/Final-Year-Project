@@ -40,12 +40,21 @@ void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition)
 	m_CellBody.setOutlineThickness(m_CellBody.getGlobalBounds().width * 0.1f); 
 }
 
+//--------------------------------------------------------
+/*! \fn SetGridPos : This will be used to assign a position to the cell.
+*Param One : int - The x position on for the cell on the grid.
+*Param Two : int - The y position on for the cell on the grid.
+*/
 void Cells::m_SetGridPos(int x, int y)
 {
 	m_GridPosition.x = x;
 	m_GridPosition.y = y; 
 }
 
+//--------------------------------------------------------
+/*! \fn GetGridPos : This will return the current position of the cell.
+*
+*/
 gridPos Cells::m_GetGridPos()
 {
 	return m_GridPosition;
@@ -72,6 +81,12 @@ void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, in
 	m_CellBody.setOutlineThickness(m_CellBody.getGlobalBounds().width * 0.01f);
 }
 
+//--------------------------------------------------------
+/*! \fn SetCellColour : This will change the colour of the cell.
+*Param One - int : THe amount of red in the cell.
+*Param Two - int : THe amount of green in the cell.
+*Param Three - int : THe amount of blue in the cell.
+*/
 void Cells::m_SetCellColour(int r, int g, int b)
 {
 	m_CellBody.setFillColor(sf::Color(r, g, b, 255)); 

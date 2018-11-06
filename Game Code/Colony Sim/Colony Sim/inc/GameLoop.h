@@ -12,6 +12,7 @@
 
 #include "GameMap.h"
 
+/*! \class This will hold the main game loop, it will have three main functions; setup, update and render. */
 class Gameloop
 {
 
@@ -42,8 +43,10 @@ public:
 	/*! \var This class will be used to manage the game map. */
 	Map m_clMap; 
 
+	/*! \var This is the games current frame rate. */
 	int m_FrameRate = 0;
 
+	/*! \var This is the timer for the frame rate, it gets reset every second. */
 	sf::Clock m_FrameRateCounter; 
 
 private:
@@ -70,6 +73,10 @@ public:
 	*/
 	void m_Render();
 
+	//--------------------------------------------------------
+	/*! \fn CheckFramerate : Every frame this will check the current framerate of the game and output it. 
+	*
+	*/
 	void m_CheckFramerate(); 
 
 };

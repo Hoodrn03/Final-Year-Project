@@ -9,6 +9,7 @@
 
 #include "defs.h"
 
+/*! \class This will manage and control the window and the view for the game. */
 class Window
 {
 
@@ -59,8 +60,16 @@ public:
 	*/
 	sf::RenderWindow & m_GetWindow(); 
 
+	//--------------------------------------------------------
+	/*! \fn GetViewUpperBounds : This will return the top left of the game view. 
+	*
+	*/
 	sf::Vector2f m_GetViewUpperBounds(); 
 
+	//--------------------------------------------------------
+	/*! \fn GetViewLowerBounds : Thiis will return the bottom right of the game view.  
+	*
+	*/
 	sf::Vector2f m_GetViewLowerBounds(); 
 
 	//--------------------------------------------------------

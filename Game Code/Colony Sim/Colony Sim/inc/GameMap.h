@@ -17,6 +17,7 @@
 #include "Grid.h"
 #include "Pathfinding.h"
 
+/*! \class Will be used to hold the game's map, it will use a grid to place tiles on the map. */
 class Map : public GameObject, public RandGen
 {
 public: 
@@ -59,6 +60,10 @@ public:
 	*/
 	void m_SetUpGameMap(sf::Vector2f dimentions, sf::Vector2f position); 
 
+	//--------------------------------------------------------
+	/*! \fn Update : This will be used to update the map every frame.
+	*
+	*/
 	void m_Update(); 
 
 	//--------------------------------------------------------
@@ -73,8 +78,16 @@ public:
 	*/
 	void m_CreateLakeForMap(); 
 
+	//--------------------------------------------------------
+	/*! \fn Create River For Map : This will create a river on the game map. 
+	*
+	*/
 	void m_CreateRiverForMap(); 
 
+	//--------------------------------------------------------
+	/*! \fn Choose Lake Or River : This will be used to select which water generation method to use for this map. 
+	*
+	*/
 	void m_ChooseLakeOrRiver(int selection);
 
 	//--------------------------------------------------------
@@ -98,14 +111,14 @@ public:
 	void m_SetObjectPos(float x, float y) override; 
 
 	//--------------------------------------------------------
-	/*! \fn Check for layer change : This will check if the map's layer shoul be changed. 
-	*Param One : int - The key which was pressed to chnge the layer. 
+	/*! \fn Check for layer change : This will check if the map's layer should be changed. 
+	*Param One : int - The key which was pressed to change the layer. 
 	*/
 	void m_CheckForLayerChange(int &inputValue); 
 
 	//--------------------------------------------------------
-	/*! \fn Check for layer change : This will check if the map's layer shoul be changed.
-	*Param One : int - The key which was pressed to chnge the layer.
+	/*! \fn Increase Layer : Move up one layer on the map. 
+	*
 	*/
 	void m_IncreaseLayer();
 

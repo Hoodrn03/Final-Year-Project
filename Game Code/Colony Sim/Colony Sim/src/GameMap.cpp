@@ -50,6 +50,10 @@ void Map::m_SetUpGameMap(sf::Vector2f dimentions, sf::Vector2f position)
 
 }
 
+//--------------------------------------------------------
+/*! \fn Update : This will be used to update the map every frame.
+*
+*/
 void Map::m_Update()
 {
 
@@ -77,6 +81,10 @@ void Map::m_CreateLakeForMap()
 	std::cout << "Lake Created" << std::endl;
 }
 
+//--------------------------------------------------------
+/*! \fn Create River For Map : This will create a river on the game map.
+*
+*/
 void Map::m_CreateRiverForMap()
 {
 	sf::Vector2i l_StartCell;
@@ -126,6 +134,10 @@ void Map::m_CreateRiverForMap()
 	std::cout << "River Created" << std::endl;
 }
 
+//--------------------------------------------------------
+/*! \fn Choose Lake Or River : This will be used to select which water generation method to use for this map.
+*
+*/
 void Map::m_ChooseLakeOrRiver(int selection)
 {
 	switch (selection)
@@ -143,8 +155,6 @@ void Map::m_ChooseLakeOrRiver(int selection)
 		break;
 	}
 }
-
-
 
 //--------------------------------------------------------
 /*! \fn DrawGameObject : This will be used to draw all of the items required for the map.

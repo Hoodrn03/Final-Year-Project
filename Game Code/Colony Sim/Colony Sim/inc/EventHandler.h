@@ -8,6 +8,7 @@
 
 #include "defs.h"
 
+/*! \class This will be used to handle all of the events within the game. */
 class EventHandler
 {
 public:
