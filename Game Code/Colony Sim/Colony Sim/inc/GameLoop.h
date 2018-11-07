@@ -46,8 +46,12 @@ public:
 	/*! \var This is the games current frame rate. */
 	int m_FrameRate = 0;
 
+	float m_fDeltaTime = 0; 
+
 	/*! \var This is the timer for the frame rate, it gets reset every second. */
 	sf::Clock m_FrameRateCounter; 
+
+	sf::Clock m_DeltaTimer; 
 
 private:
 
@@ -78,5 +82,7 @@ public:
 	*
 	*/
 	void m_CheckFramerate(); 
+
+	void m_UpdateDeltaTime(); 
 
 };

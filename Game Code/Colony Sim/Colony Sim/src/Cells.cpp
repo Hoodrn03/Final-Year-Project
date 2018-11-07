@@ -47,8 +47,8 @@ void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition)
 */
 void Cells::m_SetGridPos(int x, int y)
 {
-	m_GridPosition.x = x;
-	m_GridPosition.y = y; 
+	m_GridPosition.x = (float)x;
+	m_GridPosition.y = (float)y; 
 }
 
 //--------------------------------------------------------

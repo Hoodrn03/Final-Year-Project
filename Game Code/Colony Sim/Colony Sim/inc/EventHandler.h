@@ -58,6 +58,14 @@ private:
 	/*! \var Which key was pressed for the layer to change. */
 	int m_iLayerMoveValue = 0; 
 
+	bool m_bMoveViewUp;
+
+	bool m_bMoveViewDown;
+
+	bool m_bMoveViewLeft; 
+
+	bool m_bMoveViewRight;
+
 	// Member Functions
 
 public:
@@ -74,17 +82,19 @@ public:
 	*/
 	void m_CheckForViewMoveKeys(); 
 
+	bool m_CheckViewUpValue(); 
+
+	bool m_CheckViewDownValue();
+
+	bool m_CheckViewLeftValue(); 
+
+	bool m_CheckViewRightValue(); 
+
 	//--------------------------------------------------------
 	/*! \fn Check for layer change : This will see if a layer chnage key was pressed. 
 	*
 	*/
 	void m_CheckForLayerChange(); 
-
-	//--------------------------------------------------------
-	/*! \fn Check view move value : Will return the current movemnt key value. 
-	*
-	*/
-	int m_CurentViewMoveValue(); 
 
 	//--------------------------------------------------------
 	/*! \fn Current layer change value : Will return the layer change key value.

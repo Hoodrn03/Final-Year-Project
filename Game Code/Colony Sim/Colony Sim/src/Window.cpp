@@ -80,29 +80,48 @@ sf::Vector2f Window::m_GetViewLowerBounds()
 /*! \fn CheckForViewMove : This will b eused to check if the view should be moved this frame.
 *Param One : int - The current key being pressed, if none are pressed it recives 0.
 */
-void Window::m_CheckForViewMove(int moveValue)
+void Window::m_CheckForViewMove(bool upValue, bool downValue, bool leftValue, bool rightValue)
 {
-	switch (moveValue)
+	if (upValue == true)
 	{
-	case 1: 
-		m_MoveViewUp();
-		break;
-
-	case 2:
-		m_MoveViewDown();
-		break;
-
-	case 3:
-		m_MoveViewLeft();
-		break;
-
-	case 4:
-		m_MoveViewRight();
-		break;
-
-	default:
-		break;
+		m_ViewMoveVector += sf::Vector2f(0, -m_fViewMoveAmount); 
 	}
+	else if (downValue == true)
+	{
+		m_ViewMoveVector += sf::Vector2f(0, m_fViewMoveAmount);
+	}
+	else if (leftValue == true)
+	{
+		m_ViewMoveVector += sf::Vector2f(-m_fViewMoveAmount, 0);
+	}
+	else if (rightValue == true)
+	{
+		m_ViewMoveVector += sf::Vector2f(m_fViewMoveAmount, 0); 
+	}
+	else
+	{
+		m_ViewMoveVector = sf::Vector2f(0, 0); 
+	}
+
+	if (m_ViewMoveVector.x > m_fViewMoveAmount)
+	{
+		m_ViewMoveVector.x = m_fViewMoveAmount; 
+	}
+	else if (m_ViewMoveVector.x < -m_fViewMoveAmount)
+	{
+		m_ViewMoveVector.x = -m_fViewMoveAmount;
+	}
+
+	if (m_ViewMoveVector.y > m_fViewMoveAmount)
+	{
+		m_ViewMoveVector.y = m_fViewMoveAmount;
+	}
+	else if (m_ViewMoveVector.y < -m_fViewMoveAmount)
+	{
+		m_ViewMoveVector.y = -m_fViewMoveAmount;
+	}
+
+	m_GameView.setCenter(m_GameView.getCenter() + m_ViewMoveVector); 
 
 	m_Window.setView(m_GameView);
 }

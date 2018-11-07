@@ -56,25 +56,61 @@ void EventHandler::m_CheckForViewMoveKeys()
 	{
 		if (m_Event.key.code == m_ViewUp)
 		{
-			m_iViewMoveValue = 1; 
+			m_bMoveViewUp = true; 
 		}
 		else if (m_Event.key.code == m_ViewDown)
 		{
-			m_iViewMoveValue = 2;
+			m_bMoveViewDown = true;
 		}
 		else if (m_Event.key.code == m_ViewLeft)
 		{
-			m_iViewMoveValue = 3;
+			m_bMoveViewLeft = true;
 		}
 		else if (m_Event.key.code == m_ViewRight)
 		{
-			m_iViewMoveValue = 4;
+			m_bMoveViewRight = true;
 		}
 	}
+
 	else if (m_Event.type == sf::Event::KeyReleased)
 	{
-		m_iViewMoveValue = 0;
+		if (m_Event.key.code == m_ViewUp)
+		{
+			m_bMoveViewUp = false;
+		}
+		else if (m_Event.key.code == m_ViewDown)
+		{
+			m_bMoveViewDown = false;
+		}
+		else if (m_Event.key.code == m_ViewLeft)
+		{
+			m_bMoveViewLeft = false;
+		}
+		else if (m_Event.key.code == m_ViewRight)
+		{
+			m_bMoveViewRight = false;
+		}
 	}
+}
+
+bool EventHandler::m_CheckViewUpValue()
+{
+	return m_bMoveViewUp;
+}
+
+bool EventHandler::m_CheckViewDownValue()
+{
+	return m_bMoveViewDown;
+}
+
+bool EventHandler::m_CheckViewLeftValue()
+{
+	return m_bMoveViewLeft;
+}
+
+bool EventHandler::m_CheckViewRightValue()
+{
+	return m_bMoveViewRight;
 }
 
 //--------------------------------------------------------
@@ -100,15 +136,6 @@ void EventHandler::m_CheckForLayerChange()
 	{
 		m_iLayerMoveValue = 0;
 	}
-}
-
-//--------------------------------------------------------
-/*! \fn Check view move value : Will return the current movemnt key value.
-*
-*/
-int EventHandler::m_CurentViewMoveValue()
-{
-	return m_iViewMoveValue;
 }
 
 //--------------------------------------------------------

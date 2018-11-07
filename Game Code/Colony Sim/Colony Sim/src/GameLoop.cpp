@@ -33,8 +33,6 @@ int Gameloop::m_SetUp()
 
 	std::srand((unsigned int)time(0)); 
 
-	std::cout << "Current time : " << time(0) << std::endl;
-
 	// Setup game items. 
 
 	if (m_clWindow.m_InitWindow(800, 800, "Colony Sim") != 0)
@@ -67,10 +65,12 @@ void Gameloop::m_Update()
 
 		m_CheckFramerate(); 
 
+		m_UpdateDeltaTime(); 
+
 		// Handle Events. 
 		m_clEventHandler.m_CheckForEvents(m_clWindow.m_GetWindow()); 
 
-		m_clWindow.m_CheckForViewMove(m_clEventHandler.m_CurentViewMoveValue()); 
+		m_clWindow.m_CheckForViewMove(m_clEventHandler.m_CheckViewUpValue(), m_clEventHandler.m_CheckViewDownValue(), m_clEventHandler.m_CheckViewLeftValue(), m_clEventHandler.m_CheckViewRightValue()); 
 
 		m_clMap.m_CheckForLayerChange(m_clEventHandler.m_CurrentLayerChangeValue());
 
@@ -111,9 +111,12 @@ void Gameloop::m_CheckFramerate()
 	{
 		m_FrameRateCounter.restart(); 
 
-		std::cout << "Frame Rate : " << m_FrameRate << std::endl;
-
 		m_FrameRate = 0; 
 	}
+}
+
+void Gameloop::m_UpdateDeltaTime()
+{
+	m_fDeltaTime = m_DeltaTimer.restart().asSeconds();
 }
 

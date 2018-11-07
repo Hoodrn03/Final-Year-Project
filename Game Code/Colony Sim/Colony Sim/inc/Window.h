@@ -40,7 +40,9 @@ private:
 	sf::View m_GameView; 
 
 	/*! \var This will determine the amount the view should move at a given time. */
-	const float m_fViewMoveAmount = 15.f; 
+	const float m_fViewMoveAmount = 0.25f; 
+
+	sf::Vector2f m_ViewMoveVector; 
 
 	// Member Functions
 
@@ -76,7 +78,7 @@ public:
 	/*! \fn CheckForViewMove : This will b eused to check if the view should be moved this frame. 
 	*Param One : int - The current key being pressed, if none are pressed it recives 0. 
 	*/
-	void m_CheckForViewMove(int moveValue);
+	void m_CheckForViewMove(bool upValue, bool downValue, bool leftValue, bool rightValue);
 
 	//--------------------------------------------------------
 	/*! \fn MoveViewUp : Moves the view in a direction. 
