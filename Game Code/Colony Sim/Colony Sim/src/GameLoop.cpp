@@ -72,6 +72,8 @@ void Gameloop::m_Update()
 
 		m_clWindow.m_CheckForViewMove(m_clEventHandler.m_CheckViewUpValue(), m_clEventHandler.m_CheckViewDownValue(), m_clEventHandler.m_CheckViewLeftValue(), m_clEventHandler.m_CheckViewRightValue()); 
 
+		m_clWindow.m_CheckForViewScroll(m_clEventHandler.m_GetMouseWheelState());
+
 		m_clMap.m_CheckForLayerChange(m_clEventHandler.m_CurrentLayerChangeValue());
 
 		m_clMap.m_DrawFilter(m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds()); 

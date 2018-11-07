@@ -126,6 +126,40 @@ void Window::m_CheckForViewMove(bool upValue, bool downValue, bool leftValue, bo
 	m_Window.setView(m_GameView);
 }
 
+void Window::m_CheckForViewScroll(int & mouseWheelValue)
+{
+	switch (mouseWheelValue)
+	{
+	case 0:
+		break;
+
+	case 1:
+		
+		if (m_GameView.getSize().x - m_fScrollAmount > m_MinScrollAmount.x &&
+			m_GameView.getSize().y - m_fScrollAmount > m_MinScrollAmount.y)
+		{
+			m_GameView.setSize(m_GameView.getSize() + sf::Vector2f(-m_fScrollAmount, -m_fScrollAmount));
+		}
+
+		break;
+
+	case -1:
+
+		if (m_GameView.getSize().x - m_fScrollAmount < m_MaxScrollAmount.x &&
+			m_GameView.getSize().y - m_fScrollAmount < m_MaxScrollAmount.y)
+		{
+			m_GameView.setSize(m_GameView.getSize() + sf::Vector2f(m_fScrollAmount, m_fScrollAmount));
+		}
+
+		break;
+
+	default:
+		break;
+	}
+
+	mouseWheelValue = 0;
+}
+
 //--------------------------------------------------------
 /*! \fn MoveViewUp : Moves the view in a direction.
 *

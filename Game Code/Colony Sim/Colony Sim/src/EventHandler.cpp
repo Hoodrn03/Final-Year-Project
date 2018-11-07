@@ -43,6 +43,8 @@ void EventHandler::m_CheckForEvents(sf::RenderWindow & window)
 		m_CheckForViewMoveKeys(); 
 
 		m_CheckForLayerChange(); 
+
+		m_CheckForMouseWheel();
 	}
 }
 
@@ -111,6 +113,28 @@ bool EventHandler::m_CheckViewLeftValue()
 bool EventHandler::m_CheckViewRightValue()
 {
 	return m_bMoveViewRight;
+}
+
+void EventHandler::m_CheckForMouseWheel()
+{
+	if (m_Event.type == sf::Event::MouseWheelMoved)
+	{
+		if (m_Event.mouseWheel.delta >= 1)
+		{
+			m_iMouseWheelState = 1;
+		}
+		else if (m_Event.mouseWheel.delta <= -1)
+		{
+			m_iMouseWheelState = -1;
+		}
+	}
+
+
+}
+
+int & EventHandler::m_GetMouseWheelState()
+{
+	return m_iMouseWheelState;
 }
 
 //--------------------------------------------------------

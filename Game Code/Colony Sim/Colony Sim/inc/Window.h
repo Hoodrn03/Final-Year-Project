@@ -40,7 +40,13 @@ private:
 	sf::View m_GameView; 
 
 	/*! \var This will determine the amount the view should move at a given time. */
-	const float m_fViewMoveAmount = 0.25f; 
+	const float m_fViewMoveAmount = 2.5f; 
+
+	const float m_fScrollAmount = 25.f; 
+
+	const sf::Vector2f m_MinScrollAmount = sf::Vector2f(200, 200); 
+
+	const sf::Vector2f m_MaxScrollAmount = sf::Vector2f(800, 800); 
 
 	sf::Vector2f m_ViewMoveVector; 
 
@@ -79,6 +85,8 @@ public:
 	*Param One : int - The current key being pressed, if none are pressed it recives 0. 
 	*/
 	void m_CheckForViewMove(bool upValue, bool downValue, bool leftValue, bool rightValue);
+
+	void m_CheckForViewScroll(int & mouseWheelValue); 
 
 	//--------------------------------------------------------
 	/*! \fn MoveViewUp : Moves the view in a direction. 

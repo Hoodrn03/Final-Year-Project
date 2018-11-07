@@ -66,6 +66,8 @@ private:
 
 	bool m_bMoveViewRight;
 
+	int m_iMouseWheelState = 0; 
+
 	// Member Functions
 
 public:
@@ -89,6 +91,10 @@ public:
 	bool m_CheckViewLeftValue(); 
 
 	bool m_CheckViewRightValue(); 
+
+	void m_CheckForMouseWheel(); 
+
+	int & m_GetMouseWheelState(); 
 
 	//--------------------------------------------------------
 	/*! \fn Check for layer change : This will see if a layer chnage key was pressed. 
