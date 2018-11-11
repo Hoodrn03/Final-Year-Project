@@ -62,7 +62,11 @@ void Map::m_CreateGrid()
 */
 void Map::m_GenerateMap()
 {
+	m_MapObject.setFillColor(sf::Color(0, 191, 255, 255));
+
 	m_CreateGrid();
+
+	// Generate Ground Level.
 
 	if (m_GenerateInt(0, 100) <= 50)
 	{
@@ -73,9 +77,23 @@ void Map::m_GenerateMap()
 		m_ChooseLakeOrRiver(1);
 	}
 
-	m_clGrid.m_CreateRock(0);
+	m_clGrid.m_CreateRock(m_iGroundLayer);
 
-	m_clGrid.m_CreateDirt(0);
+	m_clGrid.m_CreateDirt(m_iGroundLayer);
+
+	// Generate Underground levels. 
+
+	m_clGrid.m_CreateUndergroundWater(0, 1); 
+
+	m_clGrid.m_CreateUndergroundRock(0, 1);
+
+	m_clGrid.m_CreateUndergroundDirt(0, 1); 
+
+	// Create Above Ground Levels. 
+
+	m_clGrid.m_CreateUpperRock(3, 4);
+
+	m_clGrid.m_CreateSky(3, 4); 
 
 	m_clGrid.m_AssignTextures();
 }
@@ -86,7 +104,7 @@ void Map::m_GenerateMap()
 */
 void Map::m_CreateLakeForMap()
 {
-	m_clGrid.m_CreateLake(m_GenerateInt(0, m_clGrid.m_GetNumberOfRows()), m_GenerateInt(0, m_clGrid.m_GetNumberOfColumns()), 0, 5);
+	m_clGrid.m_CreateLake(m_GenerateInt(0, m_clGrid.m_GetNumberOfRows()), m_GenerateInt(0, m_clGrid.m_GetNumberOfColumns()), m_iGroundLayer, 5);
 
 	std::cout << "Lake Created" << std::endl;
 }
@@ -139,7 +157,7 @@ void Map::m_CreateRiverForMap()
 
 	} while (!l_clPathfinding.m_CheckForCompletion());
 
-	m_clGrid.m_CreateRiver(l_clPathfinding.m_GetCurrentPath(), m_GenerateInt(2, 5), 0);
+	m_clGrid.m_CreateRiver(l_clPathfinding.m_GetCurrentPath(), m_GenerateInt(2, 5), m_iGroundLayer);
 
 	std::cout << "River Created" << std::endl;
 }

@@ -47,7 +47,9 @@ private:
 	Grid m_clGrid;
 
 	/*! \var The current layer on the map, will be used for drawing a single layer. */
-	unsigned int m_iCurrentLayer = 0; 
+	unsigned int m_iCurrentLayer = 2; 
+
+	unsigned int m_iGroundLayer = 2; 
 
 	// Member Functions 
 

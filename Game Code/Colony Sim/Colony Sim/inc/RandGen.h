@@ -25,4 +25,6 @@ public:
 	*/
 	int m_GenerateInt(int min, int max); 
 
+	int m_GenerateInt(int min, int max, bool print);
+
 };

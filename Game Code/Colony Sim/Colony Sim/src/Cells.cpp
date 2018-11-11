@@ -112,7 +112,13 @@ void Cells::m_AssignTile(unsigned int whichTile)
 		m_CurrentTile = _ROCK;
 		break;
 
+	case 4: 
+		m_CurrentTile = _SKY;
+		break;
+
 	default:
+
+		m_CurrentTile = _NO_VALUE; 
 
 		std::cout << "Invalid Tile Selection" << std::endl;
 		
@@ -138,6 +144,10 @@ void Cells::m_AssignColours()
 
 	case _ROCK:
 		m_CellBody.setFillColor(m_RockColour);
+		break;
+
+	case _SKY:
+		m_CellBody.setFillColor(m_SkyColour);
 		break;
 
 	default:

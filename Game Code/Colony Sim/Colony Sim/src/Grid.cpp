@@ -286,6 +286,30 @@ void Grid::m_CreateRiver(std::vector<Cells*> riverPath, int riverWidth, int laye
 
 }
 
+void Grid::m_CreateUndergroundWater(int minLayer, int maxLayer)
+{
+	const int l_iWaterPlacement = 30; 
+
+	std::cout << l_iWaterPlacement << std::endl;
+
+	for (int i = maxLayer; i >= minLayer; i--)
+	{
+		for (unsigned int j = 0; j < m_Grid[i].size(); j++)
+		{
+			for (unsigned int k = 0; k < m_Grid[i][j].size(); k++)
+			{
+				if (m_Grid[i + 1][j][k].m_GetTile() == _WATER)
+				{
+					if (m_GenerateInt(0, 100) <= l_iWaterPlacement)
+					{
+						m_Grid[i][j][k].m_AssignTile(2);
+					}
+				}
+			}
+		}
+	}
+}
+
 //--------------------------------------------------------
 /*! \fn Create Rock : This will be used to assign cells to be rock tiles.
 *Param One : int - Which layer on the map the rock should be assigned to.
@@ -328,6 +352,57 @@ void Grid::m_CreateRock(int layer)
 	}
 }
 
+
+void Grid::m_CreateUndergroundRock(int minLayer, int maxLayer)
+{
+	const int l_iRockPlacement = 90;
+
+	for (int i = maxLayer; i >= minLayer; i--)
+	{
+		for (unsigned int j = 0; j < m_Grid[i].size(); j++)
+		{
+			for (unsigned int k = 0; k < m_Grid[i][j].size(); k++)
+			{
+				if (m_Grid[i][j][k].m_GetTile() == _NO_VALUE)
+				{
+					if (m_GenerateInt(0, 100) <= l_iRockPlacement)
+					{
+						m_Grid[i][j][k].m_AssignTile(3);
+					}
+				}
+			}
+		}
+	}
+}
+
+void Grid::m_CreateUpperRock(int minLayer, int maxLayer)
+{
+	const int l_iRockPlacement = 60;
+
+	const int l_iDecreaseAmount = 20; 
+
+	int l_iDecreasedChance = 0; 
+	
+	for (int i = minLayer; i <= maxLayer; i++)
+	{
+		for (unsigned int j = 0; j < m_Grid[i].size(); j++)
+		{
+			for (unsigned int k = 0; k < m_Grid[i][j].size(); k++)
+			{
+				if (m_Grid[i - 1][j][k].m_GetTile() == _ROCK)
+				{
+					if (m_GenerateInt(0, 100) <= (l_iRockPlacement - l_iDecreasedChance))
+					{
+						m_Grid[i][j][k].m_AssignTile(3);
+					}
+				}
+			}
+		}
+
+		l_iDecreasedChance += l_iDecreaseAmount;
+	}
+}
+
 //--------------------------------------------------------
 /*! \fn Create Dirt : This will fill in the remaning tiles on the map with dirt, used last in the generation process.
 *Param One : int - Which layer on the map the dirt should be assigned to.
@@ -345,6 +420,44 @@ void Grid::m_CreateDirt(int layer)
 			else
 			{
 				m_Grid[layer][i][j].m_AssignTile(1); 
+			}
+		}
+	}
+}
+
+void Grid::m_CreateUndergroundDirt(int minLayer, int maxLayer)
+{
+	for (int i = maxLayer; i >= minLayer; i--)
+	{
+		for (unsigned int j = 0; j < m_Grid[i].size(); j++)
+		{
+			for (unsigned int k = 0; k < m_Grid[i][j].size(); k++)
+			{
+				if (m_Grid[i][j][k].m_GetTile() != _NO_VALUE)
+				{
+
+				}
+				else
+				{
+					m_Grid[i][j][k].m_AssignTile(1);
+				}
+			}
+		}
+	}
+}
+
+void Grid::m_CreateSky(int minLayer, int maxLayer)
+{
+	for (int i = minLayer; i <= maxLayer; i++)
+	{
+		for (unsigned int j = 0; j < m_Grid[i].size(); j++)
+		{
+			for (unsigned int k = 0; k < m_Grid[i][j].size(); k++)
+			{
+				if (m_Grid[i][j][k].m_GetTile() == _NO_VALUE)
+				{
+					m_Grid[i][j][k].m_AssignTile(4);
+				}
 			}
 		}
 	}

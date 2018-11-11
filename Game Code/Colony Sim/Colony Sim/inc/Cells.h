@@ -17,6 +17,7 @@ enum tileSet
 	_DIRT = 0x2000, /*!< This will make the tile Dirt. */
 	_WATER = 0x3000, /*!< This will make the tile Water. */
 	_ROCK = 0x4000, /*!< This will make the tile Rock. */
+	_SKY,			/*!< This will make the tile Sky. */
 	_NO_VALUE		/*!< Base value, this means it has not yet been assigned.  */
 };
 
@@ -80,6 +81,8 @@ private:
 
 	/*! \var This will be the default colour codes for dirt. */
 	const sf::Color m_DirtColour = sf::Color(155, 118, 83, 255);
+
+	const sf::Color m_SkyColour = sf::Color(255, 255, 255, 50);
 
 public:
 

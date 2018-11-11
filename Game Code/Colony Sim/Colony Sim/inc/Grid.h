@@ -80,17 +80,27 @@ public:
 	*/
 	void m_CreateRiver(std::vector<Cells*> riverPath, int riverWidth, int layer);
 
+	void m_CreateUndergroundWater(int minLayer, int maxLayer); 
+
 	//--------------------------------------------------------
 	/*! \fn Create Rock : This will be used to assign cells to be rock tiles. 
 	*Param One : int - Which layer on the map the rock should be assigned to. 
 	*/
 	void m_CreateRock(int layer); 
 
+	void m_CreateUndergroundRock(int minLayer, int maxLayer);
+
+	void m_CreateUpperRock(int minLayer, int maxLayer);
+
 	//--------------------------------------------------------
 	/*! \fn Create Dirt : This will fill in the remaning tiles on the map with dirt, used last in the generation process. 
 	*Param One : int - Which layer on the map the dirt should be assigned to.
 	*/
 	void m_CreateDirt(int layer); 
+
+	void m_CreateUndergroundDirt(int minLayer, int maxLayer); 
+
+	void m_CreateSky(int minLayer, int maxLayer);
 
 	//--------------------------------------------------------
 	/*! \fn AssignTextures : This will be used to give all of the cell's textures, or change the cell's colours. 
