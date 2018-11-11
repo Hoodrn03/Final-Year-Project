@@ -90,7 +90,12 @@ void Window::m_CheckForViewMove(bool upValue, bool downValue, bool leftValue, bo
 	{
 		m_ViewMoveVector += sf::Vector2f(0, m_fViewMoveAmount);
 	}
-	else if (leftValue == true)
+	else
+	{
+		m_ViewMoveVector = sf::Vector2f(m_ViewMoveVector.x, 0);
+	}
+
+	if (leftValue == true)
 	{
 		m_ViewMoveVector += sf::Vector2f(-m_fViewMoveAmount, 0);
 	}
@@ -100,7 +105,7 @@ void Window::m_CheckForViewMove(bool upValue, bool downValue, bool leftValue, bo
 	}
 	else
 	{
-		m_ViewMoveVector = sf::Vector2f(0, 0); 
+		m_ViewMoveVector = sf::Vector2f(0, m_ViewMoveVector.y);
 	}
 
 	if (m_ViewMoveVector.x > m_fViewMoveAmount)

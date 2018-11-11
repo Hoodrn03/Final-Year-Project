@@ -33,21 +33,7 @@ void Map::m_SetUpGameMap(sf::Vector2f dimentions, sf::Vector2f position)
 
 	m_SetObjectPos(position.x, position.y);
 
-	m_MapObject.setFillColor(sf::Color::Green);
-
-	m_CreateGrid();
-
-	if (m_GenerateInt(0, 100) <= 50)
-	{
-		m_ChooseLakeOrRiver(0);
-	}
-	else
-	{
-		m_ChooseLakeOrRiver(1); 
-	}
-
-	m_clGrid.m_AssignTextures();
-
+	m_GenerateMap(); 
 }
 
 //--------------------------------------------------------
@@ -68,6 +54,30 @@ void Map::m_Update()
 void Map::m_CreateGrid()
 {
 	m_clGrid.m_CreateGrid(50, 50, 5, m_MapObject);
+}
+
+//--------------------------------------------------------
+/*! \fn Generate Map : This will be used upon game startup to generate a random map for the player.
+*
+*/
+void Map::m_GenerateMap()
+{
+	m_CreateGrid();
+
+	if (m_GenerateInt(0, 100) <= 50)
+	{
+		m_ChooseLakeOrRiver(0);
+	}
+	else
+	{
+		m_ChooseLakeOrRiver(1);
+	}
+
+	m_clGrid.m_CreateRock(0);
+
+	m_clGrid.m_CreateDirt(0);
+
+	m_clGrid.m_AssignTextures();
 }
 
 //--------------------------------------------------------

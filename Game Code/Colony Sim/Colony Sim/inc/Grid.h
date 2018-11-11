@@ -10,12 +10,13 @@
 #include "defs.h"
 
 #include "Cells.h"
+#include "RandGen.h"
 
 
 /*! \class This will be used to create a gird within a rectangle shape, this will allow for a definition of rows, columns,
 *			as well as a number of layers. 
 */
-class Grid
+class Grid : public RandGen
 {
 
 public:
@@ -29,7 +30,7 @@ public:
 public:
 
 	//--------------------------------------------------------
-	/*! \fn Constructor
+	/*! \fn Deconstructor
 	*
 	*/
 	~Grid();
@@ -38,8 +39,10 @@ private:
 
 	// Data Members 
 
-	/*! \var This is the completed grid, it has three layers for the three dimentions of the grid; Z, X and Y. */
-	std::vector<std::vector<std::vector<Cells>>> m_GridMulti; 
+	/*! \var This is the completed grid, it has three layers for the three dimentions of the grid; 
+	*			Z (layers), X (rows) and Y (columns). 
+	*/
+	std::vector<std::vector<std::vector<Cells>>> m_Grid; 
 
 public:
 
@@ -76,6 +79,18 @@ public:
 	*Param Three : int - The layer the river should be generated on.
 	*/
 	void m_CreateRiver(std::vector<Cells*> riverPath, int riverWidth, int layer);
+
+	//--------------------------------------------------------
+	/*! \fn Create Rock : This will be used to assign cells to be rock tiles. 
+	*Param One : int - Which layer on the map the rock should be assigned to. 
+	*/
+	void m_CreateRock(int layer); 
+
+	//--------------------------------------------------------
+	/*! \fn Create Dirt : This will fill in the remaning tiles on the map with dirt, used last in the generation process. 
+	*Param One : int - Which layer on the map the dirt should be assigned to.
+	*/
+	void m_CreateDirt(int layer); 
 
 	//--------------------------------------------------------
 	/*! \fn AssignTextures : This will be used to give all of the cell's textures, or change the cell's colours. 

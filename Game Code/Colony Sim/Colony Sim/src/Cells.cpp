@@ -124,20 +124,20 @@ void Cells::m_AssignTile(unsigned int whichTile)
 /*! \fn Assign Texture : This will be used to change the colour of the cell equil to its assigned tile.
 *
 */
-void Cells::m_AssignTexture()
+void Cells::m_AssignColours()
 {
 	switch (m_CurrentTile)
 	{
 	case _DIRT:
-		m_CellBody.setFillColor(sf::Color::White);
+		m_CellBody.setFillColor(m_DirtColour);
 		break;
 
 	case _WATER:
-		m_CellBody.setFillColor(sf::Color::Blue);
+		m_CellBody.setFillColor(m_WaterColour);
 		break;
 
 	case _ROCK:
-		m_CellBody.setFillColor(sf::Color::Red);
+		m_CellBody.setFillColor(m_RockColour);
 		break;
 
 	default:
@@ -223,4 +223,13 @@ void Cells::m_SetObjectPos(float x, float y)
 std::vector<Cells*>& Cells::m_GetNeighbours()
 {
 	return m_Neighbours;
+}
+
+//--------------------------------------------------------
+/*! \fn Get Tile : This will be used to check the current tile value for the cell.
+*
+*/
+tileSet Cells::m_GetTile()
+{
+	return m_CurrentTile;
 }

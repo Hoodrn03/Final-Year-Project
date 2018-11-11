@@ -15,7 +15,7 @@ Grid::Grid()
 }
 
 //--------------------------------------------------------
-/*! \fn Constructor
+/*! \fn Deconstructor
 *
 */
 Grid::~Grid()
@@ -86,7 +86,7 @@ void Grid::m_CreateGrid(unsigned int rows, unsigned int columns, unsigned int la
 			l_CurrentCellPos.y = gridLocation.getPosition().y;
 		}
 
-		m_GridMulti.push_back(l_Grid); 
+		m_Grid.push_back(l_Grid); 
 	}
 
 	m_AssignNeighbours(); 
@@ -99,69 +99,69 @@ void Grid::m_CreateGrid(unsigned int rows, unsigned int columns, unsigned int la
 */
 void Grid::m_AssignNeighbours()
 {
-	if (m_GridMulti.size() > 0)
+	if (m_Grid.size() > 0)
 	{
-		for (int i = 0; i < (int)m_GridMulti.size(); i++)
+		for (int i = 0; i < (int)m_Grid.size(); i++)
 		{
-			for (int j = 0; j < (int)m_GridMulti[i].size(); j++)
+			for (int j = 0; j < (int)m_Grid[i].size(); j++)
 			{
-				for (int k = 0; k < (int)m_GridMulti[i][j].size(); k++)
+				for (int k = 0; k < (int)m_Grid[i][j].size(); k++)
 				{
 
 					if (j - 1 >= 0)
 					{
 						// West Cell
 
-						m_GridMulti[i][j][k].m_AssignNeighbour(m_GridMulti[i][j - 1][k]); 
+						m_Grid[i][j][k].m_AssignNeighbour(m_Grid[i][j - 1][k]); 
 					}
 
 					if (k - 1 >= 0)
 					{
 						// North Cell
 
-						m_GridMulti[i][j][k].m_AssignNeighbour(m_GridMulti[i][j][k - 1]);
+						m_Grid[i][j][k].m_AssignNeighbour(m_Grid[i][j][k - 1]);
 					}
 
-					if (j + 1 < (int)m_GridMulti[i].size())
+					if (j + 1 < (int)m_Grid[i].size())
 					{
 						// East Cell
 
-						m_GridMulti[i][j][k].m_AssignNeighbour(m_GridMulti[i][j + 1][k]);
+						m_Grid[i][j][k].m_AssignNeighbour(m_Grid[i][j + 1][k]);
 					}
 
-					if (k + 1 < (int)m_GridMulti[i][j].size())
+					if (k + 1 < (int)m_Grid[i][j].size())
 					{
 						// South Cell
 
-						m_GridMulti[i][j][k].m_AssignNeighbour(m_GridMulti[i][j][k + 1]);
+						m_Grid[i][j][k].m_AssignNeighbour(m_Grid[i][j][k + 1]);
 					}
 
 					if (k - 1 >= 0 && j - 1 >= 0)
 					{
 						// North West Cell
 
-						m_GridMulti[i][j][k].m_AssignNeighbour(m_GridMulti[i][j - 1][k - 1]);
+						m_Grid[i][j][k].m_AssignNeighbour(m_Grid[i][j - 1][k - 1]);
 					}
 
-					if (k - 1 >= 0 && j + 1 < (int)m_GridMulti[i].size())
+					if (k - 1 >= 0 && j + 1 < (int)m_Grid[i].size())
 					{
 						// North East Cell
 
-						m_GridMulti[i][j][k].m_AssignNeighbour(m_GridMulti[i][j + 1][k - 1]);
+						m_Grid[i][j][k].m_AssignNeighbour(m_Grid[i][j + 1][k - 1]);
 					}
 
-					if (k + 1 < (int)m_GridMulti[i][j].size() && j - 1 >= 0)
+					if (k + 1 < (int)m_Grid[i][j].size() && j - 1 >= 0)
 					{
 						// South West Cell
 
-						m_GridMulti[i][j][k].m_AssignNeighbour(m_GridMulti[i][j - 1][k + 1]);
+						m_Grid[i][j][k].m_AssignNeighbour(m_Grid[i][j - 1][k + 1]);
 					}
 
-					if (k + 1 < (int)m_GridMulti[i][j].size() && j + 1 < (int)m_GridMulti[i].size())
+					if (k + 1 < (int)m_Grid[i][j].size() && j + 1 < (int)m_Grid[i].size())
 					{
 						// South East Cell
 
-						m_GridMulti[i][j][k].m_AssignNeighbour(m_GridMulti[i][j + 1][k + 1]);
+						m_Grid[i][j][k].m_AssignNeighbour(m_Grid[i][j + 1][k + 1]);
 					}
 
 				}
@@ -193,9 +193,9 @@ void Grid::m_CreateLake(int cellX, int cellY, int layer, int numberOfIterations)
 
 	// Set Start of lake. 
 
-	m_GridMulti[layer][cellX][cellY].m_AssignTile(2); 
+	m_Grid[layer][cellX][cellY].m_AssignTile(2); 
 
-	l_CellsToAdd.push_back(&m_GridMulti[layer][cellX][cellY]); 
+	l_CellsToAdd.push_back(&m_Grid[layer][cellX][cellY]); 
  
 	// Begin Lake Generation. 
 
@@ -268,24 +268,86 @@ void Grid::m_CreateLake(int cellX, int cellY, int layer, int numberOfIterations)
 */
 void Grid::m_CreateRiver(std::vector<Cells*> riverPath, int riverWidth, int layer)
 {
-	std::cout << "Width " << riverWidth << std::endl;
-
 	for (unsigned int i = 0; i < riverPath.size(); i++)
 	{
 		for (int j = 0; j < riverWidth; j++)
 		{
-			if (riverPath[i]->m_GetGridPos().x + j < m_GridMulti[layer].size())
+			if (riverPath[i]->m_GetGridPos().x + j < m_Grid[layer].size())
 			{
-				m_GridMulti[layer][(unsigned int)riverPath[i]->m_GetGridPos().x + j][(unsigned int)riverPath[i]->m_GetGridPos().y].m_AssignTile(2);
+				m_Grid[layer][(unsigned int)riverPath[i]->m_GetGridPos().x + j][(unsigned int)riverPath[i]->m_GetGridPos().y].m_AssignTile(2);
 			}
 
-			if (riverPath[i]->m_GetGridPos().y + j < m_GridMulti[layer][0].size())
+			if (riverPath[i]->m_GetGridPos().y + j < m_Grid[layer][0].size())
 			{
-				m_GridMulti[layer][(unsigned int)riverPath[i]->m_GetGridPos().x][(unsigned int)riverPath[i]->m_GetGridPos().y + j].m_AssignTile(2);
+				m_Grid[layer][(unsigned int)riverPath[i]->m_GetGridPos().x][(unsigned int)riverPath[i]->m_GetGridPos().y + j].m_AssignTile(2);
 			}
 		}
 	}
 
+}
+
+//--------------------------------------------------------
+/*! \fn Create Rock : This will be used to assign cells to be rock tiles.
+*Param One : int - Which layer on the map the rock should be assigned to.
+*/
+void Grid::m_CreateRock(int layer)
+{
+	const int l_iRockPlacement = 5; 
+
+	const int l_iAdjacentBoost = 20;
+
+	int l_iAdjacentBonus = 0;
+
+	for (unsigned int i = 0; i < m_Grid[layer].size(); i++)
+	{
+		for (unsigned int j = 0; j < m_Grid[layer][i].size(); j++)
+		{
+			if (m_Grid[layer][i][j].m_GetTile() != _NO_VALUE)
+			{
+				
+			}
+			else
+			{
+				for (unsigned int k = 0; k < m_Grid[layer][i][j].m_GetNeighbours().size(); k++)
+				{
+					if (m_Grid[layer][i][j].m_GetNeighbours()[k]->m_GetTile() == _ROCK)
+					{
+						l_iAdjacentBonus += l_iAdjacentBoost; 
+					}
+				}
+
+				if (m_GenerateInt(0, 100) <= (l_iRockPlacement + l_iAdjacentBonus))
+				{
+					m_Grid[layer][i][j].m_AssignTile(3);
+				}
+			}
+			
+			l_iAdjacentBonus = 0; 
+
+		}
+	}
+}
+
+//--------------------------------------------------------
+/*! \fn Create Dirt : This will fill in the remaning tiles on the map with dirt, used last in the generation process.
+*Param One : int - Which layer on the map the dirt should be assigned to.
+*/
+void Grid::m_CreateDirt(int layer)
+{
+	for (unsigned int i = 0; i < m_Grid[layer].size(); i++)
+	{
+		for (unsigned int j = 0; j < m_Grid[layer][i].size(); j++)
+		{
+			if (m_Grid[layer][i][j].m_GetTile() != _NO_VALUE)
+			{
+
+			}
+			else
+			{
+				m_Grid[layer][i][j].m_AssignTile(1); 
+			}
+		}
+	}
 }
 
 //--------------------------------------------------------
@@ -294,15 +356,15 @@ void Grid::m_CreateRiver(std::vector<Cells*> riverPath, int riverWidth, int laye
 */
 void Grid::m_AssignTextures()
 {
-	if (m_GridMulti.size() > 0)
+	if (m_Grid.size() > 0)
 	{
-		for (int i = 0; i < (int)m_GridMulti.size(); i++)
+		for (int i = 0; i < (int)m_Grid.size(); i++)
 		{
-			for (int j = 0; j < (int)m_GridMulti[i].size(); j++)
+			for (int j = 0; j < (int)m_Grid[i].size(); j++)
 			{
-				for (int k = 0; k < (int)m_GridMulti[i][j].size(); k++)
+				for (int k = 0; k < (int)m_Grid[i][j].size(); k++)
 				{
-					m_GridMulti[i][j][k].m_AssignTexture(); 
+					m_Grid[i][j][k].m_AssignColours(); 
 				}
 			}
 		}
@@ -317,7 +379,7 @@ void Grid::m_AssignTextures()
 */
 Cells * Grid::m_GetCell(int layer, int x, int y)
 {
-	return &m_GridMulti[layer][x][y];
+	return &m_Grid[layer][x][y];
 }
 
 //--------------------------------------------------------
@@ -327,13 +389,13 @@ Cells * Grid::m_GetCell(int layer, int x, int y)
 */
 void Grid::m_DrawGrid(sf::RenderWindow & window, unsigned int layer)
 {
-	if (m_GridMulti.size() > layer)
+	if (m_Grid.size() > layer)
 	{
-		for (unsigned int i = 0; i < m_GridMulti[layer].size(); i++)
+		for (unsigned int i = 0; i < m_Grid[layer].size(); i++)
 		{
-			for (unsigned int j = 0; j < m_GridMulti[layer][i].size(); j++)
+			for (unsigned int j = 0; j < m_Grid[layer][i].size(); j++)
 			{
-				m_GridMulti[layer][i][j].m_DrawGameObject(window);
+				m_Grid[layer][i][j].m_DrawGameObject(window);
 			}
 		}
 	}
@@ -347,13 +409,13 @@ void Grid::m_DrawGrid(sf::RenderWindow & window, unsigned int layer)
 */
 void Grid::m_CheckItemsForRender(sf::Vector2f topLeft, sf::Vector2f bottomRight, unsigned int layer)
 {
-	if (m_GridMulti.size() > 0)
+	if (m_Grid.size() > 0)
 	{
-		for (unsigned int i = 0; i < m_GridMulti[layer].size(); i++)
+		for (unsigned int i = 0; i < m_Grid[layer].size(); i++)
 		{
-			for (unsigned int j = 0; j < m_GridMulti[layer][i].size(); j++)
+			for (unsigned int j = 0; j < m_Grid[layer][i].size(); j++)
 			{
-				m_GridMulti[layer][i][j].m_DrawFilter(topLeft, bottomRight);
+				m_Grid[layer][i][j].m_DrawFilter(topLeft, bottomRight);
 			}
 		}
 	}
@@ -365,9 +427,9 @@ void Grid::m_CheckItemsForRender(sf::Vector2f topLeft, sf::Vector2f bottomRight,
 */
 unsigned int Grid::m_GetNumberOfLayers()
 {
-	if (m_GridMulti.size() > 0)
+	if (m_Grid.size() > 0)
 	{
-		return m_GridMulti.size();
+		return m_Grid.size();
 	}
 	else
 	{
@@ -381,9 +443,9 @@ unsigned int Grid::m_GetNumberOfLayers()
 */
 unsigned int Grid::m_GetNumberOfRows()
 {
-	if (m_GridMulti[0].size() > 0)
+	if (m_Grid[0].size() > 0)
 	{
-		return m_GridMulti[0].size();
+		return m_Grid[0].size();
 	}
 	else
 	{
@@ -397,9 +459,9 @@ unsigned int Grid::m_GetNumberOfRows()
 */
 unsigned int Grid::m_GetNumberOfColumns()
 {
-	if (m_GridMulti[0][0].size() > 0)
+	if (m_Grid[0][0].size() > 0)
 	{
-		return m_GridMulti[0][0].size();
+		return m_Grid[0][0].size();
 	}
 	else
 	{

@@ -73,6 +73,12 @@ public:
 	void m_CreateGrid(); 
 
 	//--------------------------------------------------------
+	/*! \fn Generate Map : This will be used upon game startup to generate a random map for the player. 
+	*
+	*/
+	void m_GenerateMap(); 
+
+	//--------------------------------------------------------
 	/*! \fn Create Lake for Map : This will initiate the lake generation for the map. 
 	*
 	*/

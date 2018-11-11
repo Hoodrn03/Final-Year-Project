@@ -16,7 +16,8 @@ enum tileSet
 {
 	_DIRT = 0x2000, /*!< This will make the tile Dirt. */
 	_WATER = 0x3000, /*!< This will make the tile Water. */
-	_ROCK = 0x4000 /*!< This will make the tile Rock. */
+	_ROCK = 0x4000, /*!< This will make the tile Rock. */
+	_NO_VALUE		/*!< Base value, this means it has not yet been assigned.  */
 };
 
 /*! \enum This will be used to easily distinguish between the different huristic costs for the game. */
@@ -63,13 +64,22 @@ private:
 	int m_iCellId; 
 
 	/*! \var Determines which tile the cell will be displayed as. */
-	tileSet m_CurrentTile; 
+	tileSet m_CurrentTile = _NO_VALUE; 
 
 	/*! \var A list of all the cells around this one Max 8, Min 3*/
 	std::vector<Cells*> m_Neighbours; 
 
 	/*! \var This is the cells position within a grid, holds X and Y values.*/
 	gridPos m_GridPosition; 
+
+	/*! \var This will be the default colour codes for water. */
+	const sf::Color m_WaterColour = sf::Color(0, 191, 255, 255);
+
+	/*! \var This will be the default colour codes for rock. */
+	const sf::Color m_RockColour = sf::Color(90, 77, 65, 255);
+
+	/*! \var This will be the default colour codes for dirt. */
+	const sf::Color m_DirtColour = sf::Color(155, 118, 83, 255);
 
 public:
 
@@ -137,7 +147,7 @@ public:
 	/*! \fn Assign Texture : This will be used to change the colour of the cell equil to its assigned tile.  
 	*
 	*/
-	void m_AssignTexture(); 
+	void m_AssignColours();
 
 	//--------------------------------------------------------
 	/*! \fn Assign Neighbour : This will allow for a neighbour to be added to the vector. 
@@ -183,4 +193,9 @@ public:
 	*/
 	std::vector<Cells*> & m_GetNeighbours(); 
 
+	//--------------------------------------------------------
+	/*! \fn Get Tile : This will be used to check the current tile value for the cell. 
+	*
+	*/
+	tileSet m_GetTile(); 
 };
