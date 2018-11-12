@@ -94,12 +94,6 @@ public:
 	void m_CreateRiverForMap(); 
 
 	//--------------------------------------------------------
-	/*! \fn Choose Lake Or River : This will be used to select which water generation method to use for this map. 
-	*
-	*/
-	void m_ChooseLakeOrRiver(int selection);
-
-	//--------------------------------------------------------
 	/*! \fn DrawGameObject : This will be used to draw all of the items required for the map. 
 	*Param One : RenderWindow : This is the current game window the objects should be drawn onto. 
 	*/

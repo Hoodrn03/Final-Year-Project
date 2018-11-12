@@ -33,7 +33,7 @@ void Map::m_SetUpGameMap(sf::Vector2f dimentions, sf::Vector2f position)
 
 	m_SetObjectPos(position.x, position.y);
 
-	m_GenerateMap(); 
+	m_GenerateMap();
 }
 
 //--------------------------------------------------------
@@ -54,6 +54,10 @@ void Map::m_Update()
 void Map::m_CreateGrid()
 {
 	m_clGrid.m_CreateGrid(50, 50, 5, m_MapObject);
+
+	m_iGroundLayer = m_clGrid.m_GetNumberOfLayers() / 2;
+
+	m_iCurrentLayer = m_iGroundLayer;
 }
 
 //--------------------------------------------------------
@@ -70,11 +74,11 @@ void Map::m_GenerateMap()
 
 	if (m_GenerateInt(0, 100) <= 50)
 	{
-		m_ChooseLakeOrRiver(0);
+		m_CreateLakeForMap();
 	}
 	else
 	{
-		m_ChooseLakeOrRiver(1);
+		m_CreateRiverForMap();
 	}
 
 	m_clGrid.m_CreateRock(m_iGroundLayer);
@@ -83,17 +87,19 @@ void Map::m_GenerateMap()
 
 	// Generate Underground levels. 
 
-	m_clGrid.m_CreateUndergroundWater(0, 1); 
+	// The minimum (0) potential layers in the grid to one bellow the ground layer. 
+	m_clGrid.m_CreateUndergroundWater(0, m_iGroundLayer - 1);
 
-	m_clGrid.m_CreateUndergroundRock(0, 1);
+	m_clGrid.m_CreateUndergroundRock(0, m_iGroundLayer - 1);
 
-	m_clGrid.m_CreateUndergroundDirt(0, 1); 
+	m_clGrid.m_CreateUndergroundDirt(0, m_iGroundLayer - 1);
 
 	// Create Above Ground Levels. 
 
-	m_clGrid.m_CreateUpperRock(3, 4);
+	// Each layer above the ground and -1 from the total number of layers in the grid (This prevents accessing unexsisting elements). 
+	m_clGrid.m_CreateUpperRock(m_iGroundLayer + 1, m_clGrid.m_GetNumberOfLayers() - 1);
 
-	m_clGrid.m_CreateSky(3, 4); 
+	m_clGrid.m_CreateSky(m_iGroundLayer + 1, m_clGrid.m_GetNumberOfLayers() - 1);
 
 	m_clGrid.m_AssignTextures();
 }
@@ -104,9 +110,10 @@ void Map::m_GenerateMap()
 */
 void Map::m_CreateLakeForMap()
 {
-	m_clGrid.m_CreateLake(m_GenerateInt(0, m_clGrid.m_GetNumberOfRows()), m_GenerateInt(0, m_clGrid.m_GetNumberOfColumns()), m_iGroundLayer, 5);
+	/*! \var This will be used to determine the size of the generated lake, this allows for a varied lake for each map. */
+	int l_iNumberOfIterations = m_GenerateInt(3, 7);
 
-	std::cout << "Lake Created" << std::endl;
+	m_clGrid.m_CreateLake(m_GenerateInt(0, m_clGrid.m_GetNumberOfRows()), m_GenerateInt(0, m_clGrid.m_GetNumberOfColumns()), m_iGroundLayer, l_iNumberOfIterations);
 }
 
 //--------------------------------------------------------
@@ -115,9 +122,14 @@ void Map::m_CreateLakeForMap()
 */
 void Map::m_CreateRiverForMap()
 {
+
+	/*! \var This vector will contain the (x, y) for the start cell on th grid. */
 	sf::Vector2i l_StartCell;
+
+	/*! \var This vector will contain the (x, y) for the end cell on th grid. */
 	sf::Vector2i l_EndCell;
 
+	// This will select one of the edges for the river to start. 
 	if (m_GenerateInt(0, 100) <= 50)
 	{
 		l_StartCell.y = (m_GenerateInt(0, m_clGrid.m_GetNumberOfColumns()));
@@ -133,7 +145,7 @@ void Map::m_CreateRiverForMap()
 
 	}
 
-
+	// This will select one of the edges for the river to end. 
 	if (m_GenerateInt(0, 100) <= 50)
 	{
 		l_EndCell.y = m_clGrid.m_GetNumberOfColumns() - 1;
@@ -147,41 +159,21 @@ void Map::m_CreateRiverForMap()
 		l_EndCell.x = m_clGrid.m_GetNumberOfRows() - 1;
 	}
 
-	Pathfinding l_clPathfinding; 
+	// This will initalize the A* algorithm 
+	Pathfinding l_clPathfinding;
 
 	l_clPathfinding.m_InitAlgorithm(m_clGrid.m_GetCell(0, l_StartCell.x, l_StartCell.y), m_clGrid.m_GetCell(0, l_EndCell.x, l_EndCell.y));
 
 	do
 	{
+		// This will loop continuously until the a path from the start cell to the end cell is found; 
+		// using A* it should be pretty quick.
 		l_clPathfinding.m_RunAStarAlgorithm();
 
 	} while (!l_clPathfinding.m_CheckForCompletion());
 
+	// This will then use the list of cells to create a river. 
 	m_clGrid.m_CreateRiver(l_clPathfinding.m_GetCurrentPath(), m_GenerateInt(2, 5), m_iGroundLayer);
-
-	std::cout << "River Created" << std::endl;
-}
-
-//--------------------------------------------------------
-/*! \fn Choose Lake Or River : This will be used to select which water generation method to use for this map.
-*
-*/
-void Map::m_ChooseLakeOrRiver(int selection)
-{
-	switch (selection)
-	{
-	case 0: 
-		m_CreateLakeForMap();
-		break;
-
-	case 1:
-		m_CreateRiverForMap(); 
-			break;
-
-	default:
-		std::cout << "Invalid Selection." << std::endl;
-		break;
-	}
 }
 
 //--------------------------------------------------------
@@ -190,9 +182,9 @@ void Map::m_ChooseLakeOrRiver(int selection)
 */
 void Map::m_DrawGameObject(sf::RenderWindow & window)
 {
-	window.draw(m_MapObject); 
+	window.draw(m_MapObject);
 
-	m_clGrid.m_DrawGrid(window, m_iCurrentLayer); 
+	m_clGrid.m_DrawGrid(window, m_iCurrentLayer);
 }
 
 //--------------------------------------------------------
@@ -212,7 +204,7 @@ void Map::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight)
 */
 void Map::m_SetObjectPos(float x, float y)
 {
-	m_GameObjectPos = sf::Vector2f(x, y); 
+	m_GameObjectPos = sf::Vector2f(x, y);
 
 	m_MapObject.setPosition(m_GameObjectPos);
 }
@@ -225,11 +217,11 @@ void Map::m_CheckForLayerChange(int &inputValue)
 {
 	switch (inputValue)
 	{
-	case 1: 
-		m_IncreaseLayer(); 
+	case 1:
+		m_IncreaseLayer();
 		break;
 
-	case 2: 
+	case 2:
 		m_DescreaseLayer();
 		break;
 
@@ -250,8 +242,6 @@ void Map::m_IncreaseLayer()
 	if (m_iCurrentLayer < (m_clGrid.m_GetNumberOfLayers() - 1))
 	{
 		m_iCurrentLayer++;
-
-		std::cout << m_iCurrentLayer << std::endl;
 	}
 }
 
@@ -263,8 +253,6 @@ void Map::m_DescreaseLayer()
 {
 	if (m_iCurrentLayer > 0)
 	{
-		m_iCurrentLayer--; 
-
-		std::cout << m_iCurrentLayer << std::endl;
+		m_iCurrentLayer--;
 	}
 }

@@ -366,6 +366,10 @@ void Grid::m_CreateUndergroundRock(int minLayer, int maxLayer)
 {
 	const int l_iRockPlacement = 90;
 
+	int l_iUpdatedChance = 0; 
+
+	const int l_iDecreaseChance = 5;
+
 	for (int i = maxLayer; i >= minLayer; i--)
 	{
 		for (unsigned int j = 0; j < m_Grid[i].size(); j++)
@@ -374,13 +378,15 @@ void Grid::m_CreateUndergroundRock(int minLayer, int maxLayer)
 			{
 				if (m_Grid[i][j][k].m_GetTile() == _NO_VALUE)
 				{
-					if (m_GenerateInt(0, 100) <= l_iRockPlacement)
+					if (m_GenerateInt(0, 100) <= l_iRockPlacement + l_iUpdatedChance)
 					{
 						m_Grid[i][j][k].m_AssignTile(3);
 					}
 				}
 			}
 		}
+
+		l_iUpdatedChance += l_iDecreaseChance; 
 	}
 }
 
