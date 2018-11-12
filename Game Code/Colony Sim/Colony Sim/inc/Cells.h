@@ -82,6 +82,7 @@ private:
 	/*! \var This will be the default colour codes for dirt. */
 	const sf::Color m_DirtColour = sf::Color(155, 118, 83, 255);
 
+	/*! \var This will be the default colour codes for sky. */
 	const sf::Color m_SkyColour = sf::Color(255, 255, 255, 50);
 
 public:
@@ -110,6 +111,24 @@ public:
 	void m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition); 
 
 	//--------------------------------------------------------
+	/*! \fn Create Cell Body : This will be used to initalize this cell, Overload to set colour.
+	*Param One : Vector2f - The height and width of the cell.
+	*Param Two : Vector2f - The x and y coordinates for the cell.
+	*Param Three : int - Red value.
+	*Param Four : int - Green value.
+	*Param FIve : int - Blue value.
+	*/
+	void m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, int r, int g, int b);
+
+	//--------------------------------------------------------
+	/*! \fn SetCellColour : This will change the colour of the cell.
+	*Param One - int : The amount of red in the cell.
+	*Param Two - int : The amount of green in the cell.
+	*Param Three - int : The amount of blue in the cell.
+	*/
+	void m_SetCellColour(int r, int g, int b);
+
+	//--------------------------------------------------------
 	/*! \fn SetGridPos : This will be used to assign a position to the cell. 
 	*Param One : int - The x position on for the cell on the grid. 
 	*Param Two : int - The y position on for the cell on the grid.
@@ -123,22 +142,16 @@ public:
 	gridPos m_GetGridPos(); 
 
 	//--------------------------------------------------------
-	/*! \fn Create Cell Body : This will be used to initalize this cell, Overload to set colour.
-	*Param One : Vector2f - The height and width of the cell.
-	*Param Two : Vector2f - The x and y coordinates for the cell.
-	*Param Three : int - Red value.
-	*Param Four : int - Green value. 
-	*Param FIve : int - Blue value. 
+	/*! \fn Get Cell Id : This will be used to read the cell's id.
+	*
 	*/
-	void m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, int r, int g, int b);
+	int m_GetCellId();
 
 	//--------------------------------------------------------
-	/*! \fn SetCellColour : This will change the colour of the cell. 
-	*Param One - int : THe amount of red in the cell.
-	*Param Two - int : THe amount of green in the cell.
-	*Param Three - int : THe amount of blue in the cell.
+	/*! \fn Get Tile : This will be used to check the current tile value for the cell.
+	*
 	*/
-	void m_SetCellColour(int r, int g, int b); 
+	tileSet m_GetTile();
 
 	//--------------------------------------------------------
 	/*! \fn Assign Tile : This will be used to set tile value for this cell.
@@ -163,12 +176,6 @@ public:
 	*Param One : int : a number identifier for this cell. 
 	*/
 	void m_AssignCellId(int id); 
-
-	//--------------------------------------------------------
-	/*! \fn Get Cell Id : This will be used to read the cell's id. 
-	*
-	*/
-	int m_GetCellId(); 
 
 	//--------------------------------------------------------
 	/*! \fn Draw Game Object : Used to draw the cell onto the game window.
@@ -196,9 +203,4 @@ public:
 	*/
 	std::vector<Cells*> & m_GetNeighbours(); 
 
-	//--------------------------------------------------------
-	/*! \fn Get Tile : This will be used to check the current tile value for the cell. 
-	*
-	*/
-	tileSet m_GetTile(); 
 };

@@ -42,12 +42,18 @@ private:
 	/*! \var This will determine the amount the view should move at a given time. */
 	const float m_fViewMoveAmount = 2.5f; 
 
+	/*! \var This will be the amount the view will be zoomed by at a single time. */
 	const float m_fScrollAmount = 25.f; 
 
+	/*! \var This is the smallest the view will be. */
 	const sf::Vector2f m_MinScrollAmount = sf::Vector2f(200, 200); 
 
+	/*! \var This is the largest the view can be. */
 	const sf::Vector2f m_MaxScrollAmount = sf::Vector2f(800, 800); 
 
+	/*! \var This is the current move vector for the view, if one of the movement keys is pressed then the 
+	*			view will be moved by this vector. 
+	*/
 	sf::Vector2f m_ViewMoveVector; 
 
 	// Member Functions
@@ -86,6 +92,10 @@ public:
 	*/
 	void m_CheckForViewMove(bool upValue, bool downValue, bool leftValue, bool rightValue);
 
+	//--------------------------------------------------------
+	/*! \fn Check for View Scroll : This will be used to updte the size of the view based on the direction the mouse wheel is turned.
+	*Param One : int - The value for the mouse wheel, it will allow the distinction between up and down, as well as idle. 
+	*/
 	void m_CheckForViewScroll(int & mouseWheelValue); 
 
 	//--------------------------------------------------------

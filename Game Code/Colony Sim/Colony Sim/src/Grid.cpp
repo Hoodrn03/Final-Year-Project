@@ -286,6 +286,11 @@ void Grid::m_CreateRiver(std::vector<Cells*> riverPath, int riverWidth, int laye
 
 }
 
+//--------------------------------------------------------
+/*! \fn Create Underground Water : This will be used to create water for layers under the gound level.
+*Param One : int - The lowest layer for the water to be placed on.
+*Param Two : int - The highest layer for the water to be placed on.
+*/
 void Grid::m_CreateUndergroundWater(int minLayer, int maxLayer)
 {
 	const int l_iWaterPlacement = 30; 
@@ -352,7 +357,11 @@ void Grid::m_CreateRock(int layer)
 	}
 }
 
-
+//--------------------------------------------------------
+/*! \fn Create Underground Rock : This will create rock for layers under the ground level.
+*Param One : int - The lowest layer for the rock to be placed on.
+*Param Two : int - The highest layer for the rock to be placed on.
+*/
 void Grid::m_CreateUndergroundRock(int minLayer, int maxLayer)
 {
 	const int l_iRockPlacement = 90;
@@ -375,6 +384,11 @@ void Grid::m_CreateUndergroundRock(int minLayer, int maxLayer)
 	}
 }
 
+//--------------------------------------------------------
+/*! \fn Create Upper Rock : This will be used to create rock cells above the ground level.
+*Param One : int - The lowest layer for the rock to be placed on.
+*Param Two : int - The highest layer for the rock to be placed on.
+*/
 void Grid::m_CreateUpperRock(int minLayer, int maxLayer)
 {
 	const int l_iRockPlacement = 60;
@@ -425,6 +439,11 @@ void Grid::m_CreateDirt(int layer)
 	}
 }
 
+//--------------------------------------------------------
+/*! \fn Create Underground Dirt : This will be used to fill the remaning underground tiles with dirt.
+*Param One : int - The lowest layer for the dirt to be placed on.
+*Param Two : int - The highest layer for the dirt to be placed on.
+*/
 void Grid::m_CreateUndergroundDirt(int minLayer, int maxLayer)
 {
 	for (int i = maxLayer; i >= minLayer; i--)
@@ -446,6 +465,11 @@ void Grid::m_CreateUndergroundDirt(int minLayer, int maxLayer)
 	}
 }
 
+//--------------------------------------------------------
+/*! \fn Create Sky : This will be used to fill the remaning above ground tiles with sky tiles.
+*Param One : int - The lowest layer for the sky to be placed on.
+*Param Two : int - The highest layer for the sky to be placed on.
+*/
 void Grid::m_CreateSky(int minLayer, int maxLayer)
 {
 	for (int i = minLayer; i <= maxLayer; i++)

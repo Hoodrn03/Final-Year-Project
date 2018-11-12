@@ -34,6 +34,8 @@ private:
 	/*! \var This will be used to detect an event within the game. */
 	sf::Event m_Event; 
 
+	// Base Key Values. 
+
 	/*! \var Key to move the view up. */
 	sf::Keyboard::Key m_ViewUp = sf::Keyboard::W;
 
@@ -58,14 +60,19 @@ private:
 	/*! \var Which key was pressed for the layer to change. */
 	int m_iLayerMoveValue = 0; 
 
+	/*! \var This will be used to move the view up if the appropriate key is pressed. */
 	bool m_bMoveViewUp;
 
+	/*! \var This will be used to move the view down if the appropriate key is pressed. */
 	bool m_bMoveViewDown;
 
+	/*! \var This will be used to move the view left if the appropriate key is pressed. */
 	bool m_bMoveViewLeft; 
 
+	/*! \var This will be used to move the view up if the appropriate key is pressed. */
 	bool m_bMoveViewRight;
 
+	/*! \var This will be the current state of the mouse wheel. */
 	int m_iMouseWheelState = 0; 
 
 	// Member Functions
@@ -84,16 +91,40 @@ public:
 	*/
 	void m_CheckForViewMoveKeys(); 
 
+	//--------------------------------------------------------
+	/*! \fn Check View Up Value : This will be used to check if the up key was pressed. 
+	*
+	*/
 	bool m_CheckViewUpValue(); 
 
+	//--------------------------------------------------------
+	/*! \fn Check View Down Value : This will be used to check if the down key was pressed.
+	*
+	*/
 	bool m_CheckViewDownValue();
 
+	//--------------------------------------------------------
+	/*! \fn Check View Left Value : This will be used to check if the left key was pressed.
+	*
+	*/
 	bool m_CheckViewLeftValue(); 
 
+	//--------------------------------------------------------
+	/*! \fn Check View Right Value : This will be used to check if the right key was pressed.
+	*
+	*/
 	bool m_CheckViewRightValue(); 
 
+	//--------------------------------------------------------
+	/*! \fn Check For Mouse Wheel : This will check to see if the mouse wheel has been moved. 
+	*
+	*/
 	void m_CheckForMouseWheel(); 
 
+	//--------------------------------------------------------
+	/*! \fn Get Mouse Wheel State : This will be used to return the state of the mouse wheel. 
+	*
+	*/
 	int & m_GetMouseWheelState(); 
 
 	//--------------------------------------------------------

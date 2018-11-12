@@ -95,26 +95,46 @@ void EventHandler::m_CheckForViewMoveKeys()
 	}
 }
 
+//--------------------------------------------------------
+/*! \fn Check View Up Value : This will be used to check if the up key was pressed.
+*
+*/
 bool EventHandler::m_CheckViewUpValue()
 {
 	return m_bMoveViewUp;
 }
 
+//--------------------------------------------------------
+/*! \fn Check View Down Value : This will be used to check if the down key was pressed.
+*
+*/
 bool EventHandler::m_CheckViewDownValue()
 {
 	return m_bMoveViewDown;
 }
 
+//--------------------------------------------------------
+/*! \fn Check View Left Value : This will be used to check if the left key was pressed.
+*
+*/
 bool EventHandler::m_CheckViewLeftValue()
 {
 	return m_bMoveViewLeft;
 }
 
+//--------------------------------------------------------
+/*! \fn Check View Right Value : This will be used to check if the right key was pressed.
+*
+*/
 bool EventHandler::m_CheckViewRightValue()
 {
 	return m_bMoveViewRight;
 }
 
+//--------------------------------------------------------
+/*! \fn Check For Mouse Wheel : This will check to see if the mouse wheel has been moved.
+*
+*/
 void EventHandler::m_CheckForMouseWheel()
 {
 	if (m_Event.type == sf::Event::MouseWheelMoved)
@@ -132,6 +152,11 @@ void EventHandler::m_CheckForMouseWheel()
 
 }
 
+
+//--------------------------------------------------------
+/*! \fn Get Mouse Wheel State : This will be used to return the state of the mouse wheel.
+*
+*/
 int & EventHandler::m_GetMouseWheelState()
 {
 	return m_iMouseWheelState;

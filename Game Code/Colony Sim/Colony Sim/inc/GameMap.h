@@ -49,6 +49,7 @@ private:
 	/*! \var The current layer on the map, will be used for drawing a single layer. */
 	unsigned int m_iCurrentLayer = 2; 
 
+	/*! \var The ground level for the map, make sure to not use a number higher than the size of the grid.*/
 	unsigned int m_iGroundLayer = 2; 
 
 	// Member Functions 

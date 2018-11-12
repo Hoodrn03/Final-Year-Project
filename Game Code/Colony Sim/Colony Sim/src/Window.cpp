@@ -131,6 +131,10 @@ void Window::m_CheckForViewMove(bool upValue, bool downValue, bool leftValue, bo
 	m_Window.setView(m_GameView);
 }
 
+//--------------------------------------------------------
+/*! \fn Check for View Scroll : This will be used to updte the size of the view based on the direction the mouse wheel is turned.
+*Param One : int - The value for the mouse wheel, it will allow the distinction between up and down, as well as idle.
+*/
 void Window::m_CheckForViewScroll(int & mouseWheelValue)
 {
 	switch (mouseWheelValue)

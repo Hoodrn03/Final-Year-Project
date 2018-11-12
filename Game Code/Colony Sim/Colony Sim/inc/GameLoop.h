@@ -46,11 +46,13 @@ public:
 	/*! \var This is the games current frame rate. */
 	int m_FrameRate = 0;
 
+	/*! \var The current change in time since the last frame. */
 	float m_fDeltaTime = 0; 
 
 	/*! \var This is the timer for the frame rate, it gets reset every second. */
 	sf::Clock m_FrameRateCounter; 
 
+	/*! \var This timer will be used to update the current delta time. */
 	sf::Clock m_DeltaTimer; 
 
 private:
@@ -83,6 +85,10 @@ public:
 	*/
 	void m_CheckFramerate(); 
 
+	//--------------------------------------------------------
+	/*! \fn Update Delta Time : This will update the current value of delta time; the time since the last frame. 
+	*
+	*/
 	void m_UpdateDeltaTime(); 
 
 };

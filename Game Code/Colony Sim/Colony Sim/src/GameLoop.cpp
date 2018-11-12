@@ -117,6 +117,10 @@ void Gameloop::m_CheckFramerate()
 	}
 }
 
+//--------------------------------------------------------
+/*! \fn Update Delta Time : This will update the current value of delta time; the time since the last frame.
+*
+*/
 void Gameloop::m_UpdateDeltaTime()
 {
 	m_fDeltaTime = m_DeltaTimer.restart().asSeconds();

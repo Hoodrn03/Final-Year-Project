@@ -22,6 +22,12 @@ int RandGen::m_GenerateInt(int min, int max)
 	return l_iRandom;
 }
 
+//--------------------------------------------------------
+/*! \fn GenerateInt : This will be used to generate an int between two values.
+*Param One : int - The minimum value for the generator to get.
+*Param Two : int - The maximum number for the generator to get.
+*Param Three : bool - True if you want the generated number printed to the console.
+*/
 int RandGen::m_GenerateInt(int min, int max, bool print)
 {
 	int l_iRandom = 0;
