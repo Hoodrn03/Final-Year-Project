@@ -11,6 +11,7 @@
 #include "EventHandler.h"
 
 #include "GameMap.h"
+#include "Colonist.h"
 
 /*! \class This will hold the main game loop, it will have three main functions; setup, update and render. */
 class Gameloop
@@ -43,6 +44,8 @@ public:
 	/*! \var This class will be used to manage the game map. */
 	Map m_clMap; 
 
+	Colonist m_clColonist; 
+
 	/*! \var This is the games current frame rate. */
 	int m_FrameRate = 0;
 
@@ -72,6 +75,8 @@ public:
 	*
 	*/
 	void m_Update(); 
+
+	void m_DrawFilter(); 
 
 	//--------------------------------------------------------
 	/*! \fn Render : This will be used to draw all of the objects into the window.

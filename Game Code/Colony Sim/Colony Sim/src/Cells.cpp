@@ -96,34 +96,9 @@ void Cells::m_SetCellColour(int r, int g, int b)
 /*! \fn Assign Tile : This will be used to set tile value for this cell.
 *Param One : unsigned int - 1 Dirt, 2 Water, 3 Rock, else null.
 */
-void Cells::m_AssignTile(unsigned int whichTile)
+void Cells::m_AssignTile(tileSet whichTile)
 {
-	switch (whichTile)
-	{
-	case 1:
-		m_CurrentTile = _DIRT;
-		break;
-
-	case 2:
-		m_CurrentTile = _WATER;
-		break;
-
-	case 3:
-		m_CurrentTile = _ROCK;
-		break;
-
-	case 4: 
-		m_CurrentTile = _SKY;
-		break;
-
-	default:
-
-		m_CurrentTile = _NO_VALUE; 
-
-		std::cout << "Invalid Tile Selection" << std::endl;
-		
-		break;
-	}
+	m_CurrentTile = whichTile;
 }
 
 //--------------------------------------------------------
@@ -173,6 +148,10 @@ void Cells::m_AssignNeighbour(Cells &neighbour)
 void Cells::m_AssignCellId(int id)
 {
 	m_iCellId = id; 
+}
+
+void Cells::m_Update()
+{
 }
 
 //--------------------------------------------------------

@@ -36,6 +36,8 @@ protected:
 
 public: 
 
+	virtual void m_Update() = 0; 
+
 	//--------------------------------------------------------
 	/*! \fn DrawGameObject : This will allow for the connected class to draw the object onto the game window.  
 	*

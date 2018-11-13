@@ -46,6 +46,8 @@ int Gameloop::m_SetUp()
 
 	m_clWindow.m_GetWindow().setFramerateLimit(60);
 
+	m_clColonist.m_CreateColonistBody(sf::Vector2f(5, 5), sf::Vector2f(-50, -50)); 
+
 	// Begin game. 
 
 	m_Update(); 
@@ -76,14 +78,22 @@ void Gameloop::m_Update()
 
 		m_clMap.m_CheckForLayerChange(m_clEventHandler.m_CurrentLayerChangeValue());
 
-		m_clMap.m_DrawFilter(m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds()); 
-
 		m_clMap.m_Update(); 
+
+		// Check items to draw. 
+		m_DrawFilter();
 
 		// Draw Items. 
 		m_Render(); 
 	}
 
+}
+
+void Gameloop::m_DrawFilter()
+{
+	m_clMap.m_DrawFilter(m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds());
+
+	m_clColonist.m_DrawFilter(m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds());
 }
 
 //--------------------------------------------------------
@@ -97,6 +107,8 @@ void Gameloop::m_Render()
 	// Todo: Add items to draw. 
 
 	m_clMap.m_DrawGameObject(m_clWindow.m_GetWindow()); 
+
+	m_clColonist.m_DrawGameObject(m_clWindow.m_GetWindow());
 
 	m_clWindow.m_GetWindow().display(); 
 }

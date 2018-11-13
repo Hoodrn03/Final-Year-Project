@@ -193,7 +193,7 @@ void Grid::m_CreateLake(int cellX, int cellY, int layer, int numberOfIterations)
 
 	// Set Start of lake. 
 
-	m_Grid[layer][cellX][cellY].m_AssignTile(2); 
+	m_Grid[layer][cellX][cellY].m_AssignTile(_WATER); 
 
 	l_CellsToAdd.push_back(&m_Grid[layer][cellX][cellY]); 
  
@@ -240,7 +240,7 @@ void Grid::m_CreateLake(int cellX, int cellY, int layer, int numberOfIterations)
 			// being placed will be lowered with each iteration. 
 			if (l_iRandom <= l_iTotalChance / 3)
 			{
-				l_WaterTiles[j]->m_AssignTile(2);
+				l_WaterTiles[j]->m_AssignTile(_WATER);
 			}
 
 			for (unsigned int k = 0; k < l_WaterTiles[j]->m_GetNeighbours().size(); k++)
@@ -274,12 +274,12 @@ void Grid::m_CreateRiver(std::vector<Cells*> riverPath, int riverWidth, int laye
 		{
 			if (riverPath[i]->m_GetGridPos().x + j < m_Grid[layer].size())
 			{
-				m_Grid[layer][(unsigned int)riverPath[i]->m_GetGridPos().x + j][(unsigned int)riverPath[i]->m_GetGridPos().y].m_AssignTile(2);
+				m_Grid[layer][(unsigned int)riverPath[i]->m_GetGridPos().x + j][(unsigned int)riverPath[i]->m_GetGridPos().y].m_AssignTile(_WATER);
 			}
 
 			if (riverPath[i]->m_GetGridPos().y + j < m_Grid[layer][0].size())
 			{
-				m_Grid[layer][(unsigned int)riverPath[i]->m_GetGridPos().x][(unsigned int)riverPath[i]->m_GetGridPos().y + j].m_AssignTile(2);
+				m_Grid[layer][(unsigned int)riverPath[i]->m_GetGridPos().x][(unsigned int)riverPath[i]->m_GetGridPos().y + j].m_AssignTile(_WATER);
 			}
 		}
 	}
@@ -307,7 +307,7 @@ void Grid::m_CreateUndergroundWater(int minLayer, int maxLayer)
 				{
 					if (m_GenerateInt(0, 100) <= l_iWaterPlacement)
 					{
-						m_Grid[i][j][k].m_AssignTile(2);
+						m_Grid[i][j][k].m_AssignTile(_WATER);
 					}
 				}
 			}
@@ -347,7 +347,7 @@ void Grid::m_CreateRock(int layer)
 
 				if (m_GenerateInt(0, 100) <= (l_iRockPlacement + l_iAdjacentBonus))
 				{
-					m_Grid[layer][i][j].m_AssignTile(3);
+					m_Grid[layer][i][j].m_AssignTile(_ROCK);
 				}
 			}
 			
@@ -380,7 +380,7 @@ void Grid::m_CreateUndergroundRock(int minLayer, int maxLayer)
 				{
 					if (m_GenerateInt(0, 100) <= l_iRockPlacement + l_iUpdatedChance)
 					{
-						m_Grid[i][j][k].m_AssignTile(3);
+						m_Grid[i][j][k].m_AssignTile(_ROCK);
 					}
 				}
 			}
@@ -413,7 +413,7 @@ void Grid::m_CreateUpperRock(int minLayer, int maxLayer)
 				{
 					if (m_GenerateInt(0, 100) <= (l_iRockPlacement - l_iDecreasedChance))
 					{
-						m_Grid[i][j][k].m_AssignTile(3);
+						m_Grid[i][j][k].m_AssignTile(_ROCK);
 					}
 				}
 			}
@@ -439,7 +439,7 @@ void Grid::m_CreateDirt(int layer)
 			}
 			else
 			{
-				m_Grid[layer][i][j].m_AssignTile(1); 
+				m_Grid[layer][i][j].m_AssignTile(_DIRT); 
 			}
 		}
 	}
@@ -464,7 +464,7 @@ void Grid::m_CreateUndergroundDirt(int minLayer, int maxLayer)
 				}
 				else
 				{
-					m_Grid[i][j][k].m_AssignTile(1);
+					m_Grid[i][j][k].m_AssignTile(_DIRT);
 				}
 			}
 		}
@@ -486,7 +486,7 @@ void Grid::m_CreateSky(int minLayer, int maxLayer)
 			{
 				if (m_Grid[i][j][k].m_GetTile() == _NO_VALUE)
 				{
-					m_Grid[i][j][k].m_AssignTile(4);
+					m_Grid[i][j][k].m_AssignTile(_SKY);
 				}
 			}
 		}

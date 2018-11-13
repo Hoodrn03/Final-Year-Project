@@ -157,7 +157,7 @@ public:
 	/*! \fn Assign Tile : This will be used to set tile value for this cell.
 	*Param One : unsigned int - 1 Dirt, 2 Water, 3 Rock, else null. 
 	*/
-	void m_AssignTile(unsigned int whichTile); 
+	void m_AssignTile(tileSet whichTile); 
 
 	//--------------------------------------------------------
 	/*! \fn Assign Texture : This will be used to change the colour of the cell equil to its assigned tile.  
@@ -176,6 +176,8 @@ public:
 	*Param One : int : a number identifier for this cell. 
 	*/
 	void m_AssignCellId(int id); 
+
+	void m_Update() override; 
 
 	//--------------------------------------------------------
 	/*! \fn Draw Game Object : Used to draw the cell onto the game window.
