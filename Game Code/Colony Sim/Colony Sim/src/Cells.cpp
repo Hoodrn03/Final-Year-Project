@@ -38,6 +38,31 @@ void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition)
 	m_CellBody.setOutlineColor(sf::Color::Black);
 
 	m_CellBody.setOutlineThickness(m_CellBody.getGlobalBounds().width * 0.1f); 
+
+	m_SetCellCentre();
+}
+
+//--------------------------------------------------------
+/*! \fn Create Cell Body : This will be used to initalize this cell, Overload to set colour.
+*Param One : Vector2f - The height and width of the cell.
+*Param Two : Vector2f - The x and y coordinates for the cell.
+*Param Three : int - Red value.
+*Param Four : int - Green value.
+*Param FIve : int - Blue value.
+*/
+void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, int r, int g, int b)
+{
+	m_CellBody.setSize(dimentions);
+
+	m_SetObjectPos(possition.x, possition.y);
+
+	m_CellBody.setFillColor(sf::Color(r, g, b, 200));
+
+	m_CellBody.setOutlineColor(sf::Color::Black);
+
+	m_CellBody.setOutlineThickness(m_CellBody.getGlobalBounds().width * 0.01f);
+
+	m_SetCellCentre();
 }
 
 //--------------------------------------------------------
@@ -60,25 +85,15 @@ gridPos Cells::m_GetGridPos()
 	return m_GridPosition;
 }
 
-//--------------------------------------------------------
-/*! \fn Create Cell Body : This will be used to initalize this cell, Overload to set colour.
-*Param One : Vector2f - The height and width of the cell.
-*Param Two : Vector2f - The x and y coordinates for the cell.
-*Param Three : int - Red value.
-*Param Four : int - Green value.
-*Param FIve : int - Blue value.
-*/
-void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, int r, int g, int b)
+void Cells::m_SetCellCentre()
 {
-	m_CellBody.setSize(dimentions);
+	m_CellCentre.x = m_GameObjectPos.x + (m_CellBody.getGlobalBounds().width * 0.5f);
+	m_CellCentre.y = m_GameObjectPos.y + (m_CellBody.getGlobalBounds().height * 0.5f);
+}
 
-	m_SetObjectPos(possition.x, possition.y);
-
-	m_CellBody.setFillColor(sf::Color(r, g, b, 200));
-
-	m_CellBody.setOutlineColor(sf::Color::Black);
-
-	m_CellBody.setOutlineThickness(m_CellBody.getGlobalBounds().width * 0.01f);
+sf::Vector2f Cells::m_GetCellCentre()
+{
+	return m_CellCentre;
 }
 
 //--------------------------------------------------------

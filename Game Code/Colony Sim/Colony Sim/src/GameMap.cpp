@@ -176,6 +176,11 @@ void Map::m_CreateRiverForMap()
 	m_clGrid.m_CreateRiver(l_clPathfinding.m_GetCurrentPath(), m_GenerateInt(2, 5), m_iGroundLayer);
 }
 
+int Map::m_GetGroundLevel()
+{
+	return m_iGroundLayer;
+}
+
 //--------------------------------------------------------
 /*! \fn DrawGameObject : This will be used to draw all of the items required for the map.
 *Param One : RenderWindow : This is the current game window the objects should be drawn onto.
@@ -255,4 +260,9 @@ void Map::m_DescreaseLayer()
 	{
 		m_iCurrentLayer--;
 	}
+}
+
+Grid & Map::m_GetGrid()
+{
+	return m_clGrid; 
 }

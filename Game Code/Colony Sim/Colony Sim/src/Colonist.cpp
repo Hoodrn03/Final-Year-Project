@@ -13,6 +13,9 @@ void Colonist::m_CreateColonistBody(sf::Vector2f dimentions, sf::Vector2f positi
 {
 	m_ColonistBody.setSize(dimentions);
 
+	m_ColonistBody.setOrigin(sf::Vector2f(m_ColonistBody.getPosition().x + (m_ColonistBody.getGlobalBounds().width * 0.5f), 
+		m_ColonistBody.getPosition().y + (m_ColonistBody.getGlobalBounds().height * 0.5f)));
+
 	m_SetObjectPos(position.x, position.y); 
 
 	m_ColonistBody.setFillColor(sf::Color::White); 

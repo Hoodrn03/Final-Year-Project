@@ -44,7 +44,9 @@ public:
 	/*! \var This class will be used to manage the game map. */
 	Map m_clMap; 
 
-	Colonist m_clColonist; 
+	// Colonist m_clColonist; 
+
+	std::vector<Colonist> m_clColonistList; 
 
 	/*! \var This is the games current frame rate. */
 	int m_FrameRate = 0;

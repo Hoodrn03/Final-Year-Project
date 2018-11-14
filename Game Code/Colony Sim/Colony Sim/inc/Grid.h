@@ -40,7 +40,8 @@ private:
 	// Data Members 
 
 	/*! \var This is the completed grid, it has three layers for the three dimentions of the grid; 
-	*			Z (layers), X (rows) and Y (columns). 
+	*			Z (layers), X (rows) and Y (columns). There will only every be a single instance of the 
+	*			grid in the game. 
 	*/
 	std::vector<std::vector<std::vector<Cells>>> m_Grid; 
 
@@ -140,6 +141,8 @@ public:
 	*Param Three : int - The Y for the cell. 
 	*/
 	Cells * m_GetCell(int layer, int x, int y); 
+
+	Cells * m_GetDirtCell(int layer); 
 
 	//--------------------------------------------------------
 	/*! \fn DrawGrid : This will be used to draw the grid. 

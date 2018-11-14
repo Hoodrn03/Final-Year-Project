@@ -61,6 +61,8 @@ private:
 	/*! \var This will be used to display the cell on the screen. */
 	sf::RectangleShape m_CellBody; 
 
+	sf::Vector2f m_CellCentre; 
+
 	/*! \var The cells unique identifier. */
 	int m_iCellId; 
 
@@ -119,6 +121,10 @@ public:
 	*Param FIve : int - Blue value.
 	*/
 	void m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, int r, int g, int b);
+
+	void m_SetCellCentre(); 
+
+	sf::Vector2f m_GetCellCentre(); 
 
 	//--------------------------------------------------------
 	/*! \fn SetCellColour : This will change the colour of the cell.

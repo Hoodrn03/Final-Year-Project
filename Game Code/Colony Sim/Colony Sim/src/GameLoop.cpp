@@ -46,7 +46,16 @@ int Gameloop::m_SetUp()
 
 	m_clWindow.m_GetWindow().setFramerateLimit(60);
 
-	m_clColonist.m_CreateColonistBody(sf::Vector2f(5, 5), sf::Vector2f(-50, -50)); 
+	int l_iNumberOfColonists = 1; 
+
+	for (int i = 0; i < l_iNumberOfColonists; i++)
+	{
+		Colonist l_clColonist; 
+
+		l_clColonist.m_CreateColonistBody(sf::Vector2f(5, 5), m_clMap.m_GetGrid().m_GetDirtCell(m_clMap.m_GetGroundLevel())->m_GetCellCentre());
+		
+		m_clColonistList.push_back(l_clColonist); 
+	}
 
 	// Begin game. 
 
@@ -93,7 +102,13 @@ void Gameloop::m_DrawFilter()
 {
 	m_clMap.m_DrawFilter(m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds());
 
-	m_clColonist.m_DrawFilter(m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds());
+	if (m_clColonistList.size() > 0)
+	{
+		for (unsigned int i = 0; i < m_clColonistList.size(); i++)
+		{
+			m_clColonistList[i].m_DrawFilter(m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds());
+		}
+	}
 }
 
 //--------------------------------------------------------
@@ -108,8 +123,13 @@ void Gameloop::m_Render()
 
 	m_clMap.m_DrawGameObject(m_clWindow.m_GetWindow()); 
 
-	m_clColonist.m_DrawGameObject(m_clWindow.m_GetWindow());
-
+	if (m_clColonistList.size() > 0)
+	{
+		for (unsigned int i = 0; i < m_clColonistList.size(); i++)
+		{
+			m_clColonistList[i].m_DrawGameObject(m_clWindow.m_GetWindow());
+		}
+	}
 	m_clWindow.m_GetWindow().display(); 
 }
 

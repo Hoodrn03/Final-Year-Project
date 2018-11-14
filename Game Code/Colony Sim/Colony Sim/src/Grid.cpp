@@ -525,6 +525,20 @@ Cells * Grid::m_GetCell(int layer, int x, int y)
 	return &m_Grid[layer][x][y];
 }
 
+Cells * Grid::m_GetDirtCell(int layer)
+{
+	Cells * l_ReturnValue;
+
+	do
+	{
+		l_ReturnValue = &m_Grid[layer][m_GenerateInt(0, m_GetNumberOfRows())][m_GenerateInt(0, m_GetNumberOfColumns())];
+
+
+	} while (l_ReturnValue->m_GetTile() != _DIRT);
+
+	return l_ReturnValue;
+}
+
 //--------------------------------------------------------
 /*! \fn DrawGrid : This will be used to draw the grid.
 *Param One : renderwindow - The main game window the grid should be drawn onto.
