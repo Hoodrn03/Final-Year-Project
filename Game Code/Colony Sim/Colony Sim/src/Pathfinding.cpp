@@ -69,6 +69,7 @@ void Pathfinding::m_RunAStarAlgorithm()
 
 			for (unsigned int i = 0; i < m_CurrentCell->m_GetNeighbours().size(); i++)
 			{
+				// If the neighbour is already inside the open set it won't be added to the open set.
 				if (std::find(m_OpenSet.begin(), m_OpenSet.end(), m_CurrentCell->m_GetNeighbours()[i]) != m_OpenSet.end())
 				{
 
@@ -85,7 +86,10 @@ void Pathfinding::m_RunAStarAlgorithm()
 
 					m_CurrentCell->m_GetNeighbours()[i]->m_SetCellColour(0, 255, 0);
 
-					m_CurrentCell->m_GetNeighbours()[i]->m_ParentCell = m_CurrentCell; 
+					if (m_CurrentCell->m_GetNeighbours()[i]->m_ParentCell == nullptr)
+					{
+						m_CurrentCell->m_GetNeighbours()[i]->m_ParentCell = m_CurrentCell;
+					}
 				}
 			}
 

@@ -142,7 +142,9 @@ public:
 	*/
 	Cells * m_GetCell(int layer, int x, int y); 
 
-	Cells * m_GetDirtCell(int layer); 
+	Cells * m_GetRandomDirtCell(int layer); 
+
+	Cells * m_ConvertWorldPosToGridPos(sf::Vector2f currentPos); 
 
 	//--------------------------------------------------------
 	/*! \fn DrawGrid : This will be used to draw the grid. 

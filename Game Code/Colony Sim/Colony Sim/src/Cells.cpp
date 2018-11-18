@@ -65,6 +65,17 @@ void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, in
 	m_SetCellCentre();
 }
 
+bool Cells::m_CheckCellBounds(float x, float y)
+{
+	if ((x >= m_GetObjectPos().x && y >= m_GetObjectPos().y) &&
+		(x <= m_GetObjectPos().x + m_CellBody.getGlobalBounds().width && y <= m_GetObjectPos().y + m_CellBody.getGlobalBounds().height))
+	{
+		return true; 
+	}
+
+	return false;
+}
+
 //--------------------------------------------------------
 /*! \fn SetGridPos : This will be used to assign a position to the cell.
 *Param One : int - The x position on for the cell on the grid.
@@ -236,4 +247,14 @@ std::vector<Cells*>& Cells::m_GetNeighbours()
 tileSet Cells::m_GetTile()
 {
 	return m_CurrentTile;
+}
+
+float Cells::m_GetCellWidth()
+{
+	return m_CellBody.getGlobalBounds().width;
+}
+
+float Cells::m_GetCellHeight()
+{
+	return m_CellBody.getGlobalBounds().height;
 }

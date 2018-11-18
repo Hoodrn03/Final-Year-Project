@@ -90,7 +90,7 @@ private:
 public:
 
 	/*! \var This will hold a reference to a cell that leads to this one. */
-	Cells * m_ParentCell;
+	Cells * m_ParentCell = nullptr;
 
 	/*! \var This is the current G Score for this cell. */
 	int m_iGScore; 
@@ -121,6 +121,8 @@ public:
 	*Param FIve : int - Blue value.
 	*/
 	void m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, int r, int g, int b);
+
+	bool m_CheckCellBounds(float x, float y);
 
 	void m_SetCellCentre(); 
 
@@ -158,6 +160,10 @@ public:
 	*
 	*/
 	tileSet m_GetTile();
+
+	float m_GetCellWidth(); 
+
+	float m_GetCellHeight(); 
 
 	//--------------------------------------------------------
 	/*! \fn Assign Tile : This will be used to set tile value for this cell.

@@ -50,11 +50,11 @@ int Gameloop::m_SetUp()
 
 	for (int i = 0; i < l_iNumberOfColonists; i++)
 	{
-		Colonist l_clColonist; 
+		Colonist l_clColonist;
 
-		l_clColonist.m_CreateColonistBody(sf::Vector2f(5, 5), m_clMap.m_GetGrid().m_GetDirtCell(m_clMap.m_GetGroundLevel())->m_GetCellCentre());
-		
-		m_clColonistList.push_back(l_clColonist); 
+		l_clColonist.m_CreateColonistBody(sf::Vector2f(5, 5), m_clMap.m_GetGrid().m_GetRandomDirtCell(m_clMap.m_GetGroundLevel()));
+
+		m_clColonistList.push_back(l_clColonist);
 	}
 
 	// Begin game. 
@@ -88,6 +88,19 @@ void Gameloop::m_Update()
 		m_clMap.m_CheckForLayerChange(m_clEventHandler.m_CurrentLayerChangeValue());
 
 		m_clMap.m_Update(); 
+
+		if (m_clColonistList.size() > 0)
+		{
+			for (unsigned int i = 0; i < m_clColonistList.size(); i++)
+			{
+				if (m_clColonistList[i].m_GetFindNewPath() == true)
+				{
+					 m_clColonistList[i].m_FindNewPath(m_clMap.m_GetGrid().m_GetRandomDirtCell(m_clMap.m_GetGroundLevel()));
+				}
+
+				m_clColonistList[i].m_Update();
+			}
+		}
 
 		// Check items to draw. 
 		m_DrawFilter();

@@ -525,7 +525,7 @@ Cells * Grid::m_GetCell(int layer, int x, int y)
 	return &m_Grid[layer][x][y];
 }
 
-Cells * Grid::m_GetDirtCell(int layer)
+Cells * Grid::m_GetRandomDirtCell(int layer)
 {
 	Cells * l_ReturnValue;
 
@@ -537,6 +537,33 @@ Cells * Grid::m_GetDirtCell(int layer)
 	} while (l_ReturnValue->m_GetTile() != _DIRT);
 
 	return l_ReturnValue;
+}
+
+Cells * Grid::m_ConvertWorldPosToGridPos(sf::Vector2f currentPos)
+{
+	Cells * l_ReturnValue;
+
+	for (unsigned int i = 0; i < m_Grid.size(); i++)
+	{
+		for (unsigned int j = 0; j < m_Grid[i].size(); j++)
+		{
+			for (unsigned int k = 0; k < m_Grid[i][j].size(); k++)
+			{
+				if (m_Grid[i][j][k].m_CheckCellBounds(currentPos.x, currentPos.y))
+				{
+					std::cout << "Found Cell" << std::endl;
+
+					l_ReturnValue = &m_Grid[i][j][k];
+
+					return l_ReturnValue;
+				}
+			}
+		}
+	}
+
+	std::cout << "Unable to find cell" << std::endl;
+
+	return nullptr;
 }
 
 //--------------------------------------------------------
