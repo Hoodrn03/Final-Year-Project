@@ -525,6 +525,10 @@ Cells * Grid::m_GetCell(int layer, int x, int y)
 	return &m_Grid[layer][x][y];
 }
 
+//--------------------------------------------------------
+/*! \fn GetRandomDirtCell : This will be used to return a reference to a randomly selected cell with the tile code of dirt.
+*Param One : int - Which layer to get the tile from.
+*/
 Cells * Grid::m_GetRandomDirtCell(int layer)
 {
 	Cells * l_ReturnValue;
@@ -539,6 +543,10 @@ Cells * Grid::m_GetRandomDirtCell(int layer)
 	return l_ReturnValue;
 }
 
+//--------------------------------------------------------
+/*! \fn ConvertWoldPosToGridPos : This will be used to convert world coordinates in the game window to a tile cell on the grid.
+*Param One : Vector2f - The position in wold space to convert.
+*/
 Cells * Grid::m_ConvertWorldPosToGridPos(sf::Vector2f currentPos)
 {
 	Cells * l_ReturnValue;

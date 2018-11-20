@@ -61,6 +61,7 @@ private:
 	/*! \var This will be used to display the cell on the screen. */
 	sf::RectangleShape m_CellBody; 
 
+	/*! \var This will be used to hold the cells's current center point in world space. */
 	sf::Vector2f m_CellCentre; 
 
 	/*! \var The cells unique identifier. */
@@ -113,19 +114,32 @@ public:
 	void m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition); 
 
 	//--------------------------------------------------------
-	/*! \fn Create Cell Body : This will be used to initalize this cell, Overload to set colour.
+	/*! \fn Create Cell Body (Overload) : This will be used to initalize this cell.
 	*Param One : Vector2f - The height and width of the cell.
 	*Param Two : Vector2f - The x and y coordinates for the cell.
 	*Param Three : int - Red value.
 	*Param Four : int - Green value.
-	*Param FIve : int - Blue value.
+	*Param Five : int - Blue value.
 	*/
 	void m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, int r, int g, int b);
 
+	//--------------------------------------------------------
+	/*! \fn Check Cell Bounds : This will be used to check if a point is inside this cell. 
+	*Param One : float - The x coordine of the point. 
+	*Param Two : float - The y coordine of the point.
+	*/
 	bool m_CheckCellBounds(float x, float y);
 
+	//--------------------------------------------------------
+	/*! \fn Set Cell Centre : This will be used to update the current cell centre, using its position and dimentions. 
+	*
+	*/
 	void m_SetCellCentre(); 
 
+	//--------------------------------------------------------
+	/*! \fn Get Cell Centre : This will return the cells centre point in world space. 
+	*
+	*/
 	sf::Vector2f m_GetCellCentre(); 
 
 	//--------------------------------------------------------
@@ -161,8 +175,16 @@ public:
 	*/
 	tileSet m_GetTile();
 
+	//--------------------------------------------------------
+	/*! \fn Get Cell Width : This will return the current width for the cell. 
+	*
+	*/
 	float m_GetCellWidth(); 
 
+	//--------------------------------------------------------
+	/*! \fn Get Cell Height : This will return the current height for the cell. 
+	*
+	*/
 	float m_GetCellHeight(); 
 
 	//--------------------------------------------------------
@@ -189,6 +211,10 @@ public:
 	*/
 	void m_AssignCellId(int id); 
 
+	//--------------------------------------------------------
+	/*! \fn Update : This will be used to update the game logic for this object. 
+	*
+	*/
 	void m_Update() override; 
 
 	//--------------------------------------------------------

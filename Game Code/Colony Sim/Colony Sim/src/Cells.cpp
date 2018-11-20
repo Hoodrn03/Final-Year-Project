@@ -43,12 +43,12 @@ void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition)
 }
 
 //--------------------------------------------------------
-/*! \fn Create Cell Body : This will be used to initalize this cell, Overload to set colour.
+/*! \fn Create Cell Body (Overload) : This will be used to initalize this cell.
 *Param One : Vector2f - The height and width of the cell.
 *Param Two : Vector2f - The x and y coordinates for the cell.
 *Param Three : int - Red value.
 *Param Four : int - Green value.
-*Param FIve : int - Blue value.
+*Param Five : int - Blue value.
 */
 void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, int r, int g, int b)
 {
@@ -65,6 +65,11 @@ void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, in
 	m_SetCellCentre();
 }
 
+//--------------------------------------------------------
+/*! \fn Check Cell Bounds : This will be used to check if a point is inside this cell.
+*Param One : float - The x coordine of the point.
+*Param Two : float - The y coordine of the point.
+*/
 bool Cells::m_CheckCellBounds(float x, float y)
 {
 	if ((x >= m_GetObjectPos().x && y >= m_GetObjectPos().y) &&
@@ -96,12 +101,20 @@ gridPos Cells::m_GetGridPos()
 	return m_GridPosition;
 }
 
+//--------------------------------------------------------
+/*! \fn Set Cell Centre : This will be used to update the current cell centre, using its position and dimentions.
+*
+*/
 void Cells::m_SetCellCentre()
 {
 	m_CellCentre.x = m_GameObjectPos.x + (m_CellBody.getGlobalBounds().width * 0.5f);
 	m_CellCentre.y = m_GameObjectPos.y + (m_CellBody.getGlobalBounds().height * 0.5f);
 }
 
+//--------------------------------------------------------
+/*! \fn Get Cell Centre : This will return the cells centre point in world space.
+*
+*/
 sf::Vector2f Cells::m_GetCellCentre()
 {
 	return m_CellCentre;
@@ -176,6 +189,10 @@ void Cells::m_AssignCellId(int id)
 	m_iCellId = id; 
 }
 
+//--------------------------------------------------------
+/*! \fn Update : This will be used to update the game logic for this object.
+*
+*/
 void Cells::m_Update()
 {
 }
@@ -249,11 +266,19 @@ tileSet Cells::m_GetTile()
 	return m_CurrentTile;
 }
 
+//--------------------------------------------------------
+/*! \fn Get Cell Width : This will return the current width for the cell.
+*
+*/
 float Cells::m_GetCellWidth()
 {
 	return m_CellBody.getGlobalBounds().width;
 }
 
+//--------------------------------------------------------
+/*! \fn Get Cell Height : This will return the current height for the cell.
+*
+*/
 float Cells::m_GetCellHeight()
 {
 	return m_CellBody.getGlobalBounds().height;

@@ -102,15 +102,16 @@ void Gameloop::m_Update()
 			}
 		}
 
-		// Check items to draw. 
-		m_DrawFilter();
-
 		// Draw Items. 
 		m_Render(); 
 	}
 
 }
 
+//--------------------------------------------------------
+/*! \fn Draw Filter : This will be used to limit what is drawn to only those within the game view.
+*
+*/
 void Gameloop::m_DrawFilter()
 {
 	m_clMap.m_DrawFilter(m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds());
@@ -130,6 +131,10 @@ void Gameloop::m_DrawFilter()
 */
 void Gameloop::m_Render()
 {
+	// Check items for drawing. 
+
+	m_DrawFilter(); 
+
 	m_clWindow.m_GetWindow().clear();
 
 	// Todo: Add items to draw. 
