@@ -36,7 +36,7 @@ public:
 private:
 
 	/*! \var This will check if the end point had been found and will trigger the path to be traced. */
-	bool m_bPathFound = false; 
+	bool m_bPathFound = true; 
 
 	/*! \var The closed set, contains cells already evaluated.  */
 	std::vector<Cells*> m_ClosedSet;
@@ -45,13 +45,13 @@ private:
 	std::vector<Cells*> m_OpenSet;
 
 	/*! \var The current cell being evaluated. */
-	Cells * m_CurrentCell;
+	Cells * m_CurrentCell = nullptr;
 
 	/*! \var The start cell for the algorithm */
-	Cells * m_StartCell; 
+	Cells * m_StartCell = nullptr; 
 
 	/*! \var The end cell for the algorithm */
-	Cells * m_EndCell; 
+	Cells * m_EndCell = nullptr; 
 
 	/*! \var The final path the algorithm will output. */
 	std::vector<Cells*> m_FinalPath; 

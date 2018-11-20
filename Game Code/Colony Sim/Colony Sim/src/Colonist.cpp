@@ -47,16 +47,30 @@ void Colonist::m_CreateColonistBody(sf::Vector2f dimentions, sf::Vector2f positi
 */
 void Colonist::m_CreateColonistBody(sf::Vector2f dimentions, Cells * currentCell)
 {
-	m_ColonistBody.setSize(dimentions);
+	try
+	{
+		if (currentCell != nullptr)
+		{
+			m_ColonistBody.setSize(dimentions);
 
-	m_ColonistBody.setOrigin(sf::Vector2f(m_ColonistBody.getPosition().x + (m_ColonistBody.getGlobalBounds().width * 0.5f),
-		m_ColonistBody.getPosition().y + (m_ColonistBody.getGlobalBounds().height * 0.5f)));
+			m_ColonistBody.setOrigin(sf::Vector2f(m_ColonistBody.getPosition().x + (m_ColonistBody.getGlobalBounds().width * 0.5f),
+				m_ColonistBody.getPosition().y + (m_ColonistBody.getGlobalBounds().height * 0.5f)));
 
-	m_SetObjectPos(currentCell->m_GetCellCentre().x, currentCell->m_GetCellCentre().y);
+			m_SetObjectPos(currentCell->m_GetCellCentre().x, currentCell->m_GetCellCentre().y);
 
-	m_CurrentCell = currentCell; 
+			m_CurrentCell = currentCell;
 
-	m_ColonistBody.setFillColor(sf::Color::White);
+			m_ColonistBody.setFillColor(sf::Color::White);
+		}
+		else
+		{
+			throw 42;
+		}
+	}
+	catch (int i)
+	{
+		std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+	}
 }
 
 //--------------------------------------------------------
@@ -126,8 +140,6 @@ void Colonist::m_SetObjectPos(float x, float y)
 */
 void Colonist::m_FollowPath()
 {
-	std::cout << "Following Path" << std::endl;
-
 	if (m_clPathfinding.m_GetCurrentPath().size() > 0)
 	{
 
@@ -144,9 +156,23 @@ void Colonist::m_FollowPath()
 */
 void Colonist::m_FindNewPath(Cells * endCell)
 {
-	m_clPathfinding.m_InitAlgorithm(m_CurrentCell, endCell);
+	try
+	{
+		if (endCell != nullptr)
+		{
+			m_clPathfinding.m_InitAlgorithm(m_CurrentCell, endCell);
 
-	m_bFindNewPath = false;
+			m_bFindNewPath = false;
+		}
+		else
+		{
+			throw 42; 
+		}
+	}
+	catch (int i)
+	{
+		std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+	}
 }
 
 //--------------------------------------------------------

@@ -1,0 +1,1 @@
+Error Code 42 : Passed nullptr into a function. 

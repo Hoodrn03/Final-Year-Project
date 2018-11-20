@@ -47,7 +47,7 @@ private:
 	bool m_bFindNewPath = true; 
 
 	/*! \var This will be the current cell on the grid the colonist is currently inside. */
-	Cells * m_CurrentCell; 
+	Cells * m_CurrentCell = nullptr; 
 
 	// Member Functions 
 
