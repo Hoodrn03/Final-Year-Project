@@ -79,7 +79,7 @@ public:
 	*Param Two : int - The width in cells the river should be. 
 	*Param Three : int - The layer the river should be generated on.
 	*/
-	void m_CreateRiver(std::vector<Cells*> riverPath, int riverWidth, int layer);
+	void m_CreateRiver(std::deque<Cells*> riverPath, int riverWidth, int layer);
 
 	//--------------------------------------------------------
 	/*! \fn Create Underground Water : This will be used to create water for layers under the gound level. 
@@ -152,7 +152,7 @@ public:
 	/*! \fn ConvertWoldPosToGridPos : This will be used to convert world coordinates in the game window to a tile cell on the grid. 
 	*Param One : Vector2f - The position in wold space to convert. 
 	*/
-	Cells * m_ConvertWorldPosToGridPos(sf::Vector2f currentPos); 
+	Cells * m_ConvertWorldPosToGridPos(sf::Vector2f currentPos, unsigned int layer);
 
 	//--------------------------------------------------------
 	/*! \fn DrawGrid : This will be used to draw the grid. 

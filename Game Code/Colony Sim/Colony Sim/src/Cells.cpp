@@ -101,6 +101,16 @@ gridPos Cells::m_GetGridPos()
 	return m_GridPosition;
 }
 
+void Cells::m_SetLayer(int layer)
+{
+	m_Layer = layer; 
+}
+
+int Cells::m_GetLayer()
+{
+	return m_Layer;
+}
+
 //--------------------------------------------------------
 /*! \fn Set Cell Centre : This will be used to update the current cell centre, using its position and dimentions.
 *
@@ -203,7 +213,16 @@ void Cells::m_Update()
 */
 int Cells::m_GetCellId()
 {
-	return m_iCellId;
+	if (this == nullptr)
+	{
+		std::cout << "Cannot Access" << std::endl;
+
+		return -1; 
+	}
+	else
+	{
+		return m_iCellId;
+	}
 }
 
 //--------------------------------------------------------

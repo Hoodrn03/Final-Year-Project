@@ -65,7 +65,7 @@ private:
 	sf::Vector2f m_CellCentre; 
 
 	/*! \var The cells unique identifier. */
-	int m_iCellId; 
+	int m_iCellId = 0; 
 
 	/*! \var Determines which tile the cell will be displayed as. */
 	tileSet m_CurrentTile = _NO_VALUE; 
@@ -75,6 +75,8 @@ private:
 
 	/*! \var This is the cells position within a grid, holds X and Y values.*/
 	gridPos m_GridPosition; 
+
+	int m_Layer = 0; 
 
 	/*! \var This will be the default colour codes for water. */
 	const sf::Color m_WaterColour = sf::Color(0, 191, 255, 255);
@@ -94,13 +96,13 @@ public:
 	Cells * m_ParentCell = nullptr;
 
 	/*! \var This is the current G Score for this cell. */
-	int m_iGScore; 
+	int m_iGScore = 0; 
 
 	/*! \var This is the current H Score for this cell. */
-	int m_iHScore; 
+	int m_iHScore = 0; 
 
 	/*! \var This is the current F Score for this cell. */
-	int m_iFScore; 
+	int m_iFScore = 0; 
 
 public:
 
@@ -162,6 +164,11 @@ public:
 	*
 	*/
 	gridPos m_GetGridPos(); 
+
+	void m_SetLayer(int layer); 
+
+	int m_GetLayer();
+
 
 	//--------------------------------------------------------
 	/*! \fn Get Cell Id : This will be used to read the cell's id.

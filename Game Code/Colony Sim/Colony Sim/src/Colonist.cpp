@@ -73,17 +73,24 @@ void Colonist::m_CreateColonistBody(sf::Vector2f dimentions, Cells * currentCell
 	}
 }
 
+void Colonist::m_UpdateCurrentCell(Cells * newCurrentCell)
+{
+	if (newCurrentCell != nullptr)
+	{
+		m_CurrentCell = newCurrentCell;
+	}
+}
+
 //--------------------------------------------------------
 /*! \fn Update : This will be used to update the logic for this class.
 *
 */
 void Colonist::m_Update()
 {
-	if (m_clPathfinding.m_CheckForCompletion() == false)
+	if (m_bFindNewPath == true)
 	{
-		std::cout << "Running Algorithm" << std::endl;
+	
 
-		m_clPathfinding.m_RunAStarAlgorithm(); 
 	}
 	else
 	{
@@ -110,8 +117,8 @@ void Colonist::m_DrawGameObject(sf::RenderWindow & window)
 */
 void Colonist::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight)
 {
-	if ((m_GetObjectPos().x > topLeft.x && m_GetObjectPos().y > topLeft.y)
-		&& (m_GetObjectPos().x < bottomRight.x && m_GetObjectPos().y < bottomRight.y))
+	if (((m_ColonistBody.getPosition().x > topLeft.x) && (m_ColonistBody.getPosition().y > topLeft.y))
+		&& ((m_ColonistBody.getPosition().x < bottomRight.x) && (m_ColonistBody.getPosition().y < bottomRight.y)))
 	{
 		m_DrawItem = _DRAW;
 	}
@@ -140,39 +147,136 @@ void Colonist::m_SetObjectPos(float x, float y)
 */
 void Colonist::m_FollowPath()
 {
-	if (m_clPathfinding.m_GetCurrentPath().size() > 0)
+	if (m_Path.size() > 0)
 	{
+		if (m_MovementClock.getElapsedTime().asSeconds() >= m_fmovementTimer)
+		{
+			m_MovementClock.restart(); 
 
-	}
-	else
-	{
-		// Todo :: find new path. 
-	}
+			if (pos < m_Path.size())
+			{
+				m_SetObjectPos(m_Path[pos]->m_GetCellCentre().x, m_Path[pos]->m_GetCellCentre().y);
+
+				pos++;
+			}
+			else
+			{
+				// Reached the end of the path. 
+
+				pos = 0;
+
+				m_Path.clear();
+
+				std::cout << "Reached End" << std::endl;
+
+				m_bFindNewPath = true;
+			}
+		}
+	} 
+}
+
+void Colonist::m_CalculateMovementVector()
+{
 }
 
 //--------------------------------------------------------
 /*! \fn Find New Path : This will initalize a new path for the colonist.
 *Param One : Cells - This will be the new end cell for the colonist.
 */
-void Colonist::m_FindNewPath(Cells * endCell)
+int Colonist::m_FindNewPath(Cells * endCell)
 {
 	try
 	{
-		if (endCell != nullptr)
-		{
-			m_clPathfinding.m_InitAlgorithm(m_CurrentCell, endCell);
+		int l_numberOfLoop = 0;
 
-			m_bFindNewPath = false;
-		}
-		else
+		if ((endCell != nullptr) && (m_CurrentCell != nullptr))
 		{
-			throw 42; 
+			std::cout << "Findng New Path" << std::endl;
+
+			std::cout << "Between (" << m_CurrentCell->m_GetGridPos().x << ", " << m_CurrentCell->m_GetGridPos().y << ", " << m_CurrentCell->m_GetLayer() <<
+				") and (" <<endCell->m_GetGridPos().x << ", " << endCell->m_GetGridPos().y << ", " << endCell->m_GetLayer() << ")" << std::endl;
+
+			m_Path.clear();
+
+			if (m_CurrentCell->m_GetLayer() == endCell->m_GetLayer())
+			{
+
+				do
+				{
+
+					Pathfinding l_clPathfinding;
+
+					l_clPathfinding.m_InitAlgorithm(m_CurrentCell, endCell);
+
+					do
+					{
+						std::cout << l_numberOfLoop << std::endl;
+
+						l_clPathfinding.m_RunAStarAlgorithm();
+
+						l_numberOfLoop++;
+
+						if (l_numberOfLoop >= LOOP_TIMEOUT)
+						{
+							throw 3;
+						}
+
+					} while (l_clPathfinding.m_CheckForCompletion() == false);
+
+					for (unsigned int i = 0; i < l_clPathfinding.m_GetCurrentPath().size(); i++)
+					{
+						m_Path.push_front(l_clPathfinding.m_GetCurrentPath()[i]);
+
+						// std::cout << "Adding path to vector" << std::endl;
+
+						l_numberOfLoop++;
+
+						if (l_numberOfLoop >= LOOP_TIMEOUT)
+						{
+							throw 3;
+						}
+					}
+
+					if (m_Path.size() >= 0)
+					{
+						m_bFindNewPath = false;
+
+						std::cout << "Found Path" << std::endl;
+					}
+
+					l_numberOfLoop++;
+
+					if (l_numberOfLoop >= LOOP_TIMEOUT)
+					{
+						throw 3;
+					}
+
+				} while (m_bFindNewPath == true);
+			}
+			else
+			{
+				throw 42;
+			}
 		}
 	}
 	catch (int i)
 	{
-		std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+		switch(i)
+		{
+		case 0:
+			std::cout << "unknown error" << std::endl;
+
+			return 1;
+			break;
+
+		default:
+			std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+			return 1;
+			break;
+		}
 	}
+
+	return 0; 
 }
 
 //--------------------------------------------------------

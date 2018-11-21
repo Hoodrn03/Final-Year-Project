@@ -95,10 +95,17 @@ void Gameloop::m_Update()
 			{
 				if (m_clColonistList[i].m_GetFindNewPath() == true)
 				{
-					 m_clColonistList[i].m_FindNewPath(m_clMap.m_GetGrid().m_GetRandomDirtCell(m_clMap.m_GetGroundLevel()));
+					if (m_clColonistList[i].m_FindNewPath(m_clMap.m_GetGrid().m_GetRandomDirtCell(m_clMap.m_GetGroundLevel())) != 0)
+					{
+						std::cout << "Error Finding Path" << std::endl;
+					}
+
+					m_clMap.m_GetGrid().m_AssignTextures();
 				}
 
 				m_clColonistList[i].m_Update();
+
+				m_clColonistList[i].m_UpdateCurrentCell(m_clMap.m_GetGrid().m_ConvertWorldPosToGridPos(m_clColonistList[i].m_GetObjectPos(), m_clMap.m_GetGroundLevel())); 
 			}
 		}
 

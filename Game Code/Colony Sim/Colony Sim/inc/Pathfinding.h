@@ -54,7 +54,7 @@ private:
 	Cells * m_EndCell = nullptr; 
 
 	/*! \var The final path the algorithm will output. */
-	std::vector<Cells*> m_FinalPath; 
+	std::deque<Cells*> m_FinalPath; 
 
 	// Member Functions
 
@@ -116,7 +116,7 @@ public:
 	/*! \fn GetCurrentPath : This will be used to access the path outside the class. 
 	*
 	*/
-	std::vector<Cells*> m_GetCurrentPath(); 
+	std::deque<Cells*> m_GetCurrentPath(); 
 
 
 };

@@ -31,6 +31,14 @@ void Pathfinding::m_InitAlgorithm(Cells * startCell, Cells * endCell)
 {
 	try
 	{
+		m_OpenSet.clear();
+
+		m_ClosedSet.clear();
+
+		m_FinalPath.clear();
+
+		m_bPathFound = false;
+
 		if ((startCell != nullptr) && (endCell != nullptr))
 		{
 			m_StartCell = startCell;
@@ -44,8 +52,6 @@ void Pathfinding::m_InitAlgorithm(Cells * startCell, Cells * endCell)
 			m_EndCell->m_SetCellColour(255, 255, 255);
 
 			m_OpenSet.push_back(startCell); 
-
-			m_bPathFound = false;
 		}
 		else
 		{
@@ -155,6 +161,15 @@ void Pathfinding::m_RunAStarAlgorithm()
 				// This will add the trace the found path. 
 
 				m_TracePath();
+
+				for (unsigned int i = 0; i < m_OpenSet.size(); i++)
+				{
+					m_OpenSet[i]->m_ParentCell = nullptr;
+				}
+				for (unsigned int i = 0; i < m_ClosedSet.size(); i++)
+				{
+					m_ClosedSet[i]->m_ParentCell = nullptr;
+				}
 			}
 		}
 		else
@@ -357,28 +372,76 @@ int Pathfinding::m_CalculateFScore(Cells *currentCell)
 */
 void Pathfinding::m_TracePath()
 {
-	std::vector<Cells*> l_Path; 
+	m_FinalPath.clear();
 
-	Cells* l_CurrentPathPoint; 
+	std::deque<Cells*> l_Path;
 
-	l_CurrentPathPoint = m_CurrentCell; 
+	Cells* l_CurrentPathPoint = nullptr;
 
-	do
+	l_CurrentPathPoint = m_CurrentCell;
+
+	int l_numberOfLoop = 0;
+
+	try
 	{
+		do
+		{
+
+			if (l_CurrentPathPoint != nullptr)
+			{
+				l_numberOfLoop++;
+
+				if (l_numberOfLoop >= LOOP_TIMEOUT)
+				{
+					throw 3;
+				}
+
+				l_Path.push_back(l_CurrentPathPoint);
+
+				l_CurrentPathPoint = l_CurrentPathPoint->m_ParentCell;
+			}
+			else
+			{
+				throw 42;
+			}
+		} while (l_CurrentPathPoint->m_GetCellId() != m_StartCell->m_GetCellId());
+
 		l_Path.push_back(l_CurrentPathPoint);
 
-		l_CurrentPathPoint = l_CurrentPathPoint->m_ParentCell;
-
-	} while (l_CurrentPathPoint->m_GetCellId() != m_StartCell->m_GetCellId());
-
-	l_Path.push_back(l_CurrentPathPoint); 
-
-	for (unsigned int i = 0; i < l_Path.size(); i++)
+		for (unsigned int i = 0; i < l_Path.size(); i++)
+		{
+			l_Path[i]->m_SetCellColour(0, 0, 255);
+		}
+	}
+	catch (int i)
 	{
-		l_Path[i]->m_SetCellColour(0, 0, 255);
+		switch (i)
+		{
+		case 0:
+
+			std::cout << "unknown error" << std::endl;
+
+			l_Path.clear();
+
+			m_bPathFound = false;
+
+			break;
+
+		default:
+
+			std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+
+			l_Path.clear();
+
+			m_bPathFound = false; 
+
+			break;
+		}
 	}
 
 	m_FinalPath = l_Path; 
+
+	l_Path.clear(); 
 
 }
 
@@ -400,7 +463,7 @@ bool Pathfinding::m_CheckForCompletion()
 /*! \fn GetCurrentPath : This will be used to access the path outside the class.
 *
 */
-std::vector<Cells*> Pathfinding::m_GetCurrentPath()
+std::deque<Cells*> Pathfinding::m_GetCurrentPath()
 {
 	return m_FinalPath;
 }

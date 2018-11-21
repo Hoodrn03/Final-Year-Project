@@ -41,13 +41,21 @@ private:
 	sf::RectangleShape m_ColonistBody; 
 
 	/*! \var This class will handle the main functionality of finding paths between cells. */
-	Pathfinding m_clPathfinding; 
+// 	Pathfinding m_clPathfinding; 
 
 	/*! \var Will be used to genearte a new path for the colonist,if they have reached the end of their current one. */
 	bool m_bFindNewPath = true; 
 
 	/*! \var This will be the current cell on the grid the colonist is currently inside. */
 	Cells * m_CurrentCell = nullptr; 
+
+	unsigned int pos = 0; 
+
+	sf::Clock m_MovementClock; 
+
+	const float m_fmovementTimer = 0.5f; 
+
+	std::deque<Cells*> m_Path; 
 
 	// Member Functions 
 
@@ -66,6 +74,8 @@ public:
 	*Param Two : Cells - The cell the colonist will start in. 
 	*/
 	void m_CreateColonistBody(sf::Vector2f dimentions, Cells * currentCell);
+
+	void m_UpdateCurrentCell(Cells * newCurrentCell);
 
 	//--------------------------------------------------------
 	/*! \fn Update : This will be used to update the logic for this class. 
@@ -99,11 +109,13 @@ public:
 	*/
 	void m_FollowPath(); 
 
+	void m_CalculateMovementVector(); 
+
 	//--------------------------------------------------------
 	/*! \fn Find New Path : This will initalize a new path for the colonist. 
 	*Param One : Cells - This will be the new end cell for the colonist. 
 	*/
-	void m_FindNewPath(Cells * endCell); 
+	int m_FindNewPath(Cells * endCell); 
 
 	//--------------------------------------------------------
 	/*! \fn Get Find New Path : This will determine if a new path should be generated for the colonist. 

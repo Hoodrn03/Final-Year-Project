@@ -12,3 +12,13 @@
 // Allows for the use of printing to console and other debugging options. 
 #include <iostream> 
 
+#include <deque>
+
+#include <cmath>
+
+#ifndef LOOP_TIMEOUT
+#define LOOP_TIMEOUT 100
+#endif
+
+
+

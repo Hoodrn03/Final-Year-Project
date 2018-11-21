@@ -67,6 +67,8 @@ void Grid::m_CreateGrid(unsigned int rows, unsigned int columns, unsigned int la
 
 				l_CurrentCell.m_SetGridPos(j, k); 
 
+				l_CurrentCell.m_SetLayer(i);
+
 				l_iCurrentId++;
 
 				// Move down on the grid for the next cell.
@@ -266,7 +268,7 @@ void Grid::m_CreateLake(int cellX, int cellY, int layer, int numberOfIterations)
 *Param Two : int - The width in cells the river should be.
 *Param Three : int - The layer the river should be generated on.
 */
-void Grid::m_CreateRiver(std::vector<Cells*> riverPath, int riverWidth, int layer)
+void Grid::m_CreateRiver(std::deque<Cells*> riverPath, int riverWidth, int layer)
 {
 	for (unsigned int i = 0; i < riverPath.size(); i++)
 	{
@@ -547,24 +549,18 @@ Cells * Grid::m_GetRandomDirtCell(int layer)
 /*! \fn ConvertWoldPosToGridPos : This will be used to convert world coordinates in the game window to a tile cell on the grid.
 *Param One : Vector2f - The position in wold space to convert.
 */
-Cells * Grid::m_ConvertWorldPosToGridPos(sf::Vector2f currentPos)
+Cells * Grid::m_ConvertWorldPosToGridPos(sf::Vector2f currentPos, unsigned int layer)
 {
 	Cells * l_ReturnValue;
-
-	for (unsigned int i = 0; i < m_Grid.size(); i++)
+	for (unsigned int j = 0; j < m_Grid[layer].size(); j++)
 	{
-		for (unsigned int j = 0; j < m_Grid[i].size(); j++)
+		for (unsigned int k = 0; k < m_Grid[layer][j].size(); k++)
 		{
-			for (unsigned int k = 0; k < m_Grid[i][j].size(); k++)
+			if (m_Grid[layer][j][k].m_CheckCellBounds(currentPos.x, currentPos.y))
 			{
-				if (m_Grid[i][j][k].m_CheckCellBounds(currentPos.x, currentPos.y))
-				{
-					std::cout << "Found Cell" << std::endl;
+				l_ReturnValue = &m_Grid[layer][j][k];
 
-					l_ReturnValue = &m_Grid[i][j][k];
-
-					return l_ReturnValue;
-				}
+				return l_ReturnValue;
 			}
 		}
 	}
