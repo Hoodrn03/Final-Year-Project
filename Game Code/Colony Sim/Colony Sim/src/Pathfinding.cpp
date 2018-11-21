@@ -90,7 +90,7 @@ void Pathfinding::m_RunAStarAlgorithm()
 				{
 					m_ClosedSet.push_back(m_CurrentCell);
 
-					m_CurrentCell->m_SetCellColour(255, 0, 0);
+					// m_CurrentCell->m_SetCellColour(255, 0, 0); // (Debugging) Used to change all of the closed set tiles red. 
 				}
 
 				// This will add all of the current cells neighbours into the open set assuming they are not already there. 
@@ -112,7 +112,7 @@ void Pathfinding::m_RunAStarAlgorithm()
 					{
 						m_OpenSet.push_back(m_CurrentCell->m_GetNeighbours()[i]);
 
-						m_CurrentCell->m_GetNeighbours()[i]->m_SetCellColour(0, 255, 0);
+						// m_CurrentCell->m_GetNeighbours()[i]->m_SetCellColour(0, 255, 0); // (Debugging) Used to change all tiles in the open set green. 
 
 						if (m_CurrentCell->m_GetNeighbours()[i]->m_ParentCell == nullptr)
 						{
@@ -159,9 +159,138 @@ void Pathfinding::m_RunAStarAlgorithm()
 				m_bPathFound = true;
 
 				// This will add the trace the found path. 
-
 				m_TracePath();
 
+				// These will be used to reset all of the adjusted cells. 
+				for (unsigned int i = 0; i < m_OpenSet.size(); i++)
+				{
+					m_OpenSet[i]->m_ParentCell = nullptr;
+				}
+				for (unsigned int i = 0; i < m_ClosedSet.size(); i++)
+				{
+					m_ClosedSet[i]->m_ParentCell = nullptr;
+				}
+			}
+		}
+		else
+		{
+			// std::cout << "Unble to find path" << std::endl;
+
+			m_bPathFound = true; 
+		}
+	}
+}
+
+//--------------------------------------------------------
+/*! \fn RunAStarAlgorithm : This will be used to continue the algorithm.
+*
+*/
+void Pathfinding::m_RunAStarAlgorithm(std::vector<tileSet> obstructions)
+{
+	if (m_bPathFound == false)
+	{
+		// This will ensure the algorithm continues until the end is found. 
+
+		if (m_OpenSet.size() != 0)
+		{
+
+			if (m_CurrentCell->m_GetCellId() != m_EndCell->m_GetCellId())
+			{
+				// This will add the current cell into the closed set assuming it isn't already there. 
+
+				if (std::find(m_ClosedSet.begin(), m_ClosedSet.end(), m_CurrentCell) != m_ClosedSet.end())
+				{
+
+				}
+				else
+				{
+					m_ClosedSet.push_back(m_CurrentCell);
+
+					m_CurrentCell->m_SetCellColour(255, 0, 0); // (Debugging) Used to change all of the closed set tiles red. 
+				}
+
+				// This will add all of the current cells neighbours into the open set assuming they are not already there. 
+
+				for (unsigned int i = 0; i < m_CurrentCell->m_GetNeighbours().size(); i++)
+				{
+					// If the neighbour is already inside the open set it won't be added to the open set.
+					if (std::find(m_OpenSet.begin(), m_OpenSet.end(), m_CurrentCell->m_GetNeighbours()[i]) != m_OpenSet.end())
+					{
+
+					}
+
+					// If the neighbour is already inside the closed set it won't be added to the open set. 
+					else if (std::find(m_ClosedSet.begin(), m_ClosedSet.end(), m_CurrentCell->m_GetNeighbours()[i]) != m_ClosedSet.end())
+					{
+
+					}
+					else
+					{
+						bool m_bAddCell = true; 
+
+						for (unsigned int j = 0; j < obstructions.size(); j++)
+						{
+							if (m_CurrentCell->m_GetNeighbours()[i]->m_GetTile() == obstructions[j])
+							{
+								m_bAddCell = false; 
+							}
+						}
+
+						if (m_bAddCell == true)
+						{
+							m_OpenSet.push_back(m_CurrentCell->m_GetNeighbours()[i]);
+
+							m_CurrentCell->m_GetNeighbours()[i]->m_SetCellColour(0, 255, 0); // (Debugging) Used to change all tiles in the open set green. 
+
+							if (m_CurrentCell->m_GetNeighbours()[i]->m_ParentCell == nullptr)
+							{
+								m_CurrentCell->m_GetNeighbours()[i]->m_ParentCell = m_CurrentCell;
+							}
+						}
+					}
+				}
+
+				// This will calculate the g, h and f score for all items in the open set. 
+
+				for (unsigned int i = 0; i < m_OpenSet.size(); i++)
+				{
+					int l_TempGScore = m_CalculateGScore(m_StartCell, m_OpenSet[i]);
+
+					if (l_TempGScore <= m_OpenSet[i]->m_iGScore)
+					{
+						m_OpenSet[i]->m_iGScore = l_TempGScore;
+					}
+
+					m_OpenSet[i]->m_iHScore = m_CalculateHScore(m_OpenSet[i], m_EndCell);
+
+					m_OpenSet[i]->m_iFScore = m_CalculateFScore(m_OpenSet[i]);
+				}
+
+				m_CurrentCell = m_OpenSet[0];
+
+				// This will remove the current cell from the open set. 
+
+				m_OpenSet.erase(std::remove(m_OpenSet.begin(), m_OpenSet.end(), m_CurrentCell), m_OpenSet.end());
+
+				// This will choose the next cell to evaluate. 
+
+				for (unsigned int i = 0; i < m_OpenSet.size(); i++)
+				{
+					if (m_OpenSet[i]->m_iFScore < m_CurrentCell->m_iFScore)
+					{
+						m_CurrentCell = m_OpenSet[i];
+					}
+				}
+
+			}
+			else
+			{
+				m_bPathFound = true;
+
+				// This will add the trace the found path. 
+				m_TracePath();
+
+				// These will be used to reset all of the adjusted cells. 
 				for (unsigned int i = 0; i < m_OpenSet.size(); i++)
 				{
 					m_OpenSet[i]->m_ParentCell = nullptr;
@@ -175,8 +304,6 @@ void Pathfinding::m_RunAStarAlgorithm()
 		else
 		{
 			std::cout << "Unble to find path" << std::endl;
-
-			m_bPathFound = true; 
 		}
 	}
 }
@@ -408,10 +535,14 @@ void Pathfinding::m_TracePath()
 
 		l_Path.push_back(l_CurrentPathPoint);
 
+		
+		// This will be uesd to set the colour of the path tiles to blue. (Debugging)
 		for (unsigned int i = 0; i < l_Path.size(); i++)
 		{
 			l_Path[i]->m_SetCellColour(0, 0, 255);
 		}
+		
+
 	}
 	catch (int i)
 	{

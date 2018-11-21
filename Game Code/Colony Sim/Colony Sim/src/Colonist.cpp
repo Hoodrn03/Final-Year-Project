@@ -175,10 +175,6 @@ void Colonist::m_FollowPath()
 	} 
 }
 
-void Colonist::m_CalculateMovementVector()
-{
-}
-
 //--------------------------------------------------------
 /*! \fn Find New Path : This will initalize a new path for the colonist.
 *Param One : Cells - This will be the new end cell for the colonist.
@@ -212,7 +208,7 @@ int Colonist::m_FindNewPath(Cells * endCell)
 					{
 						std::cout << l_numberOfLoop << std::endl;
 
-						l_clPathfinding.m_RunAStarAlgorithm();
+						l_clPathfinding.m_RunAStarAlgorithm(m_Obstructions);
 
 						l_numberOfLoop++;
 

@@ -74,6 +74,12 @@ public:
 	void m_RunAStarAlgorithm();
 
 	//--------------------------------------------------------
+	/*! \fn RunAStarAlgorithm : This will be used to continue the algorithm.
+	*
+	*/
+	void m_RunAStarAlgorithm(std::vector<tileSet> obstructions);
+
+	//--------------------------------------------------------
 	/*! \fn CalcDist : This will be used to find the literal distance between two cells. 
 	*Param One : Cells - The first cell. 
 	*Param Two : Cells - The second cell. 

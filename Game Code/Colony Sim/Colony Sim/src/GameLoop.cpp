@@ -99,8 +99,6 @@ void Gameloop::m_Update()
 					{
 						std::cout << "Error Finding Path" << std::endl;
 					}
-
-					m_clMap.m_GetGrid().m_AssignTextures();
 				}
 
 				m_clColonistList[i].m_Update();

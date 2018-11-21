@@ -57,6 +57,8 @@ private:
 
 	std::deque<Cells*> m_Path; 
 
+	std::vector<tileSet> m_Obstructions = { _ROCK }; 
+
 	// Member Functions 
 
 public:
