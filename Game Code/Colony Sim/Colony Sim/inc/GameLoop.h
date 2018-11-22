@@ -78,6 +78,8 @@ public:
 	*/
 	void m_Update(); 
 
+	void m_UpdatePathfinding(); 
+
 	//--------------------------------------------------------
 	/*! \fn Draw Filter : This will be used to limit what is drawn to only those within the game view. 
 	*

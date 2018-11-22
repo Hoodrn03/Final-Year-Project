@@ -167,8 +167,6 @@ void Colonist::m_FollowPath()
 
 				m_Path.clear();
 
-				std::cout << "Reached End" << std::endl;
-
 				m_bFindNewPath = true;
 			}
 		}
@@ -187,10 +185,7 @@ int Colonist::m_FindNewPath(Cells * endCell)
 
 		if ((endCell != nullptr) && (m_CurrentCell != nullptr))
 		{
-			std::cout << "Findng New Path" << std::endl;
-
-			std::cout << "Between (" << m_CurrentCell->m_GetGridPos().x << ", " << m_CurrentCell->m_GetGridPos().y << ", " << m_CurrentCell->m_GetLayer() <<
-				") and (" <<endCell->m_GetGridPos().x << ", " << endCell->m_GetGridPos().y << ", " << endCell->m_GetLayer() << ")" << std::endl;
+			// std::cout << "Findng New Path" << std::endl;
 
 			m_Path.clear();
 
@@ -206,8 +201,6 @@ int Colonist::m_FindNewPath(Cells * endCell)
 
 					do
 					{
-						std::cout << l_numberOfLoop << std::endl;
-
 						l_clPathfinding.m_RunAStarAlgorithm(m_Obstructions);
 
 						l_numberOfLoop++;
@@ -236,8 +229,6 @@ int Colonist::m_FindNewPath(Cells * endCell)
 					if (m_Path.size() >= 0)
 					{
 						m_bFindNewPath = false;
-
-						std::cout << "Found Path" << std::endl;
 					}
 
 					l_numberOfLoop++;

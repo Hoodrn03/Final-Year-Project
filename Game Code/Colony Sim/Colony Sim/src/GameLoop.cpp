@@ -57,7 +57,10 @@ int Gameloop::m_SetUp()
 		m_clColonistList.push_back(l_clColonist);
 	}
 
-	// Begin game. 
+	// Begin game.  
+
+	// This will create a new thread for the pathfinding within the game. 
+	std::thread first(&Gameloop::m_UpdatePathfinding, this);
 
 	m_Update(); 
 
@@ -73,7 +76,6 @@ void Gameloop::m_Update()
 {
 	while (m_clWindow.m_GetWindow().isOpen())
 	{
-
 		m_CheckFramerate(); 
 
 		m_UpdateDeltaTime(); 
@@ -93,14 +95,6 @@ void Gameloop::m_Update()
 		{
 			for (unsigned int i = 0; i < m_clColonistList.size(); i++)
 			{
-				if (m_clColonistList[i].m_GetFindNewPath() == true)
-				{
-					if (m_clColonistList[i].m_FindNewPath(m_clMap.m_GetGrid().m_GetRandomDirtCell(m_clMap.m_GetGroundLevel())) != 0)
-					{
-						std::cout << "Error Finding Path" << std::endl;
-					}
-				}
-
 				m_clColonistList[i].m_Update();
 
 				m_clColonistList[i].m_UpdateCurrentCell(m_clMap.m_GetGrid().m_ConvertWorldPosToGridPos(m_clColonistList[i].m_GetObjectPos(), m_clMap.m_GetGroundLevel())); 
@@ -111,6 +105,25 @@ void Gameloop::m_Update()
 		m_Render(); 
 	}
 
+}
+
+void Gameloop::m_UpdatePathfinding()
+{
+	while(m_clWindow.m_GetWindow().isOpen())
+	{
+		// This will be used to get a new path for the colonists. 
+
+		for (unsigned int i = 0; i < m_clColonistList.size(); i++)
+		{
+			if (m_clColonistList[i].m_GetFindNewPath() == true)
+			{
+				if (m_clColonistList[i].m_FindNewPath(m_clMap.m_GetGrid().m_GetRandomDirtCell(m_clMap.m_GetGroundLevel())) != 0)
+				{
+					std::cout << "Error Finding Path" << std::endl;
+				}
+			}
+		}
+	}
 }
 
 //--------------------------------------------------------

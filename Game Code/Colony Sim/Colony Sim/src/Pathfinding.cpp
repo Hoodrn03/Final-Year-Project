@@ -43,13 +43,13 @@ void Pathfinding::m_InitAlgorithm(Cells * startCell, Cells * endCell)
 		{
 			m_StartCell = startCell;
 
-			m_StartCell->m_SetCellColour(255, 255, 255);
+			// m_StartCell->m_SetCellColour(255, 255, 255);
 
 			m_CurrentCell = startCell;
 
 			m_EndCell = endCell;
 
-			m_EndCell->m_SetCellColour(255, 255, 255);
+			// m_EndCell->m_SetCellColour(255, 255, 255);
 
 			m_OpenSet.push_back(startCell); 
 		}
@@ -206,7 +206,7 @@ void Pathfinding::m_RunAStarAlgorithm(std::vector<tileSet> obstructions)
 				{
 					m_ClosedSet.push_back(m_CurrentCell);
 
-					m_CurrentCell->m_SetCellColour(255, 0, 0); // (Debugging) Used to change all of the closed set tiles red. 
+					// m_CurrentCell->m_SetCellColour(255, 0, 0); // (Debugging) Used to change all of the closed set tiles red. 
 				}
 
 				// This will add all of the current cells neighbours into the open set assuming they are not already there. 
@@ -240,7 +240,7 @@ void Pathfinding::m_RunAStarAlgorithm(std::vector<tileSet> obstructions)
 						{
 							m_OpenSet.push_back(m_CurrentCell->m_GetNeighbours()[i]);
 
-							m_CurrentCell->m_GetNeighbours()[i]->m_SetCellColour(0, 255, 0); // (Debugging) Used to change all tiles in the open set green. 
+							// m_CurrentCell->m_GetNeighbours()[i]->m_SetCellColour(0, 255, 0); // (Debugging) Used to change all tiles in the open set green. 
 
 							if (m_CurrentCell->m_GetNeighbours()[i]->m_ParentCell == nullptr)
 							{
@@ -535,13 +535,13 @@ void Pathfinding::m_TracePath()
 
 		l_Path.push_back(l_CurrentPathPoint);
 
-		
+		/*
 		// This will be uesd to set the colour of the path tiles to blue. (Debugging)
 		for (unsigned int i = 0; i < l_Path.size(); i++)
 		{
 			l_Path[i]->m_SetCellColour(0, 0, 255);
 		}
-		
+		*/
 
 	}
 	catch (int i)
