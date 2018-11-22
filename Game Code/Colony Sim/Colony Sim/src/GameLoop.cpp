@@ -45,17 +45,8 @@ int Gameloop::m_SetUp()
 	m_clWindow.m_GetWindow().setKeyRepeatEnabled(false);
 
 	m_clWindow.m_GetWindow().setFramerateLimit(60);
-
-	int l_iNumberOfColonists = 1; 
-
-	for (int i = 0; i < l_iNumberOfColonists; i++)
-	{
-		Colonist l_clColonist;
-
-		l_clColonist.m_CreateColonistBody(sf::Vector2f(5, 5), m_clMap.m_GetGrid().m_GetRandomDirtCell(m_clMap.m_GetGroundLevel()));
-
-		m_clColonistList.push_back(l_clColonist);
-	}
+	
+	m_clColonistManager.m_AddColonist(1, sf::Vector2f(5, 5), m_clMap.m_GetGrid(), m_clMap.m_GetGroundLevel());
 
 	// Begin game.  
 
@@ -91,15 +82,7 @@ void Gameloop::m_Update()
 
 		m_clMap.m_Update(); 
 
-		if (m_clColonistList.size() > 0)
-		{
-			for (unsigned int i = 0; i < m_clColonistList.size(); i++)
-			{
-				m_clColonistList[i].m_Update();
-
-				m_clColonistList[i].m_UpdateCurrentCell(m_clMap.m_GetGrid().m_ConvertWorldPosToGridPos(m_clColonistList[i].m_GetObjectPos(), m_clMap.m_GetGroundLevel())); 
-			}
-		}
+		m_clColonistManager.m_Update(m_clMap.m_GetGrid()); 
 
 		// Draw Items. 
 		m_Render(); 
@@ -109,20 +92,13 @@ void Gameloop::m_Update()
 
 void Gameloop::m_UpdatePathfinding()
 {
+	// This will continue to loop while the game window is open. 
+
 	while(m_clWindow.m_GetWindow().isOpen())
 	{
 		// This will be used to get a new path for the colonists. 
 
-		for (unsigned int i = 0; i < m_clColonistList.size(); i++)
-		{
-			if (m_clColonistList[i].m_GetFindNewPath() == true)
-			{
-				if (m_clColonistList[i].m_FindNewPath(m_clMap.m_GetGrid().m_GetRandomDirtCell(m_clMap.m_GetGroundLevel())) != 0)
-				{
-					std::cout << "Error Finding Path" << std::endl;
-				}
-			}
-		}
+		m_clColonistManager.m_Pathfinding(m_clMap.m_GetGrid()); 
 	}
 }
 
@@ -134,13 +110,7 @@ void Gameloop::m_DrawFilter()
 {
 	m_clMap.m_DrawFilter(m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds());
 
-	if (m_clColonistList.size() > 0)
-	{
-		for (unsigned int i = 0; i < m_clColonistList.size(); i++)
-		{
-			m_clColonistList[i].m_DrawFilter(m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds());
-		}
-	}
+	m_clColonistManager.m_DrawFilter(m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds(), m_clMap.m_GetCurrentLevel()); 
 }
 
 //--------------------------------------------------------
@@ -159,13 +129,8 @@ void Gameloop::m_Render()
 
 	m_clMap.m_DrawGameObject(m_clWindow.m_GetWindow()); 
 
-	if (m_clColonistList.size() > 0)
-	{
-		for (unsigned int i = 0; i < m_clColonistList.size(); i++)
-		{
-			m_clColonistList[i].m_DrawGameObject(m_clWindow.m_GetWindow());
-		}
-	}
+	m_clColonistManager.m_Render(m_clWindow.m_GetWindow()); 
+
 	m_clWindow.m_GetWindow().display(); 
 }
 

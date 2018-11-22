@@ -60,7 +60,16 @@ void Pathfinding::m_InitAlgorithm(Cells * startCell, Cells * endCell)
 	}
 	catch (int i)
 	{
-		std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+		switch (i)
+		{
+		case 42:
+			std::cout << "Access nullptr" << std::endl;
+			break;
+
+		default:
+			std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+			break;
+		}
 	}
 
 }
@@ -303,7 +312,7 @@ void Pathfinding::m_RunAStarAlgorithm(std::vector<tileSet> obstructions)
 		}
 		else
 		{
-			std::cout << "Unble to find path" << std::endl;
+			m_bPathFound = false; 
 		}
 	}
 }
@@ -348,8 +357,17 @@ sf::Vector2f Pathfinding::m_CalcDist(Cells * pointOne, Cells * pointTwo)
 	}
 	catch (int i)
 	{
-		std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
-		
+		switch (i)
+		{
+		case 42:
+			std::cout << "Access nullptr" << std::endl;
+			break;
+
+		default:
+			std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+			break;
+		}
+
 		return sf::Vector2f();
 	}
 }
@@ -403,9 +421,19 @@ int Pathfinding::m_CalculateGScore(Cells * startCell, Cells * currentCell)
 	}
 	catch (int i)
 	{
-		std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+		switch (i)
+		{
+		case 42:
+			std::cout << "Access nullptr" << std::endl;
+			break;
 
-		return 0; 
+		default:
+			std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+			break;
+		}
+
+		return 0;
+
 	}
 }
 
@@ -457,9 +485,18 @@ int Pathfinding::m_CalculateHScore(Cells * currentCell, Cells * endCell)
 	}
 	catch (int i)
 	{
-		std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+		switch (i)
+		{
+		case 42:
+			std::cout << "Access nullptr" << std::endl;
+			break;
 
-		return 0;
+		default:
+			std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+			break;
+		}
+
+		return 0; 
 	}
 }
 
@@ -477,8 +514,6 @@ int Pathfinding::m_CalculateFScore(Cells *currentCell)
 
 			l_iCalculatedFScore += currentCell->m_iGScore;
 			l_iCalculatedFScore += currentCell->m_iHScore;
-
-			return l_iCalculatedFScore;
 		}
 		else
 		{
@@ -487,10 +522,19 @@ int Pathfinding::m_CalculateFScore(Cells *currentCell)
 	}
 	catch (int i)
 	{
-		std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+		switch (i)
+		{
+		case 42:
+			std::cout << "Access nullptr" << std::endl;
+			break;
 
-		return 0;
+		default:
+			std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+			break;
+		}
 	}
+
+	return 0;
 }
 
 //--------------------------------------------------------
@@ -513,7 +557,6 @@ void Pathfinding::m_TracePath()
 	{
 		do
 		{
-
 			if (l_CurrentPathPoint != nullptr)
 			{
 				l_numberOfLoop++;
@@ -531,46 +574,41 @@ void Pathfinding::m_TracePath()
 			{
 				throw 42;
 			}
+
 		} while (l_CurrentPathPoint->m_GetCellId() != m_StartCell->m_GetCellId());
 
 		l_Path.push_back(l_CurrentPathPoint);
-
-		/*
-		// This will be uesd to set the colour of the path tiles to blue. (Debugging)
-		for (unsigned int i = 0; i < l_Path.size(); i++)
-		{
-			l_Path[i]->m_SetCellColour(0, 0, 255);
-		}
-		*/
 
 	}
 	catch (int i)
 	{
 		switch (i)
 		{
-		case 0:
-
-			std::cout << "unknown error" << std::endl;
-
+		case 3:
+			// std::cout << "Time Out" << std::endl;
 			l_Path.clear();
+			break;
 
-			m_bPathFound = false;
-
+		case 42:
+			std::cout << "Access nullptr" << std::endl;
+			l_Path.clear();
 			break;
 
 		default:
-
 			std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
-
-			l_Path.clear();
-
-			m_bPathFound = false; 
-
+			l_Path.clear(); 
 			break;
 		}
 	}
 
-	m_FinalPath = l_Path; 
+	if (l_Path.size() > 0)
+	{
+		m_FinalPath = l_Path;
+	}
+	else
+	{
+		m_bPathFound = false; 
+	}
 
 	l_Path.clear(); 
 
@@ -596,5 +634,10 @@ bool Pathfinding::m_CheckForCompletion()
 */
 std::deque<Cells*> Pathfinding::m_GetCurrentPath()
 {
+	if (m_FinalPath.size() <= 0)
+	{
+		m_bPathFound = false; 
+	}
+
 	return m_FinalPath;
 }

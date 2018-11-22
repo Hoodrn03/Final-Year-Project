@@ -49,6 +49,8 @@ private:
 	/*! \var This will be the current cell on the grid the colonist is currently inside. */
 	Cells * m_CurrentCell = nullptr; 
 
+	unsigned int m_iCurrentLayer; 
+
 	unsigned int pos = 0; 
 
 	sf::Clock m_MovementClock; 
@@ -98,6 +100,8 @@ public:
 	*/
 	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight) override;
 
+	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, unsigned int currentLayer);
+
 	//--------------------------------------------------------
 	/*! \fn Set Object Pos : This will be used to update the current position of the game object. 
 	*Param One : float - The new X for the object. 
@@ -105,13 +109,15 @@ public:
 	*/
 	void m_SetObjectPos(float x, float y) override;
 
+	void m_SetCurrentLayer(unsigned int newLayer); 
+
+	int m_GetCurrentLayer(); 
+
 	//--------------------------------------------------------
 	/*! \fn Follow Path : This will be used to move the colonist along the new found path. 
 	*
 	*/
 	void m_FollowPath(); 
-
-	void m_CalculateMovementVector(); 
 
 	//--------------------------------------------------------
 	/*! \fn Find New Path : This will initalize a new path for the colonist. 

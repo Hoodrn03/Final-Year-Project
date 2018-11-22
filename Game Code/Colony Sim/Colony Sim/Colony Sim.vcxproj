@@ -36,6 +36,7 @@
   <ItemGroup>
     <ClInclude Include="inc\Cells.h" />
     <ClInclude Include="inc\Colonist.h" />
+    <ClInclude Include="inc\ColonistManager.h" />
     <ClInclude Include="inc\defs.h" />
     <ClInclude Include="inc\EventHandler.h" />
     <ClInclude Include="inc\GameLoop.h" />
@@ -49,6 +50,7 @@
   <ItemGroup>
     <ClCompile Include="src\Cells.cpp" />
     <ClCompile Include="src\Colonist.cpp" />
+    <ClCompile Include="src\ColonistManager.cpp" />
     <ClCompile Include="src\EventHandler.cpp" />
     <ClCompile Include="src\GameLoop.cpp" />
     <ClCompile Include="src\GameMap.cpp" />

@@ -40,7 +40,7 @@ private:
 	sf::View m_GameView; 
 
 	/*! \var This will determine the amount the view should move at a given time. */
-	const float m_fViewMoveAmount = 2.5f; 
+	const float m_fViewMoveAmount = 5.f; 
 
 	/*! \var This will be the amount the view will be zoomed by at a single time. */
 	const float m_fScrollAmount = 25.f; 

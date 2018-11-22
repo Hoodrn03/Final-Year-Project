@@ -11,7 +11,7 @@
 #include "EventHandler.h"
 
 #include "GameMap.h"
-#include "Colonist.h"
+#include "ColonistManager.h"
 
 /*! \class This will hold the main game loop, it will have three main functions; setup, update and render. */
 class Gameloop
@@ -46,7 +46,7 @@ public:
 
 	// Colonist m_clColonist; 
 
-	std::vector<Colonist> m_clColonistList; 
+	ColonistManager m_clColonistManager; 
 
 	/*! \var This is the games current frame rate. */
 	int m_FrameRate = 0;

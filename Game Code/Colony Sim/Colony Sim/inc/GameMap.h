@@ -95,6 +95,8 @@ public:
 
 	int m_GetGroundLevel(); 
 
+	int m_GetCurrentLevel(); 
+
 	//--------------------------------------------------------
 	/*! \fn DrawGameObject : This will be used to draw all of the items required for the map. 
 	*Param One : RenderWindow : This is the current game window the objects should be drawn onto. 

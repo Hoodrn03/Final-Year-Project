@@ -181,6 +181,11 @@ int Map::m_GetGroundLevel()
 	return m_iGroundLayer;
 }
 
+int Map::m_GetCurrentLevel()
+{
+	return m_iCurrentLayer;
+}
+
 //--------------------------------------------------------
 /*! \fn DrawGameObject : This will be used to draw all of the items required for the map.
 *Param One : RenderWindow : This is the current game window the objects should be drawn onto.

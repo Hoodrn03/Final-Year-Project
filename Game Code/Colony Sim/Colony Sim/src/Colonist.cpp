@@ -58,6 +58,8 @@ void Colonist::m_CreateColonistBody(sf::Vector2f dimentions, Cells * currentCell
 
 			m_SetObjectPos(currentCell->m_GetCellCentre().x, currentCell->m_GetCellCentre().y);
 
+			m_SetCurrentLayer(currentCell->m_GetLayer()); 
+
 			m_CurrentCell = currentCell;
 
 			m_ColonistBody.setFillColor(sf::Color::White);
@@ -87,14 +89,9 @@ void Colonist::m_UpdateCurrentCell(Cells * newCurrentCell)
 */
 void Colonist::m_Update()
 {
-	if (m_bFindNewPath == true)
+	if (m_bFindNewPath != true)
 	{
-	
-
-	}
-	else
-	{
-		m_FollowPath(); 
+		m_FollowPath();
 	}
 }
 
@@ -129,6 +126,26 @@ void Colonist::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight)
 
 }
 
+void Colonist::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, unsigned int currentLayer)
+{
+	if (m_iCurrentLayer == currentLayer)
+	{
+		if (((m_ColonistBody.getPosition().x > topLeft.x) && (m_ColonistBody.getPosition().y > topLeft.y))
+			&& ((m_ColonistBody.getPosition().x < bottomRight.x) && (m_ColonistBody.getPosition().y < bottomRight.y)))
+		{
+			m_DrawItem = _DRAW;
+		}
+		else
+		{
+			m_DrawItem = _NO_DRAW;
+		}
+	}
+	else
+	{
+		m_DrawItem = _NO_DRAW;
+	}
+}
+
 //--------------------------------------------------------
 /*! \fn Set Object Pos : This will be used to update the current position of the game object.
 *Param One : float - The new X for the object.
@@ -139,6 +156,16 @@ void Colonist::m_SetObjectPos(float x, float y)
 	m_GameObjectPos = sf::Vector2f(x, y);
 
 	m_ColonistBody.setPosition(m_GameObjectPos);
+}
+
+void Colonist::m_SetCurrentLayer(unsigned int newLayer)
+{
+	m_iCurrentLayer = newLayer;
+}
+
+int Colonist::m_GetCurrentLayer()
+{
+	return m_iCurrentLayer;
 }
 
 //--------------------------------------------------------
@@ -250,15 +277,19 @@ int Colonist::m_FindNewPath(Cells * endCell)
 	{
 		switch(i)
 		{
-		case 0:
-			std::cout << "unknown error" << std::endl;
+		case 3:
+			// std::cout << "Time Out" << std::endl;
+			return 1;
+			break;
 
+		case 42:
+			std::cout << "Access nullptr" << std::endl;
 			return 1;
 			break;
 
 		default:
 			std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
-			return 1;
+			return 1; 
 			break;
 		}
 	}
