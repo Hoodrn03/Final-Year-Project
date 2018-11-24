@@ -90,6 +90,10 @@ void Gameloop::m_Update()
 
 }
 
+//--------------------------------------------------------
+/*! \fn Update Pathfinding : This will be used to update all of the pathfinding elements in the game.
+*
+*/
 void Gameloop::m_UpdatePathfinding()
 {
 	// This will continue to loop while the game window is open. 
@@ -145,6 +149,8 @@ void Gameloop::m_CheckFramerate()
 	if (m_FrameRateCounter.getElapsedTime().asSeconds() >= 1)
 	{
 		m_FrameRateCounter.restart(); 
+
+		std::cout << m_FrameRate << std::endl;
 
 		m_FrameRate = 0; 
 	}

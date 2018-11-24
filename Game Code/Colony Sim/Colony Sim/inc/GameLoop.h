@@ -44,8 +44,7 @@ public:
 	/*! \var This class will be used to manage the game map. */
 	Map m_clMap; 
 
-	// Colonist m_clColonist; 
-
+	/*! \var This will manage all of the colonists within the game at any given time. */
 	ColonistManager m_clColonistManager; 
 
 	/*! \var This is the games current frame rate. */
@@ -78,6 +77,10 @@ public:
 	*/
 	void m_Update(); 
 
+	//--------------------------------------------------------
+	/*! \fn Update Pathfinding : This will be used to update all of the pathfinding elements in the game. 
+	*
+	*/
 	void m_UpdatePathfinding(); 
 
 	//--------------------------------------------------------

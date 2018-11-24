@@ -215,8 +215,6 @@ int Cells::m_GetCellId()
 {
 	if (this == nullptr)
 	{
-		std::cout << "Cannot Access" << std::endl;
-
 		return -1; 
 	}
 	else

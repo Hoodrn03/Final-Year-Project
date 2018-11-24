@@ -63,7 +63,6 @@ void Pathfinding::m_InitAlgorithm(Cells * startCell, Cells * endCell)
 		switch (i)
 		{
 		case 42:
-			std::cout << "Access nullptr" << std::endl;
 			break;
 
 		default:
@@ -360,7 +359,6 @@ sf::Vector2f Pathfinding::m_CalcDist(Cells * pointOne, Cells * pointTwo)
 		switch (i)
 		{
 		case 42:
-			std::cout << "Access nullptr" << std::endl;
 			break;
 
 		default:
@@ -424,7 +422,6 @@ int Pathfinding::m_CalculateGScore(Cells * startCell, Cells * currentCell)
 		switch (i)
 		{
 		case 42:
-			std::cout << "Access nullptr" << std::endl;
 			break;
 
 		default:
@@ -488,7 +485,6 @@ int Pathfinding::m_CalculateHScore(Cells * currentCell, Cells * endCell)
 		switch (i)
 		{
 		case 42:
-			std::cout << "Access nullptr" << std::endl;
 			break;
 
 		default:
@@ -525,7 +521,6 @@ int Pathfinding::m_CalculateFScore(Cells *currentCell)
 		switch (i)
 		{
 		case 42:
-			std::cout << "Access nullptr" << std::endl;
 			break;
 
 		default:
@@ -590,7 +585,6 @@ void Pathfinding::m_TracePath()
 			break;
 
 		case 42:
-			std::cout << "Access nullptr" << std::endl;
 			l_Path.clear();
 			break;
 

@@ -45,7 +45,7 @@ void Colonist::m_CreateColonistBody(sf::Vector2f dimentions, sf::Vector2f positi
 *Param One : Vector2f - This will be the dimentions for the colonist.
 *Param Two : Cells - The cell the colonist will start in.
 */
-void Colonist::m_CreateColonistBody(sf::Vector2f dimentions, Cells * currentCell)
+int Colonist::m_CreateColonistBody(sf::Vector2f dimentions, Cells * currentCell)
 {
 	try
 	{
@@ -69,12 +69,20 @@ void Colonist::m_CreateColonistBody(sf::Vector2f dimentions, Cells * currentCell
 			throw 42;
 		}
 	}
-	catch (int i)
+	catch (int)
 	{
-		std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+		// If a nullptr is passed into this function it will exit with an error. 
+
+		return 1;
 	}
+
+	return 0; 
 }
 
+//--------------------------------------------------------
+/*! \fn Update Current Cell : This will be used to assign the colonist a new current cell.
+*Param One : Cells - This will be the new value for the current cell.
+*/
 void Colonist::m_UpdateCurrentCell(Cells * newCurrentCell)
 {
 	if (newCurrentCell != nullptr)
@@ -126,6 +134,12 @@ void Colonist::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight)
 
 }
 
+//--------------------------------------------------------
+/*! \fn Draw Filter (Overload) : This will be used to filter this object for draing, used to limit the amount drawn onto the screen at a given time.
+*Param One : Vector2f - The top left corner of the game view.
+*Param Two : Vector2f - The bottom right corner of the game view.
+*Param Three : unsinged int - The current layer the displayed on the game window.
+*/
 void Colonist::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, unsigned int currentLayer)
 {
 	if (m_iCurrentLayer == currentLayer)
@@ -158,11 +172,19 @@ void Colonist::m_SetObjectPos(float x, float y)
 	m_ColonistBody.setPosition(m_GameObjectPos);
 }
 
+//--------------------------------------------------------
+/*! \fn Set Current Layer : This will be used to set the colonist's current layer on the map.
+*Param One : unsigned int - The new layer the colonist is on.
+*/
 void Colonist::m_SetCurrentLayer(unsigned int newLayer)
 {
 	m_iCurrentLayer = newLayer;
 }
 
+//--------------------------------------------------------
+/*! \fn Get Current Layer : THis will return the value for the current layer which the colonist is on.
+*
+*/
 int Colonist::m_GetCurrentLayer()
 {
 	return m_iCurrentLayer;
@@ -180,17 +202,17 @@ void Colonist::m_FollowPath()
 		{
 			m_MovementClock.restart(); 
 
-			if (pos < m_Path.size())
+			if (m_iCurrentMoveTo < m_Path.size())
 			{
-				m_SetObjectPos(m_Path[pos]->m_GetCellCentre().x, m_Path[pos]->m_GetCellCentre().y);
+				m_SetObjectPos(m_Path[m_iCurrentMoveTo]->m_GetCellCentre().x, m_Path[m_iCurrentMoveTo]->m_GetCellCentre().y);
 
-				pos++;
+				m_iCurrentMoveTo++;
 			}
 			else
 			{
 				// Reached the end of the path. 
 
-				pos = 0;
+				m_iCurrentMoveTo = 0;
 
 				m_Path.clear();
 
@@ -278,12 +300,12 @@ int Colonist::m_FindNewPath(Cells * endCell)
 		switch(i)
 		{
 		case 3:
-			// std::cout << "Time Out" << std::endl;
+			// This will timeout the function. 
 			return 1;
 			break;
 
 		case 42:
-			std::cout << "Access nullptr" << std::endl;
+			// If the function attempts to access a nullptr it will exit. 
 			return 1;
 			break;
 

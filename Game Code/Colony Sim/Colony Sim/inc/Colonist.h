@@ -49,17 +49,25 @@ private:
 	/*! \var This will be the current cell on the grid the colonist is currently inside. */
 	Cells * m_CurrentCell = nullptr; 
 
+	/*! \var THis will be used to keep track of which layer the colonist is currently on. */
 	unsigned int m_iCurrentLayer; 
 
-	unsigned int pos = 0; 
+	/*! \var This will be used to update the colonist's current position along their path. */
+	unsigned int m_iCurrentMoveTo = 0; 
 
+	/*! \var This will be used to limit when the colonist will move in the game. */
 	sf::Clock m_MovementClock; 
 
+	/*! \var The time (in seconds) when the colonist will move. */
 	const float m_fmovementTimer = 0.5f; 
 
+	/*! \var THis is a list of cells the pathfinding algorithm will have returned. It will allow for the colonist to move. */
 	std::deque<Cells*> m_Path; 
 
-	std::vector<tileSet> m_Obstructions = { _ROCK }; 
+	/*! \var This is a list of tiles which will act as obsticales for the colonist. 
+	*			This will prevent the colonist from generating a path through these cells.
+	*/
+	std::vector<tileSet> m_Obstructions = { _ROCK, _SKY }; 
 
 	// Member Functions 
 
@@ -77,8 +85,12 @@ public:
 	*Param One : Vector2f - This will be the dimentions for the colonist.
 	*Param Two : Cells - The cell the colonist will start in. 
 	*/
-	void m_CreateColonistBody(sf::Vector2f dimentions, Cells * currentCell);
+	int m_CreateColonistBody(sf::Vector2f dimentions, Cells * currentCell);
 
+	//--------------------------------------------------------
+	/*! \fn Update Current Cell : This will be used to assign the colonist a new current cell.
+	*Param One : Cells - This will be the new value for the current cell. 
+	*/
 	void m_UpdateCurrentCell(Cells * newCurrentCell);
 
 	//--------------------------------------------------------
@@ -100,6 +112,12 @@ public:
 	*/
 	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight) override;
 
+	//--------------------------------------------------------
+	/*! \fn Draw Filter (Overload) : This will be used to filter this object for draing, used to limit the amount drawn onto the screen at a given time.
+	*Param One : Vector2f - The top left corner of the game view.
+	*Param Two : Vector2f - The bottom right corner of the game view.
+	*Param Three : unsinged int - The current layer the displayed on the game window. 
+	*/
 	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, unsigned int currentLayer);
 
 	//--------------------------------------------------------
@@ -109,8 +127,16 @@ public:
 	*/
 	void m_SetObjectPos(float x, float y) override;
 
+	//--------------------------------------------------------
+	/*! \fn Set Current Layer : This will be used to set the colonist's current layer on the map. 
+	*Param One : unsigned int - The new layer the colonist is on. 
+	*/
 	void m_SetCurrentLayer(unsigned int newLayer); 
 
+	//--------------------------------------------------------
+	/*! \fn Get Current Layer : THis will return the value for the current layer which the colonist is on. 
+	*
+	*/
 	int m_GetCurrentLayer(); 
 
 	//--------------------------------------------------------

@@ -79,7 +79,7 @@ private:
 	int m_Layer = 0; 
 
 	/*! \var This will be the default colour codes for water. */
-	const sf::Color m_WaterColour = sf::Color(0, 191, 255, 255);
+	const sf::Color m_WaterColour = sf::Color(37, 109, 123, 255);
 
 	/*! \var This will be the default colour codes for rock. */
 	const sf::Color m_RockColour = sf::Color(90, 77, 65, 255);
