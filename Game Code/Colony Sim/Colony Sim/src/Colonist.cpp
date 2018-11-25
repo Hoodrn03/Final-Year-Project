@@ -111,6 +111,11 @@ void Colonist::m_DrawGameObject(sf::RenderWindow & window)
 {
 	if (m_DrawItem == _DRAW)
 	{
+		if (m_PathLine.getVertexCount() > 0)
+		{
+			window.draw(m_PathLine); 
+		}
+
 		window.draw(m_ColonistBody);
 	}
 }
@@ -206,6 +211,8 @@ void Colonist::m_FollowPath()
 			{
 				m_SetObjectPos(m_Path[m_iCurrentMoveTo]->m_GetCellCentre().x, m_Path[m_iCurrentMoveTo]->m_GetCellCentre().y);
 
+				m_CreatePathLine(m_iCurrentMoveTo);
+
 				m_iCurrentMoveTo++;
 			}
 			else
@@ -215,6 +222,8 @@ void Colonist::m_FollowPath()
 				m_iCurrentMoveTo = 0;
 
 				m_Path.clear();
+
+				m_PathLine.clear(); 
 
 				m_bFindNewPath = true;
 			}
@@ -326,4 +335,16 @@ int Colonist::m_FindNewPath(Cells * endCell)
 bool Colonist::m_GetFindNewPath()
 {
 	return m_bFindNewPath;
+}
+
+void Colonist::m_CreatePathLine(int currentPos)
+{
+	m_PathLine.clear(); 
+
+	m_PathLine.setPrimitiveType(sf::LineStrip); 
+
+	for (unsigned int i = currentPos; i < m_Path.size(); i++)
+	{
+		m_PathLine.append(m_Path[i]->m_GetCellCentre()); 
+	}
 }

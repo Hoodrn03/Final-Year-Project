@@ -64,6 +64,8 @@ private:
 	/*! \var THis is a list of cells the pathfinding algorithm will have returned. It will allow for the colonist to move. */
 	std::deque<Cells*> m_Path; 
 
+	sf::VertexArray m_PathLine; 
+
 	/*! \var This is a list of tiles which will act as obsticales for the colonist. 
 	*			This will prevent the colonist from generating a path through these cells.
 	*/
@@ -156,4 +158,6 @@ public:
 	*
 	*/
 	bool m_GetFindNewPath(); 
+
+	void m_CreatePathLine(int currentPos); 
 };
