@@ -14,18 +14,18 @@
 /*! \enum This will be used to set the cells tile */
 enum tileSet
 {
-	_DIRT = 0x2000, /*!< This will make the tile Dirt. */
-	_WATER = 0x3000, /*!< This will make the tile Water. */
-	_ROCK = 0x4000, /*!< This will make the tile Rock. */
-	_SKY,			/*!< This will make the tile Sky. */
-	_NO_VALUE		/*!< Base value, this means it has not yet been assigned.  */
+	_DIRT = 0x2000,		/*!< This will make the tile Dirt. */
+	_WATER = 0x3000,	/*!< This will make the tile Water. */
+	_ROCK = 0x4000,		/*!< This will make the tile Rock. */
+	_SKY = 0x5000,		/*!< This will make the tile Sky. */
+	_NO_VALUE			/*!< Base value, this means it has not yet been assigned.  */
 };
 
 /*! \enum This will be used to easily distinguish between the different huristic costs for the game. */
 enum huristicCost
 {
-	_DIAGONAL = 14,
-	_ACROSS = 10
+	_DIAGONAL = 14,		/*!< The cost of moving diagonally in A*. */
+	_ACROSS = 10		/*!< The cost of moving horizontally in A*. */
 };
 
 /*! \struct This will allow for the cell to be given a theoretical position in the grid. */

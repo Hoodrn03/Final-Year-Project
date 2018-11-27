@@ -13,6 +13,11 @@
 #include "Pathfinding.h"
 #include "Cells.h"
 
+enum job
+{
+	_IDLE = 0x235 /*< This will be the default job for each colonist. */
+};
+
 /*! \class This class will hold the functionality for a single colonist within the game. */
 class Colonist : public GameObject
 {
@@ -40,9 +45,6 @@ private:
 	/*! \var This will be the colonist's main body within the game. */
 	sf::RectangleShape m_ColonistBody; 
 
-	/*! \var This class will handle the main functionality of finding paths between cells. */
-// 	Pathfinding m_clPathfinding; 
-
 	/*! \var Will be used to genearte a new path for the colonist,if they have reached the end of their current one. */
 	bool m_bFindNewPath = true; 
 
@@ -64,12 +66,16 @@ private:
 	/*! \var THis is a list of cells the pathfinding algorithm will have returned. It will allow for the colonist to move. */
 	std::deque<Cells*> m_Path; 
 
+	/*! \var A line displaying the path the colonist is moving along. */
 	sf::VertexArray m_PathLine; 
 
 	/*! \var This is a list of tiles which will act as obsticales for the colonist. 
 	*			This will prevent the colonist from generating a path through these cells.
 	*/
 	std::vector<tileSet> m_Obstructions = { _ROCK, _SKY }; 
+
+	/*! \var THe current job the colonist is performing. */
+	job m_CurrentJob = _IDLE; 
 
 	// Member Functions 
 
@@ -100,6 +106,12 @@ public:
 	*
 	*/
 	void m_Update() override; 
+
+	//--------------------------------------------------------
+	/*! \fn Idle Job : A job for the colonist without them actually doing anything. 
+	*
+	*/
+	void m_IdleJob(); 
 
 	//--------------------------------------------------------
 	/*! \fn Draw Game Object : This will be used to render the colonist. 
@@ -136,10 +148,16 @@ public:
 	void m_SetCurrentLayer(unsigned int newLayer); 
 
 	//--------------------------------------------------------
-	/*! \fn Get Current Layer : THis will return the value for the current layer which the colonist is on. 
+	/*! \fn Get Current Layer : This will return the value for the current layer which the colonist is on. 
 	*
 	*/
 	int m_GetCurrentLayer(); 
+
+	//--------------------------------------------------------
+	/*! \fn Get Current Job : Will be used to get the value of the current job the colonist is performing. 
+	*
+	*/
+	job m_GetCurrentJob(); 
 
 	//--------------------------------------------------------
 	/*! \fn Follow Path : This will be used to move the colonist along the new found path. 
@@ -159,5 +177,9 @@ public:
 	*/
 	bool m_GetFindNewPath(); 
 
+	//--------------------------------------------------------
+	/*! \fn Create Path Line : This will create a line from the colonist's current position to the end point. 
+	*Param One : int - The current position in the movement vector for the colonist. 
+	*/
 	void m_CreatePathLine(int currentPos); 
 };

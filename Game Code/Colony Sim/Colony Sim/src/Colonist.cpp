@@ -97,10 +97,35 @@ void Colonist::m_UpdateCurrentCell(Cells * newCurrentCell)
 */
 void Colonist::m_Update()
 {
+	// At the beginning of the frame the colonist's current pasition will be updated. 
 	if (m_bFindNewPath != true)
 	{
 		m_FollowPath();
 	}
+
+	// This will be used to allow for the colonists to interact with items based on their current job. 
+	switch (m_CurrentJob)
+	{
+
+	case _IDLE:
+		
+		// If the colonist has no other job this is the base job. 
+		m_IdleJob(); 
+
+		break; 
+
+	default:
+		break;
+	}
+}
+
+//--------------------------------------------------------
+/*! \fn Idle Job : A job for the colonist without them actually doing anything.
+*
+*/
+void Colonist::m_IdleJob()
+{
+	// todo - When recreational objects are added add functionality to interact with them here. 
 }
 
 //--------------------------------------------------------
@@ -193,6 +218,11 @@ void Colonist::m_SetCurrentLayer(unsigned int newLayer)
 int Colonist::m_GetCurrentLayer()
 {
 	return m_iCurrentLayer;
+}
+
+job Colonist::m_GetCurrentJob()
+{
+	return m_CurrentJob;
 }
 
 //--------------------------------------------------------
@@ -337,6 +367,10 @@ bool Colonist::m_GetFindNewPath()
 	return m_bFindNewPath;
 }
 
+//--------------------------------------------------------
+/*! \fn Create Path Line : This will create a line from the colonist's current position to the end point.
+*Param One : int - The current position in the movement vector for the colonist.
+*/
 void Colonist::m_CreatePathLine(int currentPos)
 {
 	m_PathLine.clear(); 

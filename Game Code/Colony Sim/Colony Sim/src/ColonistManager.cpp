@@ -78,7 +78,10 @@ void ColonistManager::m_Pathfinding(Grid & CurrentGrid)
 		{
 			if (m_clColonists[i].m_GetFindNewPath() == true)
 			{
-				m_clColonists[i].m_FindNewPath(CurrentGrid.m_GetRandomDirtCell(m_clColonists[i].m_GetCurrentLayer())); 
+				if (m_clColonists[i].m_GetCurrentJob() == _IDLE)
+				{
+					m_clColonists[i].m_FindNewPath(CurrentGrid.m_GetRandomDirtCell(m_clColonists[i].m_GetCurrentLayer()));
+				}
 			}
 		}
 	}
