@@ -46,6 +46,7 @@
     <ClInclude Include="inc\Pathfinding.h" />
     <ClInclude Include="inc\RandGen.h" />
     <ClInclude Include="inc\Window.h" />
+    <ClInclude Include="inc\WoodResource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Cells.cpp" />
@@ -60,6 +61,7 @@
     <ClCompile Include="src\Pathfinding.cpp" />
     <ClCompile Include="src\RandGen.cpp" />
     <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="src\WoodResource.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9DBC7B04-F677-4B76-B9DB-7E696866C2B7}</ProjectGuid>
