@@ -9,8 +9,11 @@
 
 #include "defs.h"
 
+#include "GameObject.h"
+#include "RandGen.h"
+
 /*! \class This will be used to create a single tree in the game world. */
-class WoodResource
+class WoodResource : public GameObject, protected RandGen
 {
 
 public:
@@ -33,17 +36,72 @@ public:
 
 private:
 
+	/*! \var This will be the main tree object which will be displayed. */
+	sf::CircleShape m_TreeObject; 
+
+	/*! \var This is the smallest possible radius for the tree. */
+	float m_fSmallestRadius; 
+
+	/*! \var This is the largest possible radius for the tree. */
+	float m_fLargestRadius; 
+
+	/*! \var This will be the current layer the tree is on. */
+	int m_iCurrentLayer; 
+
+	/*! \var This is the current growth for the tree. */
+	float m_fCurrentGrowth; 
+
+	/*! \var The preveous radius for the tree. */
+	float m_fPreveousRadius; 
+
+	/*! \var A timer to limit the amount of growth for the tree. */
+	sf::Clock m_GrowthTimer; 
+
 	// Member Functions 
 
 public:
 
-	// Todo Create Tree object.
+	//--------------------------------------------------------
+	/*! \fn Create Tree : This will create a single tree for the game. 
+	*Param One : float - The maximum radius for the tree. 
+	*Param Two : vector2f - The position for the tree in the game world.
+	*Param Three : int - The layer the tree will be placed on. 
+	*/
+	void m_CreateTree(float radius, sf::Vector2f position, int layer);
 
-	// Todo Place Tree object.
+	//--------------------------------------------------------
+	/*! \fn Update : This will be used to update the current tree. 
+	*
+	*/
+	void m_Update() override;
 
-	// Todo Draw Tree object.
+	//--------------------------------------------------------
+	/*! \fn DrawGameObject : This will allow for the connected class to draw the object onto the game window.
+	*Param One : RenderWindow - The current game window.  
+	*/
+	void m_DrawGameObject(sf::RenderWindow & window) override;
 
-	// Todo Update Tree object. 
+	//--------------------------------------------------------
+	/*! \fn DrawFilter : This will be used to choose if the connected object should be drawn onto the game window.
+	*Param One : Vector2f - The top left of the game view, limiting the items drawn.
+	*Param Two : Vector2f - The bottom right of the game view, limiting the items drawn.
+	*/
+	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight) override;
+
+	//--------------------------------------------------------
+	/*! \fn DrawFilter (Overload) : This will be used to choose if the connected object should be drawn onto the game window.
+	*Param One : Vector2f - The top left of the game view, limiting the items drawn.
+	*Param Two : Vector2f - The bottom right of the game view, limiting the items drawn.
+	*Param Three : int - The current layer for the tree, limits the draw to a single layer. 
+	*/
+	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, int currentLayer);
+
+	//--------------------------------------------------------
+	/*! \fn SetObjectPos : This will allow for the connected object to set the possition for the object.
+	*Param One : float - The X position for the game object. 
+	*Param Two : float - The Y position for the game object. 
+	*/
+	void m_SetObjectPos(float x, float y) override;
 
 
 };
