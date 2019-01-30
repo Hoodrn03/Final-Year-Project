@@ -31,7 +31,7 @@ enum huristicCost
 /*! \struct This will allow for the cell to be given a theoretical position in the grid. */
 struct gridPos
 {
-	float x, y; 
+	float x, y; /*!< The x and y coordinates for this cell object. */
 };
 
 /*! \class Cells when grouped up form a grid, each cell will represent a single point within a grid. */
@@ -70,12 +70,13 @@ private:
 	/*! \var Determines which tile the cell will be displayed as. */
 	tileSet m_CurrentTile = _NO_VALUE; 
 
-	/*! \var A list of all the cells around this one Max 8, Min 3*/
+	/*! \var A list of all the cells around this one Max 8, Min 3. */
 	std::vector<Cells*> m_Neighbours; 
 
 	/*! \var This is the cells position within a grid, holds X and Y values.*/
 	gridPos m_GridPosition; 
 
+	/*! \var The current layer for this cell object. */
 	int m_Layer = 0; 
 
 	/*! \var This will be the default colour codes for water. */
@@ -165,8 +166,16 @@ public:
 	*/
 	gridPos m_GetGridPos(); 
 
+	//--------------------------------------------------------
+	/*! \fn SetLayer : This will allow for the layer of the cell to be set. 
+	*
+	*/
 	void m_SetLayer(int layer); 
 
+	//--------------------------------------------------------
+	/*! \fn Get Layer : Will return the value for the layer the cell is currently on. 
+	*
+	*/
 	int m_GetLayer();
 
 

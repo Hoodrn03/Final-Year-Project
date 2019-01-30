@@ -62,6 +62,8 @@ public:
 	/*! \var This timer will be used to update the current delta time. */
 	sf::Clock m_DeltaTimer; 
 
+	std::thread l_First; 
+
 private:
 
 	// Member Functions

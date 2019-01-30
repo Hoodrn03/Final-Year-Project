@@ -101,11 +101,19 @@ gridPos Cells::m_GetGridPos()
 	return m_GridPosition;
 }
 
+//--------------------------------------------------------
+/*! \fn SetLayer : This will allow for the layer of the cell to be set.
+*
+*/
 void Cells::m_SetLayer(int layer)
 {
 	m_Layer = layer; 
 }
 
+//--------------------------------------------------------
+/*! \fn Get Layer : Will return the value for the layer the cell is currently on.
+*
+*/
 int Cells::m_GetLayer()
 {
 	return m_Layer;

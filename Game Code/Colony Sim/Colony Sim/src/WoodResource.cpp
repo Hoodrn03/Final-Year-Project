@@ -155,3 +155,14 @@ void WoodResource::m_SetObjectPos(float x, float y)
 
 	m_TreeObject.setPosition(x, y);
 }
+
+//--------------------------------------------------------
+/*! \fn SetTreeCutDown : This will assign this tree to be cut down.
+*
+*/
+void WoodResource::m_SetTreeCutDown()
+{
+	m_bCutDownTree = true; 
+	
+	m_TreeObject.setFillColor(sf::Color::Blue); 
+}

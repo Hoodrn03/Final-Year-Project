@@ -57,7 +57,7 @@ int Gameloop::m_SetUp()
 	// Begin game.  
 
 	// This will create a new thread for the pathfinding within the game. 
-	std::thread first(&Gameloop::m_UpdatePathfinding, this);
+	l_First = std::thread(&Gameloop::m_UpdatePathfinding, this);
 
 	// Start Game Loop. 
 	m_Update(); 
@@ -74,12 +74,21 @@ void Gameloop::m_Update()
 {
 	while (m_clWindow.m_GetWindow().isOpen())
 	{
+		// Update additional logic at the beginning of the frame. 
+
 		m_CheckFramerate(); 
 
 		m_UpdateDeltaTime(); 
 
 		// Handle Events. 
-		m_clEventHandler.m_CheckForEvents(m_clWindow.m_GetWindow()); 
+		m_clEventHandler.m_CheckForEvents(m_clWindow.m_GetWindow());
+
+		if (!m_clWindow.m_GetWindow().isOpen())
+		{
+			// Check the state of the game window and join all threads if needed. 
+
+			l_First.join(); 
+		}
 
 		// Update the game window.
 		m_clWindow.m_CheckForViewMove(m_clEventHandler.m_CheckViewUpValue(), m_clEventHandler.m_CheckViewDownValue(), m_clEventHandler.m_CheckViewLeftValue(), m_clEventHandler.m_CheckViewRightValue()); 
@@ -99,7 +108,7 @@ void Gameloop::m_Update()
 
 		// Draw Items. 
 		m_Render(); 
-	}
+	} 
 
 }
 
@@ -172,7 +181,7 @@ void Gameloop::m_CheckFramerate()
 	{
 		m_FrameRateCounter.restart(); 
 
-		std::cout << m_FrameRate << std::endl;
+		std::cout << "Frame Rate : " << m_FrameRate << std::endl;
 
 		m_FrameRate = 0; 
 	}

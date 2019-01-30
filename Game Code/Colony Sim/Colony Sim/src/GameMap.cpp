@@ -176,11 +176,19 @@ void Map::m_CreateRiverForMap()
 	m_clGrid.m_CreateRiver(l_clPathfinding.m_GetCurrentPath(), m_GenerateInt(2, 5), m_iGroundLayer);
 }
 
+//--------------------------------------------------------
+/*! \fn GetGroundLevel : This will return the middle level for the map (The ground levl).
+*
+*/
 int Map::m_GetGroundLevel()
 {
 	return m_iGroundLayer;
 }
 
+//--------------------------------------------------------
+/*! \fn GetCurrentLevel : This will be used to check which level to the player is currently on within the map.
+*
+*/
 int Map::m_GetCurrentLevel()
 {
 	return m_iCurrentLayer;
@@ -267,6 +275,10 @@ void Map::m_DescreaseLayer()
 	}
 }
 
+//--------------------------------------------------------
+/*! \fn GetGrid : This will allow for external access to the grid of cells.
+*
+*/
 Grid & Map::m_GetGrid()
 {
 	return m_clGrid; 

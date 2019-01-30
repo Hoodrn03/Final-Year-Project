@@ -1,4 +1,4 @@
-/*! \file Grid.h
+/*! \file WoodResource.h
 *
 * This will be used to create and manage the deployment and maintainment of resources within the game world,
 * it will control a single tree on the map. 
@@ -54,6 +54,9 @@ private:
 	/*! \var The preveous radius for the tree. */
 	float m_fPreveousRadius; 
 
+	/*! \var Used to check if the tree needs to be cut down. */
+	bool m_bCutDownTree = false; 
+
 	/*! \var A timer to limit the amount of growth for the tree. */
 	sf::Clock m_GrowthTimer; 
 
@@ -103,5 +106,10 @@ public:
 	*/
 	void m_SetObjectPos(float x, float y) override;
 
+	//--------------------------------------------------------
+	/*! \fn SetTreeCutDown : This will assign this tree to be cut down. 
+	*
+	*/
+	void m_SetTreeCutDown(); 
 
 };

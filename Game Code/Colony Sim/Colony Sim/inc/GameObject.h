@@ -36,6 +36,10 @@ protected:
 
 public: 
 
+	//--------------------------------------------------------
+	/*! \fn Update This will be used to update this game object. 
+	*
+	*/
 	virtual void m_Update() = 0; 
 
 	//--------------------------------------------------------

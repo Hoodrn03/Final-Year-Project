@@ -13,6 +13,7 @@
 #include "Pathfinding.h"
 #include "Cells.h"
 
+/*! \enum This will hold the name for the job the colonist currently has. */
 enum job
 {
 	_IDLE = 0x235 /*< This will be the default job for each colonist. */
@@ -74,7 +75,7 @@ private:
 	*/
 	std::vector<tileSet> m_Obstructions = { _ROCK, _SKY }; 
 
-	/*! \var THe current job the colonist is performing. */
+	/*! \var The current job the colonist is performing. */
 	job m_CurrentJob = _IDLE; 
 
 	// Member Functions 

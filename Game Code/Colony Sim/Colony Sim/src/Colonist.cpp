@@ -220,6 +220,10 @@ int Colonist::m_GetCurrentLayer()
 	return m_iCurrentLayer;
 }
 
+//--------------------------------------------------------
+/*! \fn Get Current Job : Will be used to get the value of the current job the colonist is performing.
+*
+*/
 job Colonist::m_GetCurrentJob()
 {
 	return m_CurrentJob;

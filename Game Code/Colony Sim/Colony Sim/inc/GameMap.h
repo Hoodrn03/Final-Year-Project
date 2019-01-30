@@ -9,11 +9,8 @@
 
 #include "defs.h"
 
-// Components 
 #include "GameObject.h"
 #include "RandGen.h"
-
-// Associates 
 #include "Grid.h"
 #include "Pathfinding.h"
 
@@ -93,8 +90,16 @@ public:
 	*/
 	void m_CreateRiverForMap(); 
 
+	//--------------------------------------------------------
+	/*! \fn GetGroundLevel : This will return the middle level for the map (The ground levl). 
+	*
+	*/
 	int m_GetGroundLevel(); 
 
+	//--------------------------------------------------------
+	/*! \fn GetCurrentLevel : This will be used to check which level to the player is currently on within the map. 
+	*
+	*/
 	int m_GetCurrentLevel(); 
 
 	//--------------------------------------------------------
@@ -135,5 +140,9 @@ public:
 	*/
 	void m_DescreaseLayer(); 
 
+	//--------------------------------------------------------
+	/*! \fn GetGrid : This will allow for external access to the grid of cells. 
+	*
+	*/
 	Grid &m_GetGrid(); 
 };
