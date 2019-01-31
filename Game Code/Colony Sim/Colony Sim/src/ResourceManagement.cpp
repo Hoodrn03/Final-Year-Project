@@ -33,10 +33,10 @@ void ResourceManagement::m_AddTrees(int numberOfTrees, float maxRadius, int laye
 
 		l_TempTree.m_CreateTree(maxRadius, grid.m_GetRandomDirtCell(layer)->m_GetCellCentre(), layer); 
 
-		m_Trees.push_back(l_TempTree);
+		v_Trees.push_back(l_TempTree);
 	}
 
-	m_Trees.at(0).m_SetTreeCutDown(); 
+	v_Trees.at(0).m_SetTreeCutDown(); 
 }
 
 //--------------------------------------------------------
@@ -45,11 +45,11 @@ void ResourceManagement::m_AddTrees(int numberOfTrees, float maxRadius, int laye
 */
 void ResourceManagement::m_DrawTrees(sf::RenderWindow & window)
 {
-	if (m_Trees.size() > 0)
+	if (v_Trees.size() > 0)
 	{
-		for (unsigned int i = 0; i < m_Trees.size(); i++)
+		for (unsigned int i = 0; i < v_Trees.size(); i++)
 		{
-			m_Trees[i].m_DrawGameObject(window); 
+			v_Trees[i].m_DrawGameObject(window); 
 		}
 	}
 }
@@ -61,11 +61,11 @@ void ResourceManagement::m_DrawTrees(sf::RenderWindow & window)
 */
 void ResourceManagement::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight)
 {
-	if (m_Trees.size() > 0)
+	if (v_Trees.size() > 0)
 	{
-		for (unsigned int i = 0; i < m_Trees.size(); i++)
+		for (unsigned int i = 0; i < v_Trees.size(); i++)
 		{
-			m_Trees[i].m_DrawFilter(topLeft, bottomRight); 
+			v_Trees[i].m_DrawFilter(topLeft, bottomRight); 
 		}
 	}
 }
@@ -78,11 +78,11 @@ void ResourceManagement::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomR
 */
 void ResourceManagement::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, int currentLayer)
 {
-	if (m_Trees.size() > 0)
+	if (v_Trees.size() > 0)
 	{
-		for (unsigned int i = 0; i < m_Trees.size(); i++)
+		for (unsigned int i = 0; i < v_Trees.size(); i++)
 		{
-			m_Trees[i].m_DrawFilter(topLeft, bottomRight, currentLayer);
+			v_Trees[i].m_DrawFilter(topLeft, bottomRight, currentLayer);
 		}
 	}
 }
@@ -93,13 +93,76 @@ void ResourceManagement::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomR
 */
 void ResourceManagement::m_Update()
 {
-	if (m_Trees.size() > 0)
+	if (v_Trees.size() > 0)
 	{
-		for (unsigned int i = 0; i < m_Trees.size(); i++)
+		for (unsigned int i = 0; i < v_Trees.size(); i++)
 		{
-			m_Trees[i].m_Update();
+			v_Trees[i].m_Update();
 		}
 	}
+}
+
+void ResourceManagement::m_CutTreeAction(currentAction newAction)
+{
+	m_CurretAction = newAction; 
+}
+
+void ResourceManagement::m_SelectResources(sf::Vector2f m_TopLeft, sf::Vector2f bottomRight)
+{
+	switch (m_CurretAction)
+	{
+
+		// Cut Down Selected Trees. 
+	case _CUT_TREES:
+
+		if (v_Trees.size() > 0)
+		{
+			for (unsigned int i = 0; i < v_Trees.size(); i++)
+			{
+				// Check each configuration of the selection box. 
+
+				if ((v_Trees[i].m_GetObjectPos().x > m_TopLeft.x && v_Trees[i].m_GetObjectPos().x < bottomRight.x) &&
+					(v_Trees[i].m_GetObjectPos().y > m_TopLeft.y && v_Trees[i].m_GetObjectPos().y < bottomRight.y))
+				{
+					v_Trees[i].m_SetTreeCutDown(); 
+				}
+
+				if ((v_Trees[i].m_GetObjectPos().x < m_TopLeft.x && v_Trees[i].m_GetObjectPos().x > bottomRight.x) &&
+					(v_Trees[i].m_GetObjectPos().y < m_TopLeft.y && v_Trees[i].m_GetObjectPos().y > bottomRight.y))
+				{
+					v_Trees[i].m_SetTreeCutDown();
+				}
+			}
+		}
+
+		break;
+
+		// Cancel All commands in selected area. 
+	default:
+
+		if (v_Trees.size() > 0)
+		{
+			for (unsigned int i = 0; i < v_Trees.size(); i++)
+			{
+				// Check each configuration of the selection box. 
+
+				if ((v_Trees[i].m_GetObjectPos().x > m_TopLeft.x && v_Trees[i].m_GetObjectPos().x < bottomRight.x) &&
+					(v_Trees[i].m_GetObjectPos().y > m_TopLeft.y && v_Trees[i].m_GetObjectPos().y < bottomRight.y))
+				{
+					v_Trees[i].m_CancelTreeCutDown();
+				}
+
+				if ((v_Trees[i].m_GetObjectPos().x < m_TopLeft.x && v_Trees[i].m_GetObjectPos().x > bottomRight.x) &&
+					(v_Trees[i].m_GetObjectPos().y < m_TopLeft.y && v_Trees[i].m_GetObjectPos().y > bottomRight.y))
+				{
+					v_Trees[i].m_CancelTreeCutDown();
+				}
+			}
+		}
+
+		break;
+	}
+
 }
 
 

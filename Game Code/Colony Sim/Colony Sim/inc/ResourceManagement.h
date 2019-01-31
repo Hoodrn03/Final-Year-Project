@@ -32,7 +32,9 @@ public:
 private: 
 
 	/*! \var This will hold all of the growing tree objects in the game. */
-	std::vector<WoodResource> m_Trees; 
+	std::vector<WoodResource> v_Trees; 
+
+	currentAction m_CurretAction = _NULL; 
 
 	// Member Functions 
 
@@ -74,4 +76,7 @@ public:
 	*/
 	void m_Update(); 
 
+	void m_CutTreeAction(currentAction newAction); 
+
+	void m_SelectResources(sf::Vector2f m_TopLeft, sf::Vector2f bottomRight);
 };

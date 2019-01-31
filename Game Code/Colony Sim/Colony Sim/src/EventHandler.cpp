@@ -32,12 +32,17 @@ void EventHandler::m_CheckForEvents(sf::RenderWindow & window)
 	{
 		window.setKeyRepeatEnabled(false); 
 
-		// Event : Check for window close. 
 		if (m_Event.type == sf::Event::Closed)
 		{
-			std::cout << "Window Closed" << std::endl;
-
 			window.close(); 
+		}
+
+		if (m_Event.type == sf::Event::KeyPressed)
+		{
+			if (m_Event.key.code == sf::Keyboard::Escape)
+			{
+				window.close();
+			}
 		}
 
 		m_CheckForViewMoveKeys(); 
@@ -45,6 +50,8 @@ void EventHandler::m_CheckForEvents(sf::RenderWindow & window)
 		m_CheckForLayerChange(); 
 
 		m_CheckForMouseWheel();
+
+		m_CheckForShortcutKeys(); 
 	}
 }
 
@@ -91,6 +98,28 @@ void EventHandler::m_CheckForViewMoveKeys()
 		else if (m_Event.key.code == m_ViewRight)
 		{
 			m_bMoveViewRight = false;
+		}
+	}
+}
+
+void EventHandler::m_CheckForShortcutKeys()
+{
+
+	if (m_Event.type == sf::Event::KeyPressed)
+	{
+		if (m_Event.key.code == m_CutTreesShortcut)
+		{
+			m_CurrentAction = _CUT_TREES;
+
+			std::cout << "Cut Trees" << std::endl;
+		}
+	}
+
+	else if (m_Event.type == sf::Event::KeyReleased)
+	{
+		if (m_Event.key.code == m_CancelCommand)
+		{
+			m_CurrentAction = _NULL;
 		}
 	}
 }
@@ -194,4 +223,9 @@ void EventHandler::m_CheckForLayerChange()
 int & EventHandler::m_CurrentLayerChangeValue()
 {
 	return m_iLayerMoveValue;
+}
+
+currentAction EventHandler::m_GetCurrentAction()
+{
+	return m_CurrentAction;
 }

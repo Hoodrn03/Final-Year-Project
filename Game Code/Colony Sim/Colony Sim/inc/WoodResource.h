@@ -112,4 +112,6 @@ public:
 	*/
 	void m_SetTreeCutDown(); 
 
+	void m_CancelTreeCutDown(); 
+
 };

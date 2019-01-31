@@ -34,6 +34,10 @@ private:
 	/*! \var This will hold the current position of the mouse in the game window. */
 	sf::Vector2f m_MousePos;
 
+	sf::RectangleShape m_SelectionBox; 
+
+	bool m_bMouseFirstDown = false; 
+
 	// Member Functions
 
 public:
@@ -49,5 +53,13 @@ public:
 	*
 	*/
 	sf::Vector2f m_GetMousePos(); 
+
+	void m_CreateSelectionBox(); 
+
+	void m_DrawSelectionBox(sf::RenderWindow &window); 
+
+	sf::Vector2f m_GetTopLeftSelectionBox();
+
+	sf::Vector2f m_GetBottomRightSelectionBox(); 
 
 };

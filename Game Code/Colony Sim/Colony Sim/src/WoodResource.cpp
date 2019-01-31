@@ -166,3 +166,10 @@ void WoodResource::m_SetTreeCutDown()
 	
 	m_TreeObject.setFillColor(sf::Color::Blue); 
 }
+
+void WoodResource::m_CancelTreeCutDown()
+{
+	m_bCutDownTree = false;
+
+	m_TreeObject.setFillColor(sf::Color::Green);
+}

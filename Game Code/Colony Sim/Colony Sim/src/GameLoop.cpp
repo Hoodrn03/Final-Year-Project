@@ -80,6 +80,11 @@ void Gameloop::m_Update()
 
 		m_UpdateDeltaTime(); 
 
+		// Update Mouse. 
+		m_clMouse.m_SetMousePos(m_clWindow.m_GetWindow());
+
+		m_clMouse.m_CreateSelectionBox();
+
 		// Handle Events. 
 		m_clEventHandler.m_CheckForEvents(m_clWindow.m_GetWindow());
 
@@ -102,6 +107,10 @@ void Gameloop::m_Update()
 
 		// Update the game resources. 
 		m_clResourceManagement.m_Update(); 
+
+		m_clResourceManagement.m_CutTreeAction(m_clEventHandler.m_GetCurrentAction());
+
+		m_clResourceManagement.m_SelectResources(m_clMouse.m_GetTopLeftSelectionBox(), m_clMouse.m_GetBottomRightSelectionBox()); 
 
 		// Update colonists. 
 		m_clColonistManager.m_Update(m_clMap.m_GetGrid()); 
@@ -164,6 +173,10 @@ void Gameloop::m_Render()
 
 	// Draw the colonists at the top.
 	m_clColonistManager.m_Render(m_clWindow.m_GetWindow()); 
+
+	// Draw UI above the other game elements. 
+
+	m_clMouse.m_DrawSelectionBox(m_clWindow.m_GetWindow()); 
 
 	// Display new objects. 
 	m_clWindow.m_GetWindow().display(); 

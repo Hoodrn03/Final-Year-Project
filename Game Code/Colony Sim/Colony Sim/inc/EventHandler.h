@@ -8,6 +8,8 @@
 
 #include "defs.h"
 
+
+
 /*! \class This will be used to handle all of the events within the game. */
 class EventHandler
 {
@@ -54,6 +56,10 @@ private:
 	/*! \var Key to change the layer down. */
 	sf::Keyboard::Key m_LayerDown = sf::Keyboard::PageDown; 
 
+	sf::Keyboard::Key m_CutTreesShortcut = sf::Keyboard::Num1; 
+
+	sf::Keyboard::Key m_CancelCommand = sf::Keyboard::C; 
+
 	/*! \var Which movement key was pressed for the view to move. */
 	int m_iViewMoveValue = 0; 
 
@@ -71,6 +77,8 @@ private:
 
 	/*! \var This will be used to move the view up if the appropriate key is pressed. */
 	bool m_bMoveViewRight;
+
+	currentAction m_CurrentAction; 
 
 	/*! \var This will be the current state of the mouse wheel. */
 	int m_iMouseWheelState = 0; 
@@ -90,6 +98,8 @@ public:
 	*
 	*/
 	void m_CheckForViewMoveKeys(); 
+
+	void m_CheckForShortcutKeys(); 
 
 	//--------------------------------------------------------
 	/*! \fn Check View Up Value : This will be used to check if the up key was pressed. 
@@ -138,4 +148,6 @@ public:
 	*
 	*/
 	int & m_CurrentLayerChangeValue(); 
+
+	currentAction m_GetCurrentAction(); 
 };

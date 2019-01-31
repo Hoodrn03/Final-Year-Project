@@ -25,3 +25,9 @@
 #define LOOP_TIMEOUT 100
 #endif
 
+enum currentAction
+{
+	_NULL = 901,
+	_CUT_TREES = 903
+};
+

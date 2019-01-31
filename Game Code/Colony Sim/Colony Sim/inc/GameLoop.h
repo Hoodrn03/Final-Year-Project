@@ -13,6 +13,7 @@
 #include "GameMap.h"
 #include "ColonistManager.h"
 #include "ResourceManagement.h"
+#include "Mouse.h"
 
 /*! \class This will hold the main game loop, it will have three main functions; setup, update and render. */
 class Gameloop
@@ -49,6 +50,8 @@ public:
 	ColonistManager m_clColonistManager; 
 
 	ResourceManagement m_clResourceManagement; 
+
+	Mouse m_clMouse; 
 
 	/*! \var This is the games current frame rate. */
 	int m_FrameRate = 0;
