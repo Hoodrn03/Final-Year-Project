@@ -115,6 +115,8 @@ void Gameloop::m_Update()
 		// Update colonists. 
 		m_clColonistManager.m_Update(m_clMap.m_GetGrid()); 
 
+		m_clColonistManager.m_SelectColonist(m_clMouse.m_GetTopLeftSelectionBox(), m_clMouse.m_GetBottomRightSelectionBox(), sf::Mouse::isButtonPressed(sf::Mouse::Left)); 
+
 		// Draw Items. 
 		m_Render(); 
 	} 

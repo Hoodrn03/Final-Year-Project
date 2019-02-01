@@ -38,6 +38,12 @@ void Colonist::m_CreateColonistBody(sf::Vector2f dimentions, sf::Vector2f positi
 
 	m_ColonistBody.setFillColor(sf::Color::White); 
 
+	m_SelectedCircle.setRadius(dimentions.x); 
+
+	m_SelectedCircle.setFillColor(sf::Color::Blue);
+
+
+
 }
 
 //--------------------------------------------------------
@@ -63,6 +69,10 @@ int Colonist::m_CreateColonistBody(sf::Vector2f dimentions, Cells * currentCell)
 			m_CurrentCell = currentCell;
 
 			m_ColonistBody.setFillColor(sf::Color::White);
+
+			m_SelectedCircle.setRadius(dimentions.x);
+
+			m_SelectedCircle.setFillColor(sf::Color::Blue);
 		}
 		else
 		{
@@ -136,9 +146,14 @@ void Colonist::m_DrawGameObject(sf::RenderWindow & window)
 {
 	if (m_DrawItem == _DRAW)
 	{
+		if (m_bSelected)
+		{
+			window.draw(m_SelectedCircle);
+		}
+
 		if (m_PathLine.getVertexCount() > 0)
 		{
-			window.draw(m_PathLine); 
+			window.draw(m_PathLine);
 		}
 
 		window.draw(m_ColonistBody);
@@ -200,6 +215,8 @@ void Colonist::m_SetObjectPos(float x, float y)
 	m_GameObjectPos = sf::Vector2f(x, y);
 
 	m_ColonistBody.setPosition(m_GameObjectPos);
+
+	m_SelectedCircle.setPosition(m_GameObjectPos - m_ColonistBody.getSize()); 
 }
 
 //--------------------------------------------------------
@@ -384,5 +401,17 @@ void Colonist::m_CreatePathLine(int currentPos)
 	for (unsigned int i = currentPos; i < m_Path.size(); i++)
 	{
 		m_PathLine.append(m_Path[i]->m_GetCellCentre()); 
+	}
+}
+
+void Colonist::m_SelectColonist(bool selected)
+{
+	if (selected)
+	{
+		m_bSelected = true; 
+	}
+	else
+	{
+		m_bSelected = false;
 	}
 }

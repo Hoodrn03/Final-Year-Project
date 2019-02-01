@@ -39,7 +39,7 @@ void ColonistManager::m_AddColonist(int numberOfColonists, sf::Vector2f dimentio
 
 		if(l_clColonist.m_CreateColonistBody(sf::Vector2f(5, 5), currentGrid.m_GetRandomDirtCell(startingLayer)) == 0)
 		{
-			m_clColonists.push_back(l_clColonist);
+			v_clColonists.push_back(l_clColonist);
 		}
 		else 
 		{
@@ -54,13 +54,13 @@ void ColonistManager::m_AddColonist(int numberOfColonists, sf::Vector2f dimentio
 */
 void ColonistManager::m_Update(Grid & CurrentGrid)
 {
-	if (m_clColonists.size() > 0)
+	if (v_clColonists.size() > 0)
 	{
-		for (unsigned int i = 0; i < m_clColonists.size(); i++)
+		for (unsigned int i = 0; i < v_clColonists.size(); i++)
 		{
-			m_clColonists[i].m_Update(); 
+			v_clColonists[i].m_Update(); 
 
-			m_clColonists[i].m_UpdateCurrentCell(CurrentGrid.m_ConvertWorldPosToGridPos(m_clColonists[i].m_GetObjectPos(), m_clColonists[i].m_GetCurrentLayer()));
+			v_clColonists[i].m_UpdateCurrentCell(CurrentGrid.m_ConvertWorldPosToGridPos(v_clColonists[i].m_GetObjectPos(), v_clColonists[i].m_GetCurrentLayer()));
 		}
 	}
 
@@ -72,15 +72,15 @@ void ColonistManager::m_Update(Grid & CurrentGrid)
 */
 void ColonistManager::m_Pathfinding(Grid & CurrentGrid)
 {
-	if (m_clColonists.size() > 0)
+	if (v_clColonists.size() > 0)
 	{
-		for (unsigned int i = 0; i < m_clColonists.size(); i++)
+		for (unsigned int i = 0; i < v_clColonists.size(); i++)
 		{
-			if (m_clColonists[i].m_GetFindNewPath() == true)
+			if (v_clColonists[i].m_GetFindNewPath() == true)
 			{
-				if (m_clColonists[i].m_GetCurrentJob() == _IDLE)
+				if (v_clColonists[i].m_GetCurrentJob() == _IDLE)
 				{
-					m_clColonists[i].m_FindNewPath(CurrentGrid.m_GetRandomDirtCell(m_clColonists[i].m_GetCurrentLayer()));
+					v_clColonists[i].m_FindNewPath(CurrentGrid.m_GetRandomDirtCell(v_clColonists[i].m_GetCurrentLayer()));
 				}
 			}
 		}
@@ -93,11 +93,11 @@ void ColonistManager::m_Pathfinding(Grid & CurrentGrid)
 */
 void ColonistManager::m_Render(sf::RenderWindow & window)
 {
-	if (m_clColonists.size() > 0)
+	if (v_clColonists.size() > 0)
 	{
-		for (unsigned int i = 0; i < m_clColonists.size(); i++)
+		for (unsigned int i = 0; i < v_clColonists.size(); i++)
 		{
-			m_clColonists[i].m_DrawGameObject(window); 
+			v_clColonists[i].m_DrawGameObject(window);
 		}
 	}
 }
@@ -109,11 +109,11 @@ void ColonistManager::m_Render(sf::RenderWindow & window)
 */
 void ColonistManager::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight)
 {
-	if (m_clColonists.size() > 0)
+	if (v_clColonists.size() > 0)
 	{
-		for (unsigned int i = 0; i < m_clColonists.size(); i++)
+		for (unsigned int i = 0; i < v_clColonists.size(); i++)
 		{
-			m_clColonists[i].m_DrawFilter(topLeft, bottomRight); 
+			v_clColonists[i].m_DrawFilter(topLeft, bottomRight);
 		}
 	}
 }
@@ -126,11 +126,40 @@ void ColonistManager::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRigh
 */
 void ColonistManager::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, unsigned int currentLayer)
 {
-	if (m_clColonists.size() > 0)
+	if (v_clColonists.size() > 0)
 	{
-		for (unsigned int i = 0; i < m_clColonists.size(); i++)
+		for (unsigned int i = 0; i < v_clColonists.size(); i++)
 		{
-			m_clColonists[i].m_DrawFilter(topLeft, bottomRight, currentLayer);
+			v_clColonists[i].m_DrawFilter(topLeft, bottomRight, currentLayer);
+		}
+	}
+}
+
+void ColonistManager::m_SelectColonist(sf::Vector2f topLeft, sf::Vector2f bottomRight, bool mouseDown)
+{
+	if (v_clColonists.size() > 0)
+	{
+		for (unsigned int i = 0; i < v_clColonists.size(); i++)
+		{
+			if (mouseDown)
+			{
+				if ((v_clColonists[i].m_GetObjectPos().x > topLeft.x && v_clColonists[i].m_GetObjectPos().x < bottomRight.x) &&
+					(v_clColonists[i].m_GetObjectPos().y > topLeft.y && v_clColonists[i].m_GetObjectPos().y < bottomRight.y))
+				{
+					v_clColonists[i].m_SelectColonist(true);
+				}
+
+				else if ((v_clColonists[i].m_GetObjectPos().x < topLeft.x && v_clColonists[i].m_GetObjectPos().x > bottomRight.x) &&
+					(v_clColonists[i].m_GetObjectPos().y < topLeft.y && v_clColonists[i].m_GetObjectPos().y > bottomRight.y))
+				{
+					v_clColonists[i].m_SelectColonist(true);
+				}
+
+				else
+				{
+					v_clColonists[i].m_SelectColonist(false);
+				}
+			}
 		}
 	}
 }

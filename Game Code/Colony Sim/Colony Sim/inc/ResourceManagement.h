@@ -32,7 +32,7 @@ public:
 private: 
 
 	/*! \var This will hold all of the growing tree objects in the game. */
-	std::vector<WoodResource> v_Trees; 
+	std::vector<WoodResource> v_clColonists; 
 
 	currentAction m_CurretAction = _NULL; 
 

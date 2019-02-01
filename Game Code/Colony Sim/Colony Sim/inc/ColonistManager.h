@@ -38,7 +38,7 @@ public:
 private:
 
 	/*! \var This will hold all of the colonists currently in the game. */
-	std::vector<Colonist> m_clColonists; 
+	std::vector<Colonist> v_clColonists; 
 
 	// Member Functions 
 
@@ -85,4 +85,6 @@ public:
 	*Param Three : unsinged int : The current layer the window is displaying. 
 	*/
 	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, unsigned int currentLayer);
+
+	void m_SelectColonist(sf::Vector2f topLeft, sf::Vector2f bottomRight, bool mouseDown); 
 };

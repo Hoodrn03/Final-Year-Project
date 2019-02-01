@@ -16,7 +16,8 @@
 /*! \enum This will hold the name for the job the colonist currently has. */
 enum job
 {
-	_IDLE = 0x235 /*< This will be the default job for each colonist. */
+	_IDLE = 0x235, /*< This will be the default job for each colonist. */
+	_CUT_TREE = 236 /*< This will enable the colonist to cut trees in the game world. */
 };
 
 /*! \class This class will hold the functionality for a single colonist within the game. */
@@ -45,6 +46,8 @@ private:
 
 	/*! \var This will be the colonist's main body within the game. */
 	sf::RectangleShape m_ColonistBody; 
+
+	sf::CircleShape m_SelectedCircle; 
 
 	/*! \var Will be used to genearte a new path for the colonist,if they have reached the end of their current one. */
 	bool m_bFindNewPath = true; 
@@ -78,9 +81,15 @@ private:
 	/*! \var The current job the colonist is performing. */
 	job m_CurrentJob = _IDLE; 
 
+	bool m_bSelected = false; 
+
 	// Member Functions 
 
 public:
+
+	//--------------------------------------------------------\\
+	//							Setup 
+	//--------------------------------------------------------\\
 
 	//--------------------------------------------------------
 	/*! \fn Create Colonist Body : This will be used to initalize the rectangle shape dor what will become the colonist. 
@@ -96,6 +105,10 @@ public:
 	*/
 	int m_CreateColonistBody(sf::Vector2f dimentions, Cells * currentCell);
 
+	//--------------------------------------------------------\\
+	//							Update 
+	//--------------------------------------------------------\\
+
 	//--------------------------------------------------------
 	/*! \fn Update Current Cell : This will be used to assign the colonist a new current cell.
 	*Param One : Cells - This will be the new value for the current cell. 
@@ -108,11 +121,27 @@ public:
 	*/
 	void m_Update() override; 
 
+	//--------------------------------------------------------\\
+	//						Job System
+	//--------------------------------------------------------\\
+
 	//--------------------------------------------------------
 	/*! \fn Idle Job : A job for the colonist without them actually doing anything. 
 	*
 	*/
 	void m_IdleJob(); 
+
+	void m_CutTrees(); 
+
+	//--------------------------------------------------------
+	/*! \fn Get Current Job : Will be used to get the value of the current job the colonist is performing.
+	*
+	*/
+	job m_GetCurrentJob();
+
+	//--------------------------------------------------------\\
+	//						Rendering
+	//--------------------------------------------------------\\
 
 	//--------------------------------------------------------
 	/*! \fn Draw Game Object : This will be used to render the colonist. 
@@ -135,6 +164,10 @@ public:
 	*/
 	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, unsigned int currentLayer);
 
+	//--------------------------------------------------------\\
+	//						Positioning
+	//--------------------------------------------------------\\
+
 	//--------------------------------------------------------
 	/*! \fn Set Object Pos : This will be used to update the current position of the game object. 
 	*Param One : float - The new X for the object. 
@@ -154,11 +187,9 @@ public:
 	*/
 	int m_GetCurrentLayer(); 
 
-	//--------------------------------------------------------
-	/*! \fn Get Current Job : Will be used to get the value of the current job the colonist is performing. 
-	*
-	*/
-	job m_GetCurrentJob(); 
+	//--------------------------------------------------------\\
+	//						Pathfinding
+	//--------------------------------------------------------\\
 
 	//--------------------------------------------------------
 	/*! \fn Follow Path : This will be used to move the colonist along the new found path. 
@@ -183,4 +214,10 @@ public:
 	*Param One : int - The current position in the movement vector for the colonist. 
 	*/
 	void m_CreatePathLine(int currentPos); 
+
+	//--------------------------------------------------------\\
+	//						Selecting
+	//--------------------------------------------------------\\
+
+	void m_SelectColonist(bool selected); 
 };
