@@ -9,6 +9,7 @@
 
 #include "Window.h"
 #include "EventHandler.h"
+#include "UserInterface.h"
 
 #include "GameMap.h"
 #include "ColonistManager.h"
@@ -42,6 +43,8 @@ public:
 
 	/*! \var This Class will handle all of the events within the game. */
 	EventHandler m_clEventHandler; 
+
+	UserInterface m_clUserInterface; 
 
 	/*! \var This class will be used to manage the game map. */
 	Map m_clMap; 

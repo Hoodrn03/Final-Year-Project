@@ -22,6 +22,11 @@ EventHandler::~EventHandler()
 {
 }
 
+sf::Event EventHandler::m_GetEvent()
+{
+	return m_Event;
+}
+
 //--------------------------------------------------------
 /*! \fn CheckForEvents : This will be used to process any events which happened during this loop.
 *Param One : RenderWindow - This will be the current game window.

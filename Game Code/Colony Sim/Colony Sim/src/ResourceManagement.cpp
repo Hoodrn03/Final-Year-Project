@@ -36,7 +36,6 @@ void ResourceManagement::m_AddTrees(int numberOfTrees, float maxRadius, int laye
 		v_clTrees.push_back(l_TempTree);
 	}
 
-	v_clTrees.at(0).m_SetTreeCutDown(); 
 }
 
 //--------------------------------------------------------

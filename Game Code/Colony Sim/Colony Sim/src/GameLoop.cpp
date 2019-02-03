@@ -40,6 +40,8 @@ int Gameloop::m_SetUp()
 		return 1;
 	}
 
+	// m_clUserInterface.m_InitGui(); 
+
 	// Create game map. 
 	m_clMap.m_SetUpGameMap(sf::Vector2f(800, 800), sf::Vector2f(0, 0)); 
 
@@ -87,6 +89,8 @@ void Gameloop::m_Update()
 
 		// Handle Events. 
 		m_clEventHandler.m_CheckForEvents(m_clWindow.m_GetWindow());
+
+		// m_clUserInterface.m_HandleEvents(m_clEventHandler.m_GetEvent());
 
 		if (!m_clWindow.m_GetWindow().isOpen())
 		{
@@ -179,6 +183,8 @@ void Gameloop::m_Render()
 	// Draw UI above the other game elements. 
 
 	m_clMouse.m_DrawSelectionBox(m_clWindow.m_GetWindow()); 
+
+	// m_clUserInterface.m_DrawGui(m_clWindow.m_GetWindow()); 
 
 	// Display new objects. 
 	m_clWindow.m_GetWindow().display(); 

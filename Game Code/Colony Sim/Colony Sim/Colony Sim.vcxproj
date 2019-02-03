@@ -47,6 +47,7 @@
     <ClInclude Include="inc\Pathfinding.h" />
     <ClInclude Include="inc\RandGen.h" />
     <ClInclude Include="inc\ResourceManagement.h" />
+    <ClInclude Include="inc\UserInterface.h" />
     <ClInclude Include="inc\Window.h" />
     <ClInclude Include="inc\WoodResource.h" />
   </ItemGroup>
@@ -64,6 +65,7 @@
     <ClCompile Include="src\Pathfinding.cpp" />
     <ClCompile Include="src\RandGen.cpp" />
     <ClCompile Include="src\ResourceManagement.cpp" />
+    <ClCompile Include="src\UserInterface.cpp" />
     <ClCompile Include="src\Window.cpp" />
     <ClCompile Include="src\WoodResource.cpp" />
   </ItemGroup>
@@ -151,7 +153,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>lib;$(SolutionDir)/../External Libraries/TGUI/lib;$(SolutionDir)/../External Libraries/SFML/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-audio-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-audio-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-window-d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -166,7 +168,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>lib;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\lib;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\inc;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-audio-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-audio-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-window-d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
