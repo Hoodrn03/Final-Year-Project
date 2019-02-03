@@ -17,7 +17,7 @@
 enum job
 {
 	_IDLE = 0x235, /*< This will be the default job for each colonist. */
-	_CUT_TREE = 236 /*< This will enable the colonist to cut trees in the game world. */
+	_LOGGING = 236 /*< This will enable the colonist to cut trees in the game world. */
 };
 
 /*! \class This class will hold the functionality for a single colonist within the game. */

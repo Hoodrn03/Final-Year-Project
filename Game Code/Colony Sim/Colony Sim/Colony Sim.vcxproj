@@ -121,13 +121,16 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>inc;$(IncludePath)</IncludePath>
+    <LibraryPath>lib;$(LibraryPath)</LibraryPath>
+    <SourcePath>src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\lib;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>inc;$(IncludePath)</IncludePath>
+    <LibraryPath>lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\bin</OutDir>
-    <SourcePath>lib;$(SourcePath)</SourcePath>
+    <SourcePath>src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -142,13 +145,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)/../External Libraries/TGUI/include;$(SolutionDir)/../External Libraries/SFML/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>inc;$(SolutionDir)/../External Libraries/TGUI/include;$(SolutionDir)/../External Libraries/SFML/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)/../External Libraries/TGUI/lib;$(SolutionDir)/../External Libraries/SFML/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-main-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-network-d.lib;tgui-d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>lib;$(SolutionDir)/../External Libraries/TGUI/lib;$(SolutionDir)/../External Libraries/SFML/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-audio-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -157,12 +160,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\lib;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\inc;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>inc;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\lib;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\inc;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\lib;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\inc;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>lib;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\lib;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\inc;C:\Users\Ryan\Documents\GitHub\Final-Year-Project\Game Code\Colony Sim\Colony Sim\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-audio-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
