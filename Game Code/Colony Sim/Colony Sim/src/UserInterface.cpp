@@ -10,7 +10,7 @@ UserInterface::~UserInterface()
 {
 }
 
-/*
+
 
 void UserInterface::m_InitGui()
 {
@@ -29,4 +29,3 @@ void UserInterface::m_DrawGui(sf::RenderWindow & window)
 	m_Gui.Display(window); 
 }
 
-*/

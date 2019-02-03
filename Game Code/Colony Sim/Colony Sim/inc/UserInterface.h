@@ -16,7 +16,7 @@ private:
 
 	// Data Members 
 
-	/*
+	
 
 	sfg::SFGUI m_Gui; 
 
@@ -24,7 +24,7 @@ private:
 
 	sfg::Window::Ptr m_Window; 
 
-	*/
+	
 
 public:
 
