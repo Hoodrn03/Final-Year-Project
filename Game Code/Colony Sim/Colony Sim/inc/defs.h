@@ -9,10 +9,14 @@
 // Allows access to sfmls window functions. 
 #include <SFML/Graphics.hpp>
 
+// Allows for the creation and use of Gui elements works with SFML. 
 #include <TGUI/TGUI.hpp>
 
 // Allows for the use of printing to console and other debugging options. 
 #include <iostream> 
+
+// Allows for pairs of data to be linked within a map data type. 
+#include <map>
 
 // Allows for the use of deques, a storage vector which allows for manipulating elements from both the front and back. 
 #include <deque>

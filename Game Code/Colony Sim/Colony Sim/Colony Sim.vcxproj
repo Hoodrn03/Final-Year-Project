@@ -37,6 +37,7 @@
     <ClInclude Include="inc\ColonistManager.h" />
     <ClInclude Include="inc\defs.h" />
     <ClInclude Include="inc\EventHandler.h" />
+    <ClInclude Include="inc\FontManager.h" />
     <ClInclude Include="inc\GameLoop.h" />
     <ClInclude Include="inc\GameMap.h" />
     <ClInclude Include="inc\GameObject.h" />
@@ -54,6 +55,7 @@
     <ClCompile Include="src\Colonist.cpp" />
     <ClCompile Include="src\ColonistManager.cpp" />
     <ClCompile Include="src\EventHandler.cpp" />
+    <ClCompile Include="src\FontManager.cpp" />
     <ClCompile Include="src\GameLoop.cpp" />
     <ClCompile Include="src\GameMap.cpp" />
     <ClCompile Include="src\GameObject.cpp" />

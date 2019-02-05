@@ -12,6 +12,7 @@
 */
 Gameloop::Gameloop()
 {
+
 }
 
 //--------------------------------------------------------
@@ -20,10 +21,12 @@ Gameloop::Gameloop()
 */
 Gameloop::~Gameloop()
 {
+
 }
 
+
 //--------------------------------------------------------
-/*! \fn SetUp : This will be used at startup to initalize any data for the game. 
+/*! \fn SetUp : This will be used at startup to initalize any data for the game.
 *
 */
 int Gameloop::m_SetUp()
@@ -31,28 +34,135 @@ int Gameloop::m_SetUp()
 
 	// Generate a new seed for the program. 
 
-	std::srand((unsigned int)time(0)); 
+	std::srand((unsigned int)time(0));
 
-	// Setup game items. 
+	// Setup Game window 
 
 	if (m_clWindow.m_InitWindow(800, 800, "Colony Sim") != 0)
 	{
 		return 1;
 	}
 
-	// Create game map. 
-	m_clMap.m_SetUpGameMap(sf::Vector2f(800, 800), sf::Vector2f(0, 0)); 
-
 	// Setup window variables. 
 	m_clWindow.m_GetWindow().setKeyRepeatEnabled(false);
 
 	m_clWindow.m_GetWindow().setFramerateLimit(60);
-	
+
+	// Init Gui
+	m_clUserInterface.m_InitGui(m_clWindow.m_GetWindow());
+
+	m_MainMenu(); 
+
+	return 0;
+
+}
+
+tgui::Button::Ptr Gameloop::m_CreateExitButton()
+{
+	tgui::Button::Ptr  l_ExitButton = tgui::Button::create();
+
+	l_ExitButton->setSize(100, 50);
+	l_ExitButton->setPosition(100, 100);
+	l_ExitButton->setInheritedFont(m_clFontManager.m_GetFrontFromMap("arial"));
+	l_ExitButton->setText("Exit");
+
+	// Use a lambda function to add a small operation to the button when it is pressed. 
+	l_ExitButton->connect("Pressed", [&]() {m_clWindow.m_GetWindow().close();  });
+
+	return l_ExitButton;
+}
+
+tgui::Button::Ptr Gameloop::m_CreateBeginButton()
+{
+	tgui::Button::Ptr  l_BeginButton = tgui::Button::create();
+
+	l_BeginButton->setSize(100, 50);
+	l_BeginButton->setPosition(100, 200);
+	l_BeginButton->setInheritedFont(m_clFontManager.m_GetFrontFromMap("arial"));
+	l_BeginButton->setText("Begin");
+
+	// Use a lambda function to add a small operation to the button when it is pressed. 
+	l_BeginButton->connect("Pressed", [&]() {m_BeginGame();  });
+
+	return l_BeginButton;
+}
+
+
+int Gameloop::m_MainMenu()
+{
+	// Init pregame logic. 
+
+	m_clUserInterface.m_ClearAllWidgets(); 
+
+	// Add buttons into the UI. 
+
+	m_clUserInterface.m_AddWidget(m_CreateExitButton()); 
+
+	m_clUserInterface.m_AddWidget(m_CreateBeginButton()); 
+
+	// Start Game Loop. 
+
+	while (m_clWindow.m_GetWindow().isOpen())
+	{
+		// Update additional logic at the beginning of the frame. 
+
+		m_CheckFramerate();
+
+		m_UpdateDeltaTime();
+
+		// Handle Events. 
+		m_clEventHandler.m_CheckForEvents(m_clWindow.m_GetWindow());
+
+		m_clUserInterface.m_HandleEvents(m_clEventHandler.m_GetEvent());
+
+		// Draw items at the end of the frame. 
+		m_RenderMainMenu(); 
+	}
+
+	return 0; 
+}
+
+void Gameloop::m_StartGame()
+{
+	// todo Begin main game. 
+}
+
+void Gameloop::m_RenderMainMenu()
+{
+	// Clear old objects.  
+	m_clWindow.m_GetWindow().clear();
+
+	// Todo: Add items to draw. 
+
+	// Draw Gui elements. 
+
+	m_clUserInterface.m_DrawGui();
+
+	// Display new objects. 
+	m_clWindow.m_GetWindow().display();
+}
+
+void Gameloop::m_BeginGame()
+{
+
+	// Empty user interface ojects. 
+
+	m_clUserInterface.m_ClearAllWidgets();
+
+	// Cleanup before the game begins. 
+
+	m_clWindow.m_GetWindow().clear();
+
+	// Init game elements. 
+
+	// Create game map. 
+	m_clMap.m_SetUpGameMap(sf::Vector2f(800, 800), sf::Vector2f(0, 0));
+
 	// Add colonists. 
 	m_clColonistManager.m_AddColonist(1, sf::Vector2f(5, 5), m_clMap.m_GetGrid(), m_clMap.m_GetGroundLevel());
 
 	// Add resources. 
-	m_clResourceManagement.m_AddTrees(30, 10.f, m_clMap.m_GetGroundLevel(), m_clMap.m_GetGrid()); 
+	m_clResourceManagement.m_AddTrees(30, 10.f, m_clMap.m_GetGroundLevel(), m_clMap.m_GetGrid());
 
 	// Begin game.  
 
@@ -60,9 +170,7 @@ int Gameloop::m_SetUp()
 	l_First = std::thread(&Gameloop::m_UpdatePathfinding, this);
 
 	// Start Game Loop. 
-	m_Update(); 
-
-	return 0; 
+	m_Update();
 
 }
 
@@ -95,6 +203,8 @@ void Gameloop::m_Update()
 			l_First.join(); 
 		}
 
+		m_clUserInterface.m_HandleEvents(m_clEventHandler.m_GetEvent()); 
+
 		// Update the game window.
 		m_clWindow.m_CheckForViewMove(m_clEventHandler.m_CheckViewUpValue(), m_clEventHandler.m_CheckViewDownValue(), m_clEventHandler.m_CheckViewLeftValue(), m_clEventHandler.m_CheckViewRightValue()); 
 
@@ -118,7 +228,7 @@ void Gameloop::m_Update()
 		m_clColonistManager.m_SelectColonist(m_clMouse.m_GetTopLeftSelectionBox(), m_clMouse.m_GetBottomRightSelectionBox(), sf::Mouse::isButtonPressed(sf::Mouse::Left)); 
 
 		// Draw Items. 
-		m_Render(); 
+		m_RenderGame();
 	} 
 
 }
@@ -156,7 +266,7 @@ void Gameloop::m_DrawFilter()
 /*! \fn Render : This will be used to draw all of the objects into the window. 
 *
 */
-void Gameloop::m_Render()
+void Gameloop::m_RenderGame()
 {
 	// Check items for drawing. 
 
@@ -179,6 +289,8 @@ void Gameloop::m_Render()
 	// Draw UI above the other game elements. 
 
 	m_clMouse.m_DrawSelectionBox(m_clWindow.m_GetWindow()); 
+
+	m_clUserInterface.m_DrawGui(); 
 
 	// Display new objects. 
 	m_clWindow.m_GetWindow().display(); 

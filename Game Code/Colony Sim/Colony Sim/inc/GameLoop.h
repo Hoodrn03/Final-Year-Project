@@ -10,6 +10,7 @@
 #include "Window.h"
 #include "EventHandler.h"
 #include "UserInterface.h"
+#include "FontManager.h"
 
 #include "GameMap.h"
 #include "ColonistManager.h"
@@ -46,6 +47,8 @@ public:
 
 	UserInterface m_clUserInterface; 
 
+	FontManager m_clFontManager; 
+
 	/*! \var This class will be used to manage the game map. */
 	Map m_clMap; 
 
@@ -77,10 +80,30 @@ private:
 public:
 
 	//--------------------------------------------------------
+	//						Main Menu
+	//--------------------------------------------------------
+
+	//--------------------------------------------------------
 	/*! \fn SetUp : This will be used at startup to initalize any data for the game.
 	*
 	*/
 	int m_SetUp();
+
+	tgui::Button::Ptr m_CreateExitButton(); 
+
+	tgui::Button::Ptr m_CreateBeginButton();
+
+	int m_MainMenu();
+
+	void m_StartGame(); 
+
+	void m_RenderMainMenu(); 
+
+	//--------------------------------------------------------
+	//						Main Game
+	//--------------------------------------------------------
+
+	void m_BeginGame(); 
 
 	//--------------------------------------------------------
 	/*! \fn Update : This will house the game loop and be used to update any logic.
@@ -104,7 +127,7 @@ public:
 	/*! \fn Render : This will be used to draw all of the objects into the window.
 	*
 	*/
-	void m_Render();
+	void m_RenderGame();
 
 	//--------------------------------------------------------
 	/*! \fn CheckFramerate : Every frame this will check the current framerate of the game and output it. 

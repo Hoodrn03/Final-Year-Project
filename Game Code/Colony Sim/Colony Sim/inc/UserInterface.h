@@ -16,14 +16,20 @@ private:
 
 	// Data Members 
 
+	tgui::Gui m_Gui; 
+
 public:
 
 	// Member Functions 
 
-	void m_InitGui(); 
+	void m_InitGui(sf::RenderWindow &window); 
 
 	void m_HandleEvents(sf::Event &thisEvent);
 
-	void m_DrawGui(sf::RenderWindow &window);
+	void m_DrawGui();
+
+	void m_AddWidget(tgui::Button::Ptr &buttonToAdd); 
+
+	void m_ClearAllWidgets(); 
 
 };
