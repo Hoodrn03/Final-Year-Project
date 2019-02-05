@@ -9,9 +9,7 @@
 // Allows access to sfmls window functions. 
 #include <SFML/Graphics.hpp>
 
-#include <SFGUI/SFGUI.hpp>
-
-#include <SFGUI/Widgets.hpp>
+#include <TGUI/TGUI.hpp>
 
 // Allows for the use of printing to console and other debugging options. 
 #include <iostream> 

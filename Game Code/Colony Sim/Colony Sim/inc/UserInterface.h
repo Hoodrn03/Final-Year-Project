@@ -16,16 +16,6 @@ private:
 
 	// Data Members 
 
-	
-
-	sfg::SFGUI m_Gui; 
-
-	sfg::Desktop m_Desktop; 
-
-	sfg::Window::Ptr m_Window; 
-
-	
-
 public:
 
 	// Member Functions 

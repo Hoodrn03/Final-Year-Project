@@ -617,7 +617,9 @@ unsigned int Grid::m_GetNumberOfLayers()
 {
 	if (m_Grid.size() > 0)
 	{
-		return m_Grid.size();
+		int l_ReturnValue = m_Grid.size();
+
+		return l_ReturnValue;
 	}
 	else
 	{
@@ -633,7 +635,9 @@ unsigned int Grid::m_GetNumberOfRows()
 {
 	if (m_Grid[0].size() > 0)
 	{
-		return m_Grid[0].size();
+		int l_ReturnValue = m_Grid[0].size();
+
+		return l_ReturnValue;
 	}
 	else
 	{
@@ -649,7 +653,9 @@ unsigned int Grid::m_GetNumberOfColumns()
 {
 	if (m_Grid[0][0].size() > 0)
 	{
-		return m_Grid[0][0].size();
+		int l_ReturnValue = m_Grid[0][0].size();
+
+		return l_ReturnValue;
 	}
 	else
 	{
