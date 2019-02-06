@@ -38,7 +38,18 @@ public:
 private:
 
 	/*! \var This will hold all of the colonists currently in the game. */
-	std::vector<Colonist> v_clColonists; 
+	std::vector<Colonist> v_clColonists;
+
+public:
+
+	/*! \var This will allow for the game to check if one or more colonist is selected. */
+	bool m_bColonistSelected = false;
+
+	bool m_bButtonsCreated = false;
+
+	bool m_bButtonsRemoved = false; 
+
+	std::vector<tgui::Button::Ptr> v_ListOfButtons;
 
 	// Member Functions 
 
@@ -87,4 +98,10 @@ public:
 	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, unsigned int currentLayer);
 
 	void m_SelectColonist(sf::Vector2f topLeft, sf::Vector2f bottomRight, bool mouseDown); 
+
+	void m_CheckForSelected(); 
+
+	void m_CreateColonistActionButtons(sf::Font gameFont, sf::RenderWindow &window);
+
+	std::vector<tgui::Button::Ptr> m_GetColonistButtons(); 
 };

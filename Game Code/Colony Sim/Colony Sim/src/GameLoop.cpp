@@ -90,6 +90,10 @@ tgui::Button::Ptr Gameloop::m_CreateBeginButton()
 
 int Gameloop::m_MainMenu()
 {
+	// TEMP Start game 
+
+	m_BeginGame(); 
+
 	// Init pregame logic. 
 
 	m_clUserInterface.m_ClearAllWidgets(); 
@@ -120,11 +124,6 @@ int Gameloop::m_MainMenu()
 	}
 
 	return 0; 
-}
-
-void Gameloop::m_StartGame()
-{
-	// todo Begin main game. 
 }
 
 void Gameloop::m_RenderMainMenu()
@@ -163,6 +162,10 @@ void Gameloop::m_BeginGame()
 
 	// Add resources. 
 	m_clResourceManagement.m_AddTrees(30, 10.f, m_clMap.m_GetGroundLevel(), m_clMap.m_GetGrid());
+
+	// Prepare buttons 
+
+	m_clColonistManager.m_CreateColonistActionButtons(m_clFontManager.m_GetFrontFromMap("arial"), m_clWindow.m_GetWindow());
 
 	// Begin game.  
 
@@ -225,7 +228,32 @@ void Gameloop::m_Update()
 		// Update colonists. 
 		m_clColonistManager.m_Update(m_clMap.m_GetGrid()); 
 
-		m_clColonistManager.m_SelectColonist(m_clMouse.m_GetTopLeftSelectionBox(), m_clMouse.m_GetBottomRightSelectionBox(), sf::Mouse::isButtonPressed(sf::Mouse::Left)); 
+		m_clColonistManager.m_SelectColonist(m_clMouse.m_GetTopLeftSelectionBox(), m_clMouse.m_GetBottomRightSelectionBox(), sf::Mouse::isButtonPressed(sf::Mouse::Right)); 
+
+		m_clColonistManager.m_CheckForSelected(); 
+
+		if (m_clColonistManager.m_bColonistSelected == true)
+		{
+			if (m_clColonistManager.m_bButtonsCreated == false)
+			{
+				m_clUserInterface.m_AddWidget(m_clColonistManager.v_ListOfButtons);
+
+				m_clColonistManager.m_bButtonsRemoved = false;
+
+				m_clColonistManager.m_bButtonsCreated = true;
+			}
+		}
+		else
+		{
+			if (m_clColonistManager.m_bButtonsRemoved == false)
+			{
+				m_clUserInterface.m_RemoveWidget(m_clColonistManager.v_ListOfButtons);
+
+				m_clColonistManager.m_bButtonsRemoved = true;
+
+				m_clColonistManager.m_bButtonsCreated = false;
+			}
+		}
 
 		// Draw Items. 
 		m_RenderGame();

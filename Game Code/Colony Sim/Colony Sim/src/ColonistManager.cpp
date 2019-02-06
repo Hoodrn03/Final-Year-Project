@@ -142,25 +142,75 @@ void ColonistManager::m_SelectColonist(sf::Vector2f topLeft, sf::Vector2f bottom
 	{
 		for (unsigned int i = 0; i < v_clColonists.size(); i++)
 		{
+			if ((v_clColonists[i].m_GetObjectPos().x > topLeft.x && v_clColonists[i].m_GetObjectPos().x < bottomRight.x) &&
+				(v_clColonists[i].m_GetObjectPos().y > topLeft.y && v_clColonists[i].m_GetObjectPos().y < bottomRight.y))
+			{
+				v_clColonists[i].m_SelectColonist(true);
+			}
+
+			else if ((v_clColonists[i].m_GetObjectPos().x < topLeft.x && v_clColonists[i].m_GetObjectPos().x > bottomRight.x) &&
+				(v_clColonists[i].m_GetObjectPos().y < topLeft.y && v_clColonists[i].m_GetObjectPos().y > bottomRight.y))
+			{
+				v_clColonists[i].m_SelectColonist(true);
+			}
+
 			if (mouseDown)
 			{
-				if ((v_clColonists[i].m_GetObjectPos().x > topLeft.x && v_clColonists[i].m_GetObjectPos().x < bottomRight.x) &&
-					(v_clColonists[i].m_GetObjectPos().y > topLeft.y && v_clColonists[i].m_GetObjectPos().y < bottomRight.y))
-				{
-					v_clColonists[i].m_SelectColonist(true);
-				}
-
-				else if ((v_clColonists[i].m_GetObjectPos().x < topLeft.x && v_clColonists[i].m_GetObjectPos().x > bottomRight.x) &&
-					(v_clColonists[i].m_GetObjectPos().y < topLeft.y && v_clColonists[i].m_GetObjectPos().y > bottomRight.y))
-				{
-					v_clColonists[i].m_SelectColonist(true);
-				}
-
-				else
-				{
-					v_clColonists[i].m_SelectColonist(false);
-				}
+				v_clColonists[i].m_SelectColonist(false);
 			}
+
 		}
 	}
+}
+
+void ColonistManager::m_CheckForSelected()
+{
+	int l_iCount = 0; 
+
+	if (v_clColonists.size() > 0)
+	{
+		for (unsigned int i = 0; i < v_clColonists.size(); i++)
+		{
+			if (v_clColonists[i].m_GetSelectedValue() == true)
+			{
+				m_bColonistSelected = true; 
+			}
+			else
+			{
+				l_iCount++;
+			}
+		}
+
+		if (l_iCount == v_clColonists.size())
+		{
+			m_bColonistSelected = false; 
+		}
+	}
+}
+
+void m_Print(std::string text)
+{
+	std::cout << text << std::endl;
+}
+
+void ColonistManager::m_CreateColonistActionButtons(sf::Font gameFont, sf::RenderWindow &window)
+{
+	tgui::Button::Ptr l_CutTreeButton = tgui::Button::create();
+
+	l_CutTreeButton->setSize(window.getSize().x * 0.15f, window.getSize().y * 0.10f);
+
+	l_CutTreeButton->setPosition(0, window.getSize().y - l_CutTreeButton->getSize().y);
+
+	l_CutTreeButton->setInheritedFont(gameFont);
+
+	l_CutTreeButton->setText("Cut Trees");
+
+	l_CutTreeButton->connect("pressed", [&]() {m_Print("Cut Trees Pressed"); }); // todo replace function with one to make the colonists find trees and cut them down.
+
+	v_ListOfButtons.push_back(l_CutTreeButton);
+}
+
+std::vector<tgui::Button::Ptr> ColonistManager::m_GetColonistButtons()
+{
+	return v_ListOfButtons;
 }

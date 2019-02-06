@@ -38,14 +38,10 @@ sf::Font FontManager::m_GetFrontFromMap(std::string fontName)
 {
 	if (m_FontMap.count(fontName) > 0)
 	{
-		std::cout << "Found Font " << fontName << std::endl;
-
 		return m_FontMap.find(fontName)->second; 
 	}
 	else
 	{
-		std::cout << "Not Found Font " << fontName << std::endl;
-
 		return sf::Font(); 
 	}
 }

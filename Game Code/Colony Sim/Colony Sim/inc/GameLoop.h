@@ -43,35 +43,35 @@ public:
 	Window m_clWindow;
 
 	/*! \var This Class will handle all of the events within the game. */
-	EventHandler m_clEventHandler; 
+	EventHandler m_clEventHandler;
 
-	UserInterface m_clUserInterface; 
+	UserInterface m_clUserInterface;
 
-	FontManager m_clFontManager; 
+	FontManager m_clFontManager;
 
 	/*! \var This class will be used to manage the game map. */
-	Map m_clMap; 
+	Map m_clMap;
 
 	/*! \var This will manage all of the colonists within the game at any given time. */
-	ColonistManager m_clColonistManager; 
+	ColonistManager m_clColonistManager;
 
-	ResourceManagement m_clResourceManagement; 
+	ResourceManagement m_clResourceManagement;
 
-	Mouse m_clMouse; 
+	Mouse m_clMouse;
 
 	/*! \var This is the games current frame rate. */
 	int m_FrameRate = 0;
 
 	/*! \var The current change in time since the last frame. */
-	float m_fDeltaTime = 0; 
+	float m_fDeltaTime = 0;
 
 	/*! \var This is the timer for the frame rate, it gets reset every second. */
-	sf::Clock m_FrameRateCounter; 
+	sf::Clock m_FrameRateCounter;
 
 	/*! \var This timer will be used to update the current delta time. */
-	sf::Clock m_DeltaTimer; 
+	sf::Clock m_DeltaTimer;
 
-	std::thread l_First; 
+	std::thread l_First;
 
 private:
 
@@ -89,39 +89,37 @@ public:
 	*/
 	int m_SetUp();
 
-	tgui::Button::Ptr m_CreateExitButton(); 
+	tgui::Button::Ptr m_CreateExitButton();
 
 	tgui::Button::Ptr m_CreateBeginButton();
 
 	int m_MainMenu();
 
-	void m_StartGame(); 
-
-	void m_RenderMainMenu(); 
+	void m_RenderMainMenu();
 
 	//--------------------------------------------------------
 	//						Main Game
 	//--------------------------------------------------------
 
-	void m_BeginGame(); 
+	void m_BeginGame();
 
 	//--------------------------------------------------------
 	/*! \fn Update : This will house the game loop and be used to update any logic.
 	*
 	*/
-	void m_Update(); 
+	void m_Update();
 
 	//--------------------------------------------------------
-	/*! \fn Update Pathfinding : This will be used to update all of the pathfinding elements in the game. 
+	/*! \fn Update Pathfinding : This will be used to update all of the pathfinding elements in the game.
 	*
 	*/
-	void m_UpdatePathfinding(); 
+	void m_UpdatePathfinding();
 
 	//--------------------------------------------------------
-	/*! \fn Draw Filter : This will be used to limit what is drawn to only those within the game view. 
+	/*! \fn Draw Filter : This will be used to limit what is drawn to only those within the game view.
 	*
 	*/
-	void m_DrawFilter(); 
+	void m_DrawFilter();
 
 	//--------------------------------------------------------
 	/*! \fn Render : This will be used to draw all of the objects into the window.
@@ -130,15 +128,19 @@ public:
 	void m_RenderGame();
 
 	//--------------------------------------------------------
-	/*! \fn CheckFramerate : Every frame this will check the current framerate of the game and output it. 
-	*
-	*/
-	void m_CheckFramerate(); 
+	//				Universal Functions 
+	//--------------------------------------------------------
 
 	//--------------------------------------------------------
-	/*! \fn Update Delta Time : This will update the current value of delta time; the time since the last frame. 
+	/*! \fn CheckFramerate : Every frame this will check the current framerate of the game and output it.
 	*
 	*/
-	void m_UpdateDeltaTime(); 
+	void m_CheckFramerate();
+
+	//--------------------------------------------------------
+	/*! \fn Update Delta Time : This will update the current value of delta time; the time since the last frame.
+	*
+	*/
+	void m_UpdateDeltaTime();
 
 };

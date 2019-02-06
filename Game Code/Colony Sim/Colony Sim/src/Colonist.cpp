@@ -415,3 +415,8 @@ void Colonist::m_SelectColonist(bool selected)
 		m_bSelected = false;
 	}
 }
+
+bool Colonist::m_GetSelectedValue()
+{
+	return m_bSelected;
+}

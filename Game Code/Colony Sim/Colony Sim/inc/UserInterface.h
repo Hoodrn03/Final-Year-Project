@@ -30,6 +30,12 @@ public:
 
 	void m_AddWidget(tgui::Button::Ptr &buttonToAdd); 
 
+	void m_AddWidget(std::vector<tgui::Button::Ptr> &buttonsToAdd);
+
+	void m_RemoveWidget(tgui::Button::Ptr &buttonToRemove);
+
+	void m_RemoveWidget(std::vector<tgui::Button::Ptr> &buttonToRemove);
+	
 	void m_ClearAllWidgets(); 
 
 };

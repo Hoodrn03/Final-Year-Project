@@ -220,4 +220,6 @@ public:
 	//--------------------------------------------------------\\
 
 	void m_SelectColonist(bool selected); 
+
+	bool m_GetSelectedValue(); 
 };
