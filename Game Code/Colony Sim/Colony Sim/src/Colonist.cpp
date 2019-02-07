@@ -124,9 +124,37 @@ void Colonist::m_Update()
 
 		break; 
 
+	case _LOGGING:
+
+		m_CutTrees();
+
+		break;
+
 	default:
+
+		// If the colonist has no other job this is the base job. 
+		m_IdleJob();
 		break;
 	}
+}
+
+void Colonist::m_SetJob(job newJob)
+{
+	m_CurrentJob = newJob; 
+
+	/*
+
+	if (newJob == _LOGGING)
+	{
+		std::cout << "Logging" << std::endl;
+	}
+
+	else if (newJob == _IDLE)
+	{
+		std::cout << "Idle" << std::endl;
+	}
+
+	*/
 }
 
 //--------------------------------------------------------
@@ -136,6 +164,16 @@ void Colonist::m_Update()
 void Colonist::m_IdleJob()
 {
 	// todo - When recreational objects are added add functionality to interact with them here. 
+}
+
+void Colonist::m_CutTrees()
+{
+	// todo - Find tree
+
+	// Cut down tree
+
+	// Leave behind logs 
+
 }
 
 //--------------------------------------------------------

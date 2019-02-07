@@ -101,6 +101,8 @@ public:
 
 	void m_CheckForSelected(); 
 
+	void m_SetColonistTreeCut();
+
 	void m_CreateColonistActionButtons(sf::Font gameFont, sf::RenderWindow &window);
 
 	std::vector<tgui::Button::Ptr> m_GetColonistButtons(); 

@@ -125,6 +125,8 @@ public:
 	//						Job System
 	//--------------------------------------------------------\\
 
+	void m_SetJob(job newJob);
+
 	//--------------------------------------------------------
 	/*! \fn Idle Job : A job for the colonist without them actually doing anything. 
 	*

@@ -6,6 +6,11 @@
 
 #include "../inc/ColonistManager.h"
 
+void m_Print(std::string text)
+{
+	std::cout << text << std::endl;
+}
+
 //--------------------------------------------------------
 /*! \fn Constructor
 *
@@ -188,9 +193,18 @@ void ColonistManager::m_CheckForSelected()
 	}
 }
 
-void m_Print(std::string text)
+void ColonistManager::m_SetColonistTreeCut()
 {
-	std::cout << text << std::endl;
+	if (v_clColonists.size() > 0)
+	{
+		for (unsigned int i = 0; i < v_clColonists.size(); i++)
+		{
+			if (v_clColonists[i].m_GetSelectedValue() == true)
+			{
+				v_clColonists[i].m_SetJob(_LOGGING); 
+			}
+		}
+	}
 }
 
 void ColonistManager::m_CreateColonistActionButtons(sf::Font gameFont, sf::RenderWindow &window)
@@ -205,7 +219,7 @@ void ColonistManager::m_CreateColonistActionButtons(sf::Font gameFont, sf::Rende
 
 	l_CutTreeButton->setText("Cut Trees");
 
-	l_CutTreeButton->connect("pressed", [&]() {m_Print("Cut Trees Pressed"); }); // todo replace function with one to make the colonists find trees and cut them down.
+	l_CutTreeButton->connect("pressed", [&]() { m_SetColonistTreeCut(); });
 
 	v_ListOfButtons.push_back(l_CutTreeButton);
 }
