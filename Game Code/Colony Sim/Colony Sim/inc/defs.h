@@ -33,7 +33,7 @@
 
 enum currentAction
 {
-	_NULL = 901,
-	_CUT_TREES = 903
+	_NULL = 901,		/*!< This is used when there is no other actions. */
+	_CUT_TREES = 903	/*!< This will allow for tree cutting to be assigned. */
 };
 

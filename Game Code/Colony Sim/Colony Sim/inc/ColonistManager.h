@@ -45,15 +45,22 @@ public:
 	/*! \var This will allow for the game to check if one or more colonist is selected. */
 	bool m_bColonistSelected = false;
 
+	/*! \var This will be used to check if the buttons have been created.  */
 	bool m_bButtonsCreated = false;
 
+	/*! \var This will check if the buttons have been removed. */
 	bool m_bButtonsRemoved = false; 
 
+	/*! \var This is a list of buttons to be used by the user interface. */
 	std::vector<tgui::Button::Ptr> v_ListOfButtons;
 
 	// Member Functions 
 
 public:
+
+	//--------------------------------------------------------\\
+	//						Setup 
+	//--------------------------------------------------------\\
 
 	//--------------------------------------------------------
 	/*! \fn Add Colonist : This will be used to add a new colonist into the vector. 
@@ -64,17 +71,29 @@ public:
 	*/
 	void m_AddColonist(int numberOfColonists, sf::Vector2f dimentions, Grid &currentGrid, int startingLayer);
 
+	//--------------------------------------------------------\\
+	//						Update 
+	//--------------------------------------------------------\\
+
 	//--------------------------------------------------------
 	/*! \fn Update : This will update the logic for all of the colonists. 
 	*Param One : Grid - the current grid which is overlayed onto the game map. 
 	*/
 	void m_Update(Grid &CurrentGrid);
 
+	//--------------------------------------------------------\\
+	//						Pathfinding
+	//--------------------------------------------------------\\
+
 	//--------------------------------------------------------
 	/*! \fn Pathfinding : This will be used to manage the colonist's current path. 
 	*Param One : Grid - the current grid which is overlayed onto the game map. 
 	*/
 	void m_Pathfinding(Grid &CurrentGrid);
+
+	//--------------------------------------------------------\\
+	//						Rendering
+	//--------------------------------------------------------\\
 
 	//--------------------------------------------------------
 	/*! \fn Render : This will draw all of the colonists onto the game window. 
@@ -97,13 +116,43 @@ public:
 	*/
 	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, unsigned int currentLayer);
 
+	//--------------------------------------------------------\\
+	//						Seletion
+	//--------------------------------------------------------\\
+
+	//--------------------------------------------------------
+	/*! \fn Select Colonist : This will be used to select colonists. 
+	*Param One : Vector2f - The top left for the mouse's selection box. 
+	*Param Two : Vector2f - The bottom right for the mouse's selection box. 
+	*Param Three : Bool - The value for if the mouse button is down. 
+	*/
 	void m_SelectColonist(sf::Vector2f topLeft, sf::Vector2f bottomRight, bool mouseDown); 
 
+	//--------------------------------------------------------
+	/*! \fn Check For Selected : Used to check for the selected colonists. 
+	*
+	*/
 	void m_CheckForSelected(); 
 
-	void m_SetColonistTreeCut();
+	//--------------------------------------------------------\\
+	//						Job System
+	//--------------------------------------------------------\\
 
+
+	//--------------------------------------------------------\\
+	//						Buttons 
+	//--------------------------------------------------------\\
+
+	//--------------------------------------------------------
+	/*! \fn Create Colonist Action Buttons : Used to create the buttons which will be used for the colonists. 
+	*Param One : Font - The font which will be used for the game. 
+	*Param Two : RenderWindow - The main window for the game. 
+	*/
 	void m_CreateColonistActionButtons(sf::Font gameFont, sf::RenderWindow &window);
 
+	//--------------------------------------------------------
+	/*! \fn Get Colonist Buttons : This will be used to get the colonist buttons. 
+	*
+	*/
 	std::vector<tgui::Button::Ptr> m_GetColonistButtons(); 
 };

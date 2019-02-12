@@ -47,6 +47,7 @@ private:
 	/*! \var This will be the colonist's main body within the game. */
 	sf::RectangleShape m_ColonistBody; 
 
+	/*! \var This will be used to show when the colonist is selected by the player. */
 	sf::CircleShape m_SelectedCircle; 
 
 	/*! \var Will be used to genearte a new path for the colonist,if they have reached the end of their current one. */
@@ -76,11 +77,12 @@ private:
 	/*! \var This is a list of tiles which will act as obsticales for the colonist. 
 	*			This will prevent the colonist from generating a path through these cells.
 	*/
-	std::vector<tileSet> m_Obstructions = { _ROCK, _SKY }; 
+	std::vector<tileSet> m_Obstructions = { _ROCK, _SKY };
 
 	/*! \var The current job the colonist is performing. */
 	job m_CurrentJob = _IDLE; 
 
+	/*! \var This is used to tell when the colonist is selected. */
 	bool m_bSelected = false; 
 
 	// Member Functions 
@@ -125,6 +127,10 @@ public:
 	//						Job System
 	//--------------------------------------------------------\\
 
+	//--------------------------------------------------------
+	/*! \fn Set Job : This will be used to assign a new job to this colonist. 
+	*Param One : job - This is the new job for this colonist. 
+	*/
 	void m_SetJob(job newJob);
 
 	//--------------------------------------------------------
@@ -133,6 +139,10 @@ public:
 	*/
 	void m_IdleJob(); 
 
+	//--------------------------------------------------------
+	/*! \fn Cut Trees : This will allow for the colonist to remove trees in the game world. 
+	*
+	*/
 	void m_CutTrees(); 
 
 	//--------------------------------------------------------
@@ -221,7 +231,15 @@ public:
 	//						Selecting
 	//--------------------------------------------------------\\
 
+	//--------------------------------------------------------
+	/*! \fn Select Colonist : This will select this colonist. 
+	*Param One : bool - The new value for when the colonist is selected. 
+	*/
 	void m_SelectColonist(bool selected); 
 
+	//--------------------------------------------------------
+	/*! \fn Get Selected Value : Used to check if the player has selected this colonist. 
+	*
+	*/
 	bool m_GetSelectedValue(); 
 };
