@@ -28,7 +28,7 @@
 #include <thread>
 
 #ifndef LOOP_TIMEOUT
-#define LOOP_TIMEOUT 100
+#define LOOP_TIMEOUT 500
 #endif
 
 enum currentAction

@@ -13,6 +13,8 @@
 #include "Colonist.h"
 #include "Grid.h"
 
+#include "ResourceManagement.h"
+
 /*! \class This class will hold a vector of colonists and manage all of their functions at once. */
 class ColonistManager
 {
@@ -139,6 +141,8 @@ public:
 	//--------------------------------------------------------\\
 
 	void m_SetColonistTreeCut(); 
+
+	void m_FindClosestTree(ResourceManagement & currentManager); 
 
 	//--------------------------------------------------------\\
 	//						Buttons 

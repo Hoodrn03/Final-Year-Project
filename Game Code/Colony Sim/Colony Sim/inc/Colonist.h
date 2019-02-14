@@ -56,6 +56,8 @@ private:
 	/*! \var This will be the current cell on the grid the colonist is currently inside. */
 	Cells * m_CurrentCell = nullptr; 
 
+	Cells * m_EndCell = nullptr; 
+
 	/*! \var This will be used to keep track of which layer the colonist is currently on. */
 	unsigned int m_iCurrentLayer; 
 
@@ -84,6 +86,10 @@ private:
 
 	/*! \var This is used to tell when the colonist is selected. */
 	bool m_bSelected = false; 
+
+	bool m_bFoundTree = false; 
+
+	bool m_bAtTree = false; 
 
 	// Member Functions 
 
@@ -144,6 +150,8 @@ public:
 	*
 	*/
 	void m_CutTrees(); 
+
+	void m_MoveToTree(Cells * moveTo); 
 
 	//--------------------------------------------------------
 	/*! \fn Get Current Job : Will be used to get the value of the current job the colonist is performing.
@@ -214,6 +222,8 @@ public:
 	*Param One : Cells - This will be the new end cell for the colonist. 
 	*/
 	int m_FindNewPath(Cells * endCell); 
+
+	void m_ResetPathfinding(); 
 
 	//--------------------------------------------------------
 	/*! \fn Get Find New Path : This will determine if a new path should be generated for the colonist. 

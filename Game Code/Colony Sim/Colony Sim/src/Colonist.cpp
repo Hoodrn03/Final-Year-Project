@@ -176,6 +176,33 @@ void Colonist::m_CutTrees()
 
 }
 
+void Colonist::m_MoveToTree(Cells * moveTo)
+{
+	if (m_bFoundTree == false)
+	{
+		m_bFoundTree = true;
+
+		m_ResetPathfinding();
+
+		m_EndCell = moveTo; 
+
+		m_FindNewPath(moveTo);
+	}
+
+	else if (m_bAtTree == false)
+	{
+		if (m_GameObjectPos.x == moveTo->m_GetCellCentre().x && m_GameObjectPos.y == moveTo->m_GetCellCentre().y)
+		{
+			m_bAtTree = true; 
+		}
+	}
+
+	else
+	{
+		std::cout << " At Tree " << std::endl;
+	}
+}
+
 //--------------------------------------------------------
 /*! \fn Draw Game Object : This will be used to render the colonist.
 *Param One : RenderWindow - The current game widow for the object to be drawn onto.
@@ -308,13 +335,7 @@ void Colonist::m_FollowPath()
 			{
 				// Reached the end of the path. 
 
-				m_iCurrentMoveTo = 0;
-
-				m_Path.clear();
-
-				m_PathLine.clear(); 
-
-				m_bFindNewPath = true;
+				m_ResetPathfinding();
 			}
 		}
 	} 
@@ -330,13 +351,15 @@ int Colonist::m_FindNewPath(Cells * endCell)
 	{
 		int l_numberOfLoop = 0;
 
-		if ((endCell != nullptr) && (m_CurrentCell != nullptr))
+		m_EndCell = endCell;
+
+		if ((m_EndCell != nullptr) && (m_CurrentCell != nullptr))
 		{
 			// std::cout << "Findng New Path" << std::endl;
 
-			m_Path.clear();
+			m_ResetPathfinding();
 
-			if (m_CurrentCell->m_GetLayer() == endCell->m_GetLayer())
+			if (m_CurrentCell->m_GetLayer() == m_EndCell->m_GetLayer())
 			{
 
 				do
@@ -344,7 +367,7 @@ int Colonist::m_FindNewPath(Cells * endCell)
 
 					Pathfinding l_clPathfinding;
 
-					l_clPathfinding.m_InitAlgorithm(m_CurrentCell, endCell);
+					l_clPathfinding.m_InitAlgorithm(m_CurrentCell, m_EndCell);
 
 					do
 					{
@@ -398,7 +421,10 @@ int Colonist::m_FindNewPath(Cells * endCell)
 		switch(i)
 		{
 		case 3:
-			// This will timeout the function. 
+			// This will timeout the function.
+
+			std::cout << "TIMEOUT" << std::endl;
+
 			return 1;
 			break;
 
@@ -415,6 +441,17 @@ int Colonist::m_FindNewPath(Cells * endCell)
 	}
 
 	return 0; 
+}
+
+void Colonist::m_ResetPathfinding()
+{
+	m_iCurrentMoveTo = 0;
+
+	m_Path.clear();
+
+	m_PathLine.clear();
+
+	m_bFindNewPath = true;
 }
 
 //--------------------------------------------------------

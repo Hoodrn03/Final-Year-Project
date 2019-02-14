@@ -28,13 +28,15 @@ WoodResource::~WoodResource()
 *Param Two : vector2f - The position for the tree in the game world.
 *Param Three : int - The layer the tree will be placed on.
 */
-void WoodResource::m_CreateTree(float radius, sf::Vector2f position, int layer)
+void WoodResource::m_CreateTree(float radius, sf::Vector2f position, int layer, Cells * newCurrentCell)
 {
 	m_fLargestRadius = radius; 
 
 	m_fSmallestRadius = radius * 0.1f;
 
 	m_iCurrentLayer = layer; 
+
+	m_CurrentCell = newCurrentCell; 
 
 	m_fCurrentGrowth = (float)m_GenerateInt((int)m_fSmallestRadius, (int)m_fLargestRadius); 
 
@@ -154,6 +156,11 @@ void WoodResource::m_SetObjectPos(float x, float y)
 	m_GameObjectPos.y = y;
 
 	m_TreeObject.setPosition(x, y);
+}
+
+Cells * WoodResource::m_GetCurrentCell()
+{
+	return m_CurrentCell;
 }
 
 //--------------------------------------------------------

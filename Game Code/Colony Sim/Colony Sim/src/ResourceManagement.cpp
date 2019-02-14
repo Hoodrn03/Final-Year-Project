@@ -31,7 +31,9 @@ void ResourceManagement::m_AddTrees(int numberOfTrees, float maxRadius, int laye
 	{
 		WoodResource l_TempTree; 
 
-		l_TempTree.m_CreateTree(maxRadius, grid.m_GetRandomDirtCell(layer)->m_GetCellCentre(), layer); 
+		Cells * l_TempCell = grid.m_GetRandomDirtCell(layer);
+
+		l_TempTree.m_CreateTree(maxRadius, l_TempCell->m_GetCellCentre(), layer, l_TempCell); 
 
 		v_clTrees.push_back(l_TempTree);
 	}
@@ -162,6 +164,29 @@ void ResourceManagement::m_SelectResources(sf::Vector2f m_TopLeft, sf::Vector2f 
 		break;
 	}
 
+}
+
+Cells * ResourceManagement::m_FindClosestTree(sf::Vector2f otherObject)
+{
+	WoodResource * l_TempTree;
+
+	if (v_clTrees.size() > 0)
+	{
+		l_TempTree = &v_clTrees[0];
+
+		for (unsigned int i = 1; i < v_clTrees.size(); i++)
+		{
+			if ((v_clTrees[i].m_GetObjectPos().x < l_TempTree->m_GetObjectPos().x) &&
+				(v_clTrees[i].m_GetObjectPos().y < l_TempTree->m_GetObjectPos().y))
+			{
+				// The next tree is closer thena the current tree. 
+
+				l_TempTree = &v_clTrees[i];
+			}
+		}
+	}
+
+	return l_TempTree->m_GetCurrentCell();
 }
 
 

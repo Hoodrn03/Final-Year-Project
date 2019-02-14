@@ -207,6 +207,20 @@ void ColonistManager::m_SetColonistTreeCut()
 	}
 }
 
+void ColonistManager::m_FindClosestTree(ResourceManagement & currentManager)
+{
+	if (v_clColonists.size() > 0)
+	{
+		for (unsigned int i = 0; i < v_clColonists.size(); i++)
+		{
+			if (v_clColonists[i].m_GetCurrentJob() == _LOGGING)
+			{
+				v_clColonists[i].m_MoveToTree(currentManager.m_FindClosestTree(v_clColonists[i].m_GetObjectPos()));
+			}
+		}
+	}
+}
+
 void ColonistManager::m_CreateColonistActionButtons(sf::Font gameFont, sf::RenderWindow &window)
 {
 	tgui::Button::Ptr l_CutTreeButton = tgui::Button::create();

@@ -11,6 +11,7 @@
 
 #include "GameObject.h"
 #include "RandGen.h"
+#include "Cells.h"
 
 /*! \class This will be used to create a single tree in the game world. */
 class WoodResource : public GameObject, protected RandGen
@@ -60,6 +61,8 @@ private:
 	/*! \var A timer to limit the amount of growth for the tree. */
 	sf::Clock m_GrowthTimer; 
 
+	Cells * m_CurrentCell;
+
 	// Member Functions 
 
 public:
@@ -74,7 +77,7 @@ public:
 	*Param Two : vector2f - The position for the tree in the game world.
 	*Param Three : int - The layer the tree will be placed on. 
 	*/
-	void m_CreateTree(float radius, sf::Vector2f position, int layer);
+	void m_CreateTree(float radius, sf::Vector2f position, int layer, Cells * newCurrentCell);
 
 	//--------------------------------------------------------
 	//						Update
@@ -121,6 +124,8 @@ public:
 	*Param Two : float - The Y position for the game object. 
 	*/
 	void m_SetObjectPos(float x, float y) override;
+
+	Cells * m_GetCurrentCell(); 
 
 	//--------------------------------------------------------
 	//					Removing Trees

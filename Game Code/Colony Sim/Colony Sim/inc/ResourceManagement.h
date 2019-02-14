@@ -109,4 +109,6 @@ public:
 	*Param Two : Vector2f - The bottom right of the selection box drawn by the mouse
 	*/
 	void m_SelectResources(sf::Vector2f m_TopLeft, sf::Vector2f bottomRight);
+
+	Cells * m_FindClosestTree(sf::Vector2f otherObject); 
 };

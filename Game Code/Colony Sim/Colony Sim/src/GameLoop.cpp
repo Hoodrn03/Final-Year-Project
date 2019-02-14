@@ -274,6 +274,8 @@ void Gameloop::m_UpdatePathfinding()
 		// This will be used to get a new path for the colonists. 
 
 		m_clColonistManager.m_Pathfinding(m_clMap.m_GetGrid()); 
+
+		m_clColonistManager.m_FindClosestTree(m_clResourceManagement); 
 	}
 }
 
