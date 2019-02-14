@@ -18,7 +18,7 @@ enum tileSet
 	_WATER = 0x3000,	/*!< This will make the tile Water. */
 	_ROCK = 0x4000,		/*!< This will make the tile Rock. */
 	_SKY = 0x5000,		/*!< This will make the tile Sky. */
-	_NO_VALUE			/*!< Base value, this means it has not yet been assigned.  */
+	_NO_VALUE			/*!< Base value, This means it has not yet been assigned.  */
 };
 
 /*! \enum This will be used to easily distinguish between the different huristic costs for the game. */
@@ -31,7 +31,7 @@ enum huristicCost
 /*! \struct This will allow for the cell to be given a theoretical position in the grid. */
 struct gridPos
 {
-	float x, y; /*!< The x and y coordinates for this cell object. */
+	float x, y; /*!< The x and y coordinates for This cell object. */
 };
 
 /*! \class Cells when grouped up form a grid, each cell will represent a single point within a grid. */
@@ -70,13 +70,13 @@ private:
 	/*! \var Determines which tile the cell will be displayed as. */
 	tileSet m_CurrentTile = _NO_VALUE; 
 
-	/*! \var A list of all the cells around this one Max 8, Min 3. */
+	/*! \var A list of all the cells around This one Max 8, Min 3. */
 	std::vector<Cells*> m_Neighbours; 
 
 	/*! \var This is the cells position within a grid, holds X and Y values.*/
 	gridPos m_GridPosition; 
 
-	/*! \var The current layer for this cell object. */
+	/*! \var The current layer for This cell object. */
 	int m_Layer = 0; 
 
 	/*! \var This will be the default colour codes for water. */
@@ -93,16 +93,16 @@ private:
 
 public:
 
-	/*! \var This will hold a reference to a cell that leads to this one. */
+	/*! \var This will hold a reference to a cell that leads to This one. */
 	Cells * m_ParentCell = nullptr;
 
-	/*! \var This is the current G Score for this cell. */
+	/*! \var This is the current G Score for This cell. */
 	int m_iGScore = 0; 
 
-	/*! \var This is the current H Score for this cell. */
+	/*! \var This is the current H Score for This cell. */
 	int m_iHScore = 0; 
 
-	/*! \var This is the current F Score for this cell. */
+	/*! \var This is the current F Score for This cell. */
 	int m_iFScore = 0; 
 
 public:
@@ -114,14 +114,14 @@ public:
 	//--------------------------------------------------------\\
 
 	//--------------------------------------------------------
-	/*! \fn Create Cell Body : This will be used to initalize this cell. 
+	/*! \fn Create Cell Body : This will be used to initalize This cell. 
 	*Param One : Vector2f - The height and width of the cell. 
 	*Param Two : Vector2f - The x and y coordinates for the cell. 
 	*/
 	void m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition); 
 
 	//--------------------------------------------------------
-	/*! \fn Create Cell Body (Overload) : This will be used to initalize this cell.
+	/*! \fn Create Cell Body (Overload) : This will be used to initalize This cell.
 	*Param One : Vector2f - The height and width of the cell.
 	*Param Two : Vector2f - The x and y coordinates for the cell.
 	*Param Three : int - Red value.
@@ -135,7 +135,7 @@ public:
 	//--------------------------------------------------------\\
 
 	//--------------------------------------------------------
-	/*! \fn Check Cell Bounds : This will be used to check if a point is inside this cell. 
+	/*! \fn Check Cell Bounds : This will be used to check if a point is inside This cell. 
 	*Param One : float - The x coordine of the point. 
 	*Param Two : float - The y coordine of the point.
 	*/
@@ -210,7 +210,7 @@ public:
 
 	//--------------------------------------------------------
 	/*! \fn Assign Neighbour : This will allow for a neighbour to be added to the vector.
-	*Param One : Cells - A cell next to this one.
+	*Param One : Cells - A cell next to This one.
 	*/
 	void m_AssignNeighbour(Cells &neighbour);
 
@@ -231,8 +231,8 @@ public:
 	int m_GetCellId();
 
 	//--------------------------------------------------------
-	/*! \fn Assign Cell Id : Add a unique identifier to this cell.
-	*Param One : int : a number identifier for this cell.
+	/*! \fn Assign Cell Id : Add a unique identifier to This cell.
+	*Param One : int : a number identifier for This cell.
 	*/
 	void m_AssignCellId(int id);
 
@@ -248,7 +248,7 @@ public:
 	tileSet m_GetTile();
 
 	//--------------------------------------------------------
-	/*! \fn Assign Tile : This will be used to set tile value for this cell.
+	/*! \fn Assign Tile : This will be used to set tile value for This cell.
 	*Param One : unsigned int - 1 Dirt, 2 Water, 3 Rock, else null.
 	*/
 	void m_AssignTile(tileSet whichTile);
@@ -274,7 +274,7 @@ public:
 	//--------------------------------------------------------\\
 
 	//--------------------------------------------------------
-	/*! \fn Update : This will be used to update the game logic for this object.
+	/*! \fn Update : This will be used to update the game logic for This object.
 	*
 	*/
 	void m_Update() override;
@@ -291,7 +291,7 @@ public:
 	void m_DrawGameObject(sf::RenderWindow & window) override; 
 
 	//--------------------------------------------------------
-	/*! \fn Draw Filter : This will be used to check if this cell should be draw. 
+	/*! \fn Draw Filter : This will be used to check if This cell should be draw. 
 	*Param One : Vector2f - The top left of the view. 
 	*Param Two : Vector2f - The bottom right of the view. 
 	*/

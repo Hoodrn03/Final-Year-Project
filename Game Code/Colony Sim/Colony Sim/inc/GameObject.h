@@ -37,10 +37,18 @@ protected:
 public: 
 
 	//--------------------------------------------------------
-	/*! \fn Update This will be used to update this game object. 
+	//						Update
+	//--------------------------------------------------------
+
+	//--------------------------------------------------------
+	/*! \fn Update This will be used to update This game object. 
 	*
 	*/
 	virtual void m_Update() = 0; 
+
+	//--------------------------------------------------------
+	//						Rendering
+	//--------------------------------------------------------
 
 	//--------------------------------------------------------
 	/*! \fn DrawGameObject : This will allow for the connected class to draw the object onto the game window.  
@@ -54,6 +62,10 @@ public:
 	*Param Two : Vector2f - The bottom right of the game view, limiting the items drawn.
 	*/
 	virtual void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight) = 0;
+
+	//--------------------------------------------------------
+	//					Positioning
+	//--------------------------------------------------------
 
 	//--------------------------------------------------------
 	/*! \fn SetObjectPos : This will allow for the connected object to set the possition for the object. 

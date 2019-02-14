@@ -221,7 +221,7 @@ void Gameloop::m_Update()
 		// Update the game resources. 
 		m_clResourceManagement.m_Update(); 
 
-		m_clResourceManagement.m_CutTreeAction(m_clEventHandler.m_GetCurrentAction());
+		m_clResourceManagement.m_AssignAction(m_clEventHandler.m_GetCurrentAction());
 
 		m_clResourceManagement.m_SelectResources(m_clMouse.m_GetTopLeftSelectionBox(), m_clMouse.m_GetBottomRightSelectionBox()); 
 
@@ -325,7 +325,7 @@ void Gameloop::m_RenderGame()
 }
 
 //--------------------------------------------------------
-/*! \fn CheckFramerate : Every frame this will check the current framerate of the game and output it.
+/*! \fn CheckFramerate : Every frame This will check the current framerate of the game and output it.
 *
 */
 void Gameloop::m_CheckFramerate()

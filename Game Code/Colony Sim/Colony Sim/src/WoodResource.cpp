@@ -157,7 +157,7 @@ void WoodResource::m_SetObjectPos(float x, float y)
 }
 
 //--------------------------------------------------------
-/*! \fn SetTreeCutDown : This will assign this tree to be cut down.
+/*! \fn SetTreeCutDown : This will assign This tree to be cut down.
 *
 */
 void WoodResource::m_SetTreeCutDown()

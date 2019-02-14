@@ -110,7 +110,7 @@ void Map::m_GenerateMap()
 */
 void Map::m_CreateLakeForMap()
 {
-	/*! \var This will be used to determine the size of the generated lake, this allows for a varied lake for each map. */
+	/*! \var This will be used to determine the size of the generated lake, This allows for a varied lake for each map. */
 	int l_iNumberOfIterations = m_GenerateInt(3, 7);
 
 	m_clGrid.m_CreateLake(m_GenerateInt(0, m_clGrid.m_GetNumberOfRows()), m_GenerateInt(0, m_clGrid.m_GetNumberOfColumns()), m_iGroundLayer, l_iNumberOfIterations);

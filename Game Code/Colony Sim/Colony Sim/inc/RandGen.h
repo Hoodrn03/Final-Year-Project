@@ -19,6 +19,10 @@ class RandGen
 public:
 
 	//--------------------------------------------------------
+	//					Generate Ints
+	//--------------------------------------------------------
+
+	//--------------------------------------------------------
 	/*! \fn GenerateInt : This will be used to generate an int between two values. 
 	*Param One : int - The minimum value for the generator to get. 
 	*Param Two : int - The maximum number for the generator to get. 

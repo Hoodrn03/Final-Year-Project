@@ -1,7 +1,7 @@
 /*! \file Map.h
 *
-* The function of this class will be to control the game's map and all of the 
-* functionality required by this class. 
+* The function of This class will be to control the game's map and all of the 
+* functionality required by This class. 
 *
 */
 
@@ -37,7 +37,7 @@ public:
 
 private: 
 
-	/*! \var This will be used to house the main map object, this will have the grid created overtop of it. */
+	/*! \var This will be used to house the main map object, This will have the grid created overtop of it. */
 	sf::RectangleShape m_MapObject; 
 
 	/*! \var This class will hold the grid which will be used for the map. */
@@ -54,11 +54,25 @@ private:
 public: 
 
 	//--------------------------------------------------------
+	//						Setup 
+	//--------------------------------------------------------
+
+	//--------------------------------------------------------
 	/*! \fn SetupGameMap : This will create the rectangle shape for the main map object. 
 	*Param One : Vector2f - This will hold two floats for the width and height of the map. 
 	*Param Two : Vector2f - This will hold two floats for the maps X and Y coordinates. 
 	*/
 	void m_SetUpGameMap(sf::Vector2f dimentions, sf::Vector2f position); 
+
+	//--------------------------------------------------------
+	/*! \fn CreateGrid : This will facilitate the formation of all of the cells into a grid object.
+	*
+	*/
+	void m_CreateGrid();
+
+	//--------------------------------------------------------
+	//						Update
+	//--------------------------------------------------------
 
 	//--------------------------------------------------------
 	/*! \fn Update : This will be used to update the map every frame.
@@ -67,10 +81,8 @@ public:
 	void m_Update(); 
 
 	//--------------------------------------------------------
-	/*! \fn CreateGrid : This will facilitate the formation of all of the cells into a grid object. 
-	*
-	*/
-	void m_CreateGrid(); 
+	//					Map Generation 
+	//--------------------------------------------------------
 
 	//--------------------------------------------------------
 	/*! \fn Generate Map : This will be used upon game startup to generate a random map for the player. 
@@ -91,6 +103,10 @@ public:
 	void m_CreateRiverForMap(); 
 
 	//--------------------------------------------------------
+	//					Access Map Items 
+	//--------------------------------------------------------
+
+	//--------------------------------------------------------
 	/*! \fn GetGroundLevel : This will return the middle level for the map (The ground levl). 
 	*
 	*/
@@ -101,6 +117,16 @@ public:
 	*
 	*/
 	int m_GetCurrentLevel(); 
+
+	//--------------------------------------------------------
+	/*! \fn GetGrid : This will allow for external access to the grid of cells.
+	*
+	*/
+	Grid &m_GetGrid();
+
+	//--------------------------------------------------------
+	//						Rendering
+	//--------------------------------------------------------
 
 	//--------------------------------------------------------
 	/*! \fn DrawGameObject : This will be used to draw all of the items required for the map. 
@@ -114,6 +140,10 @@ public:
 	*Param Two : Vector2f : The bottomRight of the game view. 
 	*/
 	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight);
+
+	//--------------------------------------------------------
+	//					Positioning
+	//--------------------------------------------------------
 
 	//--------------------------------------------------------
 	/*! \fn SetObjectPos : This will allow for the map object to be moved within the game world. 
@@ -140,9 +170,5 @@ public:
 	*/
 	void m_DescreaseLayer(); 
 
-	//--------------------------------------------------------
-	/*! \fn GetGrid : This will allow for external access to the grid of cells. 
-	*
-	*/
-	Grid &m_GetGrid(); 
+	
 };

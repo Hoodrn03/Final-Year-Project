@@ -23,7 +23,7 @@ Cells::~Cells()
 }
 
 //--------------------------------------------------------
-/*! \fn Create Cell Body : This will be used to initalize this cell.
+/*! \fn Create Cell Body : This will be used to initalize This cell.
 *Param One : Vector2f - The height and width of the cell.
 *Param Two : Vector2f - The x and y coordinates for the cell.
 */
@@ -43,7 +43,7 @@ void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition)
 }
 
 //--------------------------------------------------------
-/*! \fn Create Cell Body (Overload) : This will be used to initalize this cell.
+/*! \fn Create Cell Body (Overload) : This will be used to initalize This cell.
 *Param One : Vector2f - The height and width of the cell.
 *Param Two : Vector2f - The x and y coordinates for the cell.
 *Param Three : int - Red value.
@@ -66,7 +66,7 @@ void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, in
 }
 
 //--------------------------------------------------------
-/*! \fn Check Cell Bounds : This will be used to check if a point is inside this cell.
+/*! \fn Check Cell Bounds : This will be used to check if a point is inside This cell.
 *Param One : float - The x coordine of the point.
 *Param Two : float - The y coordine of the point.
 */
@@ -150,7 +150,7 @@ void Cells::m_SetCellColour(int r, int g, int b)
 }
 
 //--------------------------------------------------------
-/*! \fn Assign Tile : This will be used to set tile value for this cell.
+/*! \fn Assign Tile : This will be used to set tile value for This cell.
 *Param One : unsigned int - 1 Dirt, 2 Water, 3 Rock, else null.
 */
 void Cells::m_AssignTile(tileSet whichTile)
@@ -191,7 +191,7 @@ void Cells::m_AssignColours()
 
 //--------------------------------------------------------
 /*! \fn Assign Neighbour : This will allow for a neighbour to be added to the vector.
-*Param One : Cells - A cell next to this one.
+*Param One : Cells - A cell next to This one.
 */
 void Cells::m_AssignNeighbour(Cells &neighbour)
 {
@@ -199,8 +199,8 @@ void Cells::m_AssignNeighbour(Cells &neighbour)
 }
 
 //--------------------------------------------------------
-/*! \fn Assign Cell Id : Add a unique identifier to this cell.
-*Param One : int : a number identifier for this cell.
+/*! \fn Assign Cell Id : Add a unique identifier to This cell.
+*Param One : int : a number identifier for This cell.
 */
 void Cells::m_AssignCellId(int id)
 {
@@ -208,7 +208,7 @@ void Cells::m_AssignCellId(int id)
 }
 
 //--------------------------------------------------------
-/*! \fn Update : This will be used to update the game logic for this object.
+/*! \fn Update : This will be used to update the game logic for This object.
 *
 */
 void Cells::m_Update()
@@ -244,7 +244,7 @@ void Cells::m_DrawGameObject(sf::RenderWindow & window)
 }
 
 //--------------------------------------------------------
-/*! \fn Draw Filter : This will be used to check if this cell should be draw.
+/*! \fn Draw Filter : This will be used to check if This cell should be draw.
 *Param One : Vector2f - The top left of the view.
 *Param Two : Vector2f - The bottom right of the view.
 */

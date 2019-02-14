@@ -65,6 +65,10 @@ private:
 public:
 
 	//--------------------------------------------------------
+	//						Setup 
+	//--------------------------------------------------------
+
+	//--------------------------------------------------------
 	/*! \fn Create Tree : This will create a single tree for the game. 
 	*Param One : float - The maximum radius for the tree. 
 	*Param Two : vector2f - The position for the tree in the game world.
@@ -73,10 +77,18 @@ public:
 	void m_CreateTree(float radius, sf::Vector2f position, int layer);
 
 	//--------------------------------------------------------
+	//						Update
+	//--------------------------------------------------------
+
+	//--------------------------------------------------------
 	/*! \fn Update : This will be used to update the current tree. 
 	*
 	*/
 	void m_Update() override;
+
+	//--------------------------------------------------------
+	//						Rendering
+	//--------------------------------------------------------
 
 	//--------------------------------------------------------
 	/*! \fn DrawGameObject : This will allow for the connected class to draw the object onto the game window.
@@ -100,6 +112,10 @@ public:
 	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, int currentLayer);
 
 	//--------------------------------------------------------
+	//					Positioning. 
+	//--------------------------------------------------------
+
+	//--------------------------------------------------------
 	/*! \fn SetObjectPos : This will allow for the connected object to set the possition for the object.
 	*Param One : float - The X position for the game object. 
 	*Param Two : float - The Y position for the game object. 
@@ -107,11 +123,19 @@ public:
 	void m_SetObjectPos(float x, float y) override;
 
 	//--------------------------------------------------------
-	/*! \fn SetTreeCutDown : This will assign this tree to be cut down. 
+	//					Removing Trees
+	//--------------------------------------------------------
+
+	//--------------------------------------------------------
+	/*! \fn SetTreeCutDown : This will assign This tree to be cut down. 
 	*
 	*/
 	void m_SetTreeCutDown(); 
 
+	//--------------------------------------------------------
+	/*! \fn CancelTreeCutDown : This will prevent This tree from being cut down.
+	*
+	*/
 	void m_CancelTreeCutDown(); 
 
 };

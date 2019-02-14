@@ -50,7 +50,7 @@ int Window::m_InitWindow(int windowWidth, int windowHeight, std::string windowNa
 }
 
 //--------------------------------------------------------
-/*! \fn GetWindow : This will return the value of the window, this will for the window to be referenced oustide of the class. 
+/*! \fn GetWindow : This will return the value of the window, This will for the window to be referenced oustide of the class. 
 *
 */
 sf::RenderWindow & Window::m_GetWindow()
@@ -77,7 +77,7 @@ sf::Vector2f Window::m_GetViewLowerBounds()
 }
 
 //--------------------------------------------------------
-/*! \fn CheckForViewMove : This will b eused to check if the view should be moved this frame.
+/*! \fn CheckForViewMove : This will b eused to check if the view should be moved This frame.
 *Param One : int - The current key being pressed, if none are pressed it recives 0.
 */
 void Window::m_CheckForViewMove(bool upValue, bool downValue, bool leftValue, bool rightValue)

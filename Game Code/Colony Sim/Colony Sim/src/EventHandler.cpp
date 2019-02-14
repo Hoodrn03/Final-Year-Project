@@ -28,7 +28,7 @@ sf::Event EventHandler::m_GetEvent()
 }
 
 //--------------------------------------------------------
-/*! \fn CheckForEvents : This will be used to process any events which happened during this loop.
+/*! \fn CheckForEvents : This will be used to process any events which happened during This loop.
 *Param One : RenderWindow - This will be the current game window.
 */
 void EventHandler::m_CheckForEvents(sf::RenderWindow & window)
@@ -61,7 +61,7 @@ void EventHandler::m_CheckForEvents(sf::RenderWindow & window)
 }
 
 //--------------------------------------------------------
-/*! \fn Check for view move keys : This will be used to see if a movement key was pressed this frame.
+/*! \fn Check for view move keys : This will be used to see if a movement key was pressed This frame.
 *
 */
 void EventHandler::m_CheckForViewMoveKeys()

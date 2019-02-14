@@ -45,8 +45,10 @@ public:
 	/*! \var This Class will handle all of the events within the game. */
 	EventHandler m_clEventHandler;
 
+	/*! \var This will form the main user interface for the game. */
 	UserInterface m_clUserInterface;
 
+	/*! \var This will allow for the assignment of fonts for the game. */
 	FontManager m_clFontManager;
 
 	/*! \var This class will be used to manage the game map. */
@@ -55,8 +57,10 @@ public:
 	/*! \var This will manage all of the colonists within the game at any given time. */
 	ColonistManager m_clColonistManager;
 
+	/*! \var This will allow for ingame resources to be created and managed. */
 	ResourceManagement m_clResourceManagement;
 
+	/*! \var Controls mouse actions and functions for the game. */
 	Mouse m_clMouse;
 
 	/*! \var This is the games current frame rate. */
@@ -71,6 +75,7 @@ public:
 	/*! \var This timer will be used to update the current delta time. */
 	sf::Clock m_DeltaTimer;
 
+	/*! \var A second parallel thread, which will be used for pathfinding within the game. */
 	std::thread l_First;
 
 private:
@@ -89,12 +94,28 @@ public:
 	*/
 	int m_SetUp();
 
+	//--------------------------------------------------------
+	/*! \fn CreateExitButton : Used to create an exit button for the main menu. 
+	*
+	*/
 	tgui::Button::Ptr m_CreateExitButton();
 
+	//--------------------------------------------------------
+	/*! \fn CreateBeginButton : Used to create a begin button for the main menu. 
+	*
+	*/
 	tgui::Button::Ptr m_CreateBeginButton();
 
+	//--------------------------------------------------------
+	/*! \fn MainMenu : Used to open up the main menu for the game. 
+	*
+	*/
 	int m_MainMenu();
 
+	//--------------------------------------------------------
+	/*! \fn RenderMainMenu : Used to draw all items onto the main menu. 
+	*
+	*/
 	void m_RenderMainMenu();
 
 	//--------------------------------------------------------
@@ -132,7 +153,7 @@ public:
 	//--------------------------------------------------------
 
 	//--------------------------------------------------------
-	/*! \fn CheckFramerate : Every frame this will check the current framerate of the game and output it.
+	/*! \fn CheckFramerate : Every frame This will check the current framerate of the game and output it.
 	*
 	*/
 	void m_CheckFramerate();

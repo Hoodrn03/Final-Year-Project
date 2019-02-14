@@ -81,7 +81,7 @@ int Colonist::m_CreateColonistBody(sf::Vector2f dimentions, Cells * currentCell)
 	}
 	catch (int)
 	{
-		// If a nullptr is passed into this function it will exit with an error. 
+		// If a nullptr is passed into This function it will exit with an error. 
 
 		return 1;
 	}
@@ -102,7 +102,7 @@ void Colonist::m_UpdateCurrentCell(Cells * newCurrentCell)
 }
 
 //--------------------------------------------------------
-/*! \fn Update : This will be used to update the logic for this class.
+/*! \fn Update : This will be used to update the logic for This class.
 *
 */
 void Colonist::m_Update()
@@ -119,7 +119,7 @@ void Colonist::m_Update()
 
 	case _IDLE:
 		
-		// If the colonist has no other job this is the base job. 
+		// If the colonist has no other job This is the base job. 
 		m_IdleJob(); 
 
 		break; 
@@ -132,7 +132,7 @@ void Colonist::m_Update()
 
 	default:
 
-		// If the colonist has no other job this is the base job. 
+		// If the colonist has no other job This is the base job. 
 		m_IdleJob();
 		break;
 	}
@@ -199,7 +199,7 @@ void Colonist::m_DrawGameObject(sf::RenderWindow & window)
 }
 
 //--------------------------------------------------------
-/*! \fn Draw Filter : This will be used to filter this object for draing, used to limit the amount drawn onto the screen at a given time.
+/*! \fn Draw Filter : This will be used to filter This object for draing, used to limit the amount drawn onto the screen at a given time.
 *Param One : Vector2f - The top left corner of the game view.
 *Param Two : Vector2f - The bottom right corner of the game view.
 */
@@ -218,7 +218,7 @@ void Colonist::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight)
 }
 
 //--------------------------------------------------------
-/*! \fn Draw Filter (Overload) : This will be used to filter this object for draing, used to limit the amount drawn onto the screen at a given time.
+/*! \fn Draw Filter (Overload) : This will be used to filter This object for draing, used to limit the amount drawn onto the screen at a given time.
 *Param One : Vector2f - The top left corner of the game view.
 *Param Two : Vector2f - The bottom right corner of the game view.
 *Param Three : unsinged int - The current layer the displayed on the game window.
@@ -267,7 +267,7 @@ void Colonist::m_SetCurrentLayer(unsigned int newLayer)
 }
 
 //--------------------------------------------------------
-/*! \fn Get Current Layer : THis will return the value for the current layer which the colonist is on.
+/*! \fn Get Current Layer : This will return the value for the current layer which the colonist is on.
 *
 */
 int Colonist::m_GetCurrentLayer()

@@ -52,13 +52,17 @@ private:
 	const sf::Vector2f m_MaxScrollAmount = sf::Vector2f(800, 800); 
 
 	/*! \var This is the current move vector for the view, if one of the movement keys is pressed then the 
-	*			view will be moved by this vector. 
+	*			view will be moved by This vector. 
 	*/
 	sf::Vector2f m_ViewMoveVector; 
 
 	// Member Functions
 
 public: 
+
+	//--------------------------------------------------------
+	//						Setup 
+	//--------------------------------------------------------
 
 	//--------------------------------------------------------
 	/*! \fn InitWindow :- This will create the game window, if there is any errors returns 1 else returns 0; 
@@ -69,7 +73,11 @@ public:
 	int m_InitWindow(int windowWidth, int windowHeight, std::string windowName); 
 
 	//--------------------------------------------------------
-	/*! \fn GetWindow : This will return the value of the window, this will for the window to be referenced oustide of the class.
+	//				Get Window and View 
+	//--------------------------------------------------------
+
+	//--------------------------------------------------------
+	/*! \fn GetWindow : This will return the value of the window, This will for the window to be referenced oustide of the class.
 	*
 	*/
 	sf::RenderWindow & m_GetWindow(); 
@@ -87,8 +95,15 @@ public:
 	sf::Vector2f m_GetViewLowerBounds(); 
 
 	//--------------------------------------------------------
-	/*! \fn CheckForViewMove : This will b eused to check if the view should be moved this frame. 
-	*Param One : int - The current key being pressed, if none are pressed it recives 0. 
+	//					Moving View
+	//--------------------------------------------------------
+
+	//--------------------------------------------------------
+	/*! \fn CheckForViewMove : This will be used to check if the view should be moved This frame. 
+	*Param One : Bool - If the view should move up.
+	*Param Two : Bool - If the view should move down.
+	*Param Three : Bool - If the view should move left.
+	*Param Four : Bool - If the view should move right. 
 	*/
 	void m_CheckForViewMove(bool upValue, bool downValue, bool leftValue, bool rightValue);
 

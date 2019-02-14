@@ -56,7 +56,7 @@ private:
 	/*! \var This will be the current cell on the grid the colonist is currently inside. */
 	Cells * m_CurrentCell = nullptr; 
 
-	/*! \var THis will be used to keep track of which layer the colonist is currently on. */
+	/*! \var This will be used to keep track of which layer the colonist is currently on. */
 	unsigned int m_iCurrentLayer; 
 
 	/*! \var This will be used to update the colonist's current position along their path. */
@@ -68,7 +68,7 @@ private:
 	/*! \var The time (in seconds) when the colonist will move. */
 	const float m_fmovementTimer = 0.5f; 
 
-	/*! \var THis is a list of cells the pathfinding algorithm will have returned. It will allow for the colonist to move. */
+	/*! \var This is a list of cells the pathfinding algorithm will have returned. It will allow for the colonist to move. */
 	std::deque<Cells*> m_Path; 
 
 	/*! \var A line displaying the path the colonist is moving along. */
@@ -118,7 +118,7 @@ public:
 	void m_UpdateCurrentCell(Cells * newCurrentCell);
 
 	//--------------------------------------------------------
-	/*! \fn Update : This will be used to update the logic for this class. 
+	/*! \fn Update : This will be used to update the logic for This class. 
 	*
 	*/
 	void m_Update() override; 
@@ -128,8 +128,8 @@ public:
 	//--------------------------------------------------------\\
 
 	//--------------------------------------------------------
-	/*! \fn Set Job : This will be used to assign a new job to this colonist. 
-	*Param One : job - This is the new job for this colonist. 
+	/*! \fn Set Job : This will be used to assign a new job to This colonist. 
+	*Param One : job - This is the new job for This colonist. 
 	*/
 	void m_SetJob(job newJob);
 
@@ -162,14 +162,14 @@ public:
 	void m_DrawGameObject(sf::RenderWindow & window) override;
 
 	//--------------------------------------------------------
-	/*! \fn Draw Filter : This will be used to filter this object for draing, used to limit the amount drawn onto the screen at a given time. 
+	/*! \fn Draw Filter : This will be used to filter This object for draing, used to limit the amount drawn onto the screen at a given time. 
 	*Param One : Vector2f - The top left corner of the game view. 
 	*Param Two : Vector2f - The bottom right corner of the game view. 
 	*/
 	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight) override;
 
 	//--------------------------------------------------------
-	/*! \fn Draw Filter (Overload) : This will be used to filter this object for draing, used to limit the amount drawn onto the screen at a given time.
+	/*! \fn Draw Filter (Overload) : This will be used to filter This object for draing, used to limit the amount drawn onto the screen at a given time.
 	*Param One : Vector2f - The top left corner of the game view.
 	*Param Two : Vector2f - The bottom right corner of the game view.
 	*Param Three : unsinged int - The current layer the displayed on the game window. 
@@ -232,13 +232,13 @@ public:
 	//--------------------------------------------------------\\
 
 	//--------------------------------------------------------
-	/*! \fn Select Colonist : This will select this colonist. 
+	/*! \fn Select Colonist : This will select This colonist. 
 	*Param One : bool - The new value for when the colonist is selected. 
 	*/
 	void m_SelectColonist(bool selected); 
 
 	//--------------------------------------------------------
-	/*! \fn Get Selected Value : Used to check if the player has selected this colonist. 
+	/*! \fn Get Selected Value : Used to check if the player has selected This colonist. 
 	*
 	*/
 	bool m_GetSelectedValue(); 

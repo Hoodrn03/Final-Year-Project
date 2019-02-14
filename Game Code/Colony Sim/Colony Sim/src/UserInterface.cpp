@@ -13,9 +13,9 @@ void UserInterface::m_InitGui(sf::RenderWindow & window)
 	m_Gui.setTarget(window);
 }
 
-void UserInterface::m_HandleEvents(sf::Event & thisEvent)
+void UserInterface::m_HandleEvents(sf::Event & ThisEvent)
 {
-	m_Gui.handleEvent(thisEvent);
+	m_Gui.handleEvent(ThisEvent);
 }
 
 void UserInterface::m_DrawGui()

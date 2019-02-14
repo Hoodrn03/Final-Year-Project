@@ -101,7 +101,7 @@ void ResourceManagement::m_Update()
 	}
 }
 
-void ResourceManagement::m_CutTreeAction(currentAction newAction)
+void ResourceManagement::m_AssignAction(currentAction newAction)
 {
 	m_CurretAction = newAction; 
 }

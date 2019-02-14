@@ -61,11 +61,19 @@ private:
 public:
 
 	//--------------------------------------------------------
+	//						Setup 
+	//--------------------------------------------------------
+
+	//--------------------------------------------------------
 	/*! \fn InitAlgorithm : This will begin the algorithm. 
 	*Param One : Cells - The start cell for the algorithm.
 	*Param Two : Cells - The end cell for the algorithm. 
 	*/
 	void m_InitAlgorithm(Cells * startCell, Cells * endCell); 
+
+	//--------------------------------------------------------
+	//						Update 
+	//--------------------------------------------------------
 
 	//--------------------------------------------------------
 	/*! \fn RunAStarAlgorithm : This will be used to continue the algorithm. 
@@ -75,9 +83,13 @@ public:
 
 	//--------------------------------------------------------
 	/*! \fn RunAStarAlgorithm : This will be used to continue the algorithm.
-	*
+	*Param One : tileSet - THe list of obstructions within the game (tiles which can't be passed through). 
 	*/
 	void m_RunAStarAlgorithm(std::vector<tileSet> obstructions);
+
+	//--------------------------------------------------------
+	//					Calculations 
+	//--------------------------------------------------------
 
 	//--------------------------------------------------------
 	/*! \fn CalcDist : This will be used to find the literal distance between two cells. 
@@ -107,22 +119,30 @@ public:
 	int m_CalculateFScore(Cells *currentCell);
 
 	//--------------------------------------------------------
+	//						Final Path 
+	//--------------------------------------------------------
+
+	//--------------------------------------------------------
 	/*! \fn TracePath : This will be used to find the path by tracing the parents of cells. 
 	*
 	*/
 	void m_TracePath(); 
 
 	//--------------------------------------------------------
+	/*! \fn GetCurrentPath : This will be used to access the path outside the class.
+	*
+	*/
+	std::deque<Cells*> m_GetCurrentPath();
+
+	//--------------------------------------------------------
+	//					End of Pathfinding
+	//--------------------------------------------------------
+
+	//--------------------------------------------------------
 	/*! \fn CheckForCompletion : This check to see if the path has been found. 
 	*
 	*/
 	bool m_CheckForCompletion(); 
-
-	//--------------------------------------------------------
-	/*! \fn GetCurrentPath : This will be used to access the path outside the class. 
-	*
-	*/
-	std::deque<Cells*> m_GetCurrentPath(); 
 
 
 };
