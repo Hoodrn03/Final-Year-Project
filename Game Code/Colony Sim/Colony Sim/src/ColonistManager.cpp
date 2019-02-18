@@ -76,7 +76,7 @@ void ColonistManager::m_Update(Grid & CurrentGrid)
 /*! \fn Pathfinding : This will be used to manage the colonist's current path.
 *Param One : Grid - the current grid which is overlayed onto the game map.
 */
-void ColonistManager::m_Pathfinding(Grid & CurrentGrid)
+void ColonistManager::m_Pathfinding(Grid & CurrentGrid, ResourceManagement & currentManager)
 {
 	if (v_clColonists.size() > 0)
 	{
@@ -87,6 +87,11 @@ void ColonistManager::m_Pathfinding(Grid & CurrentGrid)
 				if (v_clColonists[i].m_GetCurrentJob() == _IDLE)
 				{
 					v_clColonists[i].m_FindNewPath(CurrentGrid.m_GetRandomDirtCell(v_clColonists[i].m_GetCurrentLayer()));
+				}
+
+				else if (v_clColonists[i].m_GetCurrentJob() == _LOGGING)
+				{
+					v_clColonists[i].m_FindNewPath(currentManager.m_FindClosestTree(v_clColonists[i].m_GetObjectPos()));
 				}
 			}
 		}

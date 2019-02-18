@@ -13,6 +13,10 @@
 #include "Pathfinding.h"
 #include "Cells.h"
 
+#ifndef LOOP_TIMEOUT
+#define LOOP_TIMEOUT 1500
+#endif
+
 /*! \enum This will hold the name for the job the colonist currently has. */
 enum job
 {

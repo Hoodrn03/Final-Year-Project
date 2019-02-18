@@ -143,4 +143,6 @@ public:
 	*/
 	void m_CancelTreeCutDown(); 
 
+	bool m_GetTreeCutDown(); 
+
 };

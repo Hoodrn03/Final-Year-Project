@@ -27,9 +27,7 @@
 // Grants the use of multiple threads; allows for multiple functions to happen at the same time. 
 #include <thread>
 
-#ifndef LOOP_TIMEOUT
-#define LOOP_TIMEOUT 500
-#endif
+
 
 enum currentAction
 {

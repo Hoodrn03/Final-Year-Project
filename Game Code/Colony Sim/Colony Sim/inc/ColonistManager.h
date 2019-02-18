@@ -91,7 +91,7 @@ public:
 	/*! \fn Pathfinding : This will be used to manage the colonist's current path. 
 	*Param One : Grid - the current grid which is overlayed onto the game map. 
 	*/
-	void m_Pathfinding(Grid &CurrentGrid);
+	void m_Pathfinding(Grid &CurrentGrid, ResourceManagement & currentManager);
 
 	//--------------------------------------------------------\\
 	//						Rendering

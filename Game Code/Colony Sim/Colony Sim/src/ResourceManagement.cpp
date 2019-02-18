@@ -168,22 +168,36 @@ void ResourceManagement::m_SelectResources(sf::Vector2f m_TopLeft, sf::Vector2f 
 
 Cells * ResourceManagement::m_FindClosestTree(sf::Vector2f otherObject)
 {
-	WoodResource * l_TempTree;
+	WoodResource * l_TempTree = nullptr;
+
+	bool l_FirstTree = true; 
 
 	if (v_clTrees.size() > 0)
 	{
-		l_TempTree = &v_clTrees[0];
-
 		for (unsigned int i = 1; i < v_clTrees.size(); i++)
 		{
-			if ((v_clTrees[i].m_GetObjectPos().x < l_TempTree->m_GetObjectPos().x) &&
-				(v_clTrees[i].m_GetObjectPos().y < l_TempTree->m_GetObjectPos().y))
+			if (v_clTrees[i].m_GetTreeCutDown() == true)
 			{
-				// The next tree is closer thena the current tree. 
+				if (l_FirstTree == true)
+				{
+					l_TempTree = &v_clTrees[i]; 
 
-				l_TempTree = &v_clTrees[i];
+					l_FirstTree = false; 
+				}
+				else if ((v_clTrees[i].m_GetObjectPos().x < l_TempTree->m_GetObjectPos().x) &&
+					(v_clTrees[i].m_GetObjectPos().y < l_TempTree->m_GetObjectPos().y))
+				{
+					// The next tree is closer thena the current tree. 
+
+					l_TempTree = &v_clTrees[i];
+				}
 			}
 		}
+	}
+
+	if (l_TempTree == nullptr)
+	{
+		std::cout << "Unable to find tree" << std::endl;
 	}
 
 	return l_TempTree->m_GetCurrentCell();

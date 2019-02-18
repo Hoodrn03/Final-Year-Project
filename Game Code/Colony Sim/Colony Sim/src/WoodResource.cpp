@@ -160,6 +160,11 @@ void WoodResource::m_SetObjectPos(float x, float y)
 
 Cells * WoodResource::m_GetCurrentCell()
 {
+	if (this == nullptr)
+	{
+		return nullptr;
+	}
+
 	return m_CurrentCell;
 }
 
@@ -179,4 +184,9 @@ void WoodResource::m_CancelTreeCutDown()
 	m_bCutDownTree = false;
 
 	m_TreeObject.setFillColor(sf::Color::Green);
+}
+
+bool WoodResource::m_GetTreeCutDown()
+{
+	return m_bCutDownTree;
 }

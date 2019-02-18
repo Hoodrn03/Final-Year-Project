@@ -180,6 +180,8 @@ void Colonist::m_MoveToTree(Cells * moveTo)
 {
 	if (m_bFoundTree == false)
 	{
+		std::cout << "Find Next Tree" << std::endl; 
+
 		m_bFoundTree = true;
 
 		m_ResetPathfinding();
@@ -199,6 +201,11 @@ void Colonist::m_MoveToTree(Cells * moveTo)
 
 	else
 	{
+		if ((m_GameObjectPos.x != moveTo->m_GetCellCentre().x && m_GameObjectPos.y != moveTo->m_GetCellCentre().y))
+		{
+			m_bFoundTree = false; 
+		}
+
 		std::cout << " At Tree " << std::endl;
 	}
 }
@@ -351,7 +358,22 @@ int Colonist::m_FindNewPath(Cells * endCell)
 	{
 		int l_numberOfLoop = 0;
 
-		m_EndCell = endCell;
+		if (endCell != nullptr)
+		{
+			m_EndCell = endCell;
+		}
+		else
+		{
+			// Check if the current end cell exists. 
+			throw 42; 
+		}
+
+		if (m_EndCell == m_CurrentCell)
+		{
+			// Check if the colonist has reached their destination. 
+
+			return 0; 
+		}
 
 		if ((m_EndCell != nullptr) && (m_CurrentCell != nullptr))
 		{
@@ -418,23 +440,39 @@ int Colonist::m_FindNewPath(Cells * endCell)
 	}
 	catch (int i)
 	{
+		bool l_bPrintError = true; 
+
 		switch(i)
 		{
 		case 3:
 			// This will timeout the function.
-
-			std::cout << "TIMEOUT" << std::endl;
-
+			
+			if (l_bPrintError == true)
+			{
+				std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+			}
+			
 			return 1;
 			break;
 
 		case 42:
 			// If the function attempts to access a nullptr it will exit. 
+			
+			if (l_bPrintError == true)
+			{
+				std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+			}
+
 			return 1;
 			break;
 
 		default:
-			std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+			
+			if (l_bPrintError == true)
+			{
+				std::cout << "Unable to Perform Function : Error Code : " << i << std::endl;
+			}
+
 			return 1; 
 			break;
 		}
