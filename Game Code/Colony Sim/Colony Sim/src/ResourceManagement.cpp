@@ -166,30 +166,84 @@ void ResourceManagement::m_SelectResources(sf::Vector2f m_TopLeft, sf::Vector2f 
 
 }
 
-Cells * ResourceManagement::m_FindClosestTree(sf::Vector2f otherObject)
+WoodResource * ResourceManagement::m_FindClosestTree(sf::Vector2f otherObject)
 {
+
+	// Var setup
+
 	WoodResource * l_TempTree = nullptr;
 
 	bool l_FirstTree = true; 
+
+	float l_PrevXDist, l_PrevYDist;
+
+	float l_XDist, l_YDist;
 
 	if (v_clTrees.size() > 0)
 	{
 		for (unsigned int i = 1; i < v_clTrees.size(); i++)
 		{
+			// Ensure this only loops through trees chosen to be cut down. 
+
 			if (v_clTrees[i].m_GetTreeCutDown() == true)
 			{
 				if (l_FirstTree == true)
 				{
+					// Find the first tree in the vector to begin the distance evaluations.
+
 					l_TempTree = &v_clTrees[i]; 
 
-					l_FirstTree = false; 
-				}
-				else if ((v_clTrees[i].m_GetObjectPos().x < l_TempTree->m_GetObjectPos().x) &&
-					(v_clTrees[i].m_GetObjectPos().y < l_TempTree->m_GetObjectPos().y))
-				{
-					// The next tree is closer thena the current tree. 
+					l_FirstTree = false;
 
+					// Calculate the initial distance between the chosen object and the first tree. 
+
+					if (v_clTrees[i].m_GetObjectPos().x > otherObject.x)
+					{
+						l_PrevXDist = v_clTrees[i].m_GetObjectPos().x - otherObject.x;
+					}
+					else
+					{
+						l_PrevXDist = otherObject.x - v_clTrees[i].m_GetObjectPos().x;
+					}
+
+					if (v_clTrees[i].m_GetObjectPos().y > otherObject.y)
+					{
+						l_PrevYDist = v_clTrees[i].m_GetObjectPos().y - otherObject.y;
+					}
+					else
+					{
+						l_PrevYDist = otherObject.y - v_clTrees[i].m_GetObjectPos().y;
+					}
+				}
+
+				// Calculate the distance for the next tree. 
+
+				if (v_clTrees[i].m_GetObjectPos().x > otherObject.x)
+				{
+					l_XDist = v_clTrees[i].m_GetObjectPos().x - otherObject.x;
+				}
+				else
+				{
+					l_XDist = otherObject.x - v_clTrees[i].m_GetObjectPos().x;
+				}
+
+				if (v_clTrees[i].m_GetObjectPos().y > otherObject.y)
+				{
+					l_YDist = v_clTrees[i].m_GetObjectPos().y - otherObject.y;
+				}
+				else
+				{
+					l_YDist = otherObject.y - v_clTrees[i].m_GetObjectPos().y;
+				}
+
+				// See if the new distance is shorter than the preveous one. 
+
+				if ((l_XDist <= l_PrevXDist) && (l_YDist <= l_PrevYDist))
+				{
 					l_TempTree = &v_clTrees[i];
+
+					l_PrevXDist = l_XDist;
+					l_PrevYDist = l_YDist;
 				}
 			}
 		}
@@ -200,7 +254,7 @@ Cells * ResourceManagement::m_FindClosestTree(sf::Vector2f otherObject)
 		std::cout << "Unable to find tree" << std::endl;
 	}
 
-	return l_TempTree->m_GetCurrentCell();
+	return l_TempTree;
 }
 
 

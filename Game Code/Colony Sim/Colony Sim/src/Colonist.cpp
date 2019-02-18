@@ -442,6 +442,8 @@ int Colonist::m_FindNewPath(Cells * endCell)
 	{
 		bool l_bPrintError = true; 
 
+		m_ResetPathfinding(); 
+
 		switch(i)
 		{
 		case 3:
@@ -479,6 +481,26 @@ int Colonist::m_FindNewPath(Cells * endCell)
 	}
 
 	return 0; 
+}
+
+void Colonist::m_AssignTree(WoodResource * newTarget)
+{
+	m_TargetTree = newTarget; 
+}
+
+bool Colonist::m_AtTargetTree()
+{
+	if (m_TargetTree == nullptr)
+	{
+		return false; 
+	}
+	else if ((m_GetObjectPos().x == m_TargetTree->m_GetObjectPos().x) &&
+		(m_GetObjectPos().y == m_TargetTree->m_GetObjectPos().y))
+	{
+		return true; 
+	}
+
+	return false;
 }
 
 void Colonist::m_ResetPathfinding()

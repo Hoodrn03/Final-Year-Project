@@ -11,10 +11,6 @@
 
 #include "Cells.h"
 
-#ifndef LOOP_TIMEOUT
-#define LOOP_TIMEOUT 1500
-#endif
-
 /*! \class This will use A* to find the shortest path between two cells. */
 class Pathfinding
 {

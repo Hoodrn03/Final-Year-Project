@@ -91,7 +91,14 @@ void ColonistManager::m_Pathfinding(Grid & CurrentGrid, ResourceManagement & cur
 
 				else if (v_clColonists[i].m_GetCurrentJob() == _LOGGING)
 				{
-					v_clColonists[i].m_FindNewPath(currentManager.m_FindClosestTree(v_clColonists[i].m_GetObjectPos()));
+					WoodResource * l_TargetTree(currentManager.m_FindClosestTree(v_clColonists[i].m_GetObjectPos()));
+
+					v_clColonists[i].m_AssignTree(l_TargetTree);
+
+					if (v_clColonists[i].m_AtTargetTree() == false)
+					{
+						v_clColonists[i].m_FindNewPath(l_TargetTree->m_GetCurrentCell());
+					}
 				}
 			}
 		}
@@ -207,20 +214,6 @@ void ColonistManager::m_SetColonistTreeCut()
 			if (v_clColonists[i].m_GetSelectedValue() == true)
 			{
 				v_clColonists[i].m_SetJob(_LOGGING); 
-			}
-		}
-	}
-}
-
-void ColonistManager::m_FindClosestTree(ResourceManagement & currentManager)
-{
-	if (v_clColonists.size() > 0)
-	{
-		for (unsigned int i = 0; i < v_clColonists.size(); i++)
-		{
-			if (v_clColonists[i].m_GetCurrentJob() == _LOGGING)
-			{
-				v_clColonists[i].m_MoveToTree(currentManager.m_FindClosestTree(v_clColonists[i].m_GetObjectPos()));
 			}
 		}
 	}

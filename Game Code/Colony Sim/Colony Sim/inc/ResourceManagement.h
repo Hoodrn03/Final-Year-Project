@@ -110,5 +110,5 @@ public:
 	*/
 	void m_SelectResources(sf::Vector2f m_TopLeft, sf::Vector2f bottomRight);
 
-	Cells * m_FindClosestTree(sf::Vector2f otherObject); 
+	WoodResource * m_FindClosestTree(sf::Vector2f otherObject);
 };

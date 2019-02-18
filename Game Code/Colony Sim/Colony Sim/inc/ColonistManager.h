@@ -142,8 +142,6 @@ public:
 
 	void m_SetColonistTreeCut(); 
 
-	void m_FindClosestTree(ResourceManagement & currentManager); 
-
 	//--------------------------------------------------------\\
 	//						Buttons 
 	//--------------------------------------------------------\\

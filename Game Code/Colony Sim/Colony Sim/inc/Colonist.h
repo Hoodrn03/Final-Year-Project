@@ -12,10 +12,10 @@
 #include "GameObject.h"
 #include "Pathfinding.h"
 #include "Cells.h"
+#include "WoodResource.h"
 
-#ifndef LOOP_TIMEOUT
-#define LOOP_TIMEOUT 1500
-#endif
+
+
 
 /*! \enum This will hold the name for the job the colonist currently has. */
 enum job
@@ -61,6 +61,8 @@ private:
 	Cells * m_CurrentCell = nullptr; 
 
 	Cells * m_EndCell = nullptr; 
+
+	WoodResource * m_TargetTree = nullptr; 
 
 	/*! \var This will be used to keep track of which layer the colonist is currently on. */
 	unsigned int m_iCurrentLayer; 
@@ -226,6 +228,10 @@ public:
 	*Param One : Cells - This will be the new end cell for the colonist. 
 	*/
 	int m_FindNewPath(Cells * endCell); 
+
+	void m_AssignTree(WoodResource * newTarget); 
+
+	bool m_AtTargetTree(); 
 
 	void m_ResetPathfinding(); 
 
