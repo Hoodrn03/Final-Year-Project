@@ -17,6 +17,8 @@
 #include "ResourceManagement.h"
 #include "Mouse.h"
 
+#include "WoodPile.h"
+
 /*! \class This will hold the main game loop, it will have three main functions; setup, update and render. */
 class Gameloop
 {
@@ -59,6 +61,8 @@ public:
 
 	/*! \var This will allow for ingame resources to be created and managed. */
 	ResourceManagement m_clResourceManagement;
+
+	WoodPile m_clWoodPile; 
 
 	/*! \var Controls mouse actions and functions for the game. */
 	Mouse m_clMouse;

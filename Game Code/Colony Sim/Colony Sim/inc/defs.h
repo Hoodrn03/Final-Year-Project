@@ -9,6 +9,10 @@
 // Allows access to sfmls window functions. 
 #include <SFML/Graphics.hpp>
 
+#include <SFML/System.hpp>
+
+#include <SFML/Window.hpp>
+
 // Allows for the creation and use of Gui elements works with SFML. 
 #include <TGUI/TGUI.hpp>
 
@@ -28,9 +32,10 @@
 #include <thread>
 
 #ifndef LOOP_TIMEOUT
-#define LOOP_TIMEOUT 3000
+#define LOOP_TIMEOUT 3000 /*!< This will be used to timeout any function with the possibility of having an infinate loop. */
 #endif
 
+/*! \enum Used to allow for actions to be assigned. */
 enum currentAction
 {
 	_NULL = 901,		/*!< This is used when there is no other actions. */

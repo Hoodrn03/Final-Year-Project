@@ -48,6 +48,7 @@
     <ClInclude Include="inc\ResourceManagement.h" />
     <ClInclude Include="inc\UserInterface.h" />
     <ClInclude Include="inc\Window.h" />
+    <ClInclude Include="inc\WoodPile.h" />
     <ClInclude Include="inc\WoodResource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +68,7 @@
     <ClCompile Include="src\ResourceManagement.cpp" />
     <ClCompile Include="src\UserInterface.cpp" />
     <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="src\WoodPile.cpp" />
     <ClCompile Include="src\WoodResource.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -167,6 +167,8 @@ void Gameloop::m_BeginGame()
 
 	m_clColonistManager.m_CreateColonistActionButtons(m_clFontManager.m_GetFrontFromMap("arial"), m_clWindow.m_GetWindow());
 
+	m_clWoodPile.m_InitWoodPile(m_clMap.m_GetGrid().m_GetRandomDirtCell(2), m_clFontManager.m_GetFrontFromMap("arial"), 75); 
+
 	// Begin game.  
 
 	// This will create a new thread for the pathfinding within the game. 
@@ -313,6 +315,8 @@ void Gameloop::m_RenderGame()
 
 	// Draw the colonists at the top.
 	m_clColonistManager.m_Render(m_clWindow.m_GetWindow()); 
+
+	m_clWoodPile.m_DrawGameObject(m_clWindow.m_GetWindow());
 
 	// Draw UI above the other game elements. 
 
