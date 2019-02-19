@@ -27,7 +27,9 @@ private:
 
 	int m_iNumberOfWood = 0; 
 
-	const int m_iMaxWood = 150; 
+	const int m_iMaxWoodPile = 150; 
+
+	const int m_iMaxWood = 50; 
 
 	// Member Functions 
 
@@ -75,11 +77,4 @@ public:
 	*
 	*/
 	void m_SetObjectPos(float x, float y);
-
-	//--------------------------------------------------------
-	/*! \fn GetObjectPos : This will return the current value for the objects position.
-	*
-	*/
-	sf::Vector2f m_GetObjectPos();
-
 };

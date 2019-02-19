@@ -2,7 +2,11 @@
 
 FontManager::FontManager()
 {
-	m_AddFontToMap("assets/fonts/arial.ttf", "arial"); 
+	std::cout << "------------------------------------------" << "\nLoading Fonts into map. " << std::endl;
+
+	m_AddFontToMap("assets/fonts/arial.ttf", "arial");
+
+	std::cout << "------------------------------------------" << std::endl;
 }
 
 FontManager::~FontManager()

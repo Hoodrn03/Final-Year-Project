@@ -142,7 +142,7 @@ void Colonist::m_SetJob(job newJob)
 {
 	m_CurrentJob = newJob; 
 
-	/*
+	
 
 	if (newJob == _LOGGING)
 	{
@@ -154,7 +154,7 @@ void Colonist::m_SetJob(job newJob)
 		std::cout << "Idle" << std::endl;
 	}
 
-	*/
+	
 }
 
 //--------------------------------------------------------
@@ -164,49 +164,29 @@ void Colonist::m_SetJob(job newJob)
 void Colonist::m_IdleJob()
 {
 	// todo - When recreational objects are added add functionality to interact with them here. 
+
+	// If not working keep the timer at 0. 
+	m_WorkTimer.restart(); 
 }
 
 void Colonist::m_CutTrees()
 {
-	// todo - Find tree
-
 	// Cut down tree
 
-	// Leave behind logs 
-
-}
-
-void Colonist::m_MoveToTree(Cells * moveTo)
-{
-	if (m_bFoundTree == false)
+	if (m_AtTargetTree() == true)
 	{
-		std::cout << "Find Next Tree" << std::endl; 
-
-		m_bFoundTree = true;
-
-		m_ResetPathfinding();
-
-		m_EndCell = moveTo; 
-
-		m_FindNewPath(moveTo);
-	}
-
-	else if (m_bAtTree == false)
-	{
-		if (m_GameObjectPos.x == moveTo->m_GetCellCentre().x && m_GameObjectPos.y == moveTo->m_GetCellCentre().y)
+		if (m_WorkTimer.getElapsedTime().asSeconds() >= 1.f)
 		{
-			m_bAtTree = true; 
+			m_WorkTimer.restart();
+
+			std::cout << " Finished Working !!! " << std::endl;
+
+			m_TargetTree->m_SetMarkForDeletion(true);
 		}
 	}
-
 	else
 	{
-		if ((m_GameObjectPos.x != moveTo->m_GetCellCentre().x && m_GameObjectPos.y != moveTo->m_GetCellCentre().y))
-		{
-			m_bFoundTree = false; 
-		}
-
-		std::cout << " At Tree " << std::endl;
+		m_WorkTimer.restart();
 	}
 }
 
@@ -494,10 +474,11 @@ bool Colonist::m_AtTargetTree()
 	{
 		return false; 
 	}
-	else if ((m_GetObjectPos().x == m_TargetTree->m_GetObjectPos().x) &&
-		(m_GetObjectPos().y == m_TargetTree->m_GetObjectPos().y))
+
+	else if (m_TargetTree->m_GetCurrentCell()->m_CheckCellBounds(m_GetObjectPos().x, m_GetObjectPos().y))
 	{
-		return true; 
+
+		return true;
 	}
 
 	return false;

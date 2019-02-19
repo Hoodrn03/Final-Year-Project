@@ -110,7 +110,7 @@ int Gameloop::m_MainMenu()
 	{
 		// Update additional logic at the beginning of the frame. 
 
-		m_CheckFramerate();
+		m_CheckFramerate(false);
 
 		m_UpdateDeltaTime();
 
@@ -162,12 +162,11 @@ void Gameloop::m_BeginGame()
 
 	// Add resources. 
 	m_clResourceManagement.m_AddTrees(30, 10.f, m_clMap.m_GetGroundLevel(), m_clMap.m_GetGrid());
+	m_clResourceManagement.m_AssignFont(m_clFontManager.m_GetFrontFromMap("arial")); 
 
 	// Prepare buttons 
 
 	m_clColonistManager.m_CreateColonistActionButtons(m_clFontManager.m_GetFrontFromMap("arial"), m_clWindow.m_GetWindow());
-
-	m_clWoodPile.m_InitWoodPile(m_clMap.m_GetGrid().m_GetRandomDirtCell(2), m_clFontManager.m_GetFrontFromMap("arial"), 75); 
 
 	// Begin game.  
 
@@ -189,7 +188,7 @@ void Gameloop::m_Update()
 	{
 		// Update additional logic at the beginning of the frame. 
 
-		m_CheckFramerate(); 
+		m_CheckFramerate(false); 
 
 		m_UpdateDeltaTime(); 
 
@@ -259,6 +258,10 @@ void Gameloop::m_Update()
 
 		// Draw Items. 
 		m_RenderGame();
+
+		// End of frame removal of objects. 
+
+		m_clResourceManagement.m_DeleteTrees();
 	} 
 
 }
@@ -312,11 +315,10 @@ void Gameloop::m_RenderGame()
 
 	// Draw the Resources above the grid. 
 	m_clResourceManagement.m_DrawTrees(m_clWindow.m_GetWindow()); 
+	m_clResourceManagement.m_DrawWoodPiles(m_clWindow.m_GetWindow());
 
 	// Draw the colonists at the top.
 	m_clColonistManager.m_Render(m_clWindow.m_GetWindow()); 
-
-	m_clWoodPile.m_DrawGameObject(m_clWindow.m_GetWindow());
 
 	// Draw UI above the other game elements. 
 
@@ -332,7 +334,7 @@ void Gameloop::m_RenderGame()
 /*! \fn CheckFramerate : Every frame This will check the current framerate of the game and output it.
 *
 */
-void Gameloop::m_CheckFramerate()
+void Gameloop::m_CheckFramerate(bool print)
 {
 	m_FrameRate++;
 
@@ -340,7 +342,10 @@ void Gameloop::m_CheckFramerate()
 	{
 		m_FrameRateCounter.restart(); 
 
-		std::cout << "Frame Rate : " << m_FrameRate << std::endl;
+		if (print)
+		{
+			std::cout << "Frame Rate : " << m_FrameRate << std::endl;
+		}
 
 		m_FrameRate = 0; 
 	}

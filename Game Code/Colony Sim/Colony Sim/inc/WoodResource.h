@@ -58,6 +58,8 @@ private:
 	/*! \var Used to check if the tree needs to be cut down. */
 	bool m_bCutDownTree = false; 
 
+	bool m_bMarkForDeletion = false; 
+
 	/*! \var A timer to limit the amount of growth for the tree. */
 	sf::Clock m_GrowthTimer; 
 
@@ -136,6 +138,12 @@ public:
 	*
 	*/
 	void m_SetTreeCutDown(); 
+
+	void m_SetMarkForDeletion(bool removeThis); 
+
+	bool m_GetMarkForDeletion(); 
+
+	float m_GetCurrentGrowth(); 
 
 	//--------------------------------------------------------
 	/*! \fn CancelTreeCutDown : This will prevent This tree from being cut down.

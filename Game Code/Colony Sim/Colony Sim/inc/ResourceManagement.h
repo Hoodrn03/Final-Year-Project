@@ -5,7 +5,9 @@
 #include "defs.h"
 
 #include "Grid.h"
+
 #include "WoodResource.h"
+#include "WoodPile.h"
 
 /*! \class This will be used to manage all of the games resources. */
 class ResourceManagement
@@ -34,8 +36,12 @@ private:
 	/*! \var This will hold all of the growing tree objects in the game. */
 	std::vector<WoodResource> v_clTrees;
 
+	std::vector<WoodPile> v_clWoodPiles; 
+
 	/*! \var This will hold the current action the player is performing. */
 	currentAction m_CurretAction = _NULL; 
+
+	sf::Font m_LocalFont; 
 
 	// Member Functions 
 
@@ -44,6 +50,8 @@ public:
 	//--------------------------------------------------------
 	//						Setup 
 	//--------------------------------------------------------
+
+	void m_AssignFont(sf::Font mainFont); 
 
 	//--------------------------------------------------------
 	/*! \fn AddTrees : This will be used to add a number of trees into the game.
@@ -54,6 +62,8 @@ public:
 	*/
 	void m_AddTrees(int numberOfTrees, float maxRadius, int layer, Grid &grid);
 
+	void m_AddWoodPile(WoodResource * cutTree);
+
 	//--------------------------------------------------------
 	//						Rendering
 	//--------------------------------------------------------
@@ -63,6 +73,8 @@ public:
 	*Param One : RenderWindow - The main game window. 
 	*/
 	void m_DrawTrees(sf::RenderWindow &window); 
+
+	void m_DrawWoodPiles(sf::RenderWindow &window);
 
 	//--------------------------------------------------------
 	/*! \fn DrawFilter : Used to limit the game objects from being drawn. 
@@ -111,4 +123,10 @@ public:
 	void m_SelectResources(sf::Vector2f m_TopLeft, sf::Vector2f bottomRight);
 
 	WoodResource * m_FindClosestTree(sf::Vector2f otherObject);
+
+	//--------------------------------------------------------
+	//					Mark for Deletion
+	//--------------------------------------------------------
+
+	void m_DeleteTrees(); 
 };

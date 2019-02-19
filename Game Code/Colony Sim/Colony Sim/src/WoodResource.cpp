@@ -179,6 +179,21 @@ void WoodResource::m_SetTreeCutDown()
 	m_TreeObject.setFillColor(sf::Color::Blue); 
 }
 
+void WoodResource::m_SetMarkForDeletion(bool removeThis)
+{
+	m_bMarkForDeletion = removeThis;
+}
+
+bool WoodResource::m_GetMarkForDeletion()
+{
+	return m_bMarkForDeletion;
+}
+
+float WoodResource::m_GetCurrentGrowth()
+{
+	return m_fCurrentGrowth;
+}
+
 void WoodResource::m_CancelTreeCutDown()
 {
 	m_bCutDownTree = false;

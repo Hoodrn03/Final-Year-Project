@@ -17,8 +17,6 @@
 #include "ResourceManagement.h"
 #include "Mouse.h"
 
-#include "WoodPile.h"
-
 /*! \class This will hold the main game loop, it will have three main functions; setup, update and render. */
 class Gameloop
 {
@@ -61,8 +59,6 @@ public:
 
 	/*! \var This will allow for ingame resources to be created and managed. */
 	ResourceManagement m_clResourceManagement;
-
-	WoodPile m_clWoodPile; 
 
 	/*! \var Controls mouse actions and functions for the game. */
 	Mouse m_clMouse;
@@ -160,7 +156,7 @@ public:
 	/*! \fn CheckFramerate : Every frame This will check the current framerate of the game and output it.
 	*
 	*/
-	void m_CheckFramerate();
+	void m_CheckFramerate(bool print);
 
 	//--------------------------------------------------------
 	/*! \fn Update Delta Time : This will update the current value of delta time; the time since the last frame.

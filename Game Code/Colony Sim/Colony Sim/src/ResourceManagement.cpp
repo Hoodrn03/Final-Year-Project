@@ -18,6 +18,11 @@ ResourceManagement::~ResourceManagement()
 {
 }
 
+void ResourceManagement::m_AssignFont(sf::Font mainFont)
+{
+	m_LocalFont = mainFont; 
+}
+
 //--------------------------------------------------------
 /*! \fn AddTrees : This will be used to add a number of trees into the game.
 *Param One : int - The number of trees to add.
@@ -40,6 +45,15 @@ void ResourceManagement::m_AddTrees(int numberOfTrees, float maxRadius, int laye
 
 }
 
+void ResourceManagement::m_AddWoodPile(WoodResource * cutTree)
+{
+	WoodPile  l_TempPile; 
+
+	l_TempPile.m_InitWoodPile(cutTree->m_GetCurrentCell(), m_LocalFont, cutTree->m_GetCurrentGrowth()); 
+
+	v_clWoodPiles.push_back(l_TempPile); 
+}
+
 //--------------------------------------------------------
 /*! \fn DrawTrees : Draws the trees into the game.
 *Param One : RenderWindow - The main game window.
@@ -51,6 +65,17 @@ void ResourceManagement::m_DrawTrees(sf::RenderWindow & window)
 		for (unsigned int i = 0; i < v_clTrees.size(); i++)
 		{
 			v_clTrees[i].m_DrawGameObject(window); 
+		}
+	}
+}
+
+void ResourceManagement::m_DrawWoodPiles(sf::RenderWindow & window)
+{
+	if (v_clWoodPiles.size() > 0)
+	{
+		for (unsigned int i = 0; i < v_clWoodPiles.size(); i++)
+		{
+			v_clWoodPiles[i].m_DrawGameObject(window);
 		}
 	}
 }
@@ -255,6 +280,22 @@ WoodResource * ResourceManagement::m_FindClosestTree(sf::Vector2f otherObject)
 	}
 
 	return l_TempTree;
+}
+
+void ResourceManagement::m_DeleteTrees()
+{
+	if (v_clTrees.size() > 0)
+	{
+		for (unsigned int i = 0; i < v_clTrees.size(); i++)
+		{
+			if (v_clTrees[i].m_GetMarkForDeletion() == true)
+			{
+				m_AddWoodPile(&v_clTrees[i]); 
+
+				v_clTrees.erase(v_clTrees.begin() + i);  
+			}
+		}
+	}
 }
 
 

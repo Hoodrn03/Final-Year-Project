@@ -73,6 +73,8 @@ private:
 	/*! \var This will be used to limit when the colonist will move in the game. */
 	sf::Clock m_MovementClock; 
 
+	sf::Clock m_WorkTimer; 
+
 	/*! \var The time (in seconds) when the colonist will move. */
 	const float m_fmovementTimer = 0.5f; 
 
@@ -156,8 +158,6 @@ public:
 	*
 	*/
 	void m_CutTrees(); 
-
-	void m_MoveToTree(Cells * moveTo); 
 
 	//--------------------------------------------------------
 	/*! \fn Get Current Job : Will be used to get the value of the current job the colonist is performing.
