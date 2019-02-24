@@ -99,6 +99,10 @@ private:
 
 	bool m_bAtTree = false; 
 
+public:
+
+	unsigned int m_iIdleCounter = 0;
+
 	// Member Functions 
 
 public:

@@ -30,16 +30,19 @@ void WoodPile::m_InitWoodPile(Cells * pileLocation, sf::Font newFont, float curr
 	m_CurrentFont = newFont;
 
 	m_PileCount.setFont(m_CurrentFont); 
+
 	m_PileCount.setString(std::to_string(m_iNumberOfWood));
 	m_SetObjectPos(m_CurrentCell->m_GetCellCentre().x, m_CurrentCell->m_GetCellCentre().y);
 	unsigned int l_iTextSize = 20;
 	do
 	{
 		// Adjust text size to fit within mian body. 
-		l_iTextSize--; 
+		l_iTextSize -= 2; 
 		m_PileCount.setCharacterSize(l_iTextSize);
 
-	} while (m_PileCount.getGlobalBounds().width > m_PileBody.getGlobalBounds().width);
+	} while ((m_PileCount.getGlobalBounds().width > m_PileBody.getGlobalBounds().width) || 
+		(m_PileCount.getGlobalBounds().height > m_PileBody.getGlobalBounds().height));
+
 	m_PileCount.setFillColor(sf::Color::Black); 
 }
 
@@ -50,10 +53,12 @@ void WoodPile::m_Update()
 void WoodPile::m_DrawGameObject(sf::RenderWindow & window)
 {
 	window.draw(m_PileBody); 
-	
+
 	if (m_PileCount.getFont() != nullptr)
 	{
-		// window.draw(m_PileCount); 
+		m_PileCount.setFont(m_CurrentFont);
+
+		window.draw(m_PileCount); 
 	}
 }
 
