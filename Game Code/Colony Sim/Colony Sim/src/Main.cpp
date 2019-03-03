@@ -17,7 +17,5 @@ int main()
 		return 1;
 	}
 
-	l_clGameLoop.m_Update(); 
-
 	return 0; 
 }

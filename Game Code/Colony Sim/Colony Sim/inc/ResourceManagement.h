@@ -43,6 +43,18 @@ private:
 
 	sf::Font m_LocalFont; 
 
+	std::vector<tgui::Button::Ptr> v_ActionButtons; 
+
+public:
+
+	tgui::Button::Ptr m_ActionButton;
+
+	bool m_bDisplayButtons = false; 
+
+	bool m_bButtonsCreated = false; 
+
+	bool m_bButtonsRemoved = false; 
+
 	// Member Functions 
 
 public: 
@@ -129,4 +141,14 @@ public:
 	//--------------------------------------------------------
 
 	void m_DeleteTrees(); 
+
+	//--------------------------------------------------------
+	//					Button Functionality
+	//--------------------------------------------------------
+
+	void m_CreateActionButtons();
+
+	void m_DrawActionButtons(); 
+
+	std::vector<tgui::Button::Ptr> m_GetActionButtons(); 
 };

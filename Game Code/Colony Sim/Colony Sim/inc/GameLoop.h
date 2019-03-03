@@ -78,6 +78,8 @@ public:
 	/*! \var A second parallel thread, which will be used for pathfinding within the game. */
 	std::thread l_First;
 
+	std::vector<tgui::Button::Ptr> v_MainMenuButtons; 
+
 private:
 
 	// Member Functions
@@ -94,17 +96,7 @@ public:
 	*/
 	int m_SetUp();
 
-	//--------------------------------------------------------
-	/*! \fn CreateExitButton : Used to create an exit button for the main menu. 
-	*
-	*/
-	tgui::Button::Ptr m_CreateExitButton();
-
-	//--------------------------------------------------------
-	/*! \fn CreateBeginButton : Used to create a begin button for the main menu. 
-	*
-	*/
-	tgui::Button::Ptr m_CreateBeginButton();
+	void m_CreateMainMenuButtons(); 
 
 	//--------------------------------------------------------
 	/*! \fn MainMenu : Used to open up the main menu for the game. 
@@ -129,6 +121,8 @@ public:
 	*
 	*/
 	void m_Update();
+
+	void m_UpdateButtons(); 
 
 	//--------------------------------------------------------
 	/*! \fn Update Pathfinding : This will be used to update all of the pathfinding elements in the game.

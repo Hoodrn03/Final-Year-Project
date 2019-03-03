@@ -298,4 +298,73 @@ void ResourceManagement::m_DeleteTrees()
 	}
 }
 
+void ResourceManagement::m_CreateActionButtons()
+{
+	m_ActionButton = tgui::Button::create();
+
+	m_ActionButton->setSize(100, 50); 
+	m_ActionButton->setPosition(0, 0); 
+	m_ActionButton->setInheritedFont(m_LocalFont); 
+	m_ActionButton->setText("Actions"); 
+	m_ActionButton->connect("Pressed", [&]() { m_DrawActionButtons(); });
+
+
+	int l_XPos = 0, l_YPos = 50; 
+	int l_Width = 100, l_Height = 50; 
+
+	// Clear Button Vector 
+
+	v_ActionButtons.clear(); 
+
+	// Cancel Action Button. 
+
+	tgui::Button::Ptr l_TempButton = tgui::Button::create(); 
+
+	l_TempButton->setSize(l_Width, l_Height);
+	l_TempButton->setPosition(l_XPos, l_YPos);
+	l_TempButton->setInheritedFont(m_LocalFont);
+	l_TempButton->setText("Cancel Actions");
+	// Use a lambda function to add a small operation to the button when it is pressed. 
+	l_TempButton->connect("Pressed", [&]() { m_AssignAction(_NULL); });
+
+	v_ActionButtons.push_back(l_TempButton);
+
+	// Tree Cutting Button. 
+
+	l_TempButton = tgui::Button::create();
+
+	l_TempButton->setSize(l_Width, l_Height);
+	l_TempButton->setPosition(l_XPos + l_Width, l_YPos);
+	l_TempButton->setInheritedFont(m_LocalFont);
+	l_TempButton->setText("Cut Trees");
+	l_TempButton->connect("Pressed", [&]() { m_AssignAction(_CUT_TREES); });
+
+	v_ActionButtons.push_back(l_TempButton);
+
+	// Temp.
+
+	l_TempButton = tgui::Button::create();
+
+	l_TempButton->setSize(l_Width, l_Height);
+	l_TempButton->setPosition(l_XPos + (l_Width * 2), l_YPos);
+	l_TempButton->setInheritedFont(m_LocalFont);
+	l_TempButton->setText("Placeholder");
+	l_TempButton->connect("Pressed", [&]() { m_AssignAction(_CUT_TREES); });
+
+	v_ActionButtons.push_back(l_TempButton);
+
+}
+
+void ResourceManagement::m_DrawActionButtons()
+{
+	m_bDisplayButtons = !m_bDisplayButtons;
+}
+
+std::vector<tgui::Button::Ptr> ResourceManagement::m_GetActionButtons()
+{
+	m_bButtonsCreated = !m_bButtonsCreated;
+
+	return v_ActionButtons;
+}
+
 

@@ -12,7 +12,7 @@
 */
 Gameloop::Gameloop()
 {
-
+	m_CreateMainMenuButtons(); 
 }
 
 //--------------------------------------------------------
@@ -57,42 +57,36 @@ int Gameloop::m_SetUp()
 
 }
 
-tgui::Button::Ptr Gameloop::m_CreateExitButton()
+void Gameloop::m_CreateMainMenuButtons()
 {
-	tgui::Button::Ptr  l_ExitButton = tgui::Button::create();
+	tgui::Button::Ptr  l_TempButton = tgui::Button::create();
 
-	l_ExitButton->setSize(100, 50);
-	l_ExitButton->setPosition(100, 100);
-	l_ExitButton->setInheritedFont(m_clFontManager.m_GetFrontFromMap("arial"));
-	l_ExitButton->setText("Exit");
+	l_TempButton->setSize(100, 50);
+	l_TempButton->setPosition(100, 100);
+	l_TempButton->setInheritedFont(m_clFontManager.m_GetFrontFromMap("arial"));
+	l_TempButton->setText("Exit");
+	// Use a lambda function to add a small operation to the button when it is pressed. 
+	l_TempButton->connect("Pressed", [&]() {m_clWindow.m_GetWindow().close();  });
+
+	v_MainMenuButtons.push_back(l_TempButton); 
+
+	l_TempButton = tgui::Button::create();
+
+	l_TempButton->setSize(100, 50);
+	l_TempButton->setPosition(100, 200);
+	l_TempButton->setInheritedFont(m_clFontManager.m_GetFrontFromMap("arial"));
+	l_TempButton->setText("Begin");
 
 	// Use a lambda function to add a small operation to the button when it is pressed. 
-	l_ExitButton->connect("Pressed", [&]() {m_clWindow.m_GetWindow().close();  });
+	l_TempButton->connect("Pressed", [&]() {m_BeginGame();  });
 
-	return l_ExitButton;
-}
-
-tgui::Button::Ptr Gameloop::m_CreateBeginButton()
-{
-	tgui::Button::Ptr  l_BeginButton = tgui::Button::create();
-
-	l_BeginButton->setSize(100, 50);
-	l_BeginButton->setPosition(100, 200);
-	l_BeginButton->setInheritedFont(m_clFontManager.m_GetFrontFromMap("arial"));
-	l_BeginButton->setText("Begin");
-
-	// Use a lambda function to add a small operation to the button when it is pressed. 
-	l_BeginButton->connect("Pressed", [&]() {m_BeginGame();  });
-
-	return l_BeginButton;
+	v_MainMenuButtons.push_back(l_TempButton);
 }
 
 
 int Gameloop::m_MainMenu()
 {
-	// TEMP Start game 
-
-	m_BeginGame(); 
+	// m_BeginGame();
 
 	// Init pregame logic. 
 
@@ -100,9 +94,7 @@ int Gameloop::m_MainMenu()
 
 	// Add buttons into the UI. 
 
-	m_clUserInterface.m_AddWidget(m_CreateExitButton()); 
-
-	m_clUserInterface.m_AddWidget(m_CreateBeginButton()); 
+	m_clUserInterface.m_AddWidget(v_MainMenuButtons); 
 
 	// Start Game Loop. 
 
@@ -163,10 +155,15 @@ void Gameloop::m_BeginGame()
 	// Add resources. 
 	m_clResourceManagement.m_AddTrees(30, 10.f, m_clMap.m_GetGroundLevel(), m_clMap.m_GetGrid());
 	m_clResourceManagement.m_AssignFont(m_clFontManager.m_GetFrontFromMap("arial")); 
+	m_clResourceManagement.m_CreateActionButtons(); 
 
-	// Prepare buttons 
+	// Prepare buttons.
 
 	m_clColonistManager.m_CreateColonistActionButtons(m_clFontManager.m_GetFrontFromMap("arial"), m_clWindow.m_GetWindow());
+
+	// Add Buttons to GUI. 
+
+	m_clUserInterface.m_AddWidget(m_clResourceManagement.m_ActionButton); 
 
 	// Begin game.  
 
@@ -222,8 +219,6 @@ void Gameloop::m_Update()
 		// Update the game resources. 
 		m_clResourceManagement.m_Update(); 
 
-		m_clResourceManagement.m_AssignAction(m_clEventHandler.m_GetCurrentAction());
-
 		m_clResourceManagement.m_SelectResources(m_clMouse.m_GetTopLeftSelectionBox(), m_clMouse.m_GetBottomRightSelectionBox()); 
 
 		// Update colonists. 
@@ -233,28 +228,8 @@ void Gameloop::m_Update()
 
 		m_clColonistManager.m_CheckForSelected(); 
 
-		if (m_clColonistManager.m_bColonistSelected == true)
-		{
-			if (m_clColonistManager.m_bButtonsCreated == false)
-			{
-				m_clUserInterface.m_AddWidget(m_clColonistManager.v_ListOfButtons);
-
-				m_clColonistManager.m_bButtonsRemoved = false;
-
-				m_clColonistManager.m_bButtonsCreated = true;
-			}
-		}
-		else
-		{
-			if (m_clColonistManager.m_bButtonsRemoved == false)
-			{
-				m_clUserInterface.m_RemoveWidget(m_clColonistManager.v_ListOfButtons);
-
-				m_clColonistManager.m_bButtonsRemoved = true;
-
-				m_clColonistManager.m_bButtonsCreated = false;
-			}
-		}
+		// Update Gui. 
+		m_UpdateButtons();
 
 		// Draw Items. 
 		m_RenderGame();
@@ -264,6 +239,65 @@ void Gameloop::m_Update()
 		m_clResourceManagement.m_DeleteTrees();
 	} 
 
+}
+
+void Gameloop::m_UpdateButtons()
+{
+	// Manage Buttons. 
+
+	if(m_clResourceManagement.m_bDisplayButtons == true)
+	{ 
+		if (m_clResourceManagement.m_bButtonsCreated == true)
+		{
+			// Add action buttons. 
+
+			m_clResourceManagement.m_bButtonsRemoved = false;
+
+			m_clUserInterface.m_AddWidget(m_clResourceManagement.m_GetActionButtons());
+		}
+	}
+	else
+	{
+		if (m_clResourceManagement.m_bButtonsRemoved == false)
+		{
+			// remove action buttons. 
+
+			m_clResourceManagement.m_bButtonsRemoved = true;
+
+			m_clUserInterface.m_RemoveWidget(m_clResourceManagement.m_GetActionButtons());
+		}
+	}
+
+	if (m_clColonistManager.m_bColonistSelected == true)
+	{
+		if (m_clColonistManager.m_bButtonsCreated == false)
+		{
+			// Add colonist buttons. 
+
+			m_clUserInterface.m_RemoveWidget(m_clResourceManagement.m_ActionButton);
+
+			m_clUserInterface.m_AddWidget(m_clColonistManager.v_ListOfButtons);
+
+			m_clColonistManager.m_bButtonsRemoved = false;
+
+			m_clColonistManager.m_bButtonsCreated = true;
+		}
+	}
+	else
+	{
+		if (m_clColonistManager.m_bButtonsRemoved == false)
+		{
+			// Remove colonist buttons 
+
+			m_clUserInterface.m_RemoveWidget(m_clColonistManager.v_ListOfButtons);
+
+			m_clUserInterface.m_AddWidget(m_clResourceManagement.m_ActionButton);
+
+			m_clColonistManager.m_bButtonsRemoved = true;
+
+			m_clColonistManager.m_bButtonsCreated = false;
+		}
+	}
 }
 
 //--------------------------------------------------------
