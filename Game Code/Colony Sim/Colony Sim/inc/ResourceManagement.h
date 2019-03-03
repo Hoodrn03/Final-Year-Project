@@ -146,7 +146,7 @@ public:
 	//					Button Functionality
 	//--------------------------------------------------------
 
-	void m_CreateActionButtons();
+	void m_CreateActionButtons(float windowWidth, float windowHeight);
 
 	void m_DrawActionButtons(); 
 

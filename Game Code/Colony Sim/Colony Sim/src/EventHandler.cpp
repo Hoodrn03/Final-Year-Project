@@ -37,9 +37,16 @@ void EventHandler::m_CheckForEvents(sf::RenderWindow & window)
 	{
 		window.setKeyRepeatEnabled(false); 
 
+		m_bWindowResize = false;
+
 		if (m_Event.type == sf::Event::Closed)
 		{
 			window.close(); 
+		}
+
+		if (m_Event.type == sf::Event::Resized)
+		{
+			m_bWindowResize = true; 
 		}
 
 		if (m_Event.type == sf::Event::KeyPressed)
@@ -127,6 +134,11 @@ void EventHandler::m_CheckForShortcutKeys()
 			m_CurrentAction = _NULL;
 		}
 	}
+}
+
+bool EventHandler::m_bCheckForResize()
+{
+	return m_bWindowResize;
 }
 
 //--------------------------------------------------------

@@ -52,6 +52,8 @@ private:
 	/*! \var This will be used to move the view up if the appropriate key is pressed. */
 	bool m_bMoveViewRight;
 
+	bool m_bWindowResize = false; 
+
 	/*! \var This will determine the current action for player will perform. */
 	currentAction m_CurrentAction;
 
@@ -138,6 +140,8 @@ public:
 	//--------------------------------------------------------\\
 	//					Check For Values
 	//--------------------------------------------------------\\
+
+	bool m_bCheckForResize(); 
 
 	//--------------------------------------------------------
 	/*! \fn Check View Up Value : This will be used to check if the up key was pressed. 

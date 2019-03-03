@@ -80,6 +80,8 @@ public:
 
 	std::vector<tgui::Button::Ptr> v_MainMenuButtons; 
 
+	float m_fWindowWidth, m_fWindowHeight; 
+
 private:
 
 	// Member Functions
@@ -145,6 +147,8 @@ public:
 	//--------------------------------------------------------
 	//				Universal Functions 
 	//--------------------------------------------------------
+
+	void m_ResizeAllItems();
 
 	//--------------------------------------------------------
 	/*! \fn CheckFramerate : Every frame This will check the current framerate of the game and output it.

@@ -12,7 +12,7 @@
 */
 Gameloop::Gameloop()
 {
-	m_CreateMainMenuButtons(); 
+
 }
 
 //--------------------------------------------------------
@@ -43,6 +43,9 @@ int Gameloop::m_SetUp()
 		return 1;
 	}
 
+	m_fWindowWidth = m_clWindow.m_GetWindow().getSize().x;
+	m_fWindowHeight = m_clWindow.m_GetWindow().getSize().x;
+
 	// Setup window variables. 
 	m_clWindow.m_GetWindow().setKeyRepeatEnabled(false);
 
@@ -50,6 +53,8 @@ int Gameloop::m_SetUp()
 
 	// Init Gui
 	m_clUserInterface.m_InitGui(m_clWindow.m_GetWindow());
+
+	m_ResizeAllItems();
 
 	m_MainMenu(); 
 
@@ -59,11 +64,28 @@ int Gameloop::m_SetUp()
 
 void Gameloop::m_CreateMainMenuButtons()
 {
+	// Empty vector of buttons. 
+
+	v_MainMenuButtons.clear();
+
+	// Init Button Sizes. 
+
+	int l_iButtonWidth = (m_fWindowWidth * 0.2f);
+	int l_iButtonHeight = (m_fWindowHeight * 0.1f); 
+
+	// Init Button Position. 
+
+	int l_iButtonX = (m_fWindowWidth * 0.5f) - (l_iButtonWidth * 0.5f);
+	int l_iButtonY = (m_fWindowHeight * 0.33f);
+
+	// Create Buttons. 
+
 	tgui::Button::Ptr  l_TempButton = tgui::Button::create();
 
-	l_TempButton->setSize(100, 50);
-	l_TempButton->setPosition(100, 100);
+	l_TempButton->setSize(l_iButtonWidth, l_iButtonHeight);
+	l_TempButton->setPosition(l_iButtonX, l_iButtonY);
 	l_TempButton->setInheritedFont(m_clFontManager.m_GetFrontFromMap("arial"));
+	l_TempButton->setTextSize(0);
 	l_TempButton->setText("Exit");
 	// Use a lambda function to add a small operation to the button when it is pressed. 
 	l_TempButton->connect("Pressed", [&]() {m_clWindow.m_GetWindow().close();  });
@@ -72,9 +94,10 @@ void Gameloop::m_CreateMainMenuButtons()
 
 	l_TempButton = tgui::Button::create();
 
-	l_TempButton->setSize(100, 50);
-	l_TempButton->setPosition(100, 200);
+	l_TempButton->setSize(l_iButtonWidth, l_iButtonHeight);
+	l_TempButton->setPosition(l_iButtonX, (l_iButtonY + (l_iButtonHeight * 1.5f)));
 	l_TempButton->setInheritedFont(m_clFontManager.m_GetFrontFromMap("arial"));
+	l_TempButton->setTextSize(0);
 	l_TempButton->setText("Begin");
 
 	// Use a lambda function to add a small operation to the button when it is pressed. 
@@ -110,6 +133,11 @@ int Gameloop::m_MainMenu()
 		m_clEventHandler.m_CheckForEvents(m_clWindow.m_GetWindow());
 
 		m_clUserInterface.m_HandleEvents(m_clEventHandler.m_GetEvent());
+
+		if (m_clEventHandler.m_bCheckForResize())
+		{
+			m_ResizeAllItems(); 
+		}
 
 		// Draw items at the end of the frame. 
 		m_RenderMainMenu(); 
@@ -155,7 +183,6 @@ void Gameloop::m_BeginGame()
 	// Add resources. 
 	m_clResourceManagement.m_AddTrees(30, 10.f, m_clMap.m_GetGroundLevel(), m_clMap.m_GetGrid());
 	m_clResourceManagement.m_AssignFont(m_clFontManager.m_GetFrontFromMap("arial")); 
-	m_clResourceManagement.m_CreateActionButtons(); 
 
 	// Prepare buttons.
 
@@ -169,6 +196,8 @@ void Gameloop::m_BeginGame()
 
 	// This will create a new thread for the pathfinding within the game. 
 	l_First = std::thread(&Gameloop::m_UpdatePathfinding, this);
+
+	m_ResizeAllItems(); 
 
 	// Start Game Loop. 
 	m_Update();
@@ -202,6 +231,13 @@ void Gameloop::m_Update()
 			// Check the state of the game window and join all threads if needed. 
 
 			l_First.join(); 
+		}
+
+		if (m_clEventHandler.m_bCheckForResize())
+		{
+			// Handle the resizing of the game window. 
+
+			m_ResizeAllItems();
 		}
 
 		m_clUserInterface.m_HandleEvents(m_clEventHandler.m_GetEvent()); 
@@ -274,8 +310,6 @@ void Gameloop::m_UpdateButtons()
 		{
 			// Add colonist buttons. 
 
-			m_clUserInterface.m_RemoveWidget(m_clResourceManagement.m_ActionButton);
-
 			m_clUserInterface.m_AddWidget(m_clColonistManager.v_ListOfButtons);
 
 			m_clColonistManager.m_bButtonsRemoved = false;
@@ -290,8 +324,6 @@ void Gameloop::m_UpdateButtons()
 			// Remove colonist buttons 
 
 			m_clUserInterface.m_RemoveWidget(m_clColonistManager.v_ListOfButtons);
-
-			m_clUserInterface.m_AddWidget(m_clResourceManagement.m_ActionButton);
 
 			m_clColonistManager.m_bButtonsRemoved = true;
 
@@ -362,6 +394,13 @@ void Gameloop::m_RenderGame()
 
 	// Display new objects. 
 	m_clWindow.m_GetWindow().display(); 
+}
+
+void Gameloop::m_ResizeAllItems()
+{
+	m_CreateMainMenuButtons(); 
+
+	m_clResourceManagement.m_CreateActionButtons(m_fWindowWidth, m_fWindowHeight);
 }
 
 //--------------------------------------------------------

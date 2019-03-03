@@ -298,19 +298,28 @@ void ResourceManagement::m_DeleteTrees()
 	}
 }
 
-void ResourceManagement::m_CreateActionButtons()
+void ResourceManagement::m_CreateActionButtons(float windowWidth, float windowHeight)
 {
+	// Init Button Sizes.
+
+	int l_iButtonWidth = (windowWidth * 0.15f);
+	int l_iButtonHeight = (windowHeight * 0.075f);
+
+	// Create Buttons
+
 	m_ActionButton = tgui::Button::create();
 
-	m_ActionButton->setSize(100, 50); 
+	m_ActionButton->setSize(l_iButtonWidth, l_iButtonHeight);
 	m_ActionButton->setPosition(0, 0); 
 	m_ActionButton->setInheritedFont(m_LocalFont); 
 	m_ActionButton->setText("Actions"); 
+	m_ActionButton->setTextSize(0);
 	m_ActionButton->connect("Pressed", [&]() { m_DrawActionButtons(); });
 
+	// Init Button Position. 
 
-	int l_XPos = 0, l_YPos = 50; 
-	int l_Width = 100, l_Height = 50; 
+	int l_iButtonX = 0;
+	int l_iButtonY = 0 + l_iButtonHeight;
 
 	// Clear Button Vector 
 
@@ -320,10 +329,11 @@ void ResourceManagement::m_CreateActionButtons()
 
 	tgui::Button::Ptr l_TempButton = tgui::Button::create(); 
 
-	l_TempButton->setSize(l_Width, l_Height);
-	l_TempButton->setPosition(l_XPos, l_YPos);
+	l_TempButton->setSize(l_iButtonWidth, l_iButtonHeight);
+	l_TempButton->setPosition(l_iButtonX, l_iButtonY);
 	l_TempButton->setInheritedFont(m_LocalFont);
 	l_TempButton->setText("Cancel Actions");
+	l_TempButton->setTextSize(0);
 	// Use a lambda function to add a small operation to the button when it is pressed. 
 	l_TempButton->connect("Pressed", [&]() { m_AssignAction(_NULL); });
 
@@ -333,10 +343,11 @@ void ResourceManagement::m_CreateActionButtons()
 
 	l_TempButton = tgui::Button::create();
 
-	l_TempButton->setSize(l_Width, l_Height);
-	l_TempButton->setPosition(l_XPos + l_Width, l_YPos);
+	l_TempButton->setSize(l_iButtonWidth, l_iButtonHeight);
+	l_TempButton->setPosition(l_iButtonX + l_iButtonWidth, l_iButtonY);
 	l_TempButton->setInheritedFont(m_LocalFont);
 	l_TempButton->setText("Cut Trees");
+	l_TempButton->setTextSize(0);
 	l_TempButton->connect("Pressed", [&]() { m_AssignAction(_CUT_TREES); });
 
 	v_ActionButtons.push_back(l_TempButton);
@@ -345,10 +356,11 @@ void ResourceManagement::m_CreateActionButtons()
 
 	l_TempButton = tgui::Button::create();
 
-	l_TempButton->setSize(l_Width, l_Height);
-	l_TempButton->setPosition(l_XPos + (l_Width * 2), l_YPos);
+	l_TempButton->setSize(l_iButtonWidth, l_iButtonHeight);
+	l_TempButton->setPosition(l_iButtonX + (l_iButtonWidth * 2), l_iButtonY);
 	l_TempButton->setInheritedFont(m_LocalFont);
 	l_TempButton->setText("Placeholder");
+	l_TempButton->setTextSize(0);
 	l_TempButton->connect("Pressed", [&]() { m_AssignAction(_CUT_TREES); });
 
 	v_ActionButtons.push_back(l_TempButton);
