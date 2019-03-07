@@ -82,6 +82,12 @@
     <ClInclude Include="inc\WoodPile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="inc\BuildingObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\BuildingManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EventHandler.cpp">
@@ -136,6 +142,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\WoodPile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BuildingObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

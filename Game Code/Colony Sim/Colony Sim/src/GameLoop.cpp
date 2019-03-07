@@ -56,6 +56,8 @@ int Gameloop::m_SetUp()
 
 	m_ResizeAllItems();
 
+	m_clBuildingObject.m_SetupBuildingObject(sf::Vector2f(50, 50), sf::Vector2f(300, 300)); 
+
 	m_MainMenu(); 
 
 	return 0;
@@ -152,6 +154,8 @@ void Gameloop::m_RenderMainMenu()
 	m_clWindow.m_GetWindow().clear();
 
 	// Todo: Add items to draw. 
+
+	m_clBuildingObject.m_DrawGameObject(m_clWindow.m_GetWindow()); 
 
 	// Draw Gui elements. 
 

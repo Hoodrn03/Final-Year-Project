@@ -17,6 +17,8 @@
 #include "ResourceManagement.h"
 #include "Mouse.h"
 
+#include "BuildingObject.h"
+
 /*! \class This will hold the main game loop, it will have three main functions; setup, update and render. */
 class Gameloop
 {
@@ -63,6 +65,8 @@ public:
 	/*! \var Controls mouse actions and functions for the game. */
 	Mouse m_clMouse;
 
+	BuildingObject m_clBuildingObject; 
+
 	/*! \var This is the games current frame rate. */
 	int m_FrameRate = 0;
 
@@ -78,8 +82,10 @@ public:
 	/*! \var A second parallel thread, which will be used for pathfinding within the game. */
 	std::thread l_First;
 
+	/*! \var This will hold all of the buttons for the main menu. */
 	std::vector<tgui::Button::Ptr> v_MainMenuButtons; 
 
+	/*! \var The current height and width for the game window. */
 	float m_fWindowWidth, m_fWindowHeight; 
 
 private:
@@ -98,6 +104,10 @@ public:
 	*/
 	int m_SetUp();
 
+	//--------------------------------------------------------
+	/*! \fn CreateMainMenuButtons :Used to initalize the buttons which will be used on the main menu. 
+	*
+	*/
 	void m_CreateMainMenuButtons(); 
 
 	//--------------------------------------------------------
@@ -116,6 +126,10 @@ public:
 	//						Main Game
 	//--------------------------------------------------------
 
+	//--------------------------------------------------------
+	/*! \fn BeginGame : Used to initalize the main game loop and begin play. 
+	*
+	*/
 	void m_BeginGame();
 
 	//--------------------------------------------------------
@@ -124,6 +138,10 @@ public:
 	*/
 	void m_Update();
 
+	//--------------------------------------------------------
+	/*! \fn UpdateButtons : This will allow for the buttons to be updated within the game.
+	*
+	*/
 	void m_UpdateButtons(); 
 
 	//--------------------------------------------------------
