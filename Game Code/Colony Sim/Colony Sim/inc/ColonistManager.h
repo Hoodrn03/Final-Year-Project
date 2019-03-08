@@ -140,7 +140,11 @@ public:
 	//						Job System
 	//--------------------------------------------------------\\
 
+	void m_SetColonistIdle(); 
+
 	void m_SetColonistTreeCut(); 
+
+	void m_SetColonistConstruction(); 
 
 	//--------------------------------------------------------\\
 	//						Buttons 

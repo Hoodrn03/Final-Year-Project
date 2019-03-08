@@ -565,7 +565,7 @@ Cells * Grid::m_ConvertWorldPosToGridPos(sf::Vector2f currentPos, unsigned int l
 		}
 	}
 
-	std::cout << "Unable to find cell" << std::endl;
+	// std::cout << "Unable to find cell" << std::endl;
 
 	return nullptr;
 }

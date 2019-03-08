@@ -135,7 +135,14 @@ void Cells::m_SetCellCentre()
 */
 sf::Vector2f Cells::m_GetCellCentre()
 {
-	return m_CellCentre;
+	if (this != nullptr)
+	{
+		return m_CellCentre;
+	}
+	else
+	{
+		return sf::Vector2f();
+	}
 }
 
 //--------------------------------------------------------

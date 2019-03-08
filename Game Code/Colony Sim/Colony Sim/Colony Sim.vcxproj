@@ -54,6 +54,7 @@
     <ClInclude Include="inc\WoodResource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\BuildingManager.cpp" />
     <ClCompile Include="src\BuildingObject.cpp" />
     <ClCompile Include="src\Cells.cpp" />
     <ClCompile Include="src\Colonist.cpp" />

@@ -20,11 +20,15 @@ private:
 
 	sf::RectangleShape m_BuildingBody; 
 
+	std::string m_sBuildingType; 
+
 public:
 
 	// Member Functions 
 
 	void m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position);
+
+	void m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position, std::string buildingType);
 
 	void m_Update() override;
 
@@ -33,5 +37,7 @@ public:
 	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight) override;
 
 	void m_SetObjectPos(float x, float y) override;
+
+	bool m_CheckBuildingBounds(float x, float y); 
 
 };

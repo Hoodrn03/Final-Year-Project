@@ -56,8 +56,6 @@ int Gameloop::m_SetUp()
 
 	m_ResizeAllItems();
 
-	m_clBuildingObject.m_SetupBuildingObject(sf::Vector2f(50, 50), sf::Vector2f(300, 300)); 
-
 	m_MainMenu(); 
 
 	return 0;
@@ -111,7 +109,7 @@ void Gameloop::m_CreateMainMenuButtons()
 
 int Gameloop::m_MainMenu()
 {
-	// m_BeginGame();
+	m_BeginGame(); /*!< Use to skip to the main game. */
 
 	// Init pregame logic. 
 
@@ -155,8 +153,6 @@ void Gameloop::m_RenderMainMenu()
 
 	// Todo: Add items to draw. 
 
-	m_clBuildingObject.m_DrawGameObject(m_clWindow.m_GetWindow()); 
-
 	// Draw Gui elements. 
 
 	m_clUserInterface.m_DrawGui();
@@ -188,20 +184,26 @@ void Gameloop::m_BeginGame()
 	m_clResourceManagement.m_AddTrees(30, 10.f, m_clMap.m_GetGroundLevel(), m_clMap.m_GetGrid());
 	m_clResourceManagement.m_AssignFont(m_clFontManager.m_GetFrontFromMap("arial")); 
 
-	// Prepare buttons.
+	// Prepare Buildings
 
-	m_clColonistManager.m_CreateColonistActionButtons(m_clFontManager.m_GetFrontFromMap("arial"), m_clWindow.m_GetWindow());
+	m_clBuildingManager.m_AssignFont(m_clFontManager.m_GetFrontFromMap("arial"));
+	m_clBuildingManager.m_Setup(sf::Vector2f(m_clMap.m_GetGrid().m_GetCell(0, 0, 0)->m_GetCellWidth(), 
+		m_clMap.m_GetGrid().m_GetCell(0, 0, 0)->m_GetCellHeight()));
 
 	// Add Buttons to GUI. 
 
+	m_ResizeAllItems();
+
+	m_clColonistManager.m_CreateColonistActionButtons(m_clFontManager.m_GetFrontFromMap("arial"), m_clWindow.m_GetWindow());
+
 	m_clUserInterface.m_AddWidget(m_clResourceManagement.m_ActionButton); 
+
+	m_clUserInterface.m_AddWidget(m_clBuildingManager.m_BuildingActionButton); 
 
 	// Begin game.  
 
 	// This will create a new thread for the pathfinding within the game. 
 	l_First = std::thread(&Gameloop::m_UpdatePathfinding, this);
-
-	m_ResizeAllItems(); 
 
 	// Start Game Loop. 
 	m_Update();
@@ -218,9 +220,9 @@ void Gameloop::m_Update()
 	{
 		// Update additional logic at the beginning of the frame. 
 
-		m_CheckFramerate(false); 
+		m_CheckFramerate(false); /*!< This will allow for the current framerate to be easily displayed into the debug console. */
 
-		m_UpdateDeltaTime(); 
+		m_UpdateDeltaTime(); /*!< Updates the change in time since last frame; preventing objects jumping unexpectadly. */
 
 		// Update Mouse. 
 		m_clMouse.m_SetMousePos(m_clWindow.m_GetWindow());
@@ -244,7 +246,7 @@ void Gameloop::m_Update()
 			m_ResizeAllItems();
 		}
 
-		m_clUserInterface.m_HandleEvents(m_clEventHandler.m_GetEvent()); 
+		m_clUserInterface.m_HandleEvents(m_clEventHandler.m_GetEvent()); /*!< Passes current event var into the Gui object. */
 
 		// Update the game window.
 		m_clWindow.m_CheckForViewMove(m_clEventHandler.m_CheckViewUpValue(), m_clEventHandler.m_CheckViewDownValue(), m_clEventHandler.m_CheckViewLeftValue(), m_clEventHandler.m_CheckViewRightValue()); 
@@ -268,6 +270,10 @@ void Gameloop::m_Update()
 
 		m_clColonistManager.m_CheckForSelected(); 
 
+		// Update Buildings. 
+		m_clBuildingManager.m_Update(m_clMap.m_GetGrid().m_ConvertWorldPosToGridPos(m_clMouse.m_GetMousePos(), m_clMap.m_GetCurrentLevel())->m_GetCellCentre(), 
+			sf::Mouse::isButtonPressed(sf::Mouse::Left));
+
 		// Update Gui. 
 		m_UpdateButtons();
 
@@ -284,6 +290,8 @@ void Gameloop::m_Update()
 void Gameloop::m_UpdateButtons()
 {
 	// Manage Buttons. 
+
+	// Resource management buttons. 
 
 	if(m_clResourceManagement.m_bDisplayButtons == true)
 	{ 
@@ -307,6 +315,35 @@ void Gameloop::m_UpdateButtons()
 			m_clUserInterface.m_RemoveWidget(m_clResourceManagement.m_GetActionButtons());
 		}
 	}
+
+	// Building management buttons 
+
+	if (m_clBuildingManager.m_bDisplayButtons == true)
+	{
+		if (m_clBuildingManager.m_bButtonsCreated == true)
+		{
+			// Add action buttons. 
+
+			m_clBuildingManager.m_bButtonsRemoved = false;
+
+			m_clUserInterface.m_AddWidget(m_clBuildingManager.m_GetBuildingButtons());
+		}
+	}
+	else
+	{
+		if (m_clBuildingManager.m_bButtonsRemoved == false)
+		{
+			// remove action buttons. 
+
+			m_clBuildingManager.m_bButtonsRemoved = true;
+
+			m_clUserInterface.m_RemoveWidget(m_clBuildingManager.m_GetBuildingButtons());
+
+			m_clBuildingManager.m_SetBuildObjects(false); 
+		}
+	}
+
+	// Colonist management buttons. 
 
 	if (m_clColonistManager.m_bColonistSelected == true)
 	{
@@ -390,6 +427,10 @@ void Gameloop::m_RenderGame()
 	// Draw the colonists at the top.
 	m_clColonistManager.m_Render(m_clWindow.m_GetWindow()); 
 
+	// Draw Buildings above colonists. 
+
+	m_clBuildingManager.m_DrawBuildings(m_clWindow.m_GetWindow()); 
+
 	// Draw UI above the other game elements. 
 
 	m_clMouse.m_DrawSelectionBox(m_clWindow.m_GetWindow()); 
@@ -405,6 +446,8 @@ void Gameloop::m_ResizeAllItems()
 	m_CreateMainMenuButtons(); 
 
 	m_clResourceManagement.m_CreateActionButtons(m_fWindowWidth, m_fWindowHeight);
+
+	m_clBuildingManager.m_CreateBuildingButtons(m_fWindowWidth, m_fWindowHeight);
 }
 
 //--------------------------------------------------------

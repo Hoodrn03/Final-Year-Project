@@ -17,7 +17,7 @@
 #include "ResourceManagement.h"
 #include "Mouse.h"
 
-#include "BuildingObject.h"
+#include "BuildingManager.h"
 
 /*! \class This will hold the main game loop, it will have three main functions; setup, update and render. */
 class Gameloop
@@ -65,7 +65,7 @@ public:
 	/*! \var Controls mouse actions and functions for the game. */
 	Mouse m_clMouse;
 
-	BuildingObject m_clBuildingObject; 
+	BuildingManager m_clBuildingManager; 
 
 	/*! \var This is the games current frame rate. */
 	int m_FrameRate = 0;

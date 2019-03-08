@@ -233,6 +233,20 @@ void ColonistManager::m_CheckForSelected()
 	}
 }
 
+void ColonistManager::m_SetColonistIdle()
+{
+	if (v_clColonists.size() > 0)
+	{
+		for (unsigned int i = 0; i < v_clColonists.size(); i++)
+		{
+			if (v_clColonists[i].m_GetSelectedValue() == true)
+			{
+				v_clColonists[i].m_SetJob(_IDLE);
+			}
+		}
+	}
+}
+
 void ColonistManager::m_SetColonistTreeCut()
 {
 	if (v_clColonists.size() > 0)
@@ -247,21 +261,95 @@ void ColonistManager::m_SetColonistTreeCut()
 	}
 }
 
+void ColonistManager::m_SetColonistConstruction()
+{
+	if (v_clColonists.size() > 0)
+	{
+		for (unsigned int i = 0; i < v_clColonists.size(); i++)
+		{
+			if (v_clColonists[i].m_GetSelectedValue() == true)
+			{
+				v_clColonists[i].m_SetJob(_CONSTRUCTION);
+			}
+		}
+	}
+}
+
 void ColonistManager::m_CreateColonistActionButtons(sf::Font gameFont, sf::RenderWindow &window)
 {
-	tgui::Button::Ptr l_CutTreeButton = tgui::Button::create();
 
-	l_CutTreeButton->setSize(window.getSize().x * 0.15f, window.getSize().y * 0.10f);
+	// Init Button Sizes.
 
-	l_CutTreeButton->setPosition(0, window.getSize().y - l_CutTreeButton->getSize().y);
+	int l_iButtonWidth = (window.getSize().x * 0.15f);
+	int l_iButtonHeight = (window.getSize().y * 0.075f);
 
-	l_CutTreeButton->setInheritedFont(gameFont);
+	// Init Button Position. 
 
-	l_CutTreeButton->setText("Cut Trees");
+	int l_iButtonX = 0;
+	int l_iButtonY = window.getSize().y - l_iButtonHeight;
 
-	l_CutTreeButton->connect("pressed", [&]() { m_SetColonistTreeCut(); });
+	// Clear Button Vector 
 
-	v_ListOfButtons.push_back(l_CutTreeButton);
+	v_ListOfButtons.clear();
+
+	// Cut Trees Button. 
+
+	tgui::Button::Ptr l_TempButton = tgui::Button::create();
+
+	l_TempButton->setSize(l_iButtonWidth, l_iButtonHeight);
+	l_TempButton->setPosition(l_iButtonX, l_iButtonY);
+	l_TempButton->setInheritedFont(gameFont);
+	l_TempButton->setText("Cut Trees");
+	l_TempButton->setTextSize(0);
+	// Use a lambda function to add a small operation to the button when it is pressed. 
+	l_TempButton->connect("Pressed", [&]() {  m_SetColonistTreeCut(); });
+
+	v_ListOfButtons.push_back(l_TempButton);
+
+	// Construction Button. 
+
+	l_iButtonX += l_iButtonWidth; 
+
+	l_TempButton = tgui::Button::create();
+
+	l_TempButton->setSize(l_iButtonWidth, l_iButtonHeight);
+	l_TempButton->setPosition(l_iButtonX, l_iButtonY);
+	l_TempButton->setInheritedFont(gameFont);
+	l_TempButton->setText("Construction");
+	l_TempButton->setTextSize(0);
+	l_TempButton->connect("Pressed", [&]() { m_SetColonistConstruction();  });
+
+	v_ListOfButtons.push_back(l_TempButton);
+
+	// Idle Button.
+
+	l_iButtonX += l_iButtonWidth;
+
+	l_TempButton = tgui::Button::create();
+
+	l_TempButton->setSize(l_iButtonWidth, l_iButtonHeight);
+	l_TempButton->setPosition(l_iButtonX, l_iButtonY);
+	l_TempButton->setInheritedFont(gameFont);
+	l_TempButton->setText("Idle");
+	l_TempButton->setTextSize(0);
+	l_TempButton->connect("Pressed", [&]() { m_SetColonistIdle();  });
+
+	v_ListOfButtons.push_back(l_TempButton);
+
+	// Temp.
+
+	l_iButtonX += l_iButtonWidth;
+
+	l_TempButton = tgui::Button::create();
+
+	l_TempButton->setSize(l_iButtonWidth, l_iButtonHeight);
+	l_TempButton->setPosition(l_iButtonX, l_iButtonY);
+	l_TempButton->setInheritedFont(gameFont);
+	l_TempButton->setText("Placeholder");
+	l_TempButton->setTextSize(0);
+	l_TempButton->connect("Pressed", [&]() {});
+
+	v_ListOfButtons.push_back(l_TempButton);
 }
 
 std::vector<tgui::Button::Ptr> ColonistManager::m_GetColonistButtons()

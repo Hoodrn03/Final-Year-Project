@@ -141,20 +141,6 @@ void Colonist::m_Update()
 void Colonist::m_SetJob(job newJob)
 {
 	m_CurrentJob = newJob; 
-
-	
-
-	if (newJob == _LOGGING)
-	{
-		std::cout << "Logging" << std::endl;
-	}
-
-	else if (newJob == _IDLE)
-	{
-		std::cout << "Idle" << std::endl;
-	}
-
-	
 }
 
 //--------------------------------------------------------
@@ -178,8 +164,6 @@ void Colonist::m_CutTrees()
 		if (m_WorkTimer.getElapsedTime().asSeconds() >= 1.f)
 		{
 			m_WorkTimer.restart();
-
-			std::cout << " Finished Working !!! " << std::endl;
 
 			m_TargetTree->m_SetMarkForDeletion(true);
 		}
