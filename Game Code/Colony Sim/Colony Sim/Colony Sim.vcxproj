@@ -48,6 +48,7 @@
     <ClInclude Include="inc\Pathfinding.h" />
     <ClInclude Include="inc\RandGen.h" />
     <ClInclude Include="inc\ResourceManagement.h" />
+    <ClInclude Include="inc\TextureManager.h" />
     <ClInclude Include="inc\UserInterface.h" />
     <ClInclude Include="inc\Window.h" />
     <ClInclude Include="inc\WoodPile.h" />
@@ -70,6 +71,7 @@
     <ClCompile Include="src\Pathfinding.cpp" />
     <ClCompile Include="src\RandGen.cpp" />
     <ClCompile Include="src\ResourceManagement.cpp" />
+    <ClCompile Include="src\TextureManager.cpp" />
     <ClCompile Include="src\UserInterface.cpp" />
     <ClCompile Include="src\Window.cpp" />
     <ClCompile Include="src\WoodPile.cpp" />

@@ -244,6 +244,11 @@ void Pathfinding::m_RunAStarAlgorithm(std::vector<tileSet> obstructions)
 							{
 								m_bAddCell = false; 
 							}
+
+							if (m_CurrentCell->m_bObstruction == true)
+							{
+								m_bAddCell = false;
+							}
 						}
 
 						if (m_bAddCell == true)

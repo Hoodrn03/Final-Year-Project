@@ -272,7 +272,7 @@ void Gameloop::m_Update()
 
 		// Update Buildings. 
 		m_clBuildingManager.m_Update(m_clMap.m_GetGrid().m_ConvertWorldPosToGridPos(m_clMouse.m_GetMousePos(), m_clMap.m_GetCurrentLevel())->m_GetCellCentre(), 
-			sf::Mouse::isButtonPressed(sf::Mouse::Left));
+			sf::Mouse::isButtonPressed(sf::Mouse::Left), m_clMap.m_GetGrid().m_ConvertWorldPosToGridPos(m_clMouse.m_GetMousePos(), m_clMap.m_GetCurrentLevel()));
 
 		// Update Gui. 
 		m_UpdateButtons();
@@ -385,7 +385,7 @@ void Gameloop::m_UpdatePathfinding()
 	{
 		// This will be used to get a new path for the colonists. 
 
-		m_clColonistManager.m_Pathfinding(m_clMap.m_GetGrid(), m_clResourceManagement);
+		m_clColonistManager.m_Pathfinding(m_clMap.m_GetGrid(), m_clResourceManagement, m_clBuildingManager);
 	}
 }
 

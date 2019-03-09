@@ -48,17 +48,17 @@ public:
 
 	void m_Setup(sf::Vector2f cellSize);
 
-	void m_AddBuilding(std::string buildingType); 
+	void m_AddBuilding(std::string buildingType, Cells * newCell);
 
 	void m_AssignFont(sf::Font mainFont);
 
-	void m_Update(sf::Vector2f mousePos);
-
-	void m_Update(sf::Vector2f mousePos, bool mouseDown);
+	void m_Update(sf::Vector2f mousePos, bool mouseDown, Cells * currentCell);
 
 	void m_DrawBuildings(sf::RenderWindow &window); 
 
 	void m_DrawFilter(); 
+
+	BuildingObject * m_GetClosestBuilding(sf::Vector2f objectPos); 
 
 	void m_CreateBuildingButtons(float windowWidth, float windowHeight);
 

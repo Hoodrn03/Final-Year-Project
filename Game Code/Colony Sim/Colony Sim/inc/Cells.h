@@ -105,6 +105,8 @@ public:
 	/*! \var This is the current F Score for This cell. */
 	int m_iFScore = 0; 
 
+	bool m_bObstruction = false; 
+
 public:
 
 	// Member Functions

@@ -29,11 +29,11 @@ void BuildingManager::m_Setup(sf::Vector2f cellSize)
 	m_PlaceholderBuilding.setOutlineThickness(0.5f);
 }
 
-void BuildingManager::m_AddBuilding(std::string buildingType)
+void BuildingManager::m_AddBuilding(std::string buildingType, Cells *newCell)
 {
 	BuildingObject l_TempBuilding; 
 
-	l_TempBuilding.m_SetupBuildingObject(sf::Vector2f(m_fBuildingWidth, m_fBuildingHeight), m_PlaceholderBuilding.getPosition(), buildingType);
+	l_TempBuilding.m_SetupBuildingObject(sf::Vector2f(m_fBuildingWidth, m_fBuildingHeight), m_PlaceholderBuilding.getPosition(), buildingType, newCell);
 
 	v_Buildings.push_back(l_TempBuilding); 
 
@@ -44,16 +44,13 @@ void BuildingManager::m_AssignFont(sf::Font mainFont)
 	m_LocalFont = mainFont; 
 }
 
-void BuildingManager::m_Update(sf::Vector2f mousePos)
+void BuildingManager::m_Update(sf::Vector2f mousePos, bool mouseDown, Cells * currentCell)
 {
-	if (m_bBuildObject == true)
+	for (unsigned int i = 0; i < v_Buildings.size(); i++)
 	{
-		m_PlaceholderBuilding.setPosition(mousePos); 
+		v_Buildings[i].m_Update();
 	}
-}
 
-void BuildingManager::m_Update(sf::Vector2f mousePos, bool mouseDown)
-{
 	if (m_bBuildObject == true)
 	{
 		m_PlaceholderBuilding.setPosition(mousePos);
@@ -76,7 +73,7 @@ void BuildingManager::m_Update(sf::Vector2f mousePos, bool mouseDown)
 			{
 				// std::cout << "Placing " << m_sCurrentObjectToBuild << std::endl;
 
-				m_AddBuilding(m_sCurrentObjectToBuild);
+				m_AddBuilding(m_sCurrentObjectToBuild, currentCell);
 			}
 		}
 	}
@@ -100,6 +97,96 @@ void BuildingManager::m_DrawBuildings(sf::RenderWindow & window)
 
 void BuildingManager::m_DrawFilter()
 {
+}
+
+BuildingObject * BuildingManager::m_GetClosestBuilding(sf::Vector2f objectPos)
+{
+	// Var setup
+
+	BuildingObject * l_TempBuild = nullptr;
+
+	bool l_FirstBuilding = true;
+
+	float l_PrevXDist, l_PrevYDist;
+
+	float l_XDist, l_YDist;
+
+	if (v_Buildings.size() > 0)
+	{
+		for (unsigned int i = 1; i < v_Buildings.size(); i++)
+		{
+			// Ensure this only loops through trees chosen to be cut down. 
+
+			if (v_Buildings[i].m_bFinishedBuilding == false)
+			{
+				if (l_FirstBuilding == true)
+				{
+					// Find the first tree in the vector to begin the distance evaluations.
+
+					l_TempBuild = &v_Buildings[i];
+
+					l_FirstBuilding = false;
+
+					// Calculate the initial distance between the chosen object and the first tree. 
+
+					if (v_Buildings[i].m_GetObjectPos().x > objectPos.x)
+					{
+						l_PrevXDist = v_Buildings[i].m_GetObjectPos().x - objectPos.x;
+					}
+					else
+					{
+						l_PrevXDist = objectPos.x - v_Buildings[i].m_GetObjectPos().x;
+					}
+
+					if (v_Buildings[i].m_GetObjectPos().y > objectPos.y)
+					{
+						l_PrevYDist = v_Buildings[i].m_GetObjectPos().y - objectPos.y;
+					}
+					else
+					{
+						l_PrevYDist = objectPos.y - v_Buildings[i].m_GetObjectPos().y;
+					}
+				}
+
+				// Calculate the distance for the next tree. 
+
+				if (v_Buildings[i].m_GetObjectPos().x > objectPos.x)
+				{
+					l_XDist = v_Buildings[i].m_GetObjectPos().x - objectPos.x;
+				}
+				else
+				{
+					l_XDist = objectPos.x - v_Buildings[i].m_GetObjectPos().x;
+				}
+
+				if (v_Buildings[i].m_GetObjectPos().y > objectPos.y)
+				{
+					l_YDist = v_Buildings[i].m_GetObjectPos().y - objectPos.y;
+				}
+				else
+				{
+					l_YDist = objectPos.y - v_Buildings[i].m_GetObjectPos().y;
+				}
+
+				// See if the new distance is shorter than the preveous one. 
+
+				if ((l_XDist <= l_PrevXDist) && (l_YDist <= l_PrevYDist))
+				{
+					l_TempBuild = &v_Buildings[i];
+
+					l_PrevXDist = l_XDist;
+					l_PrevYDist = l_YDist;
+				}
+			}
+		}
+	}
+
+	if (l_TempBuild == nullptr)
+	{
+		std::cout << "Unable to find tree" << std::endl;
+	}
+
+	return l_TempBuild;
 }
 
 void BuildingManager::m_CreateBuildingButtons(float windowWidth, float windowHeight)

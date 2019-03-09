@@ -130,6 +130,12 @@ void Colonist::m_Update()
 
 		break;
 
+	case _CONSTRUCTION:
+
+		m_BuildBuilding();
+
+		break;
+
 	default:
 
 		// If the colonist has no other job This is the base job. 
@@ -166,6 +172,29 @@ void Colonist::m_CutTrees()
 			m_WorkTimer.restart();
 
 			m_TargetTree->m_SetMarkForDeletion(true);
+		}
+	}
+	else
+	{
+		m_WorkTimer.restart();
+	}
+}
+
+void Colonist::m_BuildBuilding()
+{
+	if (m_AtTargetBuild() == true)
+	{
+
+		if (m_WorkTimer.getElapsedTime().asSeconds() >= 1.f)
+		{
+			m_WorkTimer.restart();
+
+			m_TargetBuild->m_WorkBuilding(5); 
+
+			if (m_TargetBuild->m_bFinishedBuilding == true)
+			{
+				m_TargetBuild = nullptr; 
+			}
 		}
 	}
 	else
@@ -460,6 +489,26 @@ bool Colonist::m_AtTargetTree()
 	}
 
 	else if (m_TargetTree->m_GetCurrentCell()->m_CheckCellBounds(m_GetObjectPos().x, m_GetObjectPos().y))
+	{
+
+		return true;
+	}
+
+	return false;
+}
+
+void Colonist::m_AssignBuild(BuildingObject * newTarget)
+{
+	m_TargetBuild = newTarget; 
+}
+
+bool Colonist::m_AtTargetBuild()
+{
+	if (m_TargetBuild == nullptr)
+	{
+		return false;
+	}
+	else if (m_TargetBuild->m_CheckBuildingBounds(m_GetObjectPos().x, m_GetObjectPos().y))
 	{
 
 		return true;

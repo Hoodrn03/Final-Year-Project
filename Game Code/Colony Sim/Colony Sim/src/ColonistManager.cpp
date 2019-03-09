@@ -6,11 +6,6 @@
 
 #include "../inc/ColonistManager.h"
 
-void m_Print(std::string text)
-{
-	std::cout << text << std::endl;
-}
-
 //--------------------------------------------------------
 /*! \fn Constructor
 *
@@ -125,6 +120,98 @@ void ColonistManager::m_Pathfinding(Grid & CurrentGrid, ResourceManagement & cur
 						{
 							// Move the colonist to that tree. 
 							v_clColonists[i].m_FindNewPath(l_TargetTree->m_GetCurrentCell());
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+void ColonistManager::m_Pathfinding(Grid & CurrentGrid, ResourceManagement & resourceManager, BuildingManager & buildingManager)
+{
+	if (v_clColonists.size() > 0)
+	{
+		for (unsigned int i = 0; i < v_clColonists.size(); i++)
+		{
+
+			if (v_clColonists[i].m_GetFindNewPath() == true)
+			{
+				// This will allow for pathfinding when colonist is idle. 
+				if (v_clColonists[i].m_GetCurrentJob() == _IDLE)
+				{
+					if (v_clColonists[i].m_iIdleCounter > 0)
+					{
+						v_clColonists[i].m_iIdleCounter = 0;
+					}
+
+					v_clColonists[i].m_FindNewPath(CurrentGrid.m_GetRandomDirtCell(v_clColonists[i].m_GetCurrentLayer()));
+				}
+
+				// This will allow for pathfinding when colonist is logging. 
+
+				else if (v_clColonists[i].m_GetCurrentJob() == _LOGGING)
+				{
+					// Find a target tree (clostest tree). 
+					WoodResource * l_TargetTree(resourceManager.m_FindClosestTree(v_clColonists[i].m_GetObjectPos()));
+
+					if (l_TargetTree == nullptr)
+					{
+						// If there is no tree set to be cut; find a random dirt cell to move to. 
+						v_clColonists[i].m_iIdleCounter++;
+
+						v_clColonists[i].m_FindNewPath(CurrentGrid.m_GetRandomDirtCell(v_clColonists[i].m_GetCurrentLayer()));
+
+						// IF the colonist has not had a new cutting target for a few loops reset to idle. 
+						if (v_clColonists[i].m_iIdleCounter >= 25)
+						{
+							v_clColonists[i].m_SetJob(_IDLE);
+						}
+					}
+					else
+					{
+						// If a tree has been found. 
+						v_clColonists[i].m_AssignTree(l_TargetTree);
+
+						// If the colonist is not at the tree. 
+						if (v_clColonists[i].m_AtTargetTree() == false)
+						{
+							// Move the colonist to that tree. 
+							v_clColonists[i].m_FindNewPath(l_TargetTree->m_GetCurrentCell());
+						}
+					}
+				}
+
+				// Find Nearest Building. 
+
+				else if (v_clColonists[i].m_GetCurrentJob() == _CONSTRUCTION)
+				{
+					// Find a target building (clostest building). 
+					BuildingObject * l_TargetBuild(buildingManager.m_GetClosestBuilding(v_clColonists[i].m_GetObjectPos()));
+
+					if (l_TargetBuild == nullptr)
+					{
+						// If there is no object set to be built; find a random dirt cell to move to. 
+						v_clColonists[i].m_iIdleCounter++;
+
+						v_clColonists[i].m_FindNewPath(CurrentGrid.m_GetRandomDirtCell(v_clColonists[i].m_GetCurrentLayer()));
+
+						// IF the colonist has not had a new building target for a few loops reset to idle. 
+						if (v_clColonists[i].m_iIdleCounter >= 25)
+						{
+							v_clColonists[i].m_SetJob(_IDLE);
+						}
+					}
+					else
+					{
+						// If a building has been found. 
+						v_clColonists[i].m_AssignBuild(l_TargetBuild);
+
+						// If the colonist is not at the building. 
+						if (v_clColonists[i].m_AtTargetBuild() == false)
+						{
+							// Move the colonist to that building. 
+							v_clColonists[i].m_FindNewPath(l_TargetBuild->m_GetCurrentCell());
 						}
 					}
 				}

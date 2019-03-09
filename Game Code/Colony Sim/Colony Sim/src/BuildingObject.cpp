@@ -28,8 +28,33 @@ void BuildingObject::m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f
 	m_sBuildingType = buildingType; 
 }
 
+void BuildingObject::m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position, std::string buildingType, Cells * newCell)
+{
+	// Todo : if the newCell is a nullptr then exit with an error (possibly use a try catch). 
+
+	m_BuildingBody.setSize(dimentions);
+	m_BuildingBody.setOrigin(m_BuildingBody.getGlobalBounds().width * 0.5f, m_BuildingBody.getGlobalBounds().height * 0.5f);
+	m_BuildingBody.setFillColor(sf::Color::Transparent);
+	m_BuildingBody.setOutlineThickness(0.5f);
+
+	m_SetObjectPos(position.x, position.y);
+
+	m_sBuildingType = buildingType;
+
+	m_CurrentCell = newCell; 
+}
+
 void BuildingObject::m_Update()
 {
+	if (m_bFinishedBuilding == true)
+	{
+		if (m_bFirstBuild == true)
+		{
+			m_BuildingBody.setFillColor(sf::Color::Magenta);
+
+			m_bFirstBuild = false;
+		}
+	}
 }
 
 void BuildingObject::m_DrawGameObject(sf::RenderWindow & window)
@@ -48,6 +73,11 @@ void BuildingObject::m_SetObjectPos(float x, float y)
 	m_GameObjectPos = sf::Vector2f(x, y); 
 }
 
+Cells * BuildingObject::m_GetCurrentCell()
+{
+	return m_CurrentCell;
+}
+
 bool BuildingObject::m_CheckBuildingBounds(float x, float y)
 {
 	if (m_BuildingBody.getGlobalBounds().contains(x, y))
@@ -56,4 +86,30 @@ bool BuildingObject::m_CheckBuildingBounds(float x, float y)
 	}
 
 	return false; 
+}
+
+void BuildingObject::m_WorkBuilding(float workSpeed)
+{
+	if (m_bFinishedBuilding == false)
+	{
+		m_fCurrentConstruction -= workSpeed;
+
+		std::cout << "Working ... "; 
+	}
+	
+	if (m_fCurrentConstruction <= 0)
+	{
+		std::cout << "/nFinished" << std::endl;
+
+		m_bFinishedBuilding = true; 
+
+		// Todo : Change the sting into an enum to make it easier to change and manage. 
+
+		if (m_sBuildingType == "Wall")
+		{
+			m_CurrentCell->m_bObstruction = true; 
+		}
+	}
+
+
 }

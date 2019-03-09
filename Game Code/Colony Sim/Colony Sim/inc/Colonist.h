@@ -12,10 +12,9 @@
 #include "GameObject.h"
 #include "Pathfinding.h"
 #include "Cells.h"
+
 #include "WoodResource.h"
-
-
-
+#include "BuildingObject.h"
 
 /*! \enum This will hold the name for the job the colonist currently has. */
 enum job
@@ -64,6 +63,8 @@ private:
 	Cells * m_EndCell = nullptr; 
 
 	WoodResource * m_TargetTree = nullptr; 
+
+	BuildingObject * m_TargetBuild = nullptr; 
 
 	/*! \var This will be used to keep track of which layer the colonist is currently on. */
 	unsigned int m_iCurrentLayer; 
@@ -164,6 +165,8 @@ public:
 	*/
 	void m_CutTrees(); 
 
+	void m_BuildBuilding(); 
+
 	//--------------------------------------------------------
 	/*! \fn Get Current Job : Will be used to get the value of the current job the colonist is performing.
 	*
@@ -237,6 +240,10 @@ public:
 	void m_AssignTree(WoodResource * newTarget); 
 
 	bool m_AtTargetTree(); 
+
+	void m_AssignBuild(BuildingObject * newTarget);
+
+	bool m_AtTargetBuild();
 
 	void m_ResetPathfinding(); 
 

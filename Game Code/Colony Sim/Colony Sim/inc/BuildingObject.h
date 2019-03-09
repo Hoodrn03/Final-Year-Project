@@ -5,6 +5,7 @@
 #include "defs.h"
 
 #include "GameObject.h"
+#include "Cells.h"
 
 class BuildingObject : public GameObject
 {
@@ -22,13 +23,25 @@ private:
 
 	std::string m_sBuildingType; 
 
+	const float m_fWorkRequired = 150.f;
+
+	float m_fCurrentConstruction = m_fWorkRequired;
+
+	bool m_bFirstBuild = true; 
+
+	Cells * m_CurrentCell = nullptr; 
+
 public:
+
+	bool m_bFinishedBuilding = false;
 
 	// Member Functions 
 
 	void m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position);
 
 	void m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position, std::string buildingType);
+
+	void m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position, std::string buildingType, Cells * newCell);
 
 	void m_Update() override;
 
@@ -38,6 +51,10 @@ public:
 
 	void m_SetObjectPos(float x, float y) override;
 
+	Cells * m_GetCurrentCell(); 
+
 	bool m_CheckBuildingBounds(float x, float y); 
+
+	void m_WorkBuilding(float workSpeed);
 
 };

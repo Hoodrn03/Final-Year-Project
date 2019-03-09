@@ -14,6 +14,7 @@
 #include "Grid.h"
 
 #include "ResourceManagement.h"
+#include "BuildingManager.h"
 
 /*! \class This class will hold a vector of colonists and manage all of their functions at once. */
 class ColonistManager
@@ -92,6 +93,12 @@ public:
 	*Param One : Grid - the current grid which is overlayed onto the game map. 
 	*/
 	void m_Pathfinding(Grid &CurrentGrid, ResourceManagement & currentManager);
+
+	//--------------------------------------------------------
+	/*! \fn Pathfinding : This will be used to manage the colonist's current path.
+	*Param One : Grid - the current grid which is overlayed onto the game map.
+	*/
+	void m_Pathfinding(Grid &CurrentGrid, ResourceManagement & resourceManager, BuildingManager & buildingManager);
 
 	//--------------------------------------------------------\\
 	//						Rendering
