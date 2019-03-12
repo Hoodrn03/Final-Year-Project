@@ -51,8 +51,20 @@ int Gameloop::m_SetUp()
 
 	m_clWindow.m_GetWindow().setFramerateLimit(60);
 
+	// Load textures into the game. 
+
+	m_LoadTexturesIntoGame(); 
+
 	// Init Gui
 	m_clUserInterface.m_InitGui(m_clWindow.m_GetWindow());
+
+	m_TestRect.setSize(sf::Vector2f(30, 30));
+
+	m_TestRect.setPosition(50, 50); 
+
+	l_localTexture = m_clTextureManager.m_GetTextureFromMap("waterOne");
+
+	m_TestRect.setTexture(&l_localTexture);
 
 	m_ResizeAllItems();
 
@@ -109,7 +121,7 @@ void Gameloop::m_CreateMainMenuButtons()
 
 int Gameloop::m_MainMenu()
 {
-	m_BeginGame(); /*!< Use to skip to the main game. */
+	// m_BeginGame(); /*!< Use to skip to the main game. */
 
 	// Init pregame logic. 
 
@@ -152,6 +164,8 @@ void Gameloop::m_RenderMainMenu()
 	m_clWindow.m_GetWindow().clear();
 
 	// Todo: Add items to draw. 
+
+	m_clWindow.m_GetWindow().draw(m_TestRect); 
 
 	// Draw Gui elements. 
 
@@ -439,6 +453,22 @@ void Gameloop::m_RenderGame()
 
 	// Display new objects. 
 	m_clWindow.m_GetWindow().display(); 
+}
+
+void Gameloop::m_LoadTexturesIntoGame()
+{
+	m_clTextureManager.m_AddTextureToMap("assets/textures/Grass/hyptosis_grass01.png", "grassOne", m_clWindow.m_GetWindow());
+	m_clTextureManager.m_AddTextureToMap("assets/textures/Grass/hyptosis_grass02.png", "grassTwo", m_clWindow.m_GetWindow());
+	m_clTextureManager.m_AddTextureToMap("assets/textures/Grass/hyptosis_grass03.png", "grassThree", m_clWindow.m_GetWindow());
+
+	m_clTextureManager.m_AddTextureToMap("assets/textures/Grass/rpg_grass01.png", "grassFour", m_clWindow.m_GetWindow());
+	m_clTextureManager.m_AddTextureToMap("assets/textures/Grass/rpg_grass01.png", "grassFive", m_clWindow.m_GetWindow());
+
+	m_clTextureManager.m_AddTextureToMap("assets/textures/Rock/hyptosis_rock01.png", "rockOne", m_clWindow.m_GetWindow());
+	m_clTextureManager.m_AddTextureToMap("assets/textures/Rock/hyptosis_rock02.png", "rockTwo", m_clWindow.m_GetWindow());
+	m_clTextureManager.m_AddTextureToMap("assets/textures/Rock/hyptosis_rock03.png", "rockThree", m_clWindow.m_GetWindow());
+
+	m_clTextureManager.m_AddTextureToMap("assets/textures/Water/hyptosis_water01.png", "waterOne", m_clWindow.m_GetWindow());
 }
 
 void Gameloop::m_ResizeAllItems()

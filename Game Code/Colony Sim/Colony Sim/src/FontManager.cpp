@@ -2,11 +2,7 @@
 
 FontManager::FontManager()
 {
-	std::cout << "------------------------------------------" << "\nLoading Fonts into map. " << std::endl;
-
 	m_AddFontToMap("assets/fonts/arial.ttf", "arial");
-
-	std::cout << "------------------------------------------" << std::endl;
 }
 
 FontManager::~FontManager()
@@ -32,8 +28,11 @@ void FontManager::m_AddFontToMap(std::string filePath, std::string fontName)
 		else
 		{
 			m_FontMap.insert(std::pair<std::string, sf::Font>(fontName, l_FontToLoad));
+			
+			std::cout << "------------------------------------------" << "\nLoading Fonts into map. " << std::endl;
 
 			std::cout << "Loaded " << fontName << " from " << filePath << " successfully." << std::endl;
+
 		}
 	}
 }

@@ -11,6 +11,7 @@
 #include "EventHandler.h"
 #include "UserInterface.h"
 #include "FontManager.h"
+#include "TextureManager.h"
 
 #include "GameMap.h"
 #include "ColonistManager.h"
@@ -53,6 +54,8 @@ public:
 	/*! \var This will allow for the assignment of fonts for the game. */
 	FontManager m_clFontManager;
 
+	TextureManager m_clTextureManager; 
+
 	/*! \var This class will be used to manage the game map. */
 	Map m_clMap;
 
@@ -89,6 +92,10 @@ public:
 	float m_fWindowWidth, m_fWindowHeight; 
 
 private:
+
+	sf::Texture l_localTexture; 
+
+	sf::RectangleShape m_TestRect; 
 
 	// Member Functions
 
@@ -165,6 +172,8 @@ public:
 	//--------------------------------------------------------
 	//				Universal Functions 
 	//--------------------------------------------------------
+
+	void m_LoadTexturesIntoGame(); 
 
 	void m_ResizeAllItems();
 
