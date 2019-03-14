@@ -58,14 +58,6 @@ int Gameloop::m_SetUp()
 	// Init Gui
 	m_clUserInterface.m_InitGui(m_clWindow.m_GetWindow());
 
-	m_TestRect.setSize(sf::Vector2f(30, 30));
-
-	m_TestRect.setPosition(50, 50); 
-
-	l_localTexture = m_clTextureManager.m_GetTextureFromMap("waterOne");
-
-	m_TestRect.setTexture(&l_localTexture);
-
 	m_ResizeAllItems();
 
 	m_MainMenu(); 
@@ -163,9 +155,7 @@ void Gameloop::m_RenderMainMenu()
 	// Clear old objects.  
 	m_clWindow.m_GetWindow().clear();
 
-	// Todo: Add items to draw. 
-
-	m_clWindow.m_GetWindow().draw(m_TestRect); 
+	// Todo: Add items to draw.
 
 	// Draw Gui elements. 
 
@@ -189,6 +179,9 @@ void Gameloop::m_BeginGame()
 	// Init game elements. 
 
 	// Create game map. 
+
+	m_clMap.m_AssignTextures(m_clTextureManager.m_GetTextureMap());
+
 	m_clMap.m_SetUpGameMap(sf::Vector2f(800, 800), sf::Vector2f(0, 0));
 
 	// Add colonists. 
@@ -201,6 +194,8 @@ void Gameloop::m_BeginGame()
 	// Prepare Buildings
 
 	m_clBuildingManager.m_AssignFont(m_clFontManager.m_GetFrontFromMap("arial"));
+	m_clBuildingManager.m_AssignTextures(m_clTextureManager.m_GetTextureMap());
+
 	m_clBuildingManager.m_Setup(sf::Vector2f(m_clMap.m_GetGrid().m_GetCell(0, 0, 0)->m_GetCellWidth(), 
 		m_clMap.m_GetGrid().m_GetCell(0, 0, 0)->m_GetCellHeight()));
 
@@ -286,7 +281,8 @@ void Gameloop::m_Update()
 
 		// Update Buildings. 
 		m_clBuildingManager.m_Update(m_clMap.m_GetGrid().m_ConvertWorldPosToGridPos(m_clMouse.m_GetMousePos(), m_clMap.m_GetCurrentLevel())->m_GetCellCentre(), 
-			sf::Mouse::isButtonPressed(sf::Mouse::Left), m_clMap.m_GetGrid().m_ConvertWorldPosToGridPos(m_clMouse.m_GetMousePos(), m_clMap.m_GetCurrentLevel()));
+			sf::Mouse::isButtonPressed(sf::Mouse::Left), m_clMap.m_GetGrid().m_ConvertWorldPosToGridPos(m_clMouse.m_GetMousePos(), m_clMap.m_GetCurrentLevel()), 
+			m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds());
 
 		// Update Gui. 
 		m_UpdateButtons();
@@ -469,6 +465,10 @@ void Gameloop::m_LoadTexturesIntoGame()
 	m_clTextureManager.m_AddTextureToMap("assets/textures/Rock/hyptosis_rock03.png", "rockThree", m_clWindow.m_GetWindow());
 
 	m_clTextureManager.m_AddTextureToMap("assets/textures/Water/hyptosis_water01.png", "waterOne", m_clWindow.m_GetWindow());
+
+	m_clTextureManager.m_AddTextureToMap("assets/textures/Objects/Walls/16x16_WoodWall01.png", "woodWallOne", m_clWindow.m_GetWindow());
+
+	m_clTextureManager.m_AddTextureToMap("assets/textures/Objects/Doors/16x16_WoodDoor01.png", "woodDoorOne", m_clWindow.m_GetWindow());
 }
 
 void Gameloop::m_ResizeAllItems()

@@ -172,6 +172,15 @@ void Grid::m_AssignNeighbours()
 	}
 }
 
+void Grid::m_AssignTextures(std::map<std::string, sf::Texture>& m_TextureMap)
+{
+	m_DirtTexture = m_TextureMap["grassOne"];
+
+	m_WaterTexture = m_TextureMap["waterOne"];
+
+	m_RockTexture = m_TextureMap["rockOne"]; 
+}
+
 //--------------------------------------------------------
 /*! \fn CreateLake : This will be used to generate a lake within the grid.
 *Param One : int - The x position of the start cell.
@@ -197,6 +206,8 @@ void Grid::m_CreateLake(int cellX, int cellY, int layer, int numberOfIterations)
 
 	m_Grid[layer][cellX][cellY].m_AssignTile(_WATER); 
 
+	m_Grid[layer][cellX][cellY].m_AssignTexture(m_WaterTexture); 
+	
 	l_CellsToAdd.push_back(&m_Grid[layer][cellX][cellY]); 
  
 	// Begin Lake Generation. 
@@ -243,6 +254,8 @@ void Grid::m_CreateLake(int cellX, int cellY, int layer, int numberOfIterations)
 			if (l_iRandom <= l_iTotalChance / 3)
 			{
 				l_WaterTiles[j]->m_AssignTile(_WATER);
+
+				l_WaterTiles[j]->m_AssignTexture(m_WaterTexture);
 			}
 
 			for (unsigned int k = 0; k < l_WaterTiles[j]->m_GetNeighbours().size(); k++)
@@ -277,11 +290,15 @@ void Grid::m_CreateRiver(std::deque<Cells*> riverPath, int riverWidth, int layer
 			if (riverPath[i]->m_GetGridPos().x + j < m_Grid[layer].size())
 			{
 				m_Grid[layer][(unsigned int)riverPath[i]->m_GetGridPos().x + j][(unsigned int)riverPath[i]->m_GetGridPos().y].m_AssignTile(_WATER);
+
+				m_Grid[layer][(unsigned int)riverPath[i]->m_GetGridPos().x + j][(unsigned int)riverPath[i]->m_GetGridPos().y].m_AssignTexture(m_WaterTexture);
 			}
 
 			if (riverPath[i]->m_GetGridPos().y + j < m_Grid[layer][0].size())
 			{
 				m_Grid[layer][(unsigned int)riverPath[i]->m_GetGridPos().x][(unsigned int)riverPath[i]->m_GetGridPos().y + j].m_AssignTile(_WATER);
+
+				m_Grid[layer][(unsigned int)riverPath[i]->m_GetGridPos().x + j][(unsigned int)riverPath[i]->m_GetGridPos().y].m_AssignTexture(m_WaterTexture);
 			}
 		}
 	}
@@ -310,6 +327,8 @@ void Grid::m_CreateUndergroundWater(int minLayer, int maxLayer)
 					if (m_GenerateInt(0, 100) <= l_iWaterPlacement)
 					{
 						m_Grid[i][j][k].m_AssignTile(_WATER);
+
+						m_Grid[i][j][k].m_AssignTexture(m_WaterTexture); 
 					}
 				}
 			}
@@ -350,6 +369,8 @@ void Grid::m_CreateRock(int layer)
 				if (m_GenerateInt(0, 100) <= (l_iRockPlacement + l_iAdjacentBonus))
 				{
 					m_Grid[layer][i][j].m_AssignTile(_ROCK);
+
+					m_Grid[layer][i][j].m_AssignTexture(m_RockTexture); 
 				}
 			}
 			
@@ -383,6 +404,8 @@ void Grid::m_CreateUndergroundRock(int minLayer, int maxLayer)
 					if (m_GenerateInt(0, 100) <= l_iRockPlacement + l_iUpdatedChance)
 					{
 						m_Grid[i][j][k].m_AssignTile(_ROCK);
+
+						m_Grid[i][j][k].m_AssignTexture(m_RockTexture);
 					}
 				}
 			}
@@ -416,6 +439,8 @@ void Grid::m_CreateUpperRock(int minLayer, int maxLayer)
 					if (m_GenerateInt(0, 100) <= (l_iRockPlacement - l_iDecreasedChance))
 					{
 						m_Grid[i][j][k].m_AssignTile(_ROCK);
+
+						m_Grid[i][j][k].m_AssignTexture(m_RockTexture);
 					}
 				}
 			}
@@ -441,7 +466,9 @@ void Grid::m_CreateDirt(int layer)
 			}
 			else
 			{
-				m_Grid[layer][i][j].m_AssignTile(_DIRT); 
+				m_Grid[layer][i][j].m_AssignTile(_DIRT);
+
+				m_Grid[layer][i][j].m_AssignTexture(m_DirtTexture); 
 			}
 		}
 	}
@@ -467,6 +494,8 @@ void Grid::m_CreateUndergroundDirt(int minLayer, int maxLayer)
 				else
 				{
 					m_Grid[i][j][k].m_AssignTile(_DIRT);
+
+					m_Grid[i][j][k].m_AssignTexture(m_DirtTexture);
 				}
 			}
 		}
@@ -489,27 +518,6 @@ void Grid::m_CreateSky(int minLayer, int maxLayer)
 				if (m_Grid[i][j][k].m_GetTile() == _NO_VALUE)
 				{
 					m_Grid[i][j][k].m_AssignTile(_SKY);
-				}
-			}
-		}
-	}
-}
-
-//--------------------------------------------------------
-/*! \fn AssignTextures : This will be used to give all of the cell's textures, or change the cell's colours.
-*
-*/
-void Grid::m_AssignTextures()
-{
-	if (m_Grid.size() > 0)
-	{
-		for (int i = 0; i < (int)m_Grid.size(); i++)
-		{
-			for (int j = 0; j < (int)m_Grid[i].size(); j++)
-			{
-				for (int k = 0; k < (int)m_Grid[i][j].size(); k++)
-				{
-					m_Grid[i][j][k].m_AssignColours(); 
 				}
 			}
 		}

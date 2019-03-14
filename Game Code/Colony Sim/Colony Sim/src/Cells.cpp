@@ -33,12 +33,6 @@ void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition)
 
 	m_SetObjectPos(possition.x, possition.y); 
 
-	m_CellBody.setFillColor(sf::Color::Magenta); 
-
-	m_CellBody.setOutlineColor(sf::Color::Black);
-
-	m_CellBody.setOutlineThickness(m_CellBody.getGlobalBounds().width * 0.1f); 
-
 	m_SetCellCentre();
 }
 
@@ -58,11 +52,14 @@ void Cells::m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, in
 
 	m_CellBody.setFillColor(sf::Color(r, g, b, 200));
 
-	m_CellBody.setOutlineColor(sf::Color::Black);
-
-	m_CellBody.setOutlineThickness(m_CellBody.getGlobalBounds().width * 0.01f);
-
 	m_SetCellCentre();
+}
+
+void Cells::m_AssignTexture(sf::Texture newTexture)
+{
+	m_localTexture = newTexture; 
+
+	m_CellBody.setTexture(&m_localTexture); 
 }
 
 //--------------------------------------------------------

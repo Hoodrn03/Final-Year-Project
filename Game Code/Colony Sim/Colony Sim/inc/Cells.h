@@ -91,6 +91,8 @@ private:
 	/*! \var This will be the default colour codes for sky. */
 	const sf::Color m_SkyColour = sf::Color(255, 255, 255, 50);
 
+	sf::Texture m_localTexture; 
+
 public:
 
 	/*! \var This will hold a reference to a cell that leads to This one. */
@@ -131,6 +133,8 @@ public:
 	*Param Five : int - Blue value.
 	*/
 	void m_CreateCellBody(sf::Vector2f dimentions, sf::Vector2f possition, int r, int g, int b);
+
+	void m_AssignTexture(sf::Texture newTexture); 
 
 	//--------------------------------------------------------\\
 	//					Positioning

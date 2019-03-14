@@ -192,8 +192,17 @@ void Colonist::m_BuildBuilding()
 			m_TargetBuild->m_WorkBuilding(5); 
 
 			if (m_TargetBuild->m_bFinishedBuilding == true)
-			{
-				m_TargetBuild = nullptr; 
+			{		
+				for (unsigned int i = 0; i < m_TargetBuild->m_GetCurrentCell()->m_GetNeighbours().size(); i++)
+				{
+					if (m_TargetBuild->m_GetCurrentCell()->m_GetNeighbours()[i]->m_GetTile() == _DIRT)
+					{
+						m_SetObjectPos(m_TargetBuild->m_GetCurrentCell()->m_GetNeighbours()[i]->m_GetCellCentre().x, 
+							m_TargetBuild->m_GetCurrentCell()->m_GetNeighbours()[i]->m_GetCellCentre().y);
+					}
+				}
+
+				m_TargetBuild = nullptr;
 			}
 		}
 	}

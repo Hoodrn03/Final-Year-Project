@@ -30,6 +30,10 @@ private:
 
 	float m_fBuildingWidth, m_fBuildingHeight; 
 
+	sf::Texture m_WoodWall; 
+
+	sf::Texture m_WoodDoor; 
+
 public:
 
 	tgui::Button::Ptr m_BuildingActionButton;
@@ -48,11 +52,13 @@ public:
 
 	void m_Setup(sf::Vector2f cellSize);
 
+	void m_AssignTextures(std::map<std::string, sf::Texture> &m_TextureMap); 
+
 	void m_AddBuilding(std::string buildingType, Cells * newCell);
 
 	void m_AssignFont(sf::Font mainFont);
 
-	void m_Update(sf::Vector2f mousePos, bool mouseDown, Cells * currentCell);
+	void m_Update(sf::Vector2f mousePos, bool mouseDown, Cells * currentCell, sf::Vector2f upperBounds, sf::Vector2f lowerBounds);
 
 	void m_DrawBuildings(sf::RenderWindow &window); 
 

@@ -51,3 +51,8 @@ sf::Texture TextureManager::m_GetTextureFromMap(std::string identifier)
 		return sf::Texture();
 	}
 }
+
+std::map<std::string, sf::Texture>& TextureManager::m_GetTextureMap()
+{
+	return m_TextureMap; 
+}

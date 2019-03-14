@@ -70,6 +70,8 @@ public:
 	*/
 	void m_CreateGrid();
 
+	void m_AssignTextures(std::map<std::string, sf::Texture> &m_TextureMap);
+
 	//--------------------------------------------------------
 	//						Update
 	//--------------------------------------------------------

@@ -93,10 +93,6 @@ public:
 
 private:
 
-	sf::Texture l_localTexture; 
-
-	sf::RectangleShape m_TestRect; 
-
 	// Member Functions
 
 public:

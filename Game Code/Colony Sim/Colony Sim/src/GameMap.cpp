@@ -60,6 +60,11 @@ void Map::m_CreateGrid()
 	m_iCurrentLayer = m_iGroundLayer;
 }
 
+void Map::m_AssignTextures(std::map<std::string, sf::Texture>& m_TextureMap)
+{
+	m_clGrid.m_AssignTextures(m_TextureMap); 
+}
+
 //--------------------------------------------------------
 /*! \fn Generate Map : This will be used upon game startup to generate a random map for the player.
 *
@@ -101,7 +106,7 @@ void Map::m_GenerateMap()
 
 	m_clGrid.m_CreateSky(m_iGroundLayer + 1, m_clGrid.m_GetNumberOfLayers() - 1);
 
-	m_clGrid.m_AssignTextures();
+	// m_clGrid.m_AssignTextures();
 }
 
 //--------------------------------------------------------

@@ -31,17 +31,17 @@ private:
 
 	Cells * m_CurrentCell = nullptr; 
 
+	sf::Texture m_localTexture; 
+
 public:
 
 	bool m_bFinishedBuilding = false;
 
 	// Member Functions 
 
-	void m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position);
-
-	void m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position, std::string buildingType);
-
 	void m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position, std::string buildingType, Cells * newCell);
+
+	void m_AssignTexture(sf::Texture newTexture); 
 
 	void m_Update() override;
 

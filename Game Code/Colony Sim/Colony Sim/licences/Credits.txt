@@ -4,3 +4,5 @@ The rpg tileset I have used was created by OddPotatoGift and can be found at htt
 
 The hyptosis tileset I have used was created by Hyptosis and Zabin and is free to use under the  CC BY 3.0 license found at 
 https://creativecommons.org/licenses/by/3.0/. Their work can be found at https://opengameart.org/content/lots-of-free-2d-tiles-and-sprites-by-hyptosis. 
+
+The 16x16 tileset I have used was created by asakuraki and can be found at https://asakuraki.itch.io/16x16tileset. 

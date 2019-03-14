@@ -45,6 +45,12 @@ private:
 	*/
 	std::vector<std::vector<std::vector<Cells>>> m_Grid; 
 
+	sf::Texture m_WaterTexture; 
+
+	sf::Texture m_DirtTexture;
+
+	sf::Texture m_RockTexture; 
+
 public:
 
 	// Member Functions 
@@ -140,11 +146,8 @@ public:
 	//				Colour and Texturing
 	//--------------------------------------------------------
 
-	//--------------------------------------------------------
-	/*! \fn AssignTextures : This will be used to give all of the cell's textures, or change the cell's colours. 
-	*
-	*/
-	void m_AssignTextures(); 
+
+	void m_AssignTextures(std::map<std::string, sf::Texture> &m_TextureMap);
 
 	//--------------------------------------------------------
 	//						Get Items

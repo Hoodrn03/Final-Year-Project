@@ -23,4 +23,6 @@ public:
 	void m_AddTextureToMap(std::string filePath, std::string name, sf::RenderWindow & window);
 
 	sf::Texture m_GetTextureFromMap(std::string identifier); 
+
+	std::map<std::string, sf::Texture> & m_GetTextureMap();
 };
