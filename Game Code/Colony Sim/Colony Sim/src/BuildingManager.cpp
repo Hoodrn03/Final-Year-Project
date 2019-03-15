@@ -1,15 +1,30 @@
 #include "BuildingManager.h"
 
+//--------------------------------------------------------
+/*! \fn Constructor
+*
+*/
 BuildingManager::BuildingManager()
 {
+
 }
 
+//--------------------------------------------------------
+/*! \fn Deconstructor
+*
+*/
 BuildingManager::~BuildingManager()
 {
 }
 
+//--------------------------------------------------------
+/*! \fn Setup : Used to initalize the variables for this class.
+*
+*/
 void BuildingManager::m_Setup()
 {
+	// Create the placeholder (ghost) building variables. 
+
 	m_PlaceholderBuilding.setSize(sf::Vector2f(50, 50));
 	m_PlaceholderBuilding.setOrigin(m_PlaceholderBuilding.getGlobalBounds().width * 0.5f, m_PlaceholderBuilding.getGlobalBounds().height * 0.5f); 
 	m_PlaceholderBuilding.setFillColor(sf::Color::Transparent);
@@ -17,10 +32,18 @@ void BuildingManager::m_Setup()
 	m_PlaceholderBuilding.setOutlineThickness(0.5f);
 }
 
+//--------------------------------------------------------
+/*! \fn Setup : Used to initalize the variables for this class.
+*Param One : Vector2f - The size of the cells, (used to set the height and width for the buildings).
+*/
 void BuildingManager::m_Setup(sf::Vector2f cellSize)
 {
+	// Use the current cell size to create the correct sized building. 
+
 	m_fBuildingWidth = cellSize.x;
 	m_fBuildingHeight = cellSize.y; 
+
+	// Create the placeholder (ghost) building variables.
 
 	m_PlaceholderBuilding.setSize(sf::Vector2f(m_fBuildingWidth, m_fBuildingHeight));
 	m_PlaceholderBuilding.setOrigin(m_PlaceholderBuilding.getGlobalBounds().width * 0.5f, m_PlaceholderBuilding.getGlobalBounds().height * 0.5f);
@@ -29,46 +52,75 @@ void BuildingManager::m_Setup(sf::Vector2f cellSize)
 	m_PlaceholderBuilding.setOutlineThickness(0.5f);
 }
 
+//--------------------------------------------------------
+/*! \fn AssignTextures : Used to store textures locally to easily assign them.
+*Param One : map<String, Texture> - The current texture map containing all currently loaded textures.
+*/
 void BuildingManager::m_AssignTextures(std::map<std::string, sf::Texture> &m_TextureMap)
 {
+	// Todo : possibly add more varieties of walls and doors to vary the look of builidngs. 
+
 	m_WoodWall = m_TextureMap["woodWallOne"];
 
 	m_WoodDoor = m_TextureMap["woodDoorOne"];
 }
 
+//--------------------------------------------------------
+/*! \fn AddBuilding : Used to add a new building into the game world.
+*Param One : String - The type of building (Todo make enum).
+*Param Two : Cells - The cell location for the new building.
+*/
 void BuildingManager::m_AddBuilding(std::string buildingType, Cells *newCell)
 {
+	// Create a temp object limited to this function. 
 	BuildingObject l_TempBuilding; 
 
+	// Init it's variables. 
 	l_TempBuilding.m_SetupBuildingObject(sf::Vector2f(m_fBuildingWidth, m_fBuildingHeight), m_PlaceholderBuilding.getPosition(), buildingType, newCell);
 
+	// Assign a texture. 
 	if (buildingType == "Door")
 	{
 		l_TempBuilding.m_AssignTexture(m_WoodDoor);
-
-		std::cout << "Door" << std::endl;
 	}
 	else
 	{
 		l_TempBuilding.m_AssignTexture(m_WoodWall);
 	}
 
+	// Add it to the list of buildings. 
 	v_Buildings.push_back(l_TempBuilding); 
 
 }
 
+//--------------------------------------------------------
+/*! \fn AssignFont : Used to store a font locally for use with the buttons.
+*Param One : Font - The new font to be used by this class.
+*/
 void BuildingManager::m_AssignFont(sf::Font mainFont)
 {
 	m_LocalFont = mainFont; 
 }
 
+//--------------------------------------------------------
+/*! \fn Update : Used to update the building stored within this class; (Possibly split into more functions).
+*Param One : Vector2f - The mouse's current position.
+*Param Two : bool - The current state of the LMB (left mouse button).
+*Param Three : Cells - The current current cell the mouse is inside.
+*Param Four : Vector2f - The upper bounds for the current view.
+*Param Five : Vector2f - The lower bounds for the current view.
+*/
 void BuildingManager::m_Update(sf::Vector2f mousePos, bool mouseDown, Cells * currentCell, sf::Vector2f upperBounds, sf::Vector2f lowerBounds)
 {
-	for (unsigned int i = 0; i < v_Buildings.size(); i++)
+	if (v_Buildings.size() > 0)
 	{
-		v_Buildings[i].m_Update();
+		for (unsigned int i = 0; i < v_Buildings.size(); i++)
+		{
+			v_Buildings[i].m_Update(); /*!< Loop through the list of building and update. */
+		}
 	}
 
+	// Check if a new building should be created. 
 	if (m_bBuildObject == true)
 	{
 		m_PlaceholderBuilding.setPosition(mousePos);
@@ -87,13 +139,21 @@ void BuildingManager::m_Update(sf::Vector2f mousePos, bool mouseDown, Cells * cu
 				l_bAlreadyThere = true;
 			}
 
-			for (unsigned int i = 0; i < v_Buildings.size(); i++)
+			if ((currentCell->m_GetTile() == _ROCK) || (currentCell->m_GetTile() == _WATER))
 			{
-				if (v_Buildings[i].m_CheckBuildingBounds(mousePos.x, mousePos.y))
-				{
-					l_bAlreadyThere = true; 
+				l_bAlreadyThere = true;
+			}
 
-					// std::cout << "Building already there" << std::endl;
+			if (v_Buildings.size() > 0)
+			{
+				for (unsigned int i = 0; i < v_Buildings.size(); i++)
+				{
+					if (v_Buildings[i].m_CheckBuildingBounds(mousePos.x, mousePos.y))
+					{
+						l_bAlreadyThere = true;
+
+						// std::cout << "Building already there" << std::endl;
+					}
 				}
 			}
 
@@ -107,6 +167,10 @@ void BuildingManager::m_Update(sf::Vector2f mousePos, bool mouseDown, Cells * cu
 	}
 }
 
+//--------------------------------------------------------
+/*! \fn DrawBuildings : This will be used to draw all of the buildings into the game world.
+*Parm One : RenderWindow - The main game window for the game.
+*/
 void BuildingManager::m_DrawBuildings(sf::RenderWindow & window)
 {
 	if (v_Buildings.size() > 0)
@@ -123,10 +187,18 @@ void BuildingManager::m_DrawBuildings(sf::RenderWindow & window)
 	}
 }
 
+//--------------------------------------------------------
+/*! \fn DrawFilter : This is used to limit the drawing of the buildings within the game.
+*
+*/
 void BuildingManager::m_DrawFilter()
 {
 }
 
+//--------------------------------------------------------
+/*! \fn GetClosestBuilding : Used to get a building which is closest to a specific object in game space.
+*Param One : Vector2f - The position of the other object for comparason.
+*/
 BuildingObject * BuildingManager::m_GetClosestBuilding(sf::Vector2f objectPos)
 {
 	// Var setup
@@ -220,6 +292,11 @@ BuildingObject * BuildingManager::m_GetClosestBuilding(sf::Vector2f objectPos)
 	return l_TempBuild;
 }
 
+//--------------------------------------------------------
+/*! \fn CreateBuildingButtons : Used to initalize the building buttons at the start of the game.
+*Param One : float - The width for the current game window.
+*Param Two : float - The height for the current game window.
+*/
 void BuildingManager::m_CreateBuildingButtons(float windowWidth, float windowHeight)
 {
 	// Init Button Sizes.
@@ -294,21 +371,37 @@ void BuildingManager::m_CreateBuildingButtons(float windowWidth, float windowHei
 	v_BuildingButtons.push_back(l_TempButton);
 }
 
+//--------------------------------------------------------
+/*! \fn SetBuildObjects : This will be used to allow the player to build buildings into the game world.
+*Param One : bool - Either allow for forbid building within the game.
+*/
 void BuildingManager::m_SetBuildObjects(bool buildNewObjects)
 {
 	m_bBuildObject = buildNewObjects; 
 }
 
+//--------------------------------------------------------
+/*! \fn SetCurrentObjectToBuild : Set the type of object to build within the game.
+*Param One : String - The name of the object to build.
+*/
 void BuildingManager::m_SetCurrentObjectToBuild(std::string buildingType)
 {
 	m_sCurrentObjectToBuild = buildingType; 
 }
 
+//--------------------------------------------------------
+/*! \fn DrawBuildingButtons : Used to drawthe buttons into the game.
+*
+*/
 void BuildingManager::m_DrawBuildingButtons()
 {
 	m_bDisplayButtons = !m_bDisplayButtons;
 }
 
+//--------------------------------------------------------
+/*! \fn GetBuildingButtons : Used to get access to the vector of buttons.
+*
+*/
 std::vector<tgui::Button::Ptr> BuildingManager::m_GetBuildingButtons()
 {
 	m_bButtonsCreated = !m_bButtonsCreated;
