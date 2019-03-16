@@ -43,8 +43,8 @@ int Gameloop::m_SetUp()
 		return 1;
 	}
 
-	m_fWindowWidth = m_clWindow.m_GetWindow().getSize().x;
-	m_fWindowHeight = m_clWindow.m_GetWindow().getSize().x;
+	m_fWindowWidth = (float)m_clWindow.m_GetWindow().getSize().x;
+	m_fWindowHeight = (float)m_clWindow.m_GetWindow().getSize().x;
 
 	// Setup window variables. 
 	m_clWindow.m_GetWindow().setKeyRepeatEnabled(false);
@@ -74,13 +74,13 @@ void Gameloop::m_CreateMainMenuButtons()
 
 	// Init Button Sizes. 
 
-	int l_iButtonWidth = (m_fWindowWidth * 0.2f);
-	int l_iButtonHeight = (m_fWindowHeight * 0.1f); 
+	int l_iButtonWidth = (int)(m_fWindowWidth * 0.2f);
+	int l_iButtonHeight = (int)(m_fWindowHeight * 0.1f); 
 
 	// Init Button Position. 
 
-	int l_iButtonX = (m_fWindowWidth * 0.5f) - (l_iButtonWidth * 0.5f);
-	int l_iButtonY = (m_fWindowHeight * 0.33f);
+	int l_iButtonX = (int)(m_fWindowWidth * 0.5f) - (int)(l_iButtonWidth * 0.5f);
+	int l_iButtonY = (int)(m_fWindowHeight * 0.33f);
 
 	// Create Buttons. 
 

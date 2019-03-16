@@ -42,6 +42,30 @@ void BuildingObject::m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f
 	m_CurrentCell = newCell; 
 }
 
+void BuildingObject::m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position, std::string buildingType, Cells * newCell, float woodRequired)
+{
+	// Todo : if the newCell is a nullptr then exit with an error (possibly use a try catch). 
+
+	m_BuildingBody.setSize(dimentions);
+	m_BuildingBody.setOrigin(m_BuildingBody.getGlobalBounds().width * 0.5f, m_BuildingBody.getGlobalBounds().height * 0.5f);
+
+	m_SetObjectPos(position.x, position.y);
+
+	m_sBuildingType = buildingType;
+
+	if (newCell == nullptr)
+	{
+		std::cout << "Invalid cell" << std::endl;
+	}
+
+	m_CurrentCell = newCell;
+
+	m_fWoodRequired = woodRequired; 
+	
+	std::cout << "Wood needed for this  :  " << m_fWoodRequired; 
+
+}
+
 //--------------------------------------------------------
 /*! \fn AssignTexture : Used to assign the new building a texture.
 *Param One : The new texture for the building.
@@ -132,21 +156,44 @@ bool BuildingObject::m_CheckBuildingBounds(float x, float y)
 	*/
 void BuildingObject::m_WorkBuilding(float workSpeed)
 {
-	if (m_bFinishedBuilding == false)
+	if (m_fCurrentWood >= m_fWoodRequired)
 	{
-		m_fCurrentConstruction -= workSpeed;
 
-		// std::cout << "Working ... "; 
+		if (m_bFinishedBuilding == false)
+		{
+			m_fCurrentConstruction -= workSpeed;
+
+			// std::cout << "Working ... "; 
+		}
+
+		if (m_fCurrentConstruction <= 0)
+		{
+			// std::cout << "/nFinished" << std::endl;
+
+			m_bFinishedBuilding = true;
+
+			// Todo : Change the string into an enum to make it easier to change and manage. 
+		}
+
 	}
-	
-	if (m_fCurrentConstruction <= 0)
+}
+
+void BuildingObject::m_AddWoodToBuilding(float woodToAdd)
+{
+	m_fCurrentWood += woodToAdd; 
+}
+
+float BuildingObject::m_GetWoodNeeded()
+{
+	return m_fWoodRequired;
+}
+
+bool BuildingObject::m_NeedWood()
+{
+	if (m_fWoodRequired >= m_fCurrentWood)
 	{
-		// std::cout << "/nFinished" << std::endl;
-
-		m_bFinishedBuilding = true; 
-
-		// Todo : Change the string into an enum to make it easier to change and manage. 
+		return false; 
 	}
 
-
+	return true;
 }

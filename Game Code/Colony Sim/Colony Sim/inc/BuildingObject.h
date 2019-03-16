@@ -40,6 +40,10 @@ private:
 	/*! \var The current construction level of this object (once 0 object is built). */
 	float m_fCurrentConstruction = m_fWorkRequired;
 
+	float m_fWoodRequired = 0; 
+
+	float m_fCurrentWood = 0; 
+
 	/*! \var Used to check when the building is first built. */
 	bool m_bFirstBuild = true; 
 
@@ -68,6 +72,8 @@ public:
 	*Param Four : Cells - The cell location for the building.
 	*/
 	void m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position, std::string buildingType, Cells * newCell);
+
+	void m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position, std::string buildingType, Cells * newCell, float woodRequired);
 
 	//--------------------------------------------------------\\
 	//				Colouring and Texturing
@@ -139,5 +145,11 @@ public:
 	*Param One : The work speed of the colonist working on this building. 
 	*/
 	void m_WorkBuilding(float workSpeed);
+
+	void m_AddWoodToBuilding(float woodToAdd); 
+
+	float m_GetWoodNeeded(); 
+
+	bool m_NeedWood(); 
 
 };

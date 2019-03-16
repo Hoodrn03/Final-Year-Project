@@ -72,19 +72,26 @@ void BuildingManager::m_AssignTextures(std::map<std::string, sf::Texture> &m_Tex
 */
 void BuildingManager::m_AddBuilding(std::string buildingType, Cells *newCell)
 {
+	float l_fWoodForDoor = 15;
+	float l_fWoodForWall = 25;
+
 	// Create a temp object limited to this function. 
 	BuildingObject l_TempBuilding; 
-
-	// Init it's variables. 
-	l_TempBuilding.m_SetupBuildingObject(sf::Vector2f(m_fBuildingWidth, m_fBuildingHeight), m_PlaceholderBuilding.getPosition(), buildingType, newCell);
 
 	// Assign a texture. 
 	if (buildingType == "Door")
 	{
+		l_TempBuilding.m_SetupBuildingObject(sf::Vector2f(m_fBuildingWidth, m_fBuildingHeight), 
+			m_PlaceholderBuilding.getPosition(), buildingType, newCell, l_fWoodForDoor);
+
 		l_TempBuilding.m_AssignTexture(m_WoodDoor);
 	}
 	else
 	{
+		l_TempBuilding.m_SetupBuildingObject(sf::Vector2f(m_fBuildingWidth, m_fBuildingHeight), 
+			m_PlaceholderBuilding.getPosition(), buildingType, newCell, l_fWoodForWall);
+
+
 		l_TempBuilding.m_AssignTexture(m_WoodWall);
 	}
 

@@ -186,32 +186,66 @@ void ColonistManager::m_Pathfinding(Grid & CurrentGrid, ResourceManagement & res
 
 				else if (v_clColonists[i].m_GetCurrentJob() == _CONSTRUCTION)
 				{
-					// Find a target building (clostest building). 
-					BuildingObject * l_TargetBuild(buildingManager.m_GetClosestBuilding(v_clColonists[i].m_GetObjectPos()));
-
-					if (l_TargetBuild == nullptr)
+					if (v_clColonists[i].m_iNeededWood > 0)
 					{
-						// If there is no object set to be built; find a random dirt cell to move to. 
-						v_clColonists[i].m_iIdleCounter++;
+						std::cout << "Looking For Wood" << std::endl; 
 
-						v_clColonists[i].m_FindNewPath(CurrentGrid.m_GetRandomDirtCell(v_clColonists[i].m_GetCurrentLayer()));
+						WoodPile * l_TargetPile = resourceManager.m_FindClosestWoodPile(v_clColonists[i].m_GetObjectPos());
 
-						// IF the colonist has not had a new building target for a few loops reset to idle. 
-						if (v_clColonists[i].m_iIdleCounter >= 25)
+						if (v_clColonists[i].m_GetCurrentCell()->m_GetCellId() == l_TargetPile->m_GetCurentCell()->m_GetCellId())
 						{
-							v_clColonists[i].m_SetJob(_IDLE);
+							v_clColonists[i].m_iCurrentWood += l_TargetPile->m_TakeWood(v_clColonists[i].m_iNeededWood); 
+						}
+
+						if (l_TargetPile == nullptr)
+						{
+							// If there is no object set to be built; find a random dirt cell to move to. 
+							v_clColonists[i].m_iIdleCounter++;
+
+							std::cout << "No Wood" << std::endl;
+
+							v_clColonists[i].m_FindNewPath(CurrentGrid.m_GetRandomDirtCell(v_clColonists[i].m_GetCurrentLayer()));
+
+							// IF the colonist has not had a new building target for a few loops reset to idle. 
+							if (v_clColonists[i].m_iIdleCounter >= 25)
+							{
+								v_clColonists[i].m_SetJob(_IDLE);
+							}
+						}
+						else
+						{
+							v_clColonists[i].m_FindNewPath(l_TargetPile->m_GetCurentCell()); 
 						}
 					}
 					else
 					{
-						// If a building has been found. 
-						v_clColonists[i].m_AssignBuild(l_TargetBuild);
+						// Find a target building (clostest building). 
+						BuildingObject * l_TargetBuild(buildingManager.m_GetClosestBuilding(v_clColonists[i].m_GetObjectPos()));
 
-						// If the colonist is not at the building. 
-						if (v_clColonists[i].m_AtTargetBuild() == false)
+						if (l_TargetBuild == nullptr)
 						{
-							// Move the colonist to that building. 
-							v_clColonists[i].m_FindNewPath(l_TargetBuild->m_GetCurrentCell());
+							// If there is no object set to be built; find a random dirt cell to move to. 
+							v_clColonists[i].m_iIdleCounter++;
+
+							v_clColonists[i].m_FindNewPath(CurrentGrid.m_GetRandomDirtCell(v_clColonists[i].m_GetCurrentLayer()));
+
+							// IF the colonist has not had a new building target for a few loops reset to idle. 
+							if (v_clColonists[i].m_iIdleCounter >= 25)
+							{
+								v_clColonists[i].m_SetJob(_IDLE);
+							}
+						}
+						else
+						{
+							// If a building has been found. 
+							v_clColonists[i].m_AssignBuild(l_TargetBuild);
+
+							// If the colonist is not at the building. 
+							if (v_clColonists[i].m_AtTargetBuild() == false)
+							{
+								// Move the colonist to that building. 
+								v_clColonists[i].m_FindNewPath(l_TargetBuild->m_GetCurrentCell());
+							}
 						}
 					}
 				}
@@ -367,8 +401,8 @@ void ColonistManager::m_CreateColonistActionButtons(sf::Font gameFont, sf::Rende
 
 	// Init Button Sizes.
 
-	int l_iButtonWidth = (window.getSize().x * 0.15f);
-	int l_iButtonHeight = (window.getSize().y * 0.075f);
+	int l_iButtonWidth = (int)(window.getSize().x * 0.15f);
+	int l_iButtonHeight = (int)(window.getSize().y * 0.075f);
 
 	// Init Button Position. 
 

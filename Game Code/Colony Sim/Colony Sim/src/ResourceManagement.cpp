@@ -282,6 +282,92 @@ WoodResource * ResourceManagement::m_FindClosestTree(sf::Vector2f otherObject)
 	return l_TempTree;
 }
 
+WoodPile * ResourceManagement::m_FindClosestWoodPile(sf::Vector2f otherObject)
+{
+	// Var setup
+
+	WoodPile * l_TempWood = nullptr;
+
+	bool l_FirstPile = true;
+
+	float l_PrevXDist, l_PrevYDist;
+
+	float l_XDist, l_YDist;
+
+	if (v_clWoodPiles.size() > 0)
+	{
+		for (unsigned int i = 1; i < v_clWoodPiles.size(); i++)
+		{
+			if (l_FirstPile == true)
+			{
+				// Find the first tree in the vector to begin the distance evaluations.
+
+				l_TempWood = &v_clWoodPiles[i];
+
+				l_FirstPile = false;
+
+				// Calculate the initial distance between the chosen object and the first tree. 
+
+				if (v_clWoodPiles[i].m_GetObjectPos().x > otherObject.x)
+				{
+					l_PrevXDist = v_clWoodPiles[i].m_GetObjectPos().x - otherObject.x;
+				}
+				else
+				{
+					l_PrevXDist = otherObject.x - v_clWoodPiles[i].m_GetObjectPos().x;
+				}
+
+				if (v_clWoodPiles[i].m_GetObjectPos().y > otherObject.y)
+				{
+					l_PrevYDist = v_clWoodPiles[i].m_GetObjectPos().y - otherObject.y;
+				}
+				else
+				{
+					l_PrevYDist = otherObject.y - v_clWoodPiles[i].m_GetObjectPos().y;
+				}
+			}
+
+			// Calculate the distance for the next tree. 
+
+			if (v_clTrees[i].m_GetObjectPos().x > otherObject.x)
+			{
+				l_XDist = v_clTrees[i].m_GetObjectPos().x - otherObject.x;
+			}
+			else
+			{
+				l_XDist = otherObject.x - v_clTrees[i].m_GetObjectPos().x;
+			}
+
+			if (v_clTrees[i].m_GetObjectPos().y > otherObject.y)
+			{
+				l_YDist = v_clTrees[i].m_GetObjectPos().y - otherObject.y;
+			}
+			else
+			{
+				l_YDist = otherObject.y - v_clTrees[i].m_GetObjectPos().y;
+			}
+
+			// See if the new distance is shorter than the preveous one. 
+
+			if ((l_XDist <= l_PrevXDist) && (l_YDist <= l_PrevYDist))
+			{
+				l_TempWood = &v_clWoodPiles[i];
+
+				l_PrevXDist = l_XDist;
+				l_PrevYDist = l_YDist;
+			}
+
+		}
+	}
+
+	if (l_TempWood == nullptr)
+	{
+		std::cout << "Unable to find Wood" << std::endl;
+	}
+
+	return l_TempWood;
+}
+
 void ResourceManagement::m_DeleteTrees()
 {
 	if (v_clTrees.size() > 0)
@@ -296,14 +382,25 @@ void ResourceManagement::m_DeleteTrees()
 			}
 		}
 	}
+
+	if (v_clWoodPiles.size() > 0)
+	{
+		for (unsigned int i = 0; i < v_clWoodPiles.size(); i++)
+		{
+			if (v_clWoodPiles[i].m_GetMarkForDeletion() == true)
+			{
+				v_clWoodPiles.erase(v_clWoodPiles.begin() + i);
+			}
+		}
+	}
 }
 
 void ResourceManagement::m_CreateActionButtons(float windowWidth, float windowHeight)
 {
 	// Init Button Sizes.
 
-	int l_iButtonWidth = (windowWidth * 0.15f);
-	int l_iButtonHeight = (windowHeight * 0.075f);
+	int l_iButtonWidth = (int)(windowWidth * 0.15f);
+	int l_iButtonHeight = (int)(windowHeight * 0.075f);
 
 	// Create Buttons
 

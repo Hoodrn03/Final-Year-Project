@@ -27,9 +27,11 @@ private:
 
 	int m_iNumberOfWood = 0; 
 
-	const int m_iMaxWoodPile = 150; 
+	int m_iMaxWoodPile = 150; 
 
-	const int m_iMaxWood = 50; 
+	int m_iMaxWood = 50; 
+
+	bool m_bMarkForDeletion = false; 
 
 	// Member Functions 
 
@@ -50,6 +52,10 @@ public:
 	*
 	*/
 	void m_Update();
+
+	int m_TakeWood(int amountTaken);
+
+	bool m_GetMarkForDeletion(); 
 
 	//--------------------------------------------------------
 	//						Rendering
@@ -77,4 +83,6 @@ public:
 	*
 	*/
 	void m_SetObjectPos(float x, float y);
+
+	Cells * m_GetCurentCell(); 
 };

@@ -103,6 +103,10 @@ private:
 
 public:
 
+	unsigned int m_iCurrentWood = 0; 
+
+	int m_iNeededWood = 0; 
+
 	unsigned int m_iIdleCounter = 0;
 
 	// Member Functions 
@@ -173,6 +177,8 @@ public:
 	*/
 	job m_GetCurrentJob();
 
+	void m_SetNeededWood(float woodNeeded); 
+
 	//--------------------------------------------------------\\
 	//						Rendering
 	//--------------------------------------------------------\\
@@ -220,6 +226,8 @@ public:
 	*
 	*/
 	int m_GetCurrentLayer(); 
+
+	Cells * m_GetCurrentCell(); 
 
 	//--------------------------------------------------------\\
 	//						Pathfinding

@@ -292,7 +292,12 @@ std::vector<Cells*>& Cells::m_GetNeighbours()
 */
 tileSet Cells::m_GetTile()
 {
-	return m_CurrentTile;
+	if (this != nullptr)
+	{
+		return m_CurrentTile;
+	}
+	
+	return _NO_VALUE; 
 }
 
 //--------------------------------------------------------

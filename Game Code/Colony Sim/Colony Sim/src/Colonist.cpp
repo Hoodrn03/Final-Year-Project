@@ -189,20 +189,38 @@ void Colonist::m_BuildBuilding()
 		{
 			m_WorkTimer.restart();
 
-			m_TargetBuild->m_WorkBuilding(5); 
+			if (m_TargetBuild->m_NeedWood() == true)
+			{
+				m_iNeededWood = m_TargetBuild->m_GetWoodNeeded(); 
 
-			if (m_TargetBuild->m_bFinishedBuilding == true)
-			{		
-				for (unsigned int i = 0; i < m_TargetBuild->m_GetCurrentCell()->m_GetNeighbours().size(); i++)
+				std::cout << "Need Wood" << std::endl;
+
+				if (m_iCurrentWood > 0)
 				{
-					if (m_TargetBuild->m_GetCurrentCell()->m_GetNeighbours()[i]->m_GetTile() == _DIRT)
-					{
-						m_SetObjectPos(m_TargetBuild->m_GetCurrentCell()->m_GetNeighbours()[i]->m_GetCellCentre().x, 
-							m_TargetBuild->m_GetCurrentCell()->m_GetNeighbours()[i]->m_GetCellCentre().y);
-					}
-				}
+					m_TargetBuild->m_AddWoodToBuilding(m_iCurrentWood);
 
-				m_TargetBuild = nullptr;
+					m_iCurrentWood = 0;
+
+					m_iNeededWood = 0; 
+				}
+			}
+			else 
+			{
+				m_TargetBuild->m_WorkBuilding(5);
+
+				if (m_TargetBuild->m_bFinishedBuilding == true)
+				{
+					for (unsigned int i = 0; i < m_TargetBuild->m_GetCurrentCell()->m_GetNeighbours().size(); i++)
+					{
+						if (m_TargetBuild->m_GetCurrentCell()->m_GetNeighbours()[i]->m_GetTile() == _DIRT)
+						{
+							m_SetObjectPos(m_TargetBuild->m_GetCurrentCell()->m_GetNeighbours()[i]->m_GetCellCentre().x,
+								m_TargetBuild->m_GetCurrentCell()->m_GetNeighbours()[i]->m_GetCellCentre().y);
+						}
+					}
+
+					m_TargetBuild = nullptr;
+				}
 			}
 		}
 	}
@@ -311,6 +329,11 @@ int Colonist::m_GetCurrentLayer()
 	return m_iCurrentLayer;
 }
 
+Cells * Colonist::m_GetCurrentCell()
+{
+	return m_CurrentCell;
+}
+
 //--------------------------------------------------------
 /*! \fn Get Current Job : Will be used to get the value of the current job the colonist is performing.
 *
@@ -318,6 +341,11 @@ int Colonist::m_GetCurrentLayer()
 job Colonist::m_GetCurrentJob()
 {
 	return m_CurrentJob;
+}
+
+void Colonist::m_SetNeededWood(float woodNeeded)
+{
+	m_iNeededWood = woodNeeded; 
 }
 
 //--------------------------------------------------------

@@ -50,6 +50,27 @@ void WoodPile::m_Update()
 {
 }
 
+int WoodPile::m_TakeWood(int amountTaken)
+{
+	m_iNumberOfWood -= amountTaken; 
+
+	std::cout << "Current Wood : " << m_iNumberOfWood << std::endl;
+
+	if (m_iNumberOfWood < 0)
+	{
+		amountTaken -= m_iNumberOfWood; 
+
+		m_bMarkForDeletion = true; 
+	}
+
+	return amountTaken; 
+}
+
+bool WoodPile::m_GetMarkForDeletion()
+{
+	return m_bMarkForDeletion;
+}
+
 void WoodPile::m_DrawGameObject(sf::RenderWindow & window)
 {
 	window.draw(m_PileBody); 
@@ -74,5 +95,10 @@ void WoodPile::m_SetObjectPos(float x, float y)
 
 	m_PileCount.setPosition(m_PileBody.getPosition().x - m_PileBody.getGlobalBounds().width * 0.5f,
 		m_PileBody.getPosition().y - m_PileBody.getGlobalBounds().height * 0.5f);
+}
+
+Cells * WoodPile::m_GetCurentCell()
+{
+	return m_CurrentCell;
 }
 
