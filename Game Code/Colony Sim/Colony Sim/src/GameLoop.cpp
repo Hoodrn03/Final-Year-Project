@@ -281,8 +281,8 @@ void Gameloop::m_Update()
 
 		// Update Buildings. 
 		m_clBuildingManager.m_Update(m_clMap.m_GetGrid().m_ConvertWorldPosToGridPos(m_clMouse.m_GetMousePos(), m_clMap.m_GetCurrentLevel())->m_GetCellCentre(), 
-			sf::Mouse::isButtonPressed(sf::Mouse::Left), m_clMap.m_GetGrid().m_ConvertWorldPosToGridPos(m_clMouse.m_GetMousePos(), m_clMap.m_GetCurrentLevel()), 
-			m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds());
+			m_clMouse.m_GetLMBDown(m_clMap.m_GetMapUpperBounds(), m_clMap.m_GetMapLowerBounds()), m_clMap.m_GetGrid().m_ConvertWorldPosToGridPos(m_clMouse.m_GetMousePos(), 
+				m_clMap.m_GetCurrentLevel()), m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds());
 
 		// Update Gui. 
 		m_UpdateButtons();

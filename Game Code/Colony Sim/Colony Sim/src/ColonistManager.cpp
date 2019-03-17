@@ -186,68 +186,73 @@ void ColonistManager::m_Pathfinding(Grid & CurrentGrid, ResourceManagement & res
 
 				else if (v_clColonists[i].m_GetCurrentJob() == _CONSTRUCTION)
 				{
-					if (v_clColonists[i].m_iNeededWood > 0)
+					// Find a target building (clostest building). 
+					BuildingObject * l_TargetBuild(buildingManager.m_GetClosestBuilding(v_clColonists[i].m_GetObjectPos()));
+
+					if (l_TargetBuild == nullptr)
 					{
-						std::cout << "Looking For Wood" << std::endl; 
+						// If there is no object set to be built; find a random dirt cell to move to. 
+						v_clColonists[i].m_iIdleCounter++;
 
-						WoodPile * l_TargetPile = resourceManager.m_FindClosestWoodPile(v_clColonists[i].m_GetObjectPos());
+						v_clColonists[i].m_FindNewPath(CurrentGrid.m_GetRandomDirtCell(v_clColonists[i].m_GetCurrentLayer()));
 
-						if (v_clColonists[i].m_GetCurrentCell()->m_GetCellId() == l_TargetPile->m_GetCurentCell()->m_GetCellId())
+						// IF the colonist has not had a new building target for a few loops reset to idle. 
+						if (v_clColonists[i].m_iIdleCounter >= 25)
 						{
-							v_clColonists[i].m_iCurrentWood += l_TargetPile->m_TakeWood(v_clColonists[i].m_iNeededWood); 
-						}
-
-						if (l_TargetPile == nullptr)
-						{
-							// If there is no object set to be built; find a random dirt cell to move to. 
-							v_clColonists[i].m_iIdleCounter++;
-
-							std::cout << "No Wood" << std::endl;
-
-							v_clColonists[i].m_FindNewPath(CurrentGrid.m_GetRandomDirtCell(v_clColonists[i].m_GetCurrentLayer()));
-
-							// IF the colonist has not had a new building target for a few loops reset to idle. 
-							if (v_clColonists[i].m_iIdleCounter >= 25)
-							{
-								v_clColonists[i].m_SetJob(_IDLE);
-							}
-						}
-						else
-						{
-							v_clColonists[i].m_FindNewPath(l_TargetPile->m_GetCurentCell()); 
+							v_clColonists[i].m_SetJob(_IDLE);
 						}
 					}
 					else
 					{
-						// Find a target building (clostest building). 
-						BuildingObject * l_TargetBuild(buildingManager.m_GetClosestBuilding(v_clColonists[i].m_GetObjectPos()));
+						// If a building has been found. 
+						v_clColonists[i].m_AssignBuild(l_TargetBuild);
 
-						if (l_TargetBuild == nullptr)
+						// If the colonist is not at the building. 
+						if (v_clColonists[i].m_AtTargetBuild() == false)
 						{
-							// If there is no object set to be built; find a random dirt cell to move to. 
-							v_clColonists[i].m_iIdleCounter++;
-
-							v_clColonists[i].m_FindNewPath(CurrentGrid.m_GetRandomDirtCell(v_clColonists[i].m_GetCurrentLayer()));
-
-							// IF the colonist has not had a new building target for a few loops reset to idle. 
-							if (v_clColonists[i].m_iIdleCounter >= 25)
-							{
-								v_clColonists[i].m_SetJob(_IDLE);
-							}
-						}
-						else
-						{
-							// If a building has been found. 
-							v_clColonists[i].m_AssignBuild(l_TargetBuild);
-
-							// If the colonist is not at the building. 
-							if (v_clColonists[i].m_AtTargetBuild() == false)
-							{
-								// Move the colonist to that building. 
-								v_clColonists[i].m_FindNewPath(l_TargetBuild->m_GetCurrentCell());
-							}
+							// Move the colonist to that building. 
+							v_clColonists[i].m_FindNewPath(l_TargetBuild->m_GetCurrentCell());
 						}
 					}
+
+				if (v_clColonists[i].m_iNeededWood > 0)
+				{
+					WoodPile * l_TargetPile = resourceManager.m_FindClosestWoodPile(v_clColonists[i].m_GetObjectPos());
+
+					if (v_clColonists[i].m_iCurrentWood <= v_clColonists[i].m_iNeededWood)
+					{
+						std::cout << "Looking For Wood" << std::endl;
+
+						if (v_clColonists[i].m_GetCurrentCell()->m_GetCellId() == l_TargetPile->m_GetCurentCell()->m_GetCellId())
+						{
+							v_clColonists[i].m_iCurrentWood += l_TargetPile->m_TakeWood(v_clColonists[i].m_iNeededWood);
+
+							std::cout << "Colonist Current Wood : " << v_clColonists[i].m_iCurrentWood << std::endl;
+						}
+					}
+
+					if (l_TargetPile == nullptr)
+					{
+						// If there is no object set to be built; find a random dirt cell to move to. 
+						v_clColonists[i].m_iIdleCounter++;
+
+						std::cout << "No Wood" << std::endl;
+
+						v_clColonists[i].m_FindNewPath(CurrentGrid.m_GetRandomDirtCell(v_clColonists[i].m_GetCurrentLayer()));
+
+						// IF the colonist has not had a new building target for a few loops reset to idle. 
+						if (v_clColonists[i].m_iIdleCounter >= 25)
+						{
+							v_clColonists[i].m_SetJob(_IDLE);
+						}
+					}
+					else
+					{
+						v_clColonists[i].m_FindNewPath(l_TargetPile->m_GetCurentCell());
+					}
+				}
+
+
 				}
 			}
 		}

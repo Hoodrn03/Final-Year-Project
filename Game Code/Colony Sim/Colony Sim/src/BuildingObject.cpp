@@ -190,10 +190,12 @@ float BuildingObject::m_GetWoodNeeded()
 
 bool BuildingObject::m_NeedWood()
 {
-	if (m_fWoodRequired >= m_fCurrentWood)
+	if (m_fCurrentWood >= m_fWoodRequired)
 	{
 		return false; 
 	}
+
+	std::cout << std::boolalpha << "Need Wood ? ";
 
 	return true;
 }

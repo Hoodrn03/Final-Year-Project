@@ -52,14 +52,37 @@ void WoodPile::m_Update()
 
 int WoodPile::m_TakeWood(int amountTaken)
 {
-	m_iNumberOfWood -= amountTaken; 
-
-	std::cout << "Current Wood : " << m_iNumberOfWood << std::endl;
-
-	if (m_iNumberOfWood < 0)
+	if (m_iNumberOfWood >= amountTaken)
 	{
-		amountTaken -= m_iNumberOfWood; 
 
+		m_iNumberOfWood -= amountTaken;
+
+		std::cout << "Current Wood : " << m_iNumberOfWood << std::endl;
+
+		m_PileCount.setString(std::to_string(m_iNumberOfWood));
+
+		m_SetObjectPos(m_CurrentCell->m_GetCellCentre().x, m_CurrentCell->m_GetCellCentre().y);
+
+		unsigned int l_iTextSize = 20;
+		do
+		{
+			// Adjust text size to fit within mian body. 
+			l_iTextSize -= 2;
+			m_PileCount.setCharacterSize(l_iTextSize);
+
+		} while ((m_PileCount.getGlobalBounds().width > m_PileBody.getGlobalBounds().width) ||
+			(m_PileCount.getGlobalBounds().height > m_PileBody.getGlobalBounds().height));
+
+	}
+	else
+	{
+		amountTaken = m_iNumberOfWood; 
+
+		m_iNumberOfWood = 0; 
+	}
+
+	if (m_iNumberOfWood <= 0)
+	{
 		m_bMarkForDeletion = true; 
 	}
 
@@ -99,6 +122,11 @@ void WoodPile::m_SetObjectPos(float x, float y)
 
 Cells * WoodPile::m_GetCurentCell()
 {
-	return m_CurrentCell;
+	if (this != nullptr)
+	{
+		return m_CurrentCell;
+	}
+
+	return nullptr; 
 }
 

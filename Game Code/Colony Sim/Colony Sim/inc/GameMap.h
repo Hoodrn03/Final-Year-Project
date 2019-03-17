@@ -126,6 +126,10 @@ public:
 	*/
 	Grid &m_GetGrid();
 
+	sf::Vector2f m_GetMapUpperBounds();
+
+	sf::Vector2f m_GetMapLowerBounds(); 
+
 	//--------------------------------------------------------
 	//						Rendering
 	//--------------------------------------------------------

@@ -202,6 +202,8 @@ void Colonist::m_BuildBuilding()
 					m_iCurrentWood = 0;
 
 					m_iNeededWood = 0; 
+
+					std::cout << "Added Wood" << std::endl;
 				}
 			}
 			else 

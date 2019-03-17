@@ -45,6 +45,20 @@ sf::Vector2f Mouse::m_GetMousePos()
 	return m_MousePos;
 }
 
+bool Mouse::m_GetLMBDown(sf::Vector2f mapUpperBounds, sf::Vector2f mapLowerBounds)
+{
+	if (((m_MousePos.x > mapUpperBounds.x) && (m_MousePos.y > mapUpperBounds.y)) && 
+		((m_MousePos.x < mapLowerBounds.x) && (m_MousePos.y < mapLowerBounds.y)))
+	{
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			return true; 
+		}
+	}
+
+	return false;
+}
+
 void Mouse::m_CreateSelectionBox()
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))

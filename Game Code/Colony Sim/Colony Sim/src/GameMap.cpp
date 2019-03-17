@@ -288,3 +288,19 @@ Grid & Map::m_GetGrid()
 {
 	return m_clGrid; 
 }
+
+sf::Vector2f Map::m_GetMapUpperBounds()
+{
+	return m_MapObject.getPosition();
+}
+
+sf::Vector2f Map::m_GetMapLowerBounds()
+{
+	sf::Vector2f l_LowerBounds; 
+
+	l_LowerBounds.x = m_MapObject.getPosition().x + m_MapObject.getGlobalBounds().width;
+
+	l_LowerBounds.y = m_MapObject.getPosition().y + m_MapObject.getGlobalBounds().height;
+
+	return l_LowerBounds;
+}
