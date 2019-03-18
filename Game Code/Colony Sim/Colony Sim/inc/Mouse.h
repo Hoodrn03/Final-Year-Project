@@ -40,6 +40,12 @@ private:
 	/*! \var This will be used to limit the mouse down function to once a press. */
 	bool m_bMouseFirstDown = false; 
 
+	sf::Font m_LocalFont;
+
+	sf::Text m_ToolTip; 
+
+	std::string m_PreveousText = " "; 
+
 	// Member Functions
 
 public:
@@ -98,6 +104,14 @@ public:
 	*/
 	void m_DrawSelectionBox(sf::RenderWindow &window); 
 
+	//--------------------------------------------------------
+	//					Tool Tip Management
+	//--------------------------------------------------------
 	
+	void m_AssignToolTipFont(sf::Font newFont);
+
+	void m_UpdateTooltip(std::string dataToDisplay, sf::Vector2f viewPos, sf::Vector2f viewSize);
+
+	void m_DrawToolTip(sf::RenderWindow & window); 
 
 };

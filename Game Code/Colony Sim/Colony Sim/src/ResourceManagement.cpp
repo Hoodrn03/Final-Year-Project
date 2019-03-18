@@ -94,6 +94,14 @@ void ResourceManagement::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomR
 			v_clTrees[i].m_DrawFilter(topLeft, bottomRight); 
 		}
 	}
+
+	if (v_clWoodPiles.size() > 0)
+	{
+		for (unsigned int i = 0; i < v_clWoodPiles.size(); i++)
+		{
+			v_clWoodPiles[i].m_DrawFilter(topLeft, bottomRight);
+		}
+	}
 }
 
 //--------------------------------------------------------
@@ -109,6 +117,14 @@ void ResourceManagement::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomR
 		for (unsigned int i = 0; i < v_clTrees.size(); i++)
 		{
 			v_clTrees[i].m_DrawFilter(topLeft, bottomRight, currentLayer);
+		}
+	}
+
+	if (v_clWoodPiles.size() > 0)
+	{
+		for (unsigned int i = 0; i < v_clWoodPiles.size(); i++)
+		{
+			v_clWoodPiles[i].m_DrawFilter(topLeft, bottomRight, currentLayer);
 		}
 	}
 }

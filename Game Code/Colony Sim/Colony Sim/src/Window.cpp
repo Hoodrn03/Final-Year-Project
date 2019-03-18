@@ -58,6 +58,11 @@ sf::RenderWindow & Window::m_GetWindow()
 	return m_Window; 
 }
 
+sf::Vector2f Window::m_GetViewSize()
+{
+	return m_GameView.getSize();
+}
+
 //--------------------------------------------------------
 /*! \fn GetViewUpperBounds : This will return the top left of the game view.
 *

@@ -50,6 +50,8 @@ private:
 	/*! \var The cell location for the building. */
 	Cells * m_CurrentCell = nullptr; 
 
+	int m_CurrentLayer; 
+
 	/*! \var The local texture for this object. */
 	sf::Texture m_localTexture; 
 
@@ -74,6 +76,7 @@ public:
 	void m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position, std::string buildingType, Cells * newCell);
 
 	void m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position, std::string buildingType, Cells * newCell, float woodRequired);
+
 
 	//--------------------------------------------------------\\
 	//				Colouring and Texturing
@@ -100,7 +103,7 @@ public:
 	//--------------------------------------------------------\\
 
 	//--------------------------------------------------------
-	/*! \fn DrawGameObject : USed to draw this object into the game world. 
+	/*! \fn DrawGameObject : Used to draw this object into the game world. 
 	*Param One : RenderWindow - The current game window for the game. 
 	*/
 	void m_DrawGameObject(sf::RenderWindow & window) override;
@@ -111,6 +114,8 @@ public:
 	*Param Two : Vector2f - The bottom right of the game view. 
 	*/
 	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight) override;
+
+	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, int currentLayer); 
 
 	//--------------------------------------------------------\\
 	//						Positioning

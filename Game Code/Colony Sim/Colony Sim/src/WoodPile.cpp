@@ -13,6 +13,8 @@ void WoodPile::m_InitWoodPile(Cells * pileLocation, sf::Font newFont, float curr
 
 	m_CurrentCell = pileLocation; 
 
+	m_CurrentLayer = m_CurrentCell->m_GetLayer();
+
 	// Create a max number of wood to generate dependng upon size of tree.
 
 	int l_iMaxGeneratedWood = m_iMaxWood + currentGrowth; 
@@ -96,18 +98,51 @@ bool WoodPile::m_GetMarkForDeletion()
 
 void WoodPile::m_DrawGameObject(sf::RenderWindow & window)
 {
-	window.draw(m_PileBody); 
-
-	if (m_PileCount.getFont() != nullptr)
+	if (m_DrawItem == _DRAW)
 	{
-		m_PileCount.setFont(m_CurrentFont);
+		window.draw(m_PileBody);
 
-		window.draw(m_PileCount); 
+		if (m_PileCount.getFont() != nullptr)
+		{
+			m_PileCount.setFont(m_CurrentFont);
+
+			window.draw(m_PileCount);
+		}
 	}
+
 }
 
 void WoodPile::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight)
 {
+	if (((m_PileBody.getPosition().x > topLeft.x) && (m_PileBody.getPosition().y > topLeft.y))
+		&& ((m_PileBody.getPosition().x < bottomRight.x) && (m_PileBody.getPosition().y < bottomRight.y)))
+	{
+		m_DrawItem = _DRAW;
+	}
+	else
+	{
+		m_DrawItem = _NO_DRAW;
+	}
+}
+
+void WoodPile::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, int currentLayer)
+{
+	if (m_CurrentLayer == currentLayer)
+	{
+		if (((m_PileBody.getPosition().x > topLeft.x) && (m_PileBody.getPosition().y > topLeft.y))
+			&& ((m_PileBody.getPosition().x < bottomRight.x) && (m_PileBody.getPosition().y < bottomRight.y)))
+		{
+			m_DrawItem = _DRAW;
+		}
+		else
+		{
+			m_DrawItem = _NO_DRAW;
+		}
+	}
+	else
+	{
+		m_DrawItem = _NO_DRAW;
+	}
 }
 
 void WoodPile::m_SetObjectPos(float x, float y)

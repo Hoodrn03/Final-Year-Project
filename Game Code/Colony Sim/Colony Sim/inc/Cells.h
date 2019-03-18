@@ -259,6 +259,8 @@ public:
 	*/
 	void m_AssignTile(tileSet whichTile);
 
+	std::string m_GetTileName(); 
+
 	//--------------------------------------------------------\\
 	//					Size and Scale 
 	//--------------------------------------------------------\\

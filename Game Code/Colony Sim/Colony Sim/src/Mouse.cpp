@@ -97,6 +97,41 @@ void Mouse::m_DrawSelectionBox(sf::RenderWindow & window)
 	window.draw(m_SelectionBox); 
 }
 
+void Mouse::m_AssignToolTipFont(sf::Font newFont)
+{
+	m_LocalFont = newFont;
+
+	m_ToolTip.setFont(m_LocalFont);
+
+	m_ToolTip.setFillColor(sf::Color::White);
+
+	m_ToolTip.setOutlineColor(sf::Color::Black);
+
+	m_ToolTip.setOutlineThickness(0.5f);
+}
+
+void Mouse::m_UpdateTooltip(std::string dataToDisplay, sf::Vector2f viewPos, sf::Vector2f viewSize)
+{
+	if (dataToDisplay != m_PreveousText)
+	{
+		m_ToolTip.setString(dataToDisplay);
+
+		m_PreveousText = dataToDisplay;
+	}
+
+	m_ToolTip.setPosition(viewPos.x + (viewSize.x * 0.01f), viewPos.y + (viewSize.y * 0.90f));
+
+	m_ToolTip.setCharacterSize(viewSize.y * 0.04f);
+}
+
+void Mouse::m_DrawToolTip(sf::RenderWindow & window)
+{
+	if (m_ToolTip.getFont() != nullptr)
+	{
+		window.draw(m_ToolTip); 
+	}
+}
+
 sf::Vector2f Mouse::m_GetTopLeftSelectionBox()
 {
 	return m_SelectionBox.getPosition();

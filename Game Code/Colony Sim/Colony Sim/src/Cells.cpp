@@ -162,6 +162,37 @@ void Cells::m_AssignTile(tileSet whichTile)
 	m_CurrentTile = whichTile;
 }
 
+std::string Cells::m_GetTileName()
+{
+	if (this != nullptr)
+	{
+		switch (m_CurrentTile)
+		{
+		case _DIRT:
+			return "Dirt";
+			break;
+
+		case _WATER:
+			return "Water";
+			break;
+
+		case _ROCK:
+			return "Rock";
+			break;
+
+		case _SKY:
+			return "Sky";
+			break;
+
+		default:
+			return "No Value";
+			break;
+		}
+	}
+
+	return "No Value";
+}
+
 //--------------------------------------------------------
 /*! \fn Assign Texture : This will be used to change the colour of the cell equil to its assigned tile.
 *

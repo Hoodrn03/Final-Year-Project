@@ -60,10 +60,11 @@ void BuildingObject::m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f
 
 	m_CurrentCell = newCell;
 
+	m_CurrentLayer = newCell->m_GetLayer(); 
+	
 	m_fWoodRequired = woodRequired; 
 	
-	std::cout << "Wood needed for this  :  " << m_fWoodRequired; 
-
+	// std::cout << "Wood needed for this  :  " << m_fWoodRequired; 
 }
 
 //--------------------------------------------------------
@@ -102,7 +103,10 @@ void BuildingObject::m_Update()
 */
 void BuildingObject::m_DrawGameObject(sf::RenderWindow & window)
 {
-	window.draw(m_BuildingBody); 
+	if (m_DrawItem == _DRAW)
+	{
+		window.draw(m_BuildingBody);
+	}
 }
 
 //--------------------------------------------------------
@@ -112,6 +116,37 @@ void BuildingObject::m_DrawGameObject(sf::RenderWindow & window)
 */
 void BuildingObject::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight)
 {
+
+	if (((m_BuildingBody.getPosition().x > topLeft.x) && (m_BuildingBody.getPosition().y > topLeft.y))
+		&& ((m_BuildingBody.getPosition().x < bottomRight.x) && (m_BuildingBody.getPosition().y < bottomRight.y)))
+	{
+		m_DrawItem = _DRAW;
+	}
+	else
+	{
+		m_DrawItem = _NO_DRAW;
+	}
+}
+
+void BuildingObject::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, int currentLayer)
+{
+	if (m_CurrentLayer == currentLayer)
+	{
+		if (((m_BuildingBody.getPosition().x > topLeft.x) && (m_BuildingBody.getPosition().y > topLeft.y))
+			&& ((m_BuildingBody.getPosition().x < bottomRight.x) && (m_BuildingBody.getPosition().y < bottomRight.y)))
+		{
+			m_DrawItem = _DRAW;
+		}
+		else
+		{
+			m_DrawItem = _NO_DRAW;
+		}
+	}
+	else
+	{
+		m_DrawItem = _NO_DRAW;
+	}
+
 }
 
 //--------------------------------------------------------

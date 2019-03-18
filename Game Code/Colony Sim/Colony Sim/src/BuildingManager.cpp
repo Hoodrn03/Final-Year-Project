@@ -198,8 +198,27 @@ void BuildingManager::m_DrawBuildings(sf::RenderWindow & window)
 /*! \fn DrawFilter : This is used to limit the drawing of the buildings within the game.
 *
 */
-void BuildingManager::m_DrawFilter()
+
+void BuildingManager::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight)
 {
+	if (v_Buildings.size() > 0)
+	{
+		for (unsigned int i = 0; i < v_Buildings.size(); i++)
+		{
+			v_Buildings[i].m_DrawFilter(topLeft, bottomRight); 
+		}
+	}
+}
+
+void BuildingManager::m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, int currentLayer)
+{
+	if (v_Buildings.size() > 0)
+	{
+		for (unsigned int i = 0; i < v_Buildings.size(); i++)
+		{
+			v_Buildings[i].m_DrawFilter(topLeft, bottomRight, currentLayer);
+		}
+	}
 }
 
 //--------------------------------------------------------

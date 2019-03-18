@@ -155,7 +155,9 @@ public:
 	/*! \fn DrawFilter : This is used to limit the drawing of the buildings within the game. 
 	*
 	*/
-	void m_DrawFilter(); 
+	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight);
+
+	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, int currentLayer);
 
 	//--------------------------------------------------------\\
 	//					Positioning

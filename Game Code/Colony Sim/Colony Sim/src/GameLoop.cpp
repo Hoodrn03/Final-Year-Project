@@ -55,6 +55,10 @@ int Gameloop::m_SetUp()
 
 	m_LoadTexturesIntoGame(); 
 
+	// Setup Mouse
+
+	m_clMouse.m_AssignToolTipFont(m_clFontManager.m_GetFrontFromMap("arial")); 
+
 	// Init Gui
 	m_clUserInterface.m_InitGui(m_clWindow.m_GetWindow());
 
@@ -238,6 +242,9 @@ void Gameloop::m_Update()
 
 		m_clMouse.m_CreateSelectionBox();
 
+		m_clMouse.m_UpdateTooltip(m_clMap.m_GetGrid().m_ConvertWorldPosToGridPos(m_clMouse.m_GetMousePos(), m_clMap.m_GetCurrentLevel())->m_GetTileName(),
+			m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewSize());
+
 		// Handle Events. 
 		m_clEventHandler.m_CheckForEvents(m_clWindow.m_GetWindow());
 
@@ -410,6 +417,8 @@ void Gameloop::m_DrawFilter()
 	m_clResourceManagement.m_DrawFilter(m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds(), m_clMap.m_GetCurrentLevel());
 
 	m_clColonistManager.m_DrawFilter(m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds(), m_clMap.m_GetCurrentLevel()); 
+
+	m_clBuildingManager.m_DrawFilter(m_clWindow.m_GetViewUpperBounds(), m_clWindow.m_GetViewLowerBounds(), m_clMap.m_GetCurrentLevel());
 }
 
 //--------------------------------------------------------
@@ -444,6 +453,8 @@ void Gameloop::m_RenderGame()
 	// Draw UI above the other game elements. 
 
 	m_clMouse.m_DrawSelectionBox(m_clWindow.m_GetWindow()); 
+
+	m_clMouse.m_DrawToolTip(m_clWindow.m_GetWindow());
 
 	m_clUserInterface.m_DrawGui(); 
 

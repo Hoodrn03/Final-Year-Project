@@ -25,6 +25,8 @@ private:
 
 	sf::RectangleShape m_PileBody; 
 
+	int m_CurrentLayer; 
+
 	int m_iNumberOfWood = 0; 
 
 	int m_iMaxWoodPile = 150; 
@@ -73,6 +75,8 @@ public:
 	*Param Two : Vector2f - The bottom right of the game view, limiting the items drawn.
 	*/
 	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight);
+
+	void m_DrawFilter(sf::Vector2f topLeft, sf::Vector2f bottomRight, int currentLayer);
 
 	//--------------------------------------------------------
 	//					Positioning
