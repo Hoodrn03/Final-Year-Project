@@ -24,9 +24,6 @@ void WoodPile::m_InitWoodPile(Cells * pileLocation, sf::Font newFont, float curr
 	// Create Main body for the pile of wood.
 	m_PileBody.setSize(sf::Vector2f(10, 10));
 	m_PileBody.setOrigin(m_PileBody.getGlobalBounds().width * 0.5f, m_PileBody.getGlobalBounds().height * 0.5f);
-	m_PileBody.setFillColor(sf::Color::Magenta);
-	m_PileBody.setOutlineColor(sf::Color::Black);
-	m_PileBody.setOutlineThickness(m_PileBody.getGlobalBounds().width * 0.1f);
 
 	// Create text element to display amount of wood. 
 	m_CurrentFont = newFont;
@@ -46,6 +43,12 @@ void WoodPile::m_InitWoodPile(Cells * pileLocation, sf::Font newFont, float curr
 		(m_PileCount.getGlobalBounds().height > m_PileBody.getGlobalBounds().height));
 
 	m_PileCount.setFillColor(sf::Color::Black); 
+}
+
+void WoodPile::m_AssignTexture(sf::Texture newTexture)
+{
+	m_LocalTexture = &newTexture;
+	m_PileBody.setTexture(m_LocalTexture);
 }
 
 void WoodPile::m_Update()

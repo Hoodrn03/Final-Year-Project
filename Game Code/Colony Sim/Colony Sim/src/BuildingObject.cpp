@@ -49,6 +49,8 @@ void BuildingObject::m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f
 	m_BuildingBody.setSize(dimentions);
 	m_BuildingBody.setOrigin(m_BuildingBody.getGlobalBounds().width * 0.5f, m_BuildingBody.getGlobalBounds().height * 0.5f);
 
+	m_BuildingBody.setFillColor(sf::Color(255, 255, 255, 50));
+
 	m_SetObjectPos(position.x, position.y);
 
 	m_sBuildingType = buildingType;
@@ -91,6 +93,8 @@ void BuildingObject::m_Update()
 			m_bFirstBuild = false;
 
 			m_CurrentCell->m_bObstruction = true; 
+
+			m_BuildingBody.setFillColor(sf::Color(255, 255, 255, 255));
 		}
 
 		m_BuildingBody.setTexture(&m_localTexture);

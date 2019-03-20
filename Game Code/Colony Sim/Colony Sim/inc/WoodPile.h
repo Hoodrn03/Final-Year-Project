@@ -35,6 +35,8 @@ private:
 
 	bool m_bMarkForDeletion = false; 
 
+	sf::Texture * m_LocalTexture; 
+
 	// Member Functions 
 
 public:
@@ -44,6 +46,8 @@ public:
 	//--------------------------------------------------------
 
 	void m_InitWoodPile(Cells * pileLocation, sf::Font newFont, float currentGrowth);
+
+	void m_AssignTexture(sf::Texture newTexture); 
 
 	//--------------------------------------------------------
 	//						Update

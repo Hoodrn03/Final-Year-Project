@@ -194,6 +194,7 @@ void Gameloop::m_BeginGame()
 	// Add resources. 
 	m_clResourceManagement.m_AddTrees(30, 10.f, m_clMap.m_GetGroundLevel(), m_clMap.m_GetGrid());
 	m_clResourceManagement.m_AssignFont(m_clFontManager.m_GetFrontFromMap("arial")); 
+	m_clResourceManagement.m_AssignTextures(m_clTextureManager.m_GetTextureMap()); 
 
 	// Prepare Buildings
 
@@ -306,6 +307,29 @@ void Gameloop::m_Update()
 
 void Gameloop::m_UpdateButtons()
 {
+	// Remove all buttons with RMB
+
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+	{
+
+		// Remove Resource management buttons 
+		m_clUserInterface.m_RemoveWidget(m_clResourceManagement.m_GetActionButtons());
+
+		m_clResourceManagement.m_bDisplayButtons = false; 
+
+		m_clResourceManagement.m_bButtonsRemoved = true;
+
+		//Remove Building management buttons
+
+		m_clUserInterface.m_RemoveWidget(m_clBuildingManager.m_GetBuildingButtons());
+
+		m_clBuildingManager.m_bDisplayButtons = false;
+
+		m_clBuildingManager.m_bButtonsRemoved = true;
+
+		m_clBuildingManager.m_SetBuildObjects(false);
+	}
+
 	// Manage Buttons. 
 
 	// Resource management buttons. 
@@ -316,9 +340,9 @@ void Gameloop::m_UpdateButtons()
 		{
 			// Add action buttons. 
 
-			m_clResourceManagement.m_bButtonsRemoved = false;
-
 			m_clUserInterface.m_AddWidget(m_clResourceManagement.m_GetActionButtons());
+
+			m_clResourceManagement.m_bButtonsRemoved = false;
 		}
 	}
 	else
@@ -327,9 +351,9 @@ void Gameloop::m_UpdateButtons()
 		{
 			// remove action buttons. 
 
-			m_clResourceManagement.m_bButtonsRemoved = true;
-
 			m_clUserInterface.m_RemoveWidget(m_clResourceManagement.m_GetActionButtons());
+
+			m_clResourceManagement.m_bButtonsRemoved = true;
 		}
 	}
 
@@ -341,9 +365,9 @@ void Gameloop::m_UpdateButtons()
 		{
 			// Add action buttons. 
 
-			m_clBuildingManager.m_bButtonsRemoved = false;
-
 			m_clUserInterface.m_AddWidget(m_clBuildingManager.m_GetBuildingButtons());
+
+			m_clBuildingManager.m_bButtonsRemoved = false;
 		}
 	}
 	else
@@ -352,9 +376,9 @@ void Gameloop::m_UpdateButtons()
 		{
 			// remove action buttons. 
 
-			m_clBuildingManager.m_bButtonsRemoved = true;
-
 			m_clUserInterface.m_RemoveWidget(m_clBuildingManager.m_GetBuildingButtons());
+
+			m_clBuildingManager.m_bButtonsRemoved = true;
 
 			m_clBuildingManager.m_SetBuildObjects(false); 
 		}
@@ -480,6 +504,8 @@ void Gameloop::m_LoadTexturesIntoGame()
 	m_clTextureManager.m_AddTextureToMap("assets/textures/Objects/Walls/16x16_WoodWall01.png", "woodWallOne", m_clWindow.m_GetWindow());
 
 	m_clTextureManager.m_AddTextureToMap("assets/textures/Objects/Doors/16x16_WoodDoor01.png", "woodDoorOne", m_clWindow.m_GetWindow());
+
+	m_clTextureManager.m_AddTextureToMap("assets/textures/Objects/Wood_Piles/hyptosis_WoodPile01.png", "woodPile", m_clWindow.m_GetWindow());
 }
 
 void Gameloop::m_ResizeAllItems()

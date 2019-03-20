@@ -45,6 +45,8 @@ private:
 
 	std::vector<tgui::Button::Ptr> v_ActionButtons; 
 
+	sf::Texture m_WoodPileTexture; 
+
 public:
 
 	tgui::Button::Ptr m_ActionButton;
@@ -64,6 +66,8 @@ public:
 	//--------------------------------------------------------
 
 	void m_AssignFont(sf::Font mainFont); 
+
+	void m_AssignTextures(std::map<std::string, sf::Texture> &textureMap);
 
 	//--------------------------------------------------------
 	/*! \fn AddTrees : This will be used to add a number of trees into the game.

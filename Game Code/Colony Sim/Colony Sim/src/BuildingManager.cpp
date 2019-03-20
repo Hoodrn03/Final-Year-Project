@@ -421,7 +421,7 @@ void BuildingManager::m_SetCurrentObjectToBuild(std::string buildingType)
 */
 void BuildingManager::m_DrawBuildingButtons()
 {
-	m_bDisplayButtons = !m_bDisplayButtons;
+	m_bDisplayButtons = true;
 }
 
 //--------------------------------------------------------
@@ -430,7 +430,7 @@ void BuildingManager::m_DrawBuildingButtons()
 */
 std::vector<tgui::Button::Ptr> BuildingManager::m_GetBuildingButtons()
 {
-	m_bButtonsCreated = !m_bButtonsCreated;
+	m_bButtonsCreated = true;
 
 	return v_BuildingButtons; 
 }

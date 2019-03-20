@@ -23,6 +23,18 @@ void ResourceManagement::m_AssignFont(sf::Font mainFont)
 	m_LocalFont = mainFont; 
 }
 
+void ResourceManagement::m_AssignTextures(std::map<std::string, sf::Texture> &textureMap)
+{
+	if (textureMap.count("woodPile") > 0)
+	{
+		m_WoodPileTexture = textureMap["woodPile"];
+	}
+	else
+	{
+		std::cout << "Unable to access texture : woodPile" << std::endl;
+	}
+}
+
 //--------------------------------------------------------
 /*! \fn AddTrees : This will be used to add a number of trees into the game.
 *Param One : int - The number of trees to add.
@@ -50,6 +62,8 @@ void ResourceManagement::m_AddWoodPile(WoodResource * cutTree)
 	WoodPile  l_TempPile; 
 
 	l_TempPile.m_InitWoodPile(cutTree->m_GetCurrentCell(), m_LocalFont, cutTree->m_GetCurrentGrowth()); 
+
+	l_TempPile.m_AssignTexture(m_WoodPileTexture); 
 
 	v_clWoodPiles.push_back(l_TempPile); 
 }
@@ -482,12 +496,12 @@ void ResourceManagement::m_CreateActionButtons(float windowWidth, float windowHe
 
 void ResourceManagement::m_DrawActionButtons()
 {
-	m_bDisplayButtons = !m_bDisplayButtons;
+	m_bDisplayButtons = true;
 }
 
 std::vector<tgui::Button::Ptr> ResourceManagement::m_GetActionButtons()
 {
-	m_bButtonsCreated = !m_bButtonsCreated;
+	m_bButtonsCreated = true;
 
 	return v_ActionButtons;
 }
