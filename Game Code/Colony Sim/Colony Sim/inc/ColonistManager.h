@@ -74,6 +74,8 @@ public:
 	*/
 	void m_AddColonist(int numberOfColonists, sf::Vector2f dimentions, Grid &currentGrid, int startingLayer);
 
+	void m_AssignColonistFonts(sf::Font &newFont);
+
 	//--------------------------------------------------------\\
 	//						Update 
 	//--------------------------------------------------------\\
@@ -83,6 +85,8 @@ public:
 	*Param One : Grid - the current grid which is overlayed onto the game map. 
 	*/
 	void m_Update(Grid &CurrentGrid);
+
+	void m_UpdateInfoWindows(sf::Vector2f viewLowerBounds, sf::Vector2f viewSize); 
 
 	//--------------------------------------------------------\\
 	//						Pathfinding

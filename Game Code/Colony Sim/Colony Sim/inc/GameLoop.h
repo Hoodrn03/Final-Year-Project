@@ -20,6 +20,8 @@
 
 #include "BuildingManager.h"
 
+#include "InfoWindow.h"
+
 /*! \class This will hold the main game loop, it will have three main functions; setup, update and render. */
 class Gameloop
 {

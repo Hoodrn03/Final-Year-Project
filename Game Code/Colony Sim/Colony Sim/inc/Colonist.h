@@ -16,6 +16,8 @@
 #include "WoodResource.h"
 #include "BuildingObject.h"
 
+#include "InfoWindow.h"
+
 /*! \enum This will hold the name for the job the colonist currently has. */
 enum job
 {
@@ -25,7 +27,7 @@ enum job
 };
 
 /*! \class This class will hold the functionality for a single colonist within the game. */
-class Colonist : public GameObject
+class Colonist : public GameObject, public InfoWindow
 {
 
 public:
@@ -39,7 +41,7 @@ public:
 public:
 
 	//--------------------------------------------------------
-	/*! \fn Deconstructor 
+	/*! \fn Deconstructor
 	*
 	*/
 	~Colonist();
@@ -49,57 +51,64 @@ public:
 private:
 
 	/*! \var This will be the colonist's main body within the game. */
-	sf::RectangleShape m_ColonistBody; 
+	sf::RectangleShape m_ColonistBody;
 
 	/*! \var This will be used to show when the colonist is selected by the player. */
-	sf::CircleShape m_SelectedCircle; 
+	sf::CircleShape m_SelectedCircle;
 
 	/*! \var Will be used to genearte a new path for the colonist,if they have reached the end of their current one. */
-	bool m_bFindNewPath = true; 
+	bool m_bFindNewPath = true;
 
 	/*! \var This will be the current cell on the grid the colonist is currently inside. */
-	Cells * m_CurrentCell = nullptr; 
+	Cells * m_CurrentCell = nullptr;
 
-	Cells * m_EndCell = nullptr; 
+	Cells * m_EndCell = nullptr;
 
-	WoodResource * m_TargetTree = nullptr; 
+	WoodResource * m_TargetTree = nullptr;
 
-	BuildingObject * m_TargetBuild = nullptr; 
+	BuildingObject * m_TargetBuild = nullptr;
+
+
+	InfoWindow m_clInfoWindow;
 
 	/*! \var This will be used to keep track of which layer the colonist is currently on. */
-	unsigned int m_iCurrentLayer; 
+	unsigned int m_iCurrentLayer;
 
 	/*! \var This will be used to update the colonist's current position along their path. */
-	unsigned int m_iCurrentMoveTo = 0; 
+	unsigned int m_iCurrentMoveTo = 0;
 
 	/*! \var This will be used to limit when the colonist will move in the game. */
-	sf::Clock m_MovementClock; 
+	sf::Clock m_MovementClock;
 
-	sf::Clock m_WorkTimer; 
+	sf::Clock m_WorkTimer;
 
 	/*! \var The time (in seconds) when the colonist will move. */
-	const float m_fmovementTimer = 0.5f; 
+	const float m_fmovementTimer = 0.5f;
 
 	/*! \var This is a list of cells the pathfinding algorithm will have returned. It will allow for the colonist to move. */
-	std::deque<Cells*> m_Path; 
+	std::deque<Cells*> m_Path;
 
 	/*! \var A line displaying the path the colonist is moving along. */
-	sf::VertexArray m_PathLine; 
+	sf::VertexArray m_PathLine;
 
-	/*! \var This is a list of tiles which will act as obsticales for the colonist. 
+	/*! \var This is a list of tiles which will act as obsticales for the colonist.
 	*			This will prevent the colonist from generating a path through these cells.
 	*/
 	std::vector<tileSet> m_Obstructions = { _ROCK, _SKY };
 
 	/*! \var The current job the colonist is performing. */
-	job m_CurrentJob = _IDLE; 
+	job m_CurrentJob = _IDLE;
 
 	/*! \var This is used to tell when the colonist is selected. */
-	bool m_bSelected = false; 
+	bool m_bSelected = false;
 
-	bool m_bFoundTree = false; 
+	bool m_bFoundTree = false;
 
-	bool m_bAtTree = false; 
+	bool m_bAtTree = false;
+
+	sf::Font m_LocalFont; 
+
+	std::pair<std::string, int> m_SleepData; 
 
 public:
 
@@ -118,18 +127,13 @@ public:
 	//--------------------------------------------------------\\
 
 	//--------------------------------------------------------
-	/*! \fn Create Colonist Body : This will be used to initalize the rectangle shape dor what will become the colonist. 
-	*Param One : Vector2f - This will be the dimentions for the colonist. 
-	*Param Two : Vector2f - This Will be the position in world space for the colonist. 
-	*/
-	void m_CreateColonistBody(sf::Vector2f dimentions, sf::Vector2f position); 
-
-	//--------------------------------------------------------
 	/*! \fn Create Colonist Body (Overload) : This will be used to initalize the rectangle shape dor what will become the colonist. 
 	*Param One : Vector2f - This will be the dimentions for the colonist.
 	*Param Two : Cells - The cell the colonist will start in. 
 	*/
 	int m_CreateColonistBody(sf::Vector2f dimentions, Cells * currentCell);
+
+	void m_AssignColonistFont(sf::Font &newFont);
 
 	//--------------------------------------------------------\\
 	//							Update 
@@ -146,6 +150,8 @@ public:
 	*
 	*/
 	void m_Update() override; 
+
+	void m_UpdateInfoWindow(sf::Vector2f viewLowerBounds, sf::Vector2f viewSize);
 
 	//--------------------------------------------------------\\
 	//						Job System

@@ -25,30 +25,6 @@ Colonist::~Colonist()
 //--------------------------------------------------------
 /*! \fn Create Colonist Body : This will be used to initalize the rectangle shape dor what will become the colonist.
 *Param One : Vector2f - This will be the dimentions for the colonist.
-*Param Two : Vector2f - This Will be the position in world space for the colonist.
-*/
-void Colonist::m_CreateColonistBody(sf::Vector2f dimentions, sf::Vector2f position)
-{
-	m_ColonistBody.setSize(dimentions);
-
-	m_ColonistBody.setOrigin(sf::Vector2f(m_ColonistBody.getPosition().x + (m_ColonistBody.getGlobalBounds().width * 0.5f), 
-		m_ColonistBody.getPosition().y + (m_ColonistBody.getGlobalBounds().height * 0.5f)));
-
-	m_SetObjectPos(position.x, position.y); 
-
-	m_ColonistBody.setFillColor(sf::Color::White); 
-
-	m_SelectedCircle.setRadius(dimentions.x); 
-
-	m_SelectedCircle.setFillColor(sf::Color::Blue);
-
-
-
-}
-
-//--------------------------------------------------------
-/*! \fn Create Colonist Body (Overload) : This will be used to initalize the rectangle shape dor what will become the colonist.
-*Param One : Vector2f - This will be the dimentions for the colonist.
 *Param Two : Cells - The cell the colonist will start in.
 */
 int Colonist::m_CreateColonistBody(sf::Vector2f dimentions, Cells * currentCell)
@@ -73,6 +49,12 @@ int Colonist::m_CreateColonistBody(sf::Vector2f dimentions, Cells * currentCell)
 			m_SelectedCircle.setRadius(dimentions.x);
 
 			m_SelectedCircle.setFillColor(sf::Color::Blue);
+
+			m_clInfoWindow.m_SetupInfoWindow(sf::Vector2f(100, 100), sf::Vector2f(100, 100));
+
+			// Initalize paired values. 
+
+			m_SleepData = std::make_pair(std::string("Sleep"), 100);
 		}
 		else
 		{
@@ -87,6 +69,17 @@ int Colonist::m_CreateColonistBody(sf::Vector2f dimentions, Cells * currentCell)
 	}
 
 	return 0; 
+}
+
+void Colonist::m_AssignColonistFont(sf::Font &newFont)
+{
+	m_LocalFont = newFont;
+
+	m_clInfoWindow.m_AssignFonts(m_LocalFont);
+
+	// Pass into info window. 
+
+	m_clInfoWindow.m_AddDataToMap(m_SleepData.first, m_SleepData.second);
 }
 
 //--------------------------------------------------------
@@ -142,6 +135,11 @@ void Colonist::m_Update()
 		m_IdleJob();
 		break;
 	}
+}
+
+void Colonist::m_UpdateInfoWindow(sf::Vector2f viewLowerBounds, sf::Vector2f viewSize)
+{
+	m_clInfoWindow.m_UpdateInfoWindow(viewLowerBounds, viewSize); 
 }
 
 void Colonist::m_SetJob(job newJob)
@@ -252,6 +250,8 @@ void Colonist::m_DrawGameObject(sf::RenderWindow & window)
 
 		window.draw(m_ColonistBody);
 	}
+
+	m_clInfoWindow.m_DrawInfoWindow(window);
 }
 
 //--------------------------------------------------------
@@ -597,10 +597,14 @@ void Colonist::m_SelectColonist(bool selected)
 	if (selected)
 	{
 		m_bSelected = true; 
+
+		m_clInfoWindow.m_SetDisplay(true);
 	}
 	else
 	{
 		m_bSelected = false;
+
+		m_clInfoWindow.m_SetDisplay(false); 
 	}
 }
 

@@ -117,7 +117,7 @@ void Gameloop::m_CreateMainMenuButtons()
 
 int Gameloop::m_MainMenu()
 {
-	// m_BeginGame(); /*!< Use to skip to the main game. */
+	m_BeginGame(); /*!< Use to skip to the main game. */
 
 	// Init pregame logic. 
 
@@ -190,6 +190,7 @@ void Gameloop::m_BeginGame()
 
 	// Add colonists. 
 	m_clColonistManager.m_AddColonist(1, sf::Vector2f(5, 5), m_clMap.m_GetGrid(), m_clMap.m_GetGroundLevel());
+	m_clColonistManager.m_AssignColonistFonts(m_clFontManager.m_GetFrontFromMap("arial"));
 
 	// Add resources. 
 	m_clResourceManagement.m_AddTrees(30, 10.f, m_clMap.m_GetGroundLevel(), m_clMap.m_GetGrid());
@@ -265,11 +266,6 @@ void Gameloop::m_Update()
 
 		m_clUserInterface.m_HandleEvents(m_clEventHandler.m_GetEvent()); /*!< Passes current event var into the Gui object. */
 
-		// Update the game window.
-		m_clWindow.m_CheckForViewMove(m_clEventHandler.m_CheckViewUpValue(), m_clEventHandler.m_CheckViewDownValue(), m_clEventHandler.m_CheckViewLeftValue(), m_clEventHandler.m_CheckViewRightValue()); 
-
-		m_clWindow.m_CheckForViewScroll(m_clEventHandler.m_GetMouseWheelState());
-
 		// Update the game map. 
 		m_clMap.m_CheckForLayerChange(m_clEventHandler.m_CurrentLayerChangeValue());
 
@@ -282,6 +278,8 @@ void Gameloop::m_Update()
 
 		// Update colonists. 
 		m_clColonistManager.m_Update(m_clMap.m_GetGrid()); 
+
+		m_clColonistManager.m_UpdateInfoWindows(m_clWindow.m_GetViewLowerBounds(), m_clWindow.m_GetViewSize()); 
 
 		m_clColonistManager.m_SelectColonist(m_clMouse.m_GetTopLeftSelectionBox(), m_clMouse.m_GetBottomRightSelectionBox(), sf::Mouse::isButtonPressed(sf::Mouse::Right)); 
 
@@ -297,6 +295,11 @@ void Gameloop::m_Update()
 
 		// Draw Items. 
 		m_RenderGame();
+
+		// Update the game window, at the end of the frame.
+		m_clWindow.m_CheckForViewMove(m_clEventHandler.m_CheckViewUpValue(), m_clEventHandler.m_CheckViewDownValue(), m_clEventHandler.m_CheckViewLeftValue(), m_clEventHandler.m_CheckViewRightValue());
+
+		m_clWindow.m_CheckForViewScroll(m_clEventHandler.m_GetMouseWheelState());
 
 		// End of frame removal of objects. 
 

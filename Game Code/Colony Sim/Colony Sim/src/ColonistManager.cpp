@@ -49,6 +49,17 @@ void ColonistManager::m_AddColonist(int numberOfColonists, sf::Vector2f dimentio
 	}
 }
 
+void ColonistManager::m_AssignColonistFonts(sf::Font &newFont)
+{
+	if (v_clColonists.size() > 0)
+	{
+		for (unsigned int i = 0; i < v_clColonists.size(); i++)
+		{
+			v_clColonists[i].m_AssignColonistFont(newFont); 
+		}
+	}
+}
+
 //--------------------------------------------------------
 /*! \fn Update : This will update the logic for all of the colonists.
 *Param One : Grid - the current grid which is overlayed onto the game map.
@@ -65,6 +76,17 @@ void ColonistManager::m_Update(Grid & CurrentGrid)
 		}
 	}
 
+}
+
+void ColonistManager::m_UpdateInfoWindows(sf::Vector2f viewLowerBounds, sf::Vector2f viewSize)
+{
+	if (v_clColonists.size() > 0)
+	{
+		for (unsigned int i = 0; i < v_clColonists.size(); i++)
+		{
+			v_clColonists[i].m_UpdateInfoWindow(viewLowerBounds, viewSize); 
+		}
+	}
 }
 
 //--------------------------------------------------------
