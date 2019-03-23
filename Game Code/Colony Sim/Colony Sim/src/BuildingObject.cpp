@@ -181,9 +181,12 @@ Cells * BuildingObject::m_GetCurrentCell()
 */
 bool BuildingObject::m_CheckBuildingBounds(float x, float y)
 {
-	if (m_BuildingBody.getGlobalBounds().contains(x, y))
+	if (this != nullptr)
 	{
-		return true;
+		if (m_BuildingBody.getGlobalBounds().contains(x, y))
+		{
+			return true;
+		}
 	}
 
 	return false; 
@@ -237,4 +240,9 @@ bool BuildingObject::m_NeedWood()
 	std::cout << std::boolalpha << "Need Wood ? ";
 
 	return true;
+}
+
+std::string BuildingObject::m_GetBuildingType()
+{
+	return m_sBuildingType;
 }

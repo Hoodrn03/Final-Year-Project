@@ -52,7 +52,7 @@ void InfoWindow::m_AddDataToMap(std::string dataName, int data)
 {
 	if (m_DataMap.count(dataName) > 0)
 	{
-		std::cout << "Already Inside" << std::endl;
+		// std::cout << "Already Inside" << std::endl;
 
 		if (data >= 0)
 		{
@@ -112,7 +112,7 @@ void InfoWindow::m_UpdateInfoWindow(sf::Vector2f ViewLowerBounds, sf::Vector2f v
 {
 	m_WindowBody.setPosition(ViewLowerBounds - sf::Vector2f(m_WindowBody.getGlobalBounds().width, m_WindowBody.getGlobalBounds().height));
 
-	m_WindowBody.setSize(sf::Vector2f(viewSize.x * 0.4f, viewSize.y * 0.4f));
+	m_WindowBody.setSize(sf::Vector2f(viewSize.x * 0.4f, viewSize.y * 0.3f));
 
 	if (v_ListOfData.size() > 0)
 	{

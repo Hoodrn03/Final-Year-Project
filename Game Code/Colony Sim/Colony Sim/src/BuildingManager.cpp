@@ -63,6 +63,8 @@ void BuildingManager::m_AssignTextures(std::map<std::string, sf::Texture> &m_Tex
 	m_WoodWall = m_TextureMap["woodWallOne"];
 
 	m_WoodDoor = m_TextureMap["woodDoorOne"];
+
+	m_Bed = m_TextureMap["bedOne"];
 }
 
 //--------------------------------------------------------
@@ -85,6 +87,13 @@ void BuildingManager::m_AddBuilding(std::string buildingType, Cells *newCell)
 			m_PlaceholderBuilding.getPosition(), buildingType, newCell, l_fWoodForDoor);
 
 		l_TempBuilding.m_AssignTexture(m_WoodDoor);
+	}
+	else if (buildingType == "Bed")
+	{
+		l_TempBuilding.m_SetupBuildingObject(sf::Vector2f(m_fBuildingWidth, m_fBuildingHeight),
+			m_PlaceholderBuilding.getPosition(), buildingType, newCell, l_fWoodForDoor);
+
+		l_TempBuilding.m_AssignTexture(m_Bed);
 	}
 	else
 	{
@@ -318,6 +327,22 @@ BuildingObject * BuildingManager::m_GetClosestBuilding(sf::Vector2f objectPos)
 	return l_TempBuild;
 }
 
+BuildingObject * BuildingManager::m_FindObjectWithName(std::string objectName)
+{
+	if (v_Buildings.size() > 0)
+	{
+		for (unsigned int i = 0; i < v_Buildings.size(); i++)
+		{
+			if (v_Buildings[i].m_GetBuildingType() == objectName)
+			{
+				return &v_Buildings[i]; 
+			}
+		}
+	}
+
+	return nullptr;
+}
+
 //--------------------------------------------------------
 /*! \fn CreateBuildingButtons : Used to initalize the building buttons at the start of the game.
 *Param One : float - The width for the current game window.
@@ -346,6 +371,8 @@ void BuildingManager::m_CreateBuildingButtons(float windowWidth, float windowHei
 	int l_iButtonX = 0;
 	int l_iButtonY = 0 + l_iButtonHeight;
 
+	int l_iNumberOfButtons = 0; 
+
 	// Clear Button Vector 
 
 	v_BuildingButtons.clear();
@@ -365,6 +392,8 @@ void BuildingManager::m_CreateBuildingButtons(float windowWidth, float windowHei
 		m_SetCurrentObjectToBuild("Wall"); 
 	});
 
+	l_iNumberOfButtons++;
+
 	v_BuildingButtons.push_back(l_TempButton);
 
 	// Tree Cutting Button. 
@@ -372,7 +401,7 @@ void BuildingManager::m_CreateBuildingButtons(float windowWidth, float windowHei
 	l_TempButton = tgui::Button::create();
 
 	l_TempButton->setSize(l_iButtonWidth, l_iButtonHeight);
-	l_TempButton->setPosition(l_iButtonX + l_iButtonWidth, l_iButtonY);
+	l_TempButton->setPosition(l_iButtonX + (l_iButtonWidth * l_iNumberOfButtons), l_iButtonY);
 	l_TempButton->setInheritedFont(m_LocalFont);
 	l_TempButton->setText("Door");
 	l_TempButton->setTextSize(0);
@@ -381,6 +410,26 @@ void BuildingManager::m_CreateBuildingButtons(float windowWidth, float windowHei
 		m_SetCurrentObjectToBuild("Door");
 	});
 
+	l_iNumberOfButtons++;
+
+	v_BuildingButtons.push_back(l_TempButton);
+
+	// Bed.
+
+	l_TempButton = tgui::Button::create();
+
+	l_TempButton->setSize(l_iButtonWidth, l_iButtonHeight);
+	l_TempButton->setPosition(l_iButtonX + (l_iButtonWidth * l_iNumberOfButtons), l_iButtonY);
+	l_TempButton->setInheritedFont(m_LocalFont);
+	l_TempButton->setText("Bed");
+	l_TempButton->setTextSize(0);
+	l_TempButton->connect("Pressed", [&]() {
+		m_SetBuildObjects(true);
+		m_SetCurrentObjectToBuild("Bed"); 
+	});
+
+	l_iNumberOfButtons++;
+
 	v_BuildingButtons.push_back(l_TempButton);
 
 	// Temp.
@@ -388,11 +437,13 @@ void BuildingManager::m_CreateBuildingButtons(float windowWidth, float windowHei
 	l_TempButton = tgui::Button::create();
 
 	l_TempButton->setSize(l_iButtonWidth, l_iButtonHeight);
-	l_TempButton->setPosition(l_iButtonX + (l_iButtonWidth * 2), l_iButtonY);
+	l_TempButton->setPosition(l_iButtonX + (l_iButtonWidth * l_iNumberOfButtons), l_iButtonY);
 	l_TempButton->setInheritedFont(m_LocalFont);
 	l_TempButton->setText("Placeholder");
 	l_TempButton->setTextSize(0);
 	l_TempButton->connect("Pressed", [&]() { });
+
+	l_iNumberOfButtons++;
 
 	v_BuildingButtons.push_back(l_TempButton);
 }
@@ -421,7 +472,7 @@ void BuildingManager::m_SetCurrentObjectToBuild(std::string buildingType)
 */
 void BuildingManager::m_DrawBuildingButtons()
 {
-	m_bDisplayButtons = true;
+	m_bDisplayButtons = !m_bDisplayButtons;
 }
 
 //--------------------------------------------------------

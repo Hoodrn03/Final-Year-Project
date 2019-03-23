@@ -159,8 +159,30 @@ void ColonistManager::m_Pathfinding(Grid & CurrentGrid, ResourceManagement & res
 
 			if (v_clColonists[i].m_GetFindNewPath() == true)
 			{
+				if (v_clColonists[i].m_bNeedSleep == true)
+				{
+					// Find a target building (clostest building). 
+					BuildingObject * l_TargetBed = buildingManager.m_FindObjectWithName("Bed");
+
+					if(l_TargetBed != nullptr)
+					{
+						if (l_TargetBed->m_bFinishedBuilding == true)
+						{
+							// If a building has been found. 
+							v_clColonists[i].m_SetInteractableObject(l_TargetBed);
+
+							// If the colonist is not at the building. 
+							if (v_clColonists[i].m_bAtInteratableObject() == false)
+							{
+								// Move the colonist to that building. 
+								v_clColonists[i].m_FindNewPath(l_TargetBed->m_GetCurrentCell());
+							}
+						}
+					}
+				}
+
 				// This will allow for pathfinding when colonist is idle. 
-				if (v_clColonists[i].m_GetCurrentJob() == _IDLE)
+				else if (v_clColonists[i].m_GetCurrentJob() == _IDLE)
 				{
 					if (v_clColonists[i].m_iIdleCounter > 0)
 					{

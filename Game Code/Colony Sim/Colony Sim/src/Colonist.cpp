@@ -55,6 +55,8 @@ int Colonist::m_CreateColonistBody(sf::Vector2f dimentions, Cells * currentCell)
 			// Initalize paired values. 
 
 			m_SleepData = std::make_pair(std::string("Sleep"), 100);
+
+			m_HealthData = std::make_pair(std::string("Health"), 100);
 		}
 		else
 		{
@@ -79,6 +81,8 @@ void Colonist::m_AssignColonistFont(sf::Font &newFont)
 
 	// Pass into info window. 
 
+	m_clInfoWindow.m_AddDataToMap(m_HealthData.first, m_HealthData.second);
+
 	m_clInfoWindow.m_AddDataToMap(m_SleepData.first, m_SleepData.second);
 }
 
@@ -100,46 +104,101 @@ void Colonist::m_UpdateCurrentCell(Cells * newCurrentCell)
 */
 void Colonist::m_Update()
 {
+	m_UpdateCondition(); 
+
 	// At the beginning of the frame the colonist's current pasition will be updated. 
 	if (m_bFindNewPath != true)
 	{
 		m_FollowPath();
 	}
 
-	// This will be used to allow for the colonists to interact with items based on their current job. 
-	switch (m_CurrentJob)
+	if (m_SleepData.second <= 50)
+	{
+		std::cout << "Need Sleep" << std::endl;
+
+		m_bNeedSleep = true; 
+	}
+	else 
 	{
 
-	case _IDLE:
-		
-		// If the colonist has no other job This is the base job. 
-		m_IdleJob(); 
+		// This will be used to allow for the colonists to interact with items based on their current job. 
+		switch (m_CurrentJob)
+		{
 
-		break; 
+		case _IDLE:
 
-	case _LOGGING:
+			// If the colonist has no other job This is the base job. 
+			m_IdleJob();
 
-		m_CutTrees();
+			break;
 
-		break;
+		case _LOGGING:
 
-	case _CONSTRUCTION:
+			m_CutTrees();
 
-		m_BuildBuilding();
+			break;
 
-		break;
+		case _CONSTRUCTION:
 
-	default:
+			m_BuildBuilding();
 
-		// If the colonist has no other job This is the base job. 
-		m_IdleJob();
-		break;
+			break;
+
+		default:
+
+			// If the colonist has no other job This is the base job. 
+			m_IdleJob();
+			break;
+		}
 	}
 }
 
 void Colonist::m_UpdateInfoWindow(sf::Vector2f viewLowerBounds, sf::Vector2f viewSize)
 {
 	m_clInfoWindow.m_UpdateInfoWindow(viewLowerBounds, viewSize); 
+}
+
+void Colonist::m_UpdateCondition()
+{
+	int l_iConditionUpdateTime = 5; 
+
+	if (m_ConditionTimer.getElapsedTime().asSeconds() >= l_iConditionUpdateTime)
+	{
+		m_ConditionTimer.restart();
+
+		if (m_bAtInteratableObject() == true)
+		{
+			if (m_InteractableObject->m_GetBuildingType() == "Bed")
+			{
+				m_SleepData.second += 2;
+
+				if (m_SleepData.second >= 80)
+				{
+					m_bNeedSleep = false; 
+
+					if (m_SleepData.second > 100)
+					{
+						m_SleepData.second = 100;
+					}
+				}
+			}
+		}
+		else
+		{
+			m_SleepData.second -= 1;
+
+			if (m_SleepData.second <= 0)
+			{
+				m_SleepData.second = 0;
+
+				m_HealthData.second -= 1;
+			}
+
+			m_clInfoWindow.m_AddDataToMap(m_HealthData.first, m_HealthData.second);
+
+			m_clInfoWindow.m_AddDataToMap(m_SleepData.first, m_SleepData.second);
+		}
+	}
 }
 
 void Colonist::m_SetJob(job newJob)
@@ -565,6 +624,26 @@ void Colonist::m_ResetPathfinding()
 	m_PathLine.clear();
 
 	m_bFindNewPath = true;
+}
+
+void Colonist::m_SetInteractableObject(BuildingObject * newTarget)
+{
+	m_InteractableObject = newTarget;
+}
+
+bool Colonist::m_bAtInteratableObject()
+{
+	if (m_InteractableObject == nullptr)
+	{
+		return false;
+	}
+	else if (m_InteractableObject->m_CheckBuildingBounds(m_GetObjectPos().x, m_GetObjectPos().y))
+	{
+
+		return true;
+	}
+
+	return false;
 }
 
 //--------------------------------------------------------

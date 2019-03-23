@@ -157,4 +157,6 @@ public:
 
 	bool m_NeedWood(); 
 
+	std::string m_GetBuildingType(); 
+
 };

@@ -48,11 +48,15 @@ private:
 	/*! \var The local definition of the width and height for the new buildings. */
 	float m_fBuildingWidth, m_fBuildingHeight; 
 
+	// Local Textures
+
 	/*! \var The local texture for the Wood Wall. */
 	sf::Texture m_WoodWall; 
 
 	/*! \var The local texture for the Wood Door. */
 	sf::Texture m_WoodDoor; 
+
+	sf::Texture m_Bed; 
 
 public:
 
@@ -168,6 +172,8 @@ public:
 	*Param One : Vector2f - The position of the other object for comparason. 
 	*/
 	BuildingObject * m_GetClosestBuilding(sf::Vector2f objectPos); 
+
+	BuildingObject * m_FindObjectWithName(std::string objectName); 
 
 	//--------------------------------------------------------\\
 	//						Buttons 

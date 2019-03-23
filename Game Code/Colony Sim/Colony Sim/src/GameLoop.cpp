@@ -312,25 +312,13 @@ void Gameloop::m_UpdateButtons()
 {
 	// Remove all buttons with RMB
 
+	bool l_bMouseButtonPressed = false; 
+
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
 	{
+		l_bMouseButtonPressed = true; 
 
-		// Remove Resource management buttons 
-		m_clUserInterface.m_RemoveWidget(m_clResourceManagement.m_GetActionButtons());
-
-		m_clResourceManagement.m_bDisplayButtons = false; 
-
-		m_clResourceManagement.m_bButtonsRemoved = true;
-
-		//Remove Building management buttons
-
-		m_clUserInterface.m_RemoveWidget(m_clBuildingManager.m_GetBuildingButtons());
-
-		m_clBuildingManager.m_bDisplayButtons = false;
-
-		m_clBuildingManager.m_bButtonsRemoved = true;
-
-		m_clBuildingManager.m_SetBuildObjects(false);
+		// std::cout << "RMB Pressed" << std::endl;
 	}
 
 	// Manage Buttons. 
@@ -415,6 +403,27 @@ void Gameloop::m_UpdateButtons()
 			m_clColonistManager.m_bButtonsCreated = false;
 		}
 	}
+
+	if (l_bMouseButtonPressed == true)
+	{
+		// Remove Resource management buttons 
+		m_clUserInterface.m_RemoveWidget(m_clResourceManagement.m_GetActionButtons());
+
+		m_clResourceManagement.m_bDisplayButtons = false;
+
+		m_clResourceManagement.m_bButtonsRemoved = true;
+
+		//Remove Building management buttons
+
+		m_clUserInterface.m_RemoveWidget(m_clBuildingManager.m_GetBuildingButtons());
+
+		m_clBuildingManager.m_bDisplayButtons = false;
+
+		m_clBuildingManager.m_bButtonsRemoved = true;
+
+		m_clBuildingManager.m_SetBuildObjects(false);
+	}
+
 }
 
 //--------------------------------------------------------
@@ -509,6 +518,8 @@ void Gameloop::m_LoadTexturesIntoGame()
 	m_clTextureManager.m_AddTextureToMap("assets/textures/Objects/Doors/16x16_WoodDoor01.png", "woodDoorOne", m_clWindow.m_GetWindow());
 
 	m_clTextureManager.m_AddTextureToMap("assets/textures/Objects/Wood_Piles/hyptosis_WoodPile01.png", "woodPile", m_clWindow.m_GetWindow());
+
+	m_clTextureManager.m_AddTextureToMap("assets/textures/Objects/Beds/16X16_Bed.png", "bedOne", m_clWindow.m_GetWindow());
 }
 
 void Gameloop::m_ResizeAllItems()

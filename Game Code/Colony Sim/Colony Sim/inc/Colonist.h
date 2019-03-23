@@ -68,7 +68,6 @@ private:
 
 	BuildingObject * m_TargetBuild = nullptr;
 
-
 	InfoWindow m_clInfoWindow;
 
 	/*! \var This will be used to keep track of which layer the colonist is currently on. */
@@ -107,10 +106,23 @@ private:
 	bool m_bAtTree = false;
 
 	sf::Font m_LocalFont; 
+	
+	// Colonist condition.
+
+	sf::Clock m_ConditionTimer; 
+
+	BuildingObject * m_InteractableObject;
+
+	bool m_bAtInteractableObject = false;
 
 	std::pair<std::string, int> m_SleepData; 
+	
+	std::pair<std::string, int> m_HealthData; 
+
 
 public:
+
+	bool m_bNeedSleep = false;
 
 	unsigned int m_iCurrentWood = 0; 
 
@@ -152,6 +164,8 @@ public:
 	void m_Update() override; 
 
 	void m_UpdateInfoWindow(sf::Vector2f viewLowerBounds, sf::Vector2f viewSize);
+
+	void m_UpdateCondition(); 
 
 	//--------------------------------------------------------\\
 	//						Job System
@@ -260,6 +274,10 @@ public:
 	bool m_AtTargetBuild();
 
 	void m_ResetPathfinding(); 
+
+	void m_SetInteractableObject(BuildingObject * newTarget);
+
+	bool m_bAtInteratableObject();
 
 	//--------------------------------------------------------
 	/*! \fn Get Find New Path : This will determine if a new path should be generated for the colonist. 
