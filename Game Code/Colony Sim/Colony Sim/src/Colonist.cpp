@@ -194,10 +194,11 @@ void Colonist::m_UpdateCondition()
 				m_HealthData.second -= 1;
 			}
 
-			m_clInfoWindow.m_AddDataToMap(m_HealthData.first, m_HealthData.second);
-
-			m_clInfoWindow.m_AddDataToMap(m_SleepData.first, m_SleepData.second);
 		}
+
+		m_clInfoWindow.m_AddDataToMap(m_HealthData.first, m_HealthData.second);
+
+		m_clInfoWindow.m_AddDataToMap(m_SleepData.first, m_SleepData.second);
 	}
 }
 

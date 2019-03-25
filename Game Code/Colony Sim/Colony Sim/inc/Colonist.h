@@ -111,7 +111,7 @@ private:
 
 	sf::Clock m_ConditionTimer; 
 
-	BuildingObject * m_InteractableObject;
+	BuildingObject * m_InteractableObject = nullptr;
 
 	bool m_bAtInteractableObject = false;
 

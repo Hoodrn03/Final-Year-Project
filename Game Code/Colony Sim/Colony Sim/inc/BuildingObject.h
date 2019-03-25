@@ -53,7 +53,9 @@ private:
 	int m_CurrentLayer; 
 
 	/*! \var The local texture for this object. */
-	sf::Texture m_localTexture; 
+	sf::Texture * m_localTexture; 
+
+	sf::Clock m_TextureUpdateClock; 
 
 public:
 
@@ -73,8 +75,6 @@ public:
 	*Param Three : String - The type of building to create.
 	*Param Four : Cells - The cell location for the building.
 	*/
-	void m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position, std::string buildingType, Cells * newCell);
-
 	void m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position, std::string buildingType, Cells * newCell, float woodRequired);
 
 
@@ -86,7 +86,7 @@ public:
 	/*! \fn AssignTexture : Used to assign the new building a texture. 
 	*Param One : The new texture for the building. 
 	*/
-	void m_AssignTexture(sf::Texture newTexture); 
+	void m_AssignTexture(sf::Texture * newTexture); 
 
 	//--------------------------------------------------------\\
 	//						Update 

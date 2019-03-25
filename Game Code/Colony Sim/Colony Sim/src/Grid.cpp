@@ -298,7 +298,7 @@ void Grid::m_CreateRiver(std::deque<Cells*> riverPath, int riverWidth, int layer
 			{
 				m_Grid[layer][(unsigned int)riverPath[i]->m_GetGridPos().x][(unsigned int)riverPath[i]->m_GetGridPos().y + j].m_AssignTile(_WATER);
 
-				m_Grid[layer][(unsigned int)riverPath[i]->m_GetGridPos().x + j][(unsigned int)riverPath[i]->m_GetGridPos().y].m_AssignTexture(m_WaterTexture);
+				m_Grid[layer][(unsigned int)riverPath[i]->m_GetGridPos().x][(unsigned int)riverPath[i]->m_GetGridPos().y].m_AssignTexture(m_WaterTexture);
 			}
 		}
 	}

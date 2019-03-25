@@ -240,6 +240,8 @@ void ColonistManager::m_Pathfinding(Grid & CurrentGrid, ResourceManagement & res
 
 						v_clColonists[i].m_FindNewPath(CurrentGrid.m_GetRandomDirtCell(v_clColonists[i].m_GetCurrentLayer()));
 
+						std::cout << "No Build" << std::endl;
+
 						// IF the colonist has not had a new building target for a few loops reset to idle. 
 						if (v_clColonists[i].m_iIdleCounter >= 25)
 						{

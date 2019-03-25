@@ -16,32 +16,6 @@ BuildingObject::~BuildingObject()
 {
 }
 
-//--------------------------------------------------------
-/*! \fn SetupBuildingObject : Used to create a building object for the game.
-*Param One : Vector2f - The dimentions for the building.
-*Param Two : Vector2f - The position for the building.
-*Param Three : String - The type of building to create.
-*Param Four : Cells - The cell location for the building.
-*/
-void BuildingObject::m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position, std::string buildingType, Cells * newCell)
-{
-	// Todo : if the newCell is a nullptr then exit with an error (possibly use a try catch). 
-
-	m_BuildingBody.setSize(dimentions);
-	m_BuildingBody.setOrigin(m_BuildingBody.getGlobalBounds().width * 0.5f, m_BuildingBody.getGlobalBounds().height * 0.5f); 
-
-	m_SetObjectPos(position.x, position.y);
-
-	m_sBuildingType = buildingType;
-
-	if (newCell == nullptr)
-	{
-		std::cout << "Invalid cell" << std::endl;
-	}
-
-	m_CurrentCell = newCell; 
-}
-
 void BuildingObject::m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f position, std::string buildingType, Cells * newCell, float woodRequired)
 {
 	// Todo : if the newCell is a nullptr then exit with an error (possibly use a try catch). 
@@ -49,7 +23,7 @@ void BuildingObject::m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f
 	m_BuildingBody.setSize(dimentions);
 	m_BuildingBody.setOrigin(m_BuildingBody.getGlobalBounds().width * 0.5f, m_BuildingBody.getGlobalBounds().height * 0.5f);
 
-	m_BuildingBody.setFillColor(sf::Color(255, 255, 255, 50));
+	m_BuildingBody.setFillColor(sf::Color(255, 255, 255, 100));
 
 	m_SetObjectPos(position.x, position.y);
 
@@ -73,11 +47,11 @@ void BuildingObject::m_SetupBuildingObject(sf::Vector2f dimentions, sf::Vector2f
 /*! \fn AssignTexture : Used to assign the new building a texture.
 *Param One : The new texture for the building.
 */
-void BuildingObject::m_AssignTexture(sf::Texture newTexture)
+void BuildingObject::m_AssignTexture(sf::Texture * newTexture)
 {
 	m_localTexture = newTexture;
 
-	m_BuildingBody.setTexture(&m_localTexture);
+	m_BuildingBody.setTexture(m_localTexture);
 }
 
 //--------------------------------------------------------
@@ -92,12 +66,13 @@ void BuildingObject::m_Update()
 		{
 			m_bFirstBuild = false;
 
-			m_CurrentCell->m_bObstruction = true; 
+			if (m_sBuildingType == "Wall")
+			{
+				m_CurrentCell->m_bObstruction = true;
+			}
 
 			m_BuildingBody.setFillColor(sf::Color(255, 255, 255, 255));
 		}
-
-		m_BuildingBody.setTexture(&m_localTexture);
 	}
 }
 

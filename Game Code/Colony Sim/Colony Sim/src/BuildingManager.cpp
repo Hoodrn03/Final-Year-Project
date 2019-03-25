@@ -60,11 +60,11 @@ void BuildingManager::m_AssignTextures(std::map<std::string, sf::Texture> &m_Tex
 {
 	// Todo : possibly add more varieties of walls and doors to vary the look of builidngs. 
 
-	m_WoodWall = m_TextureMap["woodWallOne"];
+	m_WoodWall = &m_TextureMap["woodWallOne"];
 
-	m_WoodDoor = m_TextureMap["woodDoorOne"];
+	m_WoodDoor = &m_TextureMap["woodDoorOne"];
 
-	m_Bed = m_TextureMap["bedOne"];
+	m_Bed = &m_TextureMap["bedOne"];
 }
 
 //--------------------------------------------------------
@@ -248,14 +248,12 @@ BuildingObject * BuildingManager::m_GetClosestBuilding(sf::Vector2f objectPos)
 
 	if (v_Buildings.size() > 0)
 	{
-		for (unsigned int i = 1; i < v_Buildings.size(); i++)
+		for (unsigned int i = 0; i < v_Buildings.size(); i++)
 		{
 			if (v_Buildings[i].m_GetCurrentCell() == nullptr)
 			{
 				return nullptr;
 			}
-
-			// Ensure this only loops through trees chosen to be cut down. 
 
 			if ((v_Buildings[i].m_bFinishedBuilding == false))
 			{
@@ -263,13 +261,9 @@ BuildingObject * BuildingManager::m_GetClosestBuilding(sf::Vector2f objectPos)
 				{
 					if (l_FirstBuilding == true)
 					{
-						// Find the first tree in the vector to begin the distance evaluations.
-
 						l_TempBuild = &v_Buildings[i];
 
 						l_FirstBuilding = false;
-
-						// Calculate the initial distance between the chosen object and the first tree. 
 
 						if (v_Buildings[i].m_GetObjectPos().x > objectPos.x)
 						{
@@ -289,8 +283,6 @@ BuildingObject * BuildingManager::m_GetClosestBuilding(sf::Vector2f objectPos)
 							l_PrevYDist = objectPos.y - v_Buildings[i].m_GetObjectPos().y;
 						}
 					}
-
-					// Calculate the distance for the next tree. 
 
 					if (v_Buildings[i].m_GetObjectPos().x > objectPos.x)
 					{

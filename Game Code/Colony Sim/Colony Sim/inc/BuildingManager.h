@@ -51,12 +51,12 @@ private:
 	// Local Textures
 
 	/*! \var The local texture for the Wood Wall. */
-	sf::Texture m_WoodWall; 
+	sf::Texture * m_WoodWall; 
 
 	/*! \var The local texture for the Wood Door. */
-	sf::Texture m_WoodDoor; 
+	sf::Texture * m_WoodDoor; 
 
-	sf::Texture m_Bed; 
+	sf::Texture * m_Bed; 
 
 public:
 
