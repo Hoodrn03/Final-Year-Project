@@ -24,11 +24,8 @@ void UserInterface::m_DrawGui()
 }
 
 void UserInterface::m_AddWidget(tgui::Button::Ptr & buttonToAdd)
-{
-
-	tgui::Button::Ptr l_NewButton = buttonToAdd; 
-
-	m_Gui.add(l_NewButton); 
+{ 
+	m_Gui.add(buttonToAdd);
 }
 
 void UserInterface::m_AddWidget(std::vector<tgui::Button::Ptr>& buttonsToAdd)
@@ -37,9 +34,7 @@ void UserInterface::m_AddWidget(std::vector<tgui::Button::Ptr>& buttonsToAdd)
 	{
 		for (unsigned int i = 0; i < buttonsToAdd.size(); i++)
 		{
-			tgui::Button::Ptr l_NewButton = buttonsToAdd[i];
-
-			m_Gui.add(l_NewButton);
+			m_Gui.add(buttonsToAdd[i]);
 		}
 	}
 }

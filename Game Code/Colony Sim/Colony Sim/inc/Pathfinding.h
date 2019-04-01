@@ -87,6 +87,8 @@ public:
 	*/
 	void m_RunAStarAlgorithm(std::vector<tileSet> obstructions);
 
+	void m_RunAStarAlgorithm(std::vector<tileSet> obstructions, bool addColour);
+
 	//--------------------------------------------------------
 	//					Calculations 
 	//--------------------------------------------------------

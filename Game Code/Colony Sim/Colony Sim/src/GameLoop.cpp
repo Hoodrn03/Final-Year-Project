@@ -325,6 +325,8 @@ void Gameloop::m_UpdateButtons()
 
 	// Resource management buttons. 
 
+	// Todo : Look into tgui callbacks
+
 	if(m_clResourceManagement.m_bDisplayButtons == true)
 	{ 
 		if (m_clResourceManagement.m_bButtonsCreated == true)

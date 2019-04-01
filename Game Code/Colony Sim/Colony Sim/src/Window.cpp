@@ -34,7 +34,7 @@ int Window::m_InitWindow(int windowWidth, int windowHeight, std::string windowNa
 	{
 		m_Window.create(sf::VideoMode(windowWidth, windowHeight), windowName); 
 
-		m_GameView.setSize(400, 400); 
+		m_GameView.setSize(windowWidth * 0.5, windowHeight * 0.5);
 
 		m_GameView.setCenter(m_GameView.getSize().x * 0.5f, m_GameView.getSize().y * 0.5f);
 
@@ -44,6 +44,8 @@ int Window::m_InitWindow(int windowWidth, int windowHeight, std::string windowNa
 	catch(const std::exception& e)
 	{
 		std::cout << "Unable to create window : " << e.what() << std::endl;
+
+		return -1;
 	}
 
 	return 0;

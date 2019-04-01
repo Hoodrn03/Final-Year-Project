@@ -485,7 +485,7 @@ int Colonist::m_FindNewPath(Cells * endCell)
 
 					do
 					{
-						l_clPathfinding.m_RunAStarAlgorithm(m_Obstructions);
+						l_clPathfinding.m_RunAStarAlgorithm(m_Obstructions, false); /*!< (Debugging) Change to true to add colour into the pathfinding*/
 
 						l_numberOfLoop++;
 
