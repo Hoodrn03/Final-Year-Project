@@ -1,0 +1,124 @@
+\hypertarget{class_pathfinding}{}\section{Pathfinding Class Reference}
+\label{class_pathfinding}\index{Pathfinding@{Pathfinding}}
+
+
+{\ttfamily \#include $<$Pathfinding.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pathfinding_aae14d204c5f9ee6b184764f874711341}{Pathfinding}} ()
+\item 
+\mbox{\hyperlink{class_pathfinding_a1869823af12d301105cf1cedbe9a8dc5}{$\sim$\+Pathfinding}} ()
+\item 
+void \mbox{\hyperlink{class_pathfinding_a4c5a8788f066f2b91ab52958b211f28d}{m\+\_\+\+Init\+Algorithm}} (\mbox{\hyperlink{class_cells}{Cells}} $\ast$start\+Cell, \mbox{\hyperlink{class_cells}{Cells}} $\ast$end\+Cell)
+\item 
+void \mbox{\hyperlink{class_pathfinding_a423a7763b0990f4143ffcc517ddf2c29}{m\+\_\+\+Run\+A\+Star\+Algorithm}} ()
+\item 
+void \mbox{\hyperlink{class_pathfinding_a15896b383f998b1fd8e996b11abfa17a}{m\+\_\+\+Run\+A\+Star\+Algorithm}} (std\+::vector$<$ \mbox{\hyperlink{_cells_8h_adc5e4636eae42cdad2a070c6adbd9daf}{tile\+Set}} $>$ obstructions)
+\item 
+void \mbox{\hyperlink{class_pathfinding_a0dcc4744c8892ca16c6f685f8c534645}{m\+\_\+\+Run\+A\+Star\+Algorithm}} (std\+::vector$<$ \mbox{\hyperlink{_cells_8h_adc5e4636eae42cdad2a070c6adbd9daf}{tile\+Set}} $>$ obstructions, bool add\+Colour)
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pathfinding_a17051c2f3466edb6299444e87d6033fc}{m\+\_\+\+Calc\+Dist}} (\mbox{\hyperlink{class_cells}{Cells}} $\ast$point\+One, \mbox{\hyperlink{class_cells}{Cells}} $\ast$point\+Two)
+\item 
+int \mbox{\hyperlink{class_pathfinding_a717eed7fdd1fe504da934e575dfa1443}{m\+\_\+\+Calculate\+G\+Score}} (\mbox{\hyperlink{class_cells}{Cells}} $\ast$start\+Cell, \mbox{\hyperlink{class_cells}{Cells}} $\ast$current\+Cell)
+\item 
+int \mbox{\hyperlink{class_pathfinding_ad89518accab0433588c8e8ffa63b0d16}{m\+\_\+\+Calculate\+H\+Score}} (\mbox{\hyperlink{class_cells}{Cells}} $\ast$current\+Cell, \mbox{\hyperlink{class_cells}{Cells}} $\ast$end\+Cell)
+\item 
+int \mbox{\hyperlink{class_pathfinding_a5df6c9a7c337bf4b416ff61dcf57dd98}{m\+\_\+\+Calculate\+F\+Score}} (\mbox{\hyperlink{class_cells}{Cells}} $\ast$current\+Cell)
+\item 
+void \mbox{\hyperlink{class_pathfinding_abca4c4bbc051a99323d29106127fb389}{m\+\_\+\+Trace\+Path}} ()
+\item 
+std\+::deque$<$ \mbox{\hyperlink{class_cells}{Cells}} $\ast$ $>$ \mbox{\hyperlink{class_pathfinding_a287047690fb8d2f4d72dbda8365b1f84}{m\+\_\+\+Get\+Current\+Path}} ()
+\item 
+bool \mbox{\hyperlink{class_pathfinding_a6d557c82148fd127b2c53add89158c5e}{m\+\_\+\+Check\+For\+Completion}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_pathfinding_aae14d204c5f9ee6b184764f874711341}\label{class_pathfinding_aae14d204c5f9ee6b184764f874711341}} 
+\index{Pathfinding@{Pathfinding}!Pathfinding@{Pathfinding}}
+\index{Pathfinding@{Pathfinding}!Pathfinding@{Pathfinding}}
+\subsubsection{\texorpdfstring{Pathfinding()}{Pathfinding()}}
+{\footnotesize\ttfamily Pathfinding\+::\+Pathfinding (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pathfinding_a1869823af12d301105cf1cedbe9a8dc5}\label{class_pathfinding_a1869823af12d301105cf1cedbe9a8dc5}} 
+\index{Pathfinding@{Pathfinding}!````~Pathfinding@{$\sim$\+Pathfinding}}
+\index{````~Pathfinding@{$\sim$\+Pathfinding}!Pathfinding@{Pathfinding}}
+\subsubsection{\texorpdfstring{$\sim$\+Pathfinding()}{~Pathfinding()}}
+{\footnotesize\ttfamily Pathfinding\+::$\sim$\+Pathfinding (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pathfinding_a17051c2f3466edb6299444e87d6033fc}\label{class_pathfinding_a17051c2f3466edb6299444e87d6033fc}} 
+\index{Pathfinding@{Pathfinding}!m\+\_\+\+Calc\+Dist@{m\+\_\+\+Calc\+Dist}}
+\index{m\+\_\+\+Calc\+Dist@{m\+\_\+\+Calc\+Dist}!Pathfinding@{Pathfinding}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Calc\+Dist()}{m\_CalcDist()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pathfinding\+::m\+\_\+\+Calc\+Dist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cells}{Cells}} $\ast$}]{point\+One,  }\item[{\mbox{\hyperlink{class_cells}{Cells}} $\ast$}]{point\+Two }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pathfinding_a5df6c9a7c337bf4b416ff61dcf57dd98}\label{class_pathfinding_a5df6c9a7c337bf4b416ff61dcf57dd98}} 
+\index{Pathfinding@{Pathfinding}!m\+\_\+\+Calculate\+F\+Score@{m\+\_\+\+Calculate\+F\+Score}}
+\index{m\+\_\+\+Calculate\+F\+Score@{m\+\_\+\+Calculate\+F\+Score}!Pathfinding@{Pathfinding}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Calculate\+F\+Score()}{m\_CalculateFScore()}}
+{\footnotesize\ttfamily int Pathfinding\+::m\+\_\+\+Calculate\+F\+Score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cells}{Cells}} $\ast$}]{current\+Cell }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pathfinding_a717eed7fdd1fe504da934e575dfa1443}\label{class_pathfinding_a717eed7fdd1fe504da934e575dfa1443}} 
+\index{Pathfinding@{Pathfinding}!m\+\_\+\+Calculate\+G\+Score@{m\+\_\+\+Calculate\+G\+Score}}
+\index{m\+\_\+\+Calculate\+G\+Score@{m\+\_\+\+Calculate\+G\+Score}!Pathfinding@{Pathfinding}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Calculate\+G\+Score()}{m\_CalculateGScore()}}
+{\footnotesize\ttfamily int Pathfinding\+::m\+\_\+\+Calculate\+G\+Score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cells}{Cells}} $\ast$}]{start\+Cell,  }\item[{\mbox{\hyperlink{class_cells}{Cells}} $\ast$}]{current\+Cell }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pathfinding_ad89518accab0433588c8e8ffa63b0d16}\label{class_pathfinding_ad89518accab0433588c8e8ffa63b0d16}} 
+\index{Pathfinding@{Pathfinding}!m\+\_\+\+Calculate\+H\+Score@{m\+\_\+\+Calculate\+H\+Score}}
+\index{m\+\_\+\+Calculate\+H\+Score@{m\+\_\+\+Calculate\+H\+Score}!Pathfinding@{Pathfinding}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Calculate\+H\+Score()}{m\_CalculateHScore()}}
+{\footnotesize\ttfamily int Pathfinding\+::m\+\_\+\+Calculate\+H\+Score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cells}{Cells}} $\ast$}]{current\+Cell,  }\item[{\mbox{\hyperlink{class_cells}{Cells}} $\ast$}]{end\+Cell }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pathfinding_a6d557c82148fd127b2c53add89158c5e}\label{class_pathfinding_a6d557c82148fd127b2c53add89158c5e}} 
+\index{Pathfinding@{Pathfinding}!m\+\_\+\+Check\+For\+Completion@{m\+\_\+\+Check\+For\+Completion}}
+\index{m\+\_\+\+Check\+For\+Completion@{m\+\_\+\+Check\+For\+Completion}!Pathfinding@{Pathfinding}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Check\+For\+Completion()}{m\_CheckForCompletion()}}
+{\footnotesize\ttfamily bool Pathfinding\+::m\+\_\+\+Check\+For\+Completion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pathfinding_a287047690fb8d2f4d72dbda8365b1f84}\label{class_pathfinding_a287047690fb8d2f4d72dbda8365b1f84}} 
+\index{Pathfinding@{Pathfinding}!m\+\_\+\+Get\+Current\+Path@{m\+\_\+\+Get\+Current\+Path}}
+\index{m\+\_\+\+Get\+Current\+Path@{m\+\_\+\+Get\+Current\+Path}!Pathfinding@{Pathfinding}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Current\+Path()}{m\_GetCurrentPath()}}
+{\footnotesize\ttfamily std\+::deque$<$\mbox{\hyperlink{class_cells}{Cells}}$\ast$$>$ Pathfinding\+::m\+\_\+\+Get\+Current\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pathfinding_a4c5a8788f066f2b91ab52958b211f28d}\label{class_pathfinding_a4c5a8788f066f2b91ab52958b211f28d}} 
+\index{Pathfinding@{Pathfinding}!m\+\_\+\+Init\+Algorithm@{m\+\_\+\+Init\+Algorithm}}
+\index{m\+\_\+\+Init\+Algorithm@{m\+\_\+\+Init\+Algorithm}!Pathfinding@{Pathfinding}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Init\+Algorithm()}{m\_InitAlgorithm()}}
+{\footnotesize\ttfamily void Pathfinding\+::m\+\_\+\+Init\+Algorithm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cells}{Cells}} $\ast$}]{start\+Cell,  }\item[{\mbox{\hyperlink{class_cells}{Cells}} $\ast$}]{end\+Cell }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pathfinding_a423a7763b0990f4143ffcc517ddf2c29}\label{class_pathfinding_a423a7763b0990f4143ffcc517ddf2c29}} 
+\index{Pathfinding@{Pathfinding}!m\+\_\+\+Run\+A\+Star\+Algorithm@{m\+\_\+\+Run\+A\+Star\+Algorithm}}
+\index{m\+\_\+\+Run\+A\+Star\+Algorithm@{m\+\_\+\+Run\+A\+Star\+Algorithm}!Pathfinding@{Pathfinding}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Run\+A\+Star\+Algorithm()}{m\_RunAStarAlgorithm()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void Pathfinding\+::m\+\_\+\+Run\+A\+Star\+Algorithm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pathfinding_a15896b383f998b1fd8e996b11abfa17a}\label{class_pathfinding_a15896b383f998b1fd8e996b11abfa17a}} 
+\index{Pathfinding@{Pathfinding}!m\+\_\+\+Run\+A\+Star\+Algorithm@{m\+\_\+\+Run\+A\+Star\+Algorithm}}
+\index{m\+\_\+\+Run\+A\+Star\+Algorithm@{m\+\_\+\+Run\+A\+Star\+Algorithm}!Pathfinding@{Pathfinding}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Run\+A\+Star\+Algorithm()}{m\_RunAStarAlgorithm()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Pathfinding\+::m\+\_\+\+Run\+A\+Star\+Algorithm (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{_cells_8h_adc5e4636eae42cdad2a070c6adbd9daf}{tile\+Set}} $>$}]{obstructions }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pathfinding_a0dcc4744c8892ca16c6f685f8c534645}\label{class_pathfinding_a0dcc4744c8892ca16c6f685f8c534645}} 
+\index{Pathfinding@{Pathfinding}!m\+\_\+\+Run\+A\+Star\+Algorithm@{m\+\_\+\+Run\+A\+Star\+Algorithm}}
+\index{m\+\_\+\+Run\+A\+Star\+Algorithm@{m\+\_\+\+Run\+A\+Star\+Algorithm}!Pathfinding@{Pathfinding}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Run\+A\+Star\+Algorithm()}{m\_RunAStarAlgorithm()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Pathfinding\+::m\+\_\+\+Run\+A\+Star\+Algorithm (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{_cells_8h_adc5e4636eae42cdad2a070c6adbd9daf}{tile\+Set}} $>$}]{obstructions,  }\item[{bool}]{add\+Colour }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pathfinding_abca4c4bbc051a99323d29106127fb389}\label{class_pathfinding_abca4c4bbc051a99323d29106127fb389}} 
+\index{Pathfinding@{Pathfinding}!m\+\_\+\+Trace\+Path@{m\+\_\+\+Trace\+Path}}
+\index{m\+\_\+\+Trace\+Path@{m\+\_\+\+Trace\+Path}!Pathfinding@{Pathfinding}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Trace\+Path()}{m\_TracePath()}}
+{\footnotesize\ttfamily void Pathfinding\+::m\+\_\+\+Trace\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{_pathfinding_8h}{Pathfinding.\+h}}\end{DoxyCompactItemize}

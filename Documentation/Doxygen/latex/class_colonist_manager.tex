@@ -1,0 +1,202 @@
+\hypertarget{class_colonist_manager}{}\section{Colonist\+Manager Class Reference}
+\label{class_colonist_manager}\index{Colonist\+Manager@{Colonist\+Manager}}
+
+
+{\ttfamily \#include $<$Colonist\+Manager.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_colonist_manager_ae4103d1c28b871155a10f8df08974c7e}{Colonist\+Manager}} ()
+\item 
+\mbox{\hyperlink{class_colonist_manager_a33c8e31a0646e00653ce25c06f7e5038}{$\sim$\+Colonist\+Manager}} ()
+\item 
+void \mbox{\hyperlink{class_colonist_manager_a068d45eb539d9349c00771208c019187}{m\+\_\+\+Add\+Colonist}} (int number\+Of\+Colonists, sf\+::\+Vector2f dimentions, \mbox{\hyperlink{class_grid}{Grid}} \&current\+Grid, int starting\+Layer)
+\item 
+void \mbox{\hyperlink{class_colonist_manager_a67277f61ffb7e5e37657107088770041}{m\+\_\+\+Assign\+Colonist\+Fonts}} (sf\+::\+Font \&new\+Font)
+\item 
+void \mbox{\hyperlink{class_colonist_manager_a27e8588e8f4c341ea31d92cb122440bb}{m\+\_\+\+Update}} (\mbox{\hyperlink{class_grid}{Grid}} \&Current\+Grid)
+\item 
+void \mbox{\hyperlink{class_colonist_manager_abd1e80e0f01891857d81300eed3347f4}{m\+\_\+\+Update\+Info\+Windows}} (sf\+::\+Vector2f view\+Lower\+Bounds, sf\+::\+Vector2f view\+Size)
+\item 
+void \mbox{\hyperlink{class_colonist_manager_a4ae7bcfdb32a8862d950f36d357145dc}{m\+\_\+\+Pathfinding}} (\mbox{\hyperlink{class_grid}{Grid}} \&Current\+Grid, \mbox{\hyperlink{class_resource_management}{Resource\+Management}} \&current\+Manager)
+\item 
+void \mbox{\hyperlink{class_colonist_manager_a3c6476b726ac4ccf91be332be262810a}{m\+\_\+\+Pathfinding}} (\mbox{\hyperlink{class_grid}{Grid}} \&Current\+Grid, \mbox{\hyperlink{class_resource_management}{Resource\+Management}} \&resource\+Manager, \mbox{\hyperlink{class_building_manager}{Building\+Manager}} \&building\+Manager)
+\item 
+void \mbox{\hyperlink{class_colonist_manager_a03bf090e3d6dc4f731daef7f91ea1f11}{m\+\_\+\+Render}} (sf\+::\+Render\+Window \&window)
+\item 
+void \mbox{\hyperlink{class_colonist_manager_ae7960d47970d69bc0f2f3de15321fa90}{m\+\_\+\+Draw\+Filter}} (sf\+::\+Vector2f top\+Left, sf\+::\+Vector2f bottom\+Right)
+\item 
+void \mbox{\hyperlink{class_colonist_manager_a1cfc018393b4410129875a3fe0be4fd4}{m\+\_\+\+Draw\+Filter}} (sf\+::\+Vector2f top\+Left, sf\+::\+Vector2f bottom\+Right, unsigned int current\+Layer)
+\item 
+void \mbox{\hyperlink{class_colonist_manager_adb2f8be8fad5170fb41385c6a62a0ba5}{m\+\_\+\+Select\+Colonist}} (sf\+::\+Vector2f top\+Left, sf\+::\+Vector2f bottom\+Right, bool mouse\+Down)
+\item 
+void \mbox{\hyperlink{class_colonist_manager_ac21585da4afdb19b5b5474c630960189}{m\+\_\+\+Check\+For\+Selected}} ()
+\item 
+void \mbox{\hyperlink{class_colonist_manager_a8a9cb88c826c72026575e5c2d9bec88d}{m\+\_\+\+Set\+Colonist\+Idle}} ()
+\item 
+void \mbox{\hyperlink{class_colonist_manager_ad494974bebe1f0af43b2721f289f7772}{m\+\_\+\+Set\+Colonist\+Tree\+Cut}} ()
+\item 
+void \mbox{\hyperlink{class_colonist_manager_a64d61e7131db646318691539f0460eed}{m\+\_\+\+Set\+Colonist\+Construction}} ()
+\item 
+void \mbox{\hyperlink{class_colonist_manager_ab3101b874a6411a4929a7238200e1599}{m\+\_\+\+Create\+Colonist\+Action\+Buttons}} (sf\+::\+Font game\+Font, sf\+::\+Render\+Window \&window)
+\item 
+std\+::vector$<$ tgui\+::\+Button\+::\+Ptr $>$ \mbox{\hyperlink{class_colonist_manager_abcfd2d4b02e3acc1baa932b72f84f9eb}{m\+\_\+\+Get\+Colonist\+Buttons}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_colonist_manager_a0b3bc58666c4a5064db8227f3c92cf64}{m\+\_\+b\+Colonist\+Selected}} = false
+\item 
+bool \mbox{\hyperlink{class_colonist_manager_a62044d795d70510931bbcfb3100267be}{m\+\_\+b\+Buttons\+Created}} = false
+\item 
+bool \mbox{\hyperlink{class_colonist_manager_a8d9b925d50fd4cbedba3685f4471fbe2}{m\+\_\+b\+Buttons\+Removed}} = false
+\item 
+std\+::vector$<$ tgui\+::\+Button\+::\+Ptr $>$ \mbox{\hyperlink{class_colonist_manager_a450c58b087a8c44286bddacf36c51811}{v\+\_\+\+List\+Of\+Buttons}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_colonist_manager_ae4103d1c28b871155a10f8df08974c7e}\label{class_colonist_manager_ae4103d1c28b871155a10f8df08974c7e}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!Colonist\+Manager@{Colonist\+Manager}}
+\index{Colonist\+Manager@{Colonist\+Manager}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{Colonist\+Manager()}{ColonistManager()}}
+{\footnotesize\ttfamily Colonist\+Manager\+::\+Colonist\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_manager_a33c8e31a0646e00653ce25c06f7e5038}\label{class_colonist_manager_a33c8e31a0646e00653ce25c06f7e5038}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!````~Colonist\+Manager@{$\sim$\+Colonist\+Manager}}
+\index{````~Colonist\+Manager@{$\sim$\+Colonist\+Manager}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{$\sim$\+Colonist\+Manager()}{~ColonistManager()}}
+{\footnotesize\ttfamily Colonist\+Manager\+::$\sim$\+Colonist\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_colonist_manager_a068d45eb539d9349c00771208c019187}\label{class_colonist_manager_a068d45eb539d9349c00771208c019187}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+\+Add\+Colonist@{m\+\_\+\+Add\+Colonist}}
+\index{m\+\_\+\+Add\+Colonist@{m\+\_\+\+Add\+Colonist}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Add\+Colonist()}{m\_AddColonist()}}
+{\footnotesize\ttfamily void Colonist\+Manager\+::m\+\_\+\+Add\+Colonist (\begin{DoxyParamCaption}\item[{int}]{number\+Of\+Colonists,  }\item[{sf\+::\+Vector2f}]{dimentions,  }\item[{\mbox{\hyperlink{class_grid}{Grid}} \&}]{current\+Grid,  }\item[{int}]{starting\+Layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_manager_a67277f61ffb7e5e37657107088770041}\label{class_colonist_manager_a67277f61ffb7e5e37657107088770041}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+\+Assign\+Colonist\+Fonts@{m\+\_\+\+Assign\+Colonist\+Fonts}}
+\index{m\+\_\+\+Assign\+Colonist\+Fonts@{m\+\_\+\+Assign\+Colonist\+Fonts}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Colonist\+Fonts()}{m\_AssignColonistFonts()}}
+{\footnotesize\ttfamily void Colonist\+Manager\+::m\+\_\+\+Assign\+Colonist\+Fonts (\begin{DoxyParamCaption}\item[{sf\+::\+Font \&}]{new\+Font }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_manager_ac21585da4afdb19b5b5474c630960189}\label{class_colonist_manager_ac21585da4afdb19b5b5474c630960189}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+\+Check\+For\+Selected@{m\+\_\+\+Check\+For\+Selected}}
+\index{m\+\_\+\+Check\+For\+Selected@{m\+\_\+\+Check\+For\+Selected}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Check\+For\+Selected()}{m\_CheckForSelected()}}
+{\footnotesize\ttfamily void Colonist\+Manager\+::m\+\_\+\+Check\+For\+Selected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_manager_ab3101b874a6411a4929a7238200e1599}\label{class_colonist_manager_ab3101b874a6411a4929a7238200e1599}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+\+Create\+Colonist\+Action\+Buttons@{m\+\_\+\+Create\+Colonist\+Action\+Buttons}}
+\index{m\+\_\+\+Create\+Colonist\+Action\+Buttons@{m\+\_\+\+Create\+Colonist\+Action\+Buttons}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Colonist\+Action\+Buttons()}{m\_CreateColonistActionButtons()}}
+{\footnotesize\ttfamily void Colonist\+Manager\+::m\+\_\+\+Create\+Colonist\+Action\+Buttons (\begin{DoxyParamCaption}\item[{sf\+::\+Font}]{game\+Font,  }\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_manager_ae7960d47970d69bc0f2f3de15321fa90}\label{class_colonist_manager_ae7960d47970d69bc0f2f3de15321fa90}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}}
+\index{m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Filter()}{m\_DrawFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Colonist\+Manager\+::m\+\_\+\+Draw\+Filter (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_manager_a1cfc018393b4410129875a3fe0be4fd4}\label{class_colonist_manager_a1cfc018393b4410129875a3fe0be4fd4}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}}
+\index{m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Filter()}{m\_DrawFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Colonist\+Manager\+::m\+\_\+\+Draw\+Filter (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right,  }\item[{unsigned int}]{current\+Layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_manager_abcfd2d4b02e3acc1baa932b72f84f9eb}\label{class_colonist_manager_abcfd2d4b02e3acc1baa932b72f84f9eb}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+\+Get\+Colonist\+Buttons@{m\+\_\+\+Get\+Colonist\+Buttons}}
+\index{m\+\_\+\+Get\+Colonist\+Buttons@{m\+\_\+\+Get\+Colonist\+Buttons}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Colonist\+Buttons()}{m\_GetColonistButtons()}}
+{\footnotesize\ttfamily std\+::vector$<$tgui\+::\+Button\+::\+Ptr$>$ Colonist\+Manager\+::m\+\_\+\+Get\+Colonist\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_manager_a4ae7bcfdb32a8862d950f36d357145dc}\label{class_colonist_manager_a4ae7bcfdb32a8862d950f36d357145dc}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+\+Pathfinding@{m\+\_\+\+Pathfinding}}
+\index{m\+\_\+\+Pathfinding@{m\+\_\+\+Pathfinding}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Pathfinding()}{m\_Pathfinding()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Colonist\+Manager\+::m\+\_\+\+Pathfinding (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_grid}{Grid}} \&}]{Current\+Grid,  }\item[{\mbox{\hyperlink{class_resource_management}{Resource\+Management}} \&}]{current\+Manager }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_manager_a3c6476b726ac4ccf91be332be262810a}\label{class_colonist_manager_a3c6476b726ac4ccf91be332be262810a}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+\+Pathfinding@{m\+\_\+\+Pathfinding}}
+\index{m\+\_\+\+Pathfinding@{m\+\_\+\+Pathfinding}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Pathfinding()}{m\_Pathfinding()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Colonist\+Manager\+::m\+\_\+\+Pathfinding (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_grid}{Grid}} \&}]{Current\+Grid,  }\item[{\mbox{\hyperlink{class_resource_management}{Resource\+Management}} \&}]{resource\+Manager,  }\item[{\mbox{\hyperlink{class_building_manager}{Building\+Manager}} \&}]{building\+Manager }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_manager_a03bf090e3d6dc4f731daef7f91ea1f11}\label{class_colonist_manager_a03bf090e3d6dc4f731daef7f91ea1f11}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+\+Render@{m\+\_\+\+Render}}
+\index{m\+\_\+\+Render@{m\+\_\+\+Render}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Render()}{m\_Render()}}
+{\footnotesize\ttfamily void Colonist\+Manager\+::m\+\_\+\+Render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_manager_adb2f8be8fad5170fb41385c6a62a0ba5}\label{class_colonist_manager_adb2f8be8fad5170fb41385c6a62a0ba5}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+\+Select\+Colonist@{m\+\_\+\+Select\+Colonist}}
+\index{m\+\_\+\+Select\+Colonist@{m\+\_\+\+Select\+Colonist}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Select\+Colonist()}{m\_SelectColonist()}}
+{\footnotesize\ttfamily void Colonist\+Manager\+::m\+\_\+\+Select\+Colonist (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right,  }\item[{bool}]{mouse\+Down }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_manager_a64d61e7131db646318691539f0460eed}\label{class_colonist_manager_a64d61e7131db646318691539f0460eed}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+\+Set\+Colonist\+Construction@{m\+\_\+\+Set\+Colonist\+Construction}}
+\index{m\+\_\+\+Set\+Colonist\+Construction@{m\+\_\+\+Set\+Colonist\+Construction}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Colonist\+Construction()}{m\_SetColonistConstruction()}}
+{\footnotesize\ttfamily void Colonist\+Manager\+::m\+\_\+\+Set\+Colonist\+Construction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_manager_a8a9cb88c826c72026575e5c2d9bec88d}\label{class_colonist_manager_a8a9cb88c826c72026575e5c2d9bec88d}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+\+Set\+Colonist\+Idle@{m\+\_\+\+Set\+Colonist\+Idle}}
+\index{m\+\_\+\+Set\+Colonist\+Idle@{m\+\_\+\+Set\+Colonist\+Idle}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Colonist\+Idle()}{m\_SetColonistIdle()}}
+{\footnotesize\ttfamily void Colonist\+Manager\+::m\+\_\+\+Set\+Colonist\+Idle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_manager_ad494974bebe1f0af43b2721f289f7772}\label{class_colonist_manager_ad494974bebe1f0af43b2721f289f7772}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+\+Set\+Colonist\+Tree\+Cut@{m\+\_\+\+Set\+Colonist\+Tree\+Cut}}
+\index{m\+\_\+\+Set\+Colonist\+Tree\+Cut@{m\+\_\+\+Set\+Colonist\+Tree\+Cut}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Colonist\+Tree\+Cut()}{m\_SetColonistTreeCut()}}
+{\footnotesize\ttfamily void Colonist\+Manager\+::m\+\_\+\+Set\+Colonist\+Tree\+Cut (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_manager_a27e8588e8f4c341ea31d92cb122440bb}\label{class_colonist_manager_a27e8588e8f4c341ea31d92cb122440bb}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+\+Update@{m\+\_\+\+Update}}
+\index{m\+\_\+\+Update@{m\+\_\+\+Update}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Update()}{m\_Update()}}
+{\footnotesize\ttfamily void Colonist\+Manager\+::m\+\_\+\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_grid}{Grid}} \&}]{Current\+Grid }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_manager_abd1e80e0f01891857d81300eed3347f4}\label{class_colonist_manager_abd1e80e0f01891857d81300eed3347f4}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+\+Update\+Info\+Windows@{m\+\_\+\+Update\+Info\+Windows}}
+\index{m\+\_\+\+Update\+Info\+Windows@{m\+\_\+\+Update\+Info\+Windows}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Update\+Info\+Windows()}{m\_UpdateInfoWindows()}}
+{\footnotesize\ttfamily void Colonist\+Manager\+::m\+\_\+\+Update\+Info\+Windows (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{view\+Lower\+Bounds,  }\item[{sf\+::\+Vector2f}]{view\+Size }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_colonist_manager_a62044d795d70510931bbcfb3100267be}\label{class_colonist_manager_a62044d795d70510931bbcfb3100267be}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+b\+Buttons\+Created@{m\+\_\+b\+Buttons\+Created}}
+\index{m\+\_\+b\+Buttons\+Created@{m\+\_\+b\+Buttons\+Created}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+b\+Buttons\+Created}{m\_bButtonsCreated}}
+{\footnotesize\ttfamily bool Colonist\+Manager\+::m\+\_\+b\+Buttons\+Created = false}
+
+\mbox{\Hypertarget{class_colonist_manager_a8d9b925d50fd4cbedba3685f4471fbe2}\label{class_colonist_manager_a8d9b925d50fd4cbedba3685f4471fbe2}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+b\+Buttons\+Removed@{m\+\_\+b\+Buttons\+Removed}}
+\index{m\+\_\+b\+Buttons\+Removed@{m\+\_\+b\+Buttons\+Removed}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+b\+Buttons\+Removed}{m\_bButtonsRemoved}}
+{\footnotesize\ttfamily bool Colonist\+Manager\+::m\+\_\+b\+Buttons\+Removed = false}
+
+\mbox{\Hypertarget{class_colonist_manager_a0b3bc58666c4a5064db8227f3c92cf64}\label{class_colonist_manager_a0b3bc58666c4a5064db8227f3c92cf64}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!m\+\_\+b\+Colonist\+Selected@{m\+\_\+b\+Colonist\+Selected}}
+\index{m\+\_\+b\+Colonist\+Selected@{m\+\_\+b\+Colonist\+Selected}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+b\+Colonist\+Selected}{m\_bColonistSelected}}
+{\footnotesize\ttfamily bool Colonist\+Manager\+::m\+\_\+b\+Colonist\+Selected = false}
+
+\mbox{\Hypertarget{class_colonist_manager_a450c58b087a8c44286bddacf36c51811}\label{class_colonist_manager_a450c58b087a8c44286bddacf36c51811}} 
+\index{Colonist\+Manager@{Colonist\+Manager}!v\+\_\+\+List\+Of\+Buttons@{v\+\_\+\+List\+Of\+Buttons}}
+\index{v\+\_\+\+List\+Of\+Buttons@{v\+\_\+\+List\+Of\+Buttons}!Colonist\+Manager@{Colonist\+Manager}}
+\subsubsection{\texorpdfstring{v\+\_\+\+List\+Of\+Buttons}{v\_ListOfButtons}}
+{\footnotesize\ttfamily std\+::vector$<$tgui\+::\+Button\+::\+Ptr$>$ Colonist\+Manager\+::v\+\_\+\+List\+Of\+Buttons}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{_colonist_manager_8h}{Colonist\+Manager.\+h}}\end{DoxyCompactItemize}

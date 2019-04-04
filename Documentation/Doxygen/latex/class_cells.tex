@@ -1,0 +1,308 @@
+\hypertarget{class_cells}{}\section{Cells Class Reference}
+\label{class_cells}\index{Cells@{Cells}}
+
+
+{\ttfamily \#include $<$Cells.\+h$>$}
+
+Inheritance diagram for Cells\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_cells}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cells_a092d62bc15648a54755a413dbf9a2db0}{Cells}} ()
+\item 
+\mbox{\hyperlink{class_cells_aab121634db81b439226a33fd099fb3c1}{$\sim$\+Cells}} ()
+\item 
+void \mbox{\hyperlink{class_cells_a5f009c592371d6bad0e49b2ff2bfd811}{m\+\_\+\+Create\+Cell\+Body}} (sf\+::\+Vector2f dimentions, sf\+::\+Vector2f possition)
+\item 
+void \mbox{\hyperlink{class_cells_a6405637a987f8af6210518d21b284c5d}{m\+\_\+\+Create\+Cell\+Body}} (sf\+::\+Vector2f dimentions, sf\+::\+Vector2f possition, int r, int g, int b)
+\item 
+void \mbox{\hyperlink{class_cells_a943b866ae140765aaa6d8113ad68065c}{m\+\_\+\+Assign\+Texture}} (sf\+::\+Texture new\+Texture)
+\item 
+bool \mbox{\hyperlink{class_cells_a49ad6477b62bb29973f3e248909e216b}{m\+\_\+\+Check\+Cell\+Bounds}} (float x, float y)
+\item 
+void \mbox{\hyperlink{class_cells_abf00b8c57ba89e13c2ee86f22051e56f}{m\+\_\+\+Set\+Cell\+Centre}} ()
+\item 
+void \mbox{\hyperlink{class_cells_a5d900205d8d5fc3d3b41b664d51994c4}{m\+\_\+\+Set\+Object\+Pos}} (float x, float y) override
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_cells_ae61d97e90ef66528c67be257531c4359}{m\+\_\+\+Get\+Cell\+Centre}} ()
+\item 
+void \mbox{\hyperlink{class_cells_a54a485e9bed0760a0a7464311b59a700}{m\+\_\+\+Set\+Cell\+Colour}} (int r, int g, int b)
+\item 
+void \mbox{\hyperlink{class_cells_a4f59f13bfeec4f70dbd2133e86b747eb}{m\+\_\+\+Assign\+Colours}} ()
+\item 
+void \mbox{\hyperlink{class_cells_ace2656aa881803e17d7d53c9031e6ee4}{m\+\_\+\+Set\+Grid\+Pos}} (int x, int y)
+\item 
+\mbox{\hyperlink{structgrid_pos}{grid\+Pos}} \mbox{\hyperlink{class_cells_a81750cfd622629b65d615cec1d4edb48}{m\+\_\+\+Get\+Grid\+Pos}} ()
+\item 
+void \mbox{\hyperlink{class_cells_a4978491aa8ad58dd1c1f2ad0431d78b6}{m\+\_\+\+Set\+Layer}} (int layer)
+\item 
+int \mbox{\hyperlink{class_cells_ad45ab05eb579aa75a0c67c03eaefc0c0}{m\+\_\+\+Get\+Layer}} ()
+\item 
+void \mbox{\hyperlink{class_cells_a2d2d122fb7611a3f2c06f0e44b32dcdc}{m\+\_\+\+Assign\+Neighbour}} (\mbox{\hyperlink{class_cells}{Cells}} \&neighbour)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_cells}{Cells}} $\ast$ $>$ \& \mbox{\hyperlink{class_cells_ab1b7667ae7e690e9e763d1dd02a5a46e}{m\+\_\+\+Get\+Neighbours}} ()
+\item 
+int \mbox{\hyperlink{class_cells_a230bc14139877d4b703d087784a0c5bc}{m\+\_\+\+Get\+Cell\+Id}} ()
+\item 
+void \mbox{\hyperlink{class_cells_a72a566e099b35379c90ad4e90bbcd793}{m\+\_\+\+Assign\+Cell\+Id}} (int id)
+\item 
+\mbox{\hyperlink{_cells_8h_adc5e4636eae42cdad2a070c6adbd9daf}{tile\+Set}} \mbox{\hyperlink{class_cells_a1ee8670d06fa37bbdbdb30796c0eeee0}{m\+\_\+\+Get\+Tile}} ()
+\item 
+void \mbox{\hyperlink{class_cells_a2b96194a69da35f886dc0bb542a4b3b8}{m\+\_\+\+Assign\+Tile}} (\mbox{\hyperlink{_cells_8h_adc5e4636eae42cdad2a070c6adbd9daf}{tile\+Set}} which\+Tile)
+\item 
+std\+::string \mbox{\hyperlink{class_cells_ae64b76c5e33a081910b1c93631f8dd4e}{m\+\_\+\+Get\+Tile\+Name}} ()
+\item 
+float \mbox{\hyperlink{class_cells_a8697fccb916059fd456256d038d8f1c2}{m\+\_\+\+Get\+Cell\+Width}} ()
+\item 
+float \mbox{\hyperlink{class_cells_ac5885d8ebc2418182b48d19b9e7fde08}{m\+\_\+\+Get\+Cell\+Height}} ()
+\item 
+void \mbox{\hyperlink{class_cells_a524d410412de7030016b99a4d8b0c1cc}{m\+\_\+\+Update}} () override
+\item 
+void \mbox{\hyperlink{class_cells_a09ab1aeac5c986cc28f52754fafd8c66}{m\+\_\+\+Draw\+Game\+Object}} (sf\+::\+Render\+Window \&window) override
+\item 
+void \mbox{\hyperlink{class_cells_a9c7eea82ba5ab8a840bbdcc0be25200f}{m\+\_\+\+Draw\+Filter}} (sf\+::\+Vector2f top\+Left, sf\+::\+Vector2f bottom\+Right) override
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cells}{Cells}} $\ast$ \mbox{\hyperlink{class_cells_ae71aff17afdd01c99293906893c67354}{m\+\_\+\+Parent\+Cell}} = nullptr
+\item 
+int \mbox{\hyperlink{class_cells_abe9c29d1ede13bf4fe3980ab837e81ce}{m\+\_\+i\+G\+Score}} = 0
+\item 
+int \mbox{\hyperlink{class_cells_a00f6a71c14e40130259bbdeb15394f67}{m\+\_\+i\+H\+Score}} = 0
+\item 
+int \mbox{\hyperlink{class_cells_a4c0eadc267ff60babcabe97347d9e452}{m\+\_\+i\+F\+Score}} = 0
+\item 
+bool \mbox{\hyperlink{class_cells_a0bc31e333f70a4d5aefd1fa5e14fa0fb}{m\+\_\+b\+Obstruction}} = false
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+up form a grid, each cell will represent a single point within a grid. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_cells_a092d62bc15648a54755a413dbf9a2db0}\label{class_cells_a092d62bc15648a54755a413dbf9a2db0}} 
+\index{Cells@{Cells}!Cells@{Cells}}
+\index{Cells@{Cells}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{Cells()}{Cells()}}
+{\footnotesize\ttfamily Cells\+::\+Cells (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_aab121634db81b439226a33fd099fb3c1}\label{class_cells_aab121634db81b439226a33fd099fb3c1}} 
+\index{Cells@{Cells}!````~Cells@{$\sim$\+Cells}}
+\index{````~Cells@{$\sim$\+Cells}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{$\sim$\+Cells()}{~Cells()}}
+{\footnotesize\ttfamily Cells\+::$\sim$\+Cells (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_cells_a72a566e099b35379c90ad4e90bbcd793}\label{class_cells_a72a566e099b35379c90ad4e90bbcd793}} 
+\index{Cells@{Cells}!m\+\_\+\+Assign\+Cell\+Id@{m\+\_\+\+Assign\+Cell\+Id}}
+\index{m\+\_\+\+Assign\+Cell\+Id@{m\+\_\+\+Assign\+Cell\+Id}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Cell\+Id()}{m\_AssignCellId()}}
+{\footnotesize\ttfamily void Cells\+::m\+\_\+\+Assign\+Cell\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_a4f59f13bfeec4f70dbd2133e86b747eb}\label{class_cells_a4f59f13bfeec4f70dbd2133e86b747eb}} 
+\index{Cells@{Cells}!m\+\_\+\+Assign\+Colours@{m\+\_\+\+Assign\+Colours}}
+\index{m\+\_\+\+Assign\+Colours@{m\+\_\+\+Assign\+Colours}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Colours()}{m\_AssignColours()}}
+{\footnotesize\ttfamily void Cells\+::m\+\_\+\+Assign\+Colours (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_a2d2d122fb7611a3f2c06f0e44b32dcdc}\label{class_cells_a2d2d122fb7611a3f2c06f0e44b32dcdc}} 
+\index{Cells@{Cells}!m\+\_\+\+Assign\+Neighbour@{m\+\_\+\+Assign\+Neighbour}}
+\index{m\+\_\+\+Assign\+Neighbour@{m\+\_\+\+Assign\+Neighbour}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Neighbour()}{m\_AssignNeighbour()}}
+{\footnotesize\ttfamily void Cells\+::m\+\_\+\+Assign\+Neighbour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cells}{Cells}} \&}]{neighbour }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_a943b866ae140765aaa6d8113ad68065c}\label{class_cells_a943b866ae140765aaa6d8113ad68065c}} 
+\index{Cells@{Cells}!m\+\_\+\+Assign\+Texture@{m\+\_\+\+Assign\+Texture}}
+\index{m\+\_\+\+Assign\+Texture@{m\+\_\+\+Assign\+Texture}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Texture()}{m\_AssignTexture()}}
+{\footnotesize\ttfamily void Cells\+::m\+\_\+\+Assign\+Texture (\begin{DoxyParamCaption}\item[{sf\+::\+Texture}]{new\+Texture }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_a2b96194a69da35f886dc0bb542a4b3b8}\label{class_cells_a2b96194a69da35f886dc0bb542a4b3b8}} 
+\index{Cells@{Cells}!m\+\_\+\+Assign\+Tile@{m\+\_\+\+Assign\+Tile}}
+\index{m\+\_\+\+Assign\+Tile@{m\+\_\+\+Assign\+Tile}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Tile()}{m\_AssignTile()}}
+{\footnotesize\ttfamily void Cells\+::m\+\_\+\+Assign\+Tile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_cells_8h_adc5e4636eae42cdad2a070c6adbd9daf}{tile\+Set}}}]{which\+Tile }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_a49ad6477b62bb29973f3e248909e216b}\label{class_cells_a49ad6477b62bb29973f3e248909e216b}} 
+\index{Cells@{Cells}!m\+\_\+\+Check\+Cell\+Bounds@{m\+\_\+\+Check\+Cell\+Bounds}}
+\index{m\+\_\+\+Check\+Cell\+Bounds@{m\+\_\+\+Check\+Cell\+Bounds}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Check\+Cell\+Bounds()}{m\_CheckCellBounds()}}
+{\footnotesize\ttfamily bool Cells\+::m\+\_\+\+Check\+Cell\+Bounds (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_a5f009c592371d6bad0e49b2ff2bfd811}\label{class_cells_a5f009c592371d6bad0e49b2ff2bfd811}} 
+\index{Cells@{Cells}!m\+\_\+\+Create\+Cell\+Body@{m\+\_\+\+Create\+Cell\+Body}}
+\index{m\+\_\+\+Create\+Cell\+Body@{m\+\_\+\+Create\+Cell\+Body}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Cell\+Body()}{m\_CreateCellBody()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Cells\+::m\+\_\+\+Create\+Cell\+Body (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{dimentions,  }\item[{sf\+::\+Vector2f}]{possition }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_a6405637a987f8af6210518d21b284c5d}\label{class_cells_a6405637a987f8af6210518d21b284c5d}} 
+\index{Cells@{Cells}!m\+\_\+\+Create\+Cell\+Body@{m\+\_\+\+Create\+Cell\+Body}}
+\index{m\+\_\+\+Create\+Cell\+Body@{m\+\_\+\+Create\+Cell\+Body}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Cell\+Body()}{m\_CreateCellBody()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Cells\+::m\+\_\+\+Create\+Cell\+Body (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{dimentions,  }\item[{sf\+::\+Vector2f}]{possition,  }\item[{int}]{r,  }\item[{int}]{g,  }\item[{int}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_a9c7eea82ba5ab8a840bbdcc0be25200f}\label{class_cells_a9c7eea82ba5ab8a840bbdcc0be25200f}} 
+\index{Cells@{Cells}!m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}}
+\index{m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Filter()}{m\_DrawFilter()}}
+{\footnotesize\ttfamily void Cells\+::m\+\_\+\+Draw\+Filter (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_af1a0662ca445d878b163c4648f90259c}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_cells_a09ab1aeac5c986cc28f52754fafd8c66}\label{class_cells_a09ab1aeac5c986cc28f52754fafd8c66}} 
+\index{Cells@{Cells}!m\+\_\+\+Draw\+Game\+Object@{m\+\_\+\+Draw\+Game\+Object}}
+\index{m\+\_\+\+Draw\+Game\+Object@{m\+\_\+\+Draw\+Game\+Object}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Game\+Object()}{m\_DrawGameObject()}}
+{\footnotesize\ttfamily void Cells\+::m\+\_\+\+Draw\+Game\+Object (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_a184ac59fd5167c55a54b50894e5b6721}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_cells_ae61d97e90ef66528c67be257531c4359}\label{class_cells_ae61d97e90ef66528c67be257531c4359}} 
+\index{Cells@{Cells}!m\+\_\+\+Get\+Cell\+Centre@{m\+\_\+\+Get\+Cell\+Centre}}
+\index{m\+\_\+\+Get\+Cell\+Centre@{m\+\_\+\+Get\+Cell\+Centre}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Cell\+Centre()}{m\_GetCellCentre()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Cells\+::m\+\_\+\+Get\+Cell\+Centre (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_ac5885d8ebc2418182b48d19b9e7fde08}\label{class_cells_ac5885d8ebc2418182b48d19b9e7fde08}} 
+\index{Cells@{Cells}!m\+\_\+\+Get\+Cell\+Height@{m\+\_\+\+Get\+Cell\+Height}}
+\index{m\+\_\+\+Get\+Cell\+Height@{m\+\_\+\+Get\+Cell\+Height}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Cell\+Height()}{m\_GetCellHeight()}}
+{\footnotesize\ttfamily float Cells\+::m\+\_\+\+Get\+Cell\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_a230bc14139877d4b703d087784a0c5bc}\label{class_cells_a230bc14139877d4b703d087784a0c5bc}} 
+\index{Cells@{Cells}!m\+\_\+\+Get\+Cell\+Id@{m\+\_\+\+Get\+Cell\+Id}}
+\index{m\+\_\+\+Get\+Cell\+Id@{m\+\_\+\+Get\+Cell\+Id}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Cell\+Id()}{m\_GetCellId()}}
+{\footnotesize\ttfamily int Cells\+::m\+\_\+\+Get\+Cell\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_a8697fccb916059fd456256d038d8f1c2}\label{class_cells_a8697fccb916059fd456256d038d8f1c2}} 
+\index{Cells@{Cells}!m\+\_\+\+Get\+Cell\+Width@{m\+\_\+\+Get\+Cell\+Width}}
+\index{m\+\_\+\+Get\+Cell\+Width@{m\+\_\+\+Get\+Cell\+Width}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Cell\+Width()}{m\_GetCellWidth()}}
+{\footnotesize\ttfamily float Cells\+::m\+\_\+\+Get\+Cell\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_a81750cfd622629b65d615cec1d4edb48}\label{class_cells_a81750cfd622629b65d615cec1d4edb48}} 
+\index{Cells@{Cells}!m\+\_\+\+Get\+Grid\+Pos@{m\+\_\+\+Get\+Grid\+Pos}}
+\index{m\+\_\+\+Get\+Grid\+Pos@{m\+\_\+\+Get\+Grid\+Pos}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Grid\+Pos()}{m\_GetGridPos()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structgrid_pos}{grid\+Pos}} Cells\+::m\+\_\+\+Get\+Grid\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_ad45ab05eb579aa75a0c67c03eaefc0c0}\label{class_cells_ad45ab05eb579aa75a0c67c03eaefc0c0}} 
+\index{Cells@{Cells}!m\+\_\+\+Get\+Layer@{m\+\_\+\+Get\+Layer}}
+\index{m\+\_\+\+Get\+Layer@{m\+\_\+\+Get\+Layer}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Layer()}{m\_GetLayer()}}
+{\footnotesize\ttfamily int Cells\+::m\+\_\+\+Get\+Layer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_ab1b7667ae7e690e9e763d1dd02a5a46e}\label{class_cells_ab1b7667ae7e690e9e763d1dd02a5a46e}} 
+\index{Cells@{Cells}!m\+\_\+\+Get\+Neighbours@{m\+\_\+\+Get\+Neighbours}}
+\index{m\+\_\+\+Get\+Neighbours@{m\+\_\+\+Get\+Neighbours}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Neighbours()}{m\_GetNeighbours()}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_cells}{Cells}}$\ast$$>$\& Cells\+::m\+\_\+\+Get\+Neighbours (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_a1ee8670d06fa37bbdbdb30796c0eeee0}\label{class_cells_a1ee8670d06fa37bbdbdb30796c0eeee0}} 
+\index{Cells@{Cells}!m\+\_\+\+Get\+Tile@{m\+\_\+\+Get\+Tile}}
+\index{m\+\_\+\+Get\+Tile@{m\+\_\+\+Get\+Tile}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Tile()}{m\_GetTile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_cells_8h_adc5e4636eae42cdad2a070c6adbd9daf}{tile\+Set}} Cells\+::m\+\_\+\+Get\+Tile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_ae64b76c5e33a081910b1c93631f8dd4e}\label{class_cells_ae64b76c5e33a081910b1c93631f8dd4e}} 
+\index{Cells@{Cells}!m\+\_\+\+Get\+Tile\+Name@{m\+\_\+\+Get\+Tile\+Name}}
+\index{m\+\_\+\+Get\+Tile\+Name@{m\+\_\+\+Get\+Tile\+Name}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Tile\+Name()}{m\_GetTileName()}}
+{\footnotesize\ttfamily std\+::string Cells\+::m\+\_\+\+Get\+Tile\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_abf00b8c57ba89e13c2ee86f22051e56f}\label{class_cells_abf00b8c57ba89e13c2ee86f22051e56f}} 
+\index{Cells@{Cells}!m\+\_\+\+Set\+Cell\+Centre@{m\+\_\+\+Set\+Cell\+Centre}}
+\index{m\+\_\+\+Set\+Cell\+Centre@{m\+\_\+\+Set\+Cell\+Centre}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Cell\+Centre()}{m\_SetCellCentre()}}
+{\footnotesize\ttfamily void Cells\+::m\+\_\+\+Set\+Cell\+Centre (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_a54a485e9bed0760a0a7464311b59a700}\label{class_cells_a54a485e9bed0760a0a7464311b59a700}} 
+\index{Cells@{Cells}!m\+\_\+\+Set\+Cell\+Colour@{m\+\_\+\+Set\+Cell\+Colour}}
+\index{m\+\_\+\+Set\+Cell\+Colour@{m\+\_\+\+Set\+Cell\+Colour}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Cell\+Colour()}{m\_SetCellColour()}}
+{\footnotesize\ttfamily void Cells\+::m\+\_\+\+Set\+Cell\+Colour (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{int}]{g,  }\item[{int}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_ace2656aa881803e17d7d53c9031e6ee4}\label{class_cells_ace2656aa881803e17d7d53c9031e6ee4}} 
+\index{Cells@{Cells}!m\+\_\+\+Set\+Grid\+Pos@{m\+\_\+\+Set\+Grid\+Pos}}
+\index{m\+\_\+\+Set\+Grid\+Pos@{m\+\_\+\+Set\+Grid\+Pos}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Grid\+Pos()}{m\_SetGridPos()}}
+{\footnotesize\ttfamily void Cells\+::m\+\_\+\+Set\+Grid\+Pos (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_a4978491aa8ad58dd1c1f2ad0431d78b6}\label{class_cells_a4978491aa8ad58dd1c1f2ad0431d78b6}} 
+\index{Cells@{Cells}!m\+\_\+\+Set\+Layer@{m\+\_\+\+Set\+Layer}}
+\index{m\+\_\+\+Set\+Layer@{m\+\_\+\+Set\+Layer}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Layer()}{m\_SetLayer()}}
+{\footnotesize\ttfamily void Cells\+::m\+\_\+\+Set\+Layer (\begin{DoxyParamCaption}\item[{int}]{layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_cells_a5d900205d8d5fc3d3b41b664d51994c4}\label{class_cells_a5d900205d8d5fc3d3b41b664d51994c4}} 
+\index{Cells@{Cells}!m\+\_\+\+Set\+Object\+Pos@{m\+\_\+\+Set\+Object\+Pos}}
+\index{m\+\_\+\+Set\+Object\+Pos@{m\+\_\+\+Set\+Object\+Pos}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Object\+Pos()}{m\_SetObjectPos()}}
+{\footnotesize\ttfamily void Cells\+::m\+\_\+\+Set\+Object\+Pos (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_ad1f8ea8eb3673b1af8215bf92cdc0df8}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_cells_a524d410412de7030016b99a4d8b0c1cc}\label{class_cells_a524d410412de7030016b99a4d8b0c1cc}} 
+\index{Cells@{Cells}!m\+\_\+\+Update@{m\+\_\+\+Update}}
+\index{m\+\_\+\+Update@{m\+\_\+\+Update}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Update()}{m\_Update()}}
+{\footnotesize\ttfamily void Cells\+::m\+\_\+\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_a3af5a7b470e09f13a1422439fc6a9ba8}{Game\+Object}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_cells_a0bc31e333f70a4d5aefd1fa5e14fa0fb}\label{class_cells_a0bc31e333f70a4d5aefd1fa5e14fa0fb}} 
+\index{Cells@{Cells}!m\+\_\+b\+Obstruction@{m\+\_\+b\+Obstruction}}
+\index{m\+\_\+b\+Obstruction@{m\+\_\+b\+Obstruction}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+b\+Obstruction}{m\_bObstruction}}
+{\footnotesize\ttfamily bool Cells\+::m\+\_\+b\+Obstruction = false}
+
+\mbox{\Hypertarget{class_cells_a4c0eadc267ff60babcabe97347d9e452}\label{class_cells_a4c0eadc267ff60babcabe97347d9e452}} 
+\index{Cells@{Cells}!m\+\_\+i\+F\+Score@{m\+\_\+i\+F\+Score}}
+\index{m\+\_\+i\+F\+Score@{m\+\_\+i\+F\+Score}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+i\+F\+Score}{m\_iFScore}}
+{\footnotesize\ttfamily int Cells\+::m\+\_\+i\+F\+Score = 0}
+
+\mbox{\Hypertarget{class_cells_abe9c29d1ede13bf4fe3980ab837e81ce}\label{class_cells_abe9c29d1ede13bf4fe3980ab837e81ce}} 
+\index{Cells@{Cells}!m\+\_\+i\+G\+Score@{m\+\_\+i\+G\+Score}}
+\index{m\+\_\+i\+G\+Score@{m\+\_\+i\+G\+Score}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+i\+G\+Score}{m\_iGScore}}
+{\footnotesize\ttfamily int Cells\+::m\+\_\+i\+G\+Score = 0}
+
+\mbox{\Hypertarget{class_cells_a00f6a71c14e40130259bbdeb15394f67}\label{class_cells_a00f6a71c14e40130259bbdeb15394f67}} 
+\index{Cells@{Cells}!m\+\_\+i\+H\+Score@{m\+\_\+i\+H\+Score}}
+\index{m\+\_\+i\+H\+Score@{m\+\_\+i\+H\+Score}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+i\+H\+Score}{m\_iHScore}}
+{\footnotesize\ttfamily int Cells\+::m\+\_\+i\+H\+Score = 0}
+
+\mbox{\Hypertarget{class_cells_ae71aff17afdd01c99293906893c67354}\label{class_cells_ae71aff17afdd01c99293906893c67354}} 
+\index{Cells@{Cells}!m\+\_\+\+Parent\+Cell@{m\+\_\+\+Parent\+Cell}}
+\index{m\+\_\+\+Parent\+Cell@{m\+\_\+\+Parent\+Cell}!Cells@{Cells}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Parent\+Cell}{m\_ParentCell}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cells}{Cells}}$\ast$ Cells\+::m\+\_\+\+Parent\+Cell = nullptr}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{_cells_8h}{Cells.\+h}}\end{DoxyCompactItemize}

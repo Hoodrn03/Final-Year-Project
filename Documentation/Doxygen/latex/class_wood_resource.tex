@@ -1,0 +1,163 @@
+\hypertarget{class_wood_resource}{}\section{Wood\+Resource Class Reference}
+\label{class_wood_resource}\index{Wood\+Resource@{Wood\+Resource}}
+
+
+{\ttfamily \#include $<$Wood\+Resource.\+h$>$}
+
+Inheritance diagram for Wood\+Resource\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_wood_resource}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_wood_resource_a692782e93b0450b26694eb3d48c86a2a}{Wood\+Resource}} ()
+\item 
+\mbox{\hyperlink{class_wood_resource_ad525b51c0f4728951969b90498760a63}{$\sim$\+Wood\+Resource}} ()
+\item 
+void \mbox{\hyperlink{class_wood_resource_aeea45c6a211c4662ff114cd77f604c68}{m\+\_\+\+Create\+Tree}} (float radius, sf\+::\+Vector2f position, int layer, \mbox{\hyperlink{class_cells}{Cells}} $\ast$new\+Current\+Cell)
+\item 
+void \mbox{\hyperlink{class_wood_resource_a8ba1b597aacbdd74be37d0ab18d95008}{m\+\_\+\+Update}} () override
+\item 
+void \mbox{\hyperlink{class_wood_resource_a8f2336619be4467ba0eba87ded7b7474}{m\+\_\+\+Draw\+Game\+Object}} (sf\+::\+Render\+Window \&window) override
+\item 
+void \mbox{\hyperlink{class_wood_resource_a08e9ac9417b6337b4fe8afcb97783acf}{m\+\_\+\+Draw\+Filter}} (sf\+::\+Vector2f top\+Left, sf\+::\+Vector2f bottom\+Right) override
+\item 
+void \mbox{\hyperlink{class_wood_resource_acdbde685c1d8f702b41d89763f7bb0c7}{m\+\_\+\+Draw\+Filter}} (sf\+::\+Vector2f top\+Left, sf\+::\+Vector2f bottom\+Right, int current\+Layer)
+\item 
+void \mbox{\hyperlink{class_wood_resource_afa9f748e3dea5f08c18dd831f04d9287}{m\+\_\+\+Set\+Object\+Pos}} (float x, float y) override
+\item 
+\mbox{\hyperlink{class_cells}{Cells}} $\ast$ \mbox{\hyperlink{class_wood_resource_a9c7446775e6e37e60a0bfce147d8151f}{m\+\_\+\+Get\+Current\+Cell}} ()
+\item 
+void \mbox{\hyperlink{class_wood_resource_a90aadace134336f71aed1c167983c711}{m\+\_\+\+Set\+Tree\+Cut\+Down}} ()
+\item 
+void \mbox{\hyperlink{class_wood_resource_a5006853189de66810cbbfb2500b559c0}{m\+\_\+\+Set\+Mark\+For\+Deletion}} (bool remove\+This)
+\item 
+bool \mbox{\hyperlink{class_wood_resource_ac63bf6a2a12aed793b4e1da4aae57c00}{m\+\_\+\+Get\+Mark\+For\+Deletion}} ()
+\item 
+float \mbox{\hyperlink{class_wood_resource_a185e4bc651ee95a51239d8842c9c3773}{m\+\_\+\+Get\+Current\+Growth}} ()
+\item 
+void \mbox{\hyperlink{class_wood_resource_ab0aabdbb9fc8c1ff574a8528b6cda537}{m\+\_\+\+Cancel\+Tree\+Cut\+Down}} ()
+\item 
+bool \mbox{\hyperlink{class_wood_resource_aa7228add3ddade14e54acc5647b79a14}{m\+\_\+\+Get\+Tree\+Cut\+Down}} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_wood_resource_a692782e93b0450b26694eb3d48c86a2a}\label{class_wood_resource_a692782e93b0450b26694eb3d48c86a2a}} 
+\index{Wood\+Resource@{Wood\+Resource}!Wood\+Resource@{Wood\+Resource}}
+\index{Wood\+Resource@{Wood\+Resource}!Wood\+Resource@{Wood\+Resource}}
+\subsubsection{\texorpdfstring{Wood\+Resource()}{WoodResource()}}
+{\footnotesize\ttfamily Wood\+Resource\+::\+Wood\+Resource (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_wood_resource_ad525b51c0f4728951969b90498760a63}\label{class_wood_resource_ad525b51c0f4728951969b90498760a63}} 
+\index{Wood\+Resource@{Wood\+Resource}!````~Wood\+Resource@{$\sim$\+Wood\+Resource}}
+\index{````~Wood\+Resource@{$\sim$\+Wood\+Resource}!Wood\+Resource@{Wood\+Resource}}
+\subsubsection{\texorpdfstring{$\sim$\+Wood\+Resource()}{~WoodResource()}}
+{\footnotesize\ttfamily Wood\+Resource\+::$\sim$\+Wood\+Resource (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_wood_resource_ab0aabdbb9fc8c1ff574a8528b6cda537}\label{class_wood_resource_ab0aabdbb9fc8c1ff574a8528b6cda537}} 
+\index{Wood\+Resource@{Wood\+Resource}!m\+\_\+\+Cancel\+Tree\+Cut\+Down@{m\+\_\+\+Cancel\+Tree\+Cut\+Down}}
+\index{m\+\_\+\+Cancel\+Tree\+Cut\+Down@{m\+\_\+\+Cancel\+Tree\+Cut\+Down}!Wood\+Resource@{Wood\+Resource}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Cancel\+Tree\+Cut\+Down()}{m\_CancelTreeCutDown()}}
+{\footnotesize\ttfamily void Wood\+Resource\+::m\+\_\+\+Cancel\+Tree\+Cut\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_wood_resource_aeea45c6a211c4662ff114cd77f604c68}\label{class_wood_resource_aeea45c6a211c4662ff114cd77f604c68}} 
+\index{Wood\+Resource@{Wood\+Resource}!m\+\_\+\+Create\+Tree@{m\+\_\+\+Create\+Tree}}
+\index{m\+\_\+\+Create\+Tree@{m\+\_\+\+Create\+Tree}!Wood\+Resource@{Wood\+Resource}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Tree()}{m\_CreateTree()}}
+{\footnotesize\ttfamily void Wood\+Resource\+::m\+\_\+\+Create\+Tree (\begin{DoxyParamCaption}\item[{float}]{radius,  }\item[{sf\+::\+Vector2f}]{position,  }\item[{int}]{layer,  }\item[{\mbox{\hyperlink{class_cells}{Cells}} $\ast$}]{new\+Current\+Cell }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_wood_resource_a08e9ac9417b6337b4fe8afcb97783acf}\label{class_wood_resource_a08e9ac9417b6337b4fe8afcb97783acf}} 
+\index{Wood\+Resource@{Wood\+Resource}!m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}}
+\index{m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}!Wood\+Resource@{Wood\+Resource}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Filter()}{m\_DrawFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Wood\+Resource\+::m\+\_\+\+Draw\+Filter (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_af1a0662ca445d878b163c4648f90259c}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_wood_resource_acdbde685c1d8f702b41d89763f7bb0c7}\label{class_wood_resource_acdbde685c1d8f702b41d89763f7bb0c7}} 
+\index{Wood\+Resource@{Wood\+Resource}!m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}}
+\index{m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}!Wood\+Resource@{Wood\+Resource}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Filter()}{m\_DrawFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Wood\+Resource\+::m\+\_\+\+Draw\+Filter (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right,  }\item[{int}]{current\+Layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_wood_resource_a8f2336619be4467ba0eba87ded7b7474}\label{class_wood_resource_a8f2336619be4467ba0eba87ded7b7474}} 
+\index{Wood\+Resource@{Wood\+Resource}!m\+\_\+\+Draw\+Game\+Object@{m\+\_\+\+Draw\+Game\+Object}}
+\index{m\+\_\+\+Draw\+Game\+Object@{m\+\_\+\+Draw\+Game\+Object}!Wood\+Resource@{Wood\+Resource}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Game\+Object()}{m\_DrawGameObject()}}
+{\footnotesize\ttfamily void Wood\+Resource\+::m\+\_\+\+Draw\+Game\+Object (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_a184ac59fd5167c55a54b50894e5b6721}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_wood_resource_a9c7446775e6e37e60a0bfce147d8151f}\label{class_wood_resource_a9c7446775e6e37e60a0bfce147d8151f}} 
+\index{Wood\+Resource@{Wood\+Resource}!m\+\_\+\+Get\+Current\+Cell@{m\+\_\+\+Get\+Current\+Cell}}
+\index{m\+\_\+\+Get\+Current\+Cell@{m\+\_\+\+Get\+Current\+Cell}!Wood\+Resource@{Wood\+Resource}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Current\+Cell()}{m\_GetCurrentCell()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cells}{Cells}}$\ast$ Wood\+Resource\+::m\+\_\+\+Get\+Current\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_wood_resource_a185e4bc651ee95a51239d8842c9c3773}\label{class_wood_resource_a185e4bc651ee95a51239d8842c9c3773}} 
+\index{Wood\+Resource@{Wood\+Resource}!m\+\_\+\+Get\+Current\+Growth@{m\+\_\+\+Get\+Current\+Growth}}
+\index{m\+\_\+\+Get\+Current\+Growth@{m\+\_\+\+Get\+Current\+Growth}!Wood\+Resource@{Wood\+Resource}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Current\+Growth()}{m\_GetCurrentGrowth()}}
+{\footnotesize\ttfamily float Wood\+Resource\+::m\+\_\+\+Get\+Current\+Growth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_wood_resource_ac63bf6a2a12aed793b4e1da4aae57c00}\label{class_wood_resource_ac63bf6a2a12aed793b4e1da4aae57c00}} 
+\index{Wood\+Resource@{Wood\+Resource}!m\+\_\+\+Get\+Mark\+For\+Deletion@{m\+\_\+\+Get\+Mark\+For\+Deletion}}
+\index{m\+\_\+\+Get\+Mark\+For\+Deletion@{m\+\_\+\+Get\+Mark\+For\+Deletion}!Wood\+Resource@{Wood\+Resource}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Mark\+For\+Deletion()}{m\_GetMarkForDeletion()}}
+{\footnotesize\ttfamily bool Wood\+Resource\+::m\+\_\+\+Get\+Mark\+For\+Deletion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_wood_resource_aa7228add3ddade14e54acc5647b79a14}\label{class_wood_resource_aa7228add3ddade14e54acc5647b79a14}} 
+\index{Wood\+Resource@{Wood\+Resource}!m\+\_\+\+Get\+Tree\+Cut\+Down@{m\+\_\+\+Get\+Tree\+Cut\+Down}}
+\index{m\+\_\+\+Get\+Tree\+Cut\+Down@{m\+\_\+\+Get\+Tree\+Cut\+Down}!Wood\+Resource@{Wood\+Resource}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Tree\+Cut\+Down()}{m\_GetTreeCutDown()}}
+{\footnotesize\ttfamily bool Wood\+Resource\+::m\+\_\+\+Get\+Tree\+Cut\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_wood_resource_a5006853189de66810cbbfb2500b559c0}\label{class_wood_resource_a5006853189de66810cbbfb2500b559c0}} 
+\index{Wood\+Resource@{Wood\+Resource}!m\+\_\+\+Set\+Mark\+For\+Deletion@{m\+\_\+\+Set\+Mark\+For\+Deletion}}
+\index{m\+\_\+\+Set\+Mark\+For\+Deletion@{m\+\_\+\+Set\+Mark\+For\+Deletion}!Wood\+Resource@{Wood\+Resource}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Mark\+For\+Deletion()}{m\_SetMarkForDeletion()}}
+{\footnotesize\ttfamily void Wood\+Resource\+::m\+\_\+\+Set\+Mark\+For\+Deletion (\begin{DoxyParamCaption}\item[{bool}]{remove\+This }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_wood_resource_afa9f748e3dea5f08c18dd831f04d9287}\label{class_wood_resource_afa9f748e3dea5f08c18dd831f04d9287}} 
+\index{Wood\+Resource@{Wood\+Resource}!m\+\_\+\+Set\+Object\+Pos@{m\+\_\+\+Set\+Object\+Pos}}
+\index{m\+\_\+\+Set\+Object\+Pos@{m\+\_\+\+Set\+Object\+Pos}!Wood\+Resource@{Wood\+Resource}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Object\+Pos()}{m\_SetObjectPos()}}
+{\footnotesize\ttfamily void Wood\+Resource\+::m\+\_\+\+Set\+Object\+Pos (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_ad1f8ea8eb3673b1af8215bf92cdc0df8}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_wood_resource_a90aadace134336f71aed1c167983c711}\label{class_wood_resource_a90aadace134336f71aed1c167983c711}} 
+\index{Wood\+Resource@{Wood\+Resource}!m\+\_\+\+Set\+Tree\+Cut\+Down@{m\+\_\+\+Set\+Tree\+Cut\+Down}}
+\index{m\+\_\+\+Set\+Tree\+Cut\+Down@{m\+\_\+\+Set\+Tree\+Cut\+Down}!Wood\+Resource@{Wood\+Resource}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Tree\+Cut\+Down()}{m\_SetTreeCutDown()}}
+{\footnotesize\ttfamily void Wood\+Resource\+::m\+\_\+\+Set\+Tree\+Cut\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_wood_resource_a8ba1b597aacbdd74be37d0ab18d95008}\label{class_wood_resource_a8ba1b597aacbdd74be37d0ab18d95008}} 
+\index{Wood\+Resource@{Wood\+Resource}!m\+\_\+\+Update@{m\+\_\+\+Update}}
+\index{m\+\_\+\+Update@{m\+\_\+\+Update}!Wood\+Resource@{Wood\+Resource}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Update()}{m\_Update()}}
+{\footnotesize\ttfamily void Wood\+Resource\+::m\+\_\+\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_a3af5a7b470e09f13a1422439fc6a9ba8}{Game\+Object}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{_wood_resource_8h}{Wood\+Resource.\+h}}\end{DoxyCompactItemize}

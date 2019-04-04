@@ -1,0 +1,202 @@
+\hypertarget{class_building_manager}{}\section{Building\+Manager Class Reference}
+\label{class_building_manager}\index{Building\+Manager@{Building\+Manager}}
+
+
+{\ttfamily \#include $<$Building\+Manager.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_building_manager_ae393b30d59cd8c3f745ea9189f81cd44}{Building\+Manager}} ()
+\item 
+\mbox{\hyperlink{class_building_manager_ae1018d56c81a769f15705b2f1b4da592}{$\sim$\+Building\+Manager}} ()
+\item 
+void \mbox{\hyperlink{class_building_manager_af7e1e2b4d3dc88c2254d0a040d599b16}{m\+\_\+\+Setup}} ()
+\item 
+void \mbox{\hyperlink{class_building_manager_a53af18d219085b44a5f4267b7b55d2ea}{m\+\_\+\+Setup}} (sf\+::\+Vector2f cell\+Size)
+\item 
+void \mbox{\hyperlink{class_building_manager_a2e4a522b0283fb59a70d60deff94fd30}{m\+\_\+\+Assign\+Textures}} (std\+::map$<$ std\+::string, sf\+::\+Texture $>$ \&m\+\_\+\+Texture\+Map)
+\item 
+void \mbox{\hyperlink{class_building_manager_ad73beb2ede5b80fdda85daf6b88507b8}{m\+\_\+\+Assign\+Font}} (sf\+::\+Font main\+Font)
+\item 
+void \mbox{\hyperlink{class_building_manager_a50acd47e63a6dad5930f95673d827749}{m\+\_\+\+Add\+Building}} (std\+::string building\+Type, \mbox{\hyperlink{class_cells}{Cells}} $\ast$new\+Cell)
+\item 
+void \mbox{\hyperlink{class_building_manager_ac2ca2ad7f60e02b9b2fef3a83c867632}{m\+\_\+\+Set\+Build\+Objects}} (bool build\+New\+Objects)
+\item 
+void \mbox{\hyperlink{class_building_manager_a59bd90c60e591874c242661517d4e9fe}{m\+\_\+\+Set\+Current\+Object\+To\+Build}} (std\+::string building\+Type)
+\item 
+void \mbox{\hyperlink{class_building_manager_abedabfdf29d8bef3d49014ac4a37352e}{m\+\_\+\+Update}} (sf\+::\+Vector2f mouse\+Pos, bool mouse\+Down, \mbox{\hyperlink{class_cells}{Cells}} $\ast$current\+Cell, sf\+::\+Vector2f upper\+Bounds, sf\+::\+Vector2f lower\+Bounds)
+\item 
+void \mbox{\hyperlink{class_building_manager_a0d93750385afe5dacbfb87ee0892bf65}{m\+\_\+\+Draw\+Buildings}} (sf\+::\+Render\+Window \&window)
+\item 
+void \mbox{\hyperlink{class_building_manager_a0e73c63a55ff4aea0580565c8b4739b2}{m\+\_\+\+Draw\+Filter}} (sf\+::\+Vector2f top\+Left, sf\+::\+Vector2f bottom\+Right)
+\item 
+void \mbox{\hyperlink{class_building_manager_a6f456c69a3a406162e426584f815f8ea}{m\+\_\+\+Draw\+Filter}} (sf\+::\+Vector2f top\+Left, sf\+::\+Vector2f bottom\+Right, int current\+Layer)
+\item 
+\mbox{\hyperlink{class_building_object}{Building\+Object}} $\ast$ \mbox{\hyperlink{class_building_manager_adc2e37c83d693c994abccb089fe759e6}{m\+\_\+\+Get\+Closest\+Building}} (sf\+::\+Vector2f object\+Pos)
+\item 
+\mbox{\hyperlink{class_building_object}{Building\+Object}} $\ast$ \mbox{\hyperlink{class_building_manager_aa0d3cee7f0f10b931eec6ec94aed54fa}{m\+\_\+\+Find\+Object\+With\+Name}} (std\+::string object\+Name)
+\item 
+void \mbox{\hyperlink{class_building_manager_ac4fcc17f3333c5c51e00192688fb305e}{m\+\_\+\+Create\+Building\+Buttons}} (float window\+Width, float window\+Height)
+\item 
+void \mbox{\hyperlink{class_building_manager_a20e557f17b3685f0c6100584da487c12}{m\+\_\+\+Draw\+Building\+Buttons}} ()
+\item 
+std\+::vector$<$ tgui\+::\+Button\+::\+Ptr $>$ \mbox{\hyperlink{class_building_manager_a39cf73d7195ba35a0151470298c73724}{m\+\_\+\+Get\+Building\+Buttons}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+tgui\+::\+Button\+::\+Ptr \mbox{\hyperlink{class_building_manager_a73319ea38914344dd2f10343bc224781}{m\+\_\+\+Building\+Action\+Button}}
+\item 
+bool \mbox{\hyperlink{class_building_manager_ab8250b9959e2cac047682b905e87e552}{m\+\_\+b\+Display\+Buttons}} = false
+\item 
+bool \mbox{\hyperlink{class_building_manager_a8e0316f32edc4c9be66f69fc0be86442}{m\+\_\+b\+Buttons\+Created}} = false
+\item 
+bool \mbox{\hyperlink{class_building_manager_a211d06d6db5ad2f5a449465eea816b30}{m\+\_\+b\+Buttons\+Removed}} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_building_manager_ae393b30d59cd8c3f745ea9189f81cd44}\label{class_building_manager_ae393b30d59cd8c3f745ea9189f81cd44}} 
+\index{Building\+Manager@{Building\+Manager}!Building\+Manager@{Building\+Manager}}
+\index{Building\+Manager@{Building\+Manager}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{Building\+Manager()}{BuildingManager()}}
+{\footnotesize\ttfamily Building\+Manager\+::\+Building\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_manager_ae1018d56c81a769f15705b2f1b4da592}\label{class_building_manager_ae1018d56c81a769f15705b2f1b4da592}} 
+\index{Building\+Manager@{Building\+Manager}!````~Building\+Manager@{$\sim$\+Building\+Manager}}
+\index{````~Building\+Manager@{$\sim$\+Building\+Manager}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{$\sim$\+Building\+Manager()}{~BuildingManager()}}
+{\footnotesize\ttfamily Building\+Manager\+::$\sim$\+Building\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_building_manager_a50acd47e63a6dad5930f95673d827749}\label{class_building_manager_a50acd47e63a6dad5930f95673d827749}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+\+Add\+Building@{m\+\_\+\+Add\+Building}}
+\index{m\+\_\+\+Add\+Building@{m\+\_\+\+Add\+Building}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Add\+Building()}{m\_AddBuilding()}}
+{\footnotesize\ttfamily void Building\+Manager\+::m\+\_\+\+Add\+Building (\begin{DoxyParamCaption}\item[{std\+::string}]{building\+Type,  }\item[{\mbox{\hyperlink{class_cells}{Cells}} $\ast$}]{new\+Cell }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_manager_ad73beb2ede5b80fdda85daf6b88507b8}\label{class_building_manager_ad73beb2ede5b80fdda85daf6b88507b8}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+\+Assign\+Font@{m\+\_\+\+Assign\+Font}}
+\index{m\+\_\+\+Assign\+Font@{m\+\_\+\+Assign\+Font}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Font()}{m\_AssignFont()}}
+{\footnotesize\ttfamily void Building\+Manager\+::m\+\_\+\+Assign\+Font (\begin{DoxyParamCaption}\item[{sf\+::\+Font}]{main\+Font }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_manager_a2e4a522b0283fb59a70d60deff94fd30}\label{class_building_manager_a2e4a522b0283fb59a70d60deff94fd30}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+\+Assign\+Textures@{m\+\_\+\+Assign\+Textures}}
+\index{m\+\_\+\+Assign\+Textures@{m\+\_\+\+Assign\+Textures}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Textures()}{m\_AssignTextures()}}
+{\footnotesize\ttfamily void Building\+Manager\+::m\+\_\+\+Assign\+Textures (\begin{DoxyParamCaption}\item[{std\+::map$<$ std\+::string, sf\+::\+Texture $>$ \&}]{m\+\_\+\+Texture\+Map }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_manager_ac4fcc17f3333c5c51e00192688fb305e}\label{class_building_manager_ac4fcc17f3333c5c51e00192688fb305e}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+\+Create\+Building\+Buttons@{m\+\_\+\+Create\+Building\+Buttons}}
+\index{m\+\_\+\+Create\+Building\+Buttons@{m\+\_\+\+Create\+Building\+Buttons}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Building\+Buttons()}{m\_CreateBuildingButtons()}}
+{\footnotesize\ttfamily void Building\+Manager\+::m\+\_\+\+Create\+Building\+Buttons (\begin{DoxyParamCaption}\item[{float}]{window\+Width,  }\item[{float}]{window\+Height }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_manager_a20e557f17b3685f0c6100584da487c12}\label{class_building_manager_a20e557f17b3685f0c6100584da487c12}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+\+Draw\+Building\+Buttons@{m\+\_\+\+Draw\+Building\+Buttons}}
+\index{m\+\_\+\+Draw\+Building\+Buttons@{m\+\_\+\+Draw\+Building\+Buttons}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Building\+Buttons()}{m\_DrawBuildingButtons()}}
+{\footnotesize\ttfamily void Building\+Manager\+::m\+\_\+\+Draw\+Building\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_manager_a0d93750385afe5dacbfb87ee0892bf65}\label{class_building_manager_a0d93750385afe5dacbfb87ee0892bf65}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+\+Draw\+Buildings@{m\+\_\+\+Draw\+Buildings}}
+\index{m\+\_\+\+Draw\+Buildings@{m\+\_\+\+Draw\+Buildings}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Buildings()}{m\_DrawBuildings()}}
+{\footnotesize\ttfamily void Building\+Manager\+::m\+\_\+\+Draw\+Buildings (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_manager_a0e73c63a55ff4aea0580565c8b4739b2}\label{class_building_manager_a0e73c63a55ff4aea0580565c8b4739b2}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}}
+\index{m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Filter()}{m\_DrawFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Building\+Manager\+::m\+\_\+\+Draw\+Filter (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_manager_a6f456c69a3a406162e426584f815f8ea}\label{class_building_manager_a6f456c69a3a406162e426584f815f8ea}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}}
+\index{m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Filter()}{m\_DrawFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Building\+Manager\+::m\+\_\+\+Draw\+Filter (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right,  }\item[{int}]{current\+Layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_manager_aa0d3cee7f0f10b931eec6ec94aed54fa}\label{class_building_manager_aa0d3cee7f0f10b931eec6ec94aed54fa}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+\+Find\+Object\+With\+Name@{m\+\_\+\+Find\+Object\+With\+Name}}
+\index{m\+\_\+\+Find\+Object\+With\+Name@{m\+\_\+\+Find\+Object\+With\+Name}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Find\+Object\+With\+Name()}{m\_FindObjectWithName()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_building_object}{Building\+Object}}$\ast$ Building\+Manager\+::m\+\_\+\+Find\+Object\+With\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{object\+Name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_manager_a39cf73d7195ba35a0151470298c73724}\label{class_building_manager_a39cf73d7195ba35a0151470298c73724}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+\+Get\+Building\+Buttons@{m\+\_\+\+Get\+Building\+Buttons}}
+\index{m\+\_\+\+Get\+Building\+Buttons@{m\+\_\+\+Get\+Building\+Buttons}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Building\+Buttons()}{m\_GetBuildingButtons()}}
+{\footnotesize\ttfamily std\+::vector$<$tgui\+::\+Button\+::\+Ptr$>$ Building\+Manager\+::m\+\_\+\+Get\+Building\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_manager_adc2e37c83d693c994abccb089fe759e6}\label{class_building_manager_adc2e37c83d693c994abccb089fe759e6}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+\+Get\+Closest\+Building@{m\+\_\+\+Get\+Closest\+Building}}
+\index{m\+\_\+\+Get\+Closest\+Building@{m\+\_\+\+Get\+Closest\+Building}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Closest\+Building()}{m\_GetClosestBuilding()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_building_object}{Building\+Object}}$\ast$ Building\+Manager\+::m\+\_\+\+Get\+Closest\+Building (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{object\+Pos }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_manager_ac2ca2ad7f60e02b9b2fef3a83c867632}\label{class_building_manager_ac2ca2ad7f60e02b9b2fef3a83c867632}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+\+Set\+Build\+Objects@{m\+\_\+\+Set\+Build\+Objects}}
+\index{m\+\_\+\+Set\+Build\+Objects@{m\+\_\+\+Set\+Build\+Objects}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Build\+Objects()}{m\_SetBuildObjects()}}
+{\footnotesize\ttfamily void Building\+Manager\+::m\+\_\+\+Set\+Build\+Objects (\begin{DoxyParamCaption}\item[{bool}]{build\+New\+Objects }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_manager_a59bd90c60e591874c242661517d4e9fe}\label{class_building_manager_a59bd90c60e591874c242661517d4e9fe}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+\+Set\+Current\+Object\+To\+Build@{m\+\_\+\+Set\+Current\+Object\+To\+Build}}
+\index{m\+\_\+\+Set\+Current\+Object\+To\+Build@{m\+\_\+\+Set\+Current\+Object\+To\+Build}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Current\+Object\+To\+Build()}{m\_SetCurrentObjectToBuild()}}
+{\footnotesize\ttfamily void Building\+Manager\+::m\+\_\+\+Set\+Current\+Object\+To\+Build (\begin{DoxyParamCaption}\item[{std\+::string}]{building\+Type }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_manager_af7e1e2b4d3dc88c2254d0a040d599b16}\label{class_building_manager_af7e1e2b4d3dc88c2254d0a040d599b16}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+\+Setup@{m\+\_\+\+Setup}}
+\index{m\+\_\+\+Setup@{m\+\_\+\+Setup}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Setup()}{m\_Setup()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Building\+Manager\+::m\+\_\+\+Setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_manager_a53af18d219085b44a5f4267b7b55d2ea}\label{class_building_manager_a53af18d219085b44a5f4267b7b55d2ea}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+\+Setup@{m\+\_\+\+Setup}}
+\index{m\+\_\+\+Setup@{m\+\_\+\+Setup}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Setup()}{m\_Setup()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Building\+Manager\+::m\+\_\+\+Setup (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{cell\+Size }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_manager_abedabfdf29d8bef3d49014ac4a37352e}\label{class_building_manager_abedabfdf29d8bef3d49014ac4a37352e}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+\+Update@{m\+\_\+\+Update}}
+\index{m\+\_\+\+Update@{m\+\_\+\+Update}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Update()}{m\_Update()}}
+{\footnotesize\ttfamily void Building\+Manager\+::m\+\_\+\+Update (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{mouse\+Pos,  }\item[{bool}]{mouse\+Down,  }\item[{\mbox{\hyperlink{class_cells}{Cells}} $\ast$}]{current\+Cell,  }\item[{sf\+::\+Vector2f}]{upper\+Bounds,  }\item[{sf\+::\+Vector2f}]{lower\+Bounds }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_building_manager_a8e0316f32edc4c9be66f69fc0be86442}\label{class_building_manager_a8e0316f32edc4c9be66f69fc0be86442}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+b\+Buttons\+Created@{m\+\_\+b\+Buttons\+Created}}
+\index{m\+\_\+b\+Buttons\+Created@{m\+\_\+b\+Buttons\+Created}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+b\+Buttons\+Created}{m\_bButtonsCreated}}
+{\footnotesize\ttfamily bool Building\+Manager\+::m\+\_\+b\+Buttons\+Created = false}
+
+\mbox{\Hypertarget{class_building_manager_a211d06d6db5ad2f5a449465eea816b30}\label{class_building_manager_a211d06d6db5ad2f5a449465eea816b30}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+b\+Buttons\+Removed@{m\+\_\+b\+Buttons\+Removed}}
+\index{m\+\_\+b\+Buttons\+Removed@{m\+\_\+b\+Buttons\+Removed}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+b\+Buttons\+Removed}{m\_bButtonsRemoved}}
+{\footnotesize\ttfamily bool Building\+Manager\+::m\+\_\+b\+Buttons\+Removed = false}
+
+\mbox{\Hypertarget{class_building_manager_ab8250b9959e2cac047682b905e87e552}\label{class_building_manager_ab8250b9959e2cac047682b905e87e552}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+b\+Display\+Buttons@{m\+\_\+b\+Display\+Buttons}}
+\index{m\+\_\+b\+Display\+Buttons@{m\+\_\+b\+Display\+Buttons}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+b\+Display\+Buttons}{m\_bDisplayButtons}}
+{\footnotesize\ttfamily bool Building\+Manager\+::m\+\_\+b\+Display\+Buttons = false}
+
+\mbox{\Hypertarget{class_building_manager_a73319ea38914344dd2f10343bc224781}\label{class_building_manager_a73319ea38914344dd2f10343bc224781}} 
+\index{Building\+Manager@{Building\+Manager}!m\+\_\+\+Building\+Action\+Button@{m\+\_\+\+Building\+Action\+Button}}
+\index{m\+\_\+\+Building\+Action\+Button@{m\+\_\+\+Building\+Action\+Button}!Building\+Manager@{Building\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Building\+Action\+Button}{m\_BuildingActionButton}}
+{\footnotesize\ttfamily tgui\+::\+Button\+::\+Ptr Building\+Manager\+::m\+\_\+\+Building\+Action\+Button}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{_building_manager_8h}{Building\+Manager.\+h}}\end{DoxyCompactItemize}

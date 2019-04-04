@@ -1,0 +1,77 @@
+\hypertarget{_cells_8h}{}\section{inc/\+Cells.h File Reference}
+\label{_cells_8h}\index{inc/\+Cells.\+h@{inc/\+Cells.\+h}}
+{\ttfamily \#include \char`\"{}defs.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Game\+Object.\+h\char`\"{}}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structgrid_pos}{grid\+Pos}}
+\item 
+class \mbox{\hyperlink{class_cells}{Cells}}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_cells_8h_adc5e4636eae42cdad2a070c6adbd9daf}{tile\+Set}} \{ \newline
+\mbox{\hyperlink{_cells_8h_adc5e4636eae42cdad2a070c6adbd9dafadb74a8405410b3dfcb151d7de961197e}{\+\_\+\+D\+I\+RT}} = 0x2000, 
+\mbox{\hyperlink{_cells_8h_adc5e4636eae42cdad2a070c6adbd9dafa2d9029edab7daff377235047ef34bc85}{\+\_\+\+W\+A\+T\+ER}} = 0x3000, 
+\mbox{\hyperlink{_cells_8h_adc5e4636eae42cdad2a070c6adbd9dafa0a58ab7f51305b66af577ff8f036bfc8}{\+\_\+\+R\+O\+CK}} = 0x4000, 
+\mbox{\hyperlink{_cells_8h_adc5e4636eae42cdad2a070c6adbd9dafa841c1e89d9531a64c778491c4311c46c}{\+\_\+\+S\+KY}} = 0x5000, 
+\newline
+\mbox{\hyperlink{_cells_8h_adc5e4636eae42cdad2a070c6adbd9dafa64fe0db38eba54ba41835d7370c0d4b6}{\+\_\+\+N\+O\+\_\+\+V\+A\+L\+UE}}
+ \}
+\item 
+enum \mbox{\hyperlink{_cells_8h_a7ba65324a33605edc81596f69733023a}{huristic\+Cost}} \{ \mbox{\hyperlink{_cells_8h_a7ba65324a33605edc81596f69733023aaed3a8b9863389cd8176ae6b75f58341c}{\+\_\+\+D\+I\+A\+G\+O\+N\+AL}} = 14, 
+\mbox{\hyperlink{_cells_8h_a7ba65324a33605edc81596f69733023aa9c824b9ad88177834284219918f2025d}{\+\_\+\+A\+C\+R\+O\+SS}} = 10
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_this}{This}} will hold the information for a single cell within the game. A group of cells will form a either a row or a column. 
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_cells_8h_a7ba65324a33605edc81596f69733023a}\label{_cells_8h_a7ba65324a33605edc81596f69733023a}} 
+\index{Cells.\+h@{Cells.\+h}!huristic\+Cost@{huristic\+Cost}}
+\index{huristic\+Cost@{huristic\+Cost}!Cells.\+h@{Cells.\+h}}
+\subsubsection{\texorpdfstring{huristic\+Cost}{huristicCost}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_cells_8h_a7ba65324a33605edc81596f69733023a}{huristic\+Cost}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{\+\_\+\+D\+I\+A\+G\+O\+N\+AL@{\+\_\+\+D\+I\+A\+G\+O\+N\+AL}!Cells.\+h@{Cells.\+h}}\index{Cells.\+h@{Cells.\+h}!\+\_\+\+D\+I\+A\+G\+O\+N\+AL@{\+\_\+\+D\+I\+A\+G\+O\+N\+AL}}}\mbox{\Hypertarget{_cells_8h_a7ba65324a33605edc81596f69733023aaed3a8b9863389cd8176ae6b75f58341c}\label{_cells_8h_a7ba65324a33605edc81596f69733023aaed3a8b9863389cd8176ae6b75f58341c}} 
+\+\_\+\+D\+I\+A\+G\+O\+N\+AL&The cost of moving diagonally in A$\ast$. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{\+\_\+\+A\+C\+R\+O\+SS@{\+\_\+\+A\+C\+R\+O\+SS}!Cells.\+h@{Cells.\+h}}\index{Cells.\+h@{Cells.\+h}!\+\_\+\+A\+C\+R\+O\+SS@{\+\_\+\+A\+C\+R\+O\+SS}}}\mbox{\Hypertarget{_cells_8h_a7ba65324a33605edc81596f69733023aa9c824b9ad88177834284219918f2025d}\label{_cells_8h_a7ba65324a33605edc81596f69733023aa9c824b9ad88177834284219918f2025d}} 
+\+\_\+\+A\+C\+R\+O\+SS&The cost of moving horizontally in A$\ast$. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{_cells_8h_adc5e4636eae42cdad2a070c6adbd9daf}\label{_cells_8h_adc5e4636eae42cdad2a070c6adbd9daf}} 
+\index{Cells.\+h@{Cells.\+h}!tile\+Set@{tile\+Set}}
+\index{tile\+Set@{tile\+Set}!Cells.\+h@{Cells.\+h}}
+\subsubsection{\texorpdfstring{tile\+Set}{tileSet}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_cells_8h_adc5e4636eae42cdad2a070c6adbd9daf}{tile\+Set}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{\+\_\+\+D\+I\+RT@{\+\_\+\+D\+I\+RT}!Cells.\+h@{Cells.\+h}}\index{Cells.\+h@{Cells.\+h}!\+\_\+\+D\+I\+RT@{\+\_\+\+D\+I\+RT}}}\mbox{\Hypertarget{_cells_8h_adc5e4636eae42cdad2a070c6adbd9dafadb74a8405410b3dfcb151d7de961197e}\label{_cells_8h_adc5e4636eae42cdad2a070c6adbd9dafadb74a8405410b3dfcb151d7de961197e}} 
+\+\_\+\+D\+I\+RT&\mbox{\hyperlink{class_this}{This}} will make the tile Dirt. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{\+\_\+\+W\+A\+T\+ER@{\+\_\+\+W\+A\+T\+ER}!Cells.\+h@{Cells.\+h}}\index{Cells.\+h@{Cells.\+h}!\+\_\+\+W\+A\+T\+ER@{\+\_\+\+W\+A\+T\+ER}}}\mbox{\Hypertarget{_cells_8h_adc5e4636eae42cdad2a070c6adbd9dafa2d9029edab7daff377235047ef34bc85}\label{_cells_8h_adc5e4636eae42cdad2a070c6adbd9dafa2d9029edab7daff377235047ef34bc85}} 
+\+\_\+\+W\+A\+T\+ER&\mbox{\hyperlink{class_this}{This}} will make the tile Water. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{\+\_\+\+R\+O\+CK@{\+\_\+\+R\+O\+CK}!Cells.\+h@{Cells.\+h}}\index{Cells.\+h@{Cells.\+h}!\+\_\+\+R\+O\+CK@{\+\_\+\+R\+O\+CK}}}\mbox{\Hypertarget{_cells_8h_adc5e4636eae42cdad2a070c6adbd9dafa0a58ab7f51305b66af577ff8f036bfc8}\label{_cells_8h_adc5e4636eae42cdad2a070c6adbd9dafa0a58ab7f51305b66af577ff8f036bfc8}} 
+\+\_\+\+R\+O\+CK&\mbox{\hyperlink{class_this}{This}} will make the tile Rock. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{\+\_\+\+S\+KY@{\+\_\+\+S\+KY}!Cells.\+h@{Cells.\+h}}\index{Cells.\+h@{Cells.\+h}!\+\_\+\+S\+KY@{\+\_\+\+S\+KY}}}\mbox{\Hypertarget{_cells_8h_adc5e4636eae42cdad2a070c6adbd9dafa841c1e89d9531a64c778491c4311c46c}\label{_cells_8h_adc5e4636eae42cdad2a070c6adbd9dafa841c1e89d9531a64c778491c4311c46c}} 
+\+\_\+\+S\+KY&\mbox{\hyperlink{class_this}{This}} will make the tile Sky. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{\+\_\+\+N\+O\+\_\+\+V\+A\+L\+UE@{\+\_\+\+N\+O\+\_\+\+V\+A\+L\+UE}!Cells.\+h@{Cells.\+h}}\index{Cells.\+h@{Cells.\+h}!\+\_\+\+N\+O\+\_\+\+V\+A\+L\+UE@{\+\_\+\+N\+O\+\_\+\+V\+A\+L\+UE}}}\mbox{\Hypertarget{_cells_8h_adc5e4636eae42cdad2a070c6adbd9dafa64fe0db38eba54ba41835d7370c0d4b6}\label{_cells_8h_adc5e4636eae42cdad2a070c6adbd9dafa64fe0db38eba54ba41835d7370c0d4b6}} 
+\+\_\+\+N\+O\+\_\+\+V\+A\+L\+UE&Base value, \mbox{\hyperlink{class_this}{This}} means it has not yet been assigned. \\
+\hline
+
+\end{DoxyEnumFields}

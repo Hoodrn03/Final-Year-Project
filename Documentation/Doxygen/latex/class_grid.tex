@@ -1,0 +1,202 @@
+\hypertarget{class_grid}{}\section{Grid Class Reference}
+\label{class_grid}\index{Grid@{Grid}}
+
+
+{\ttfamily \#include $<$Grid.\+h$>$}
+
+Inheritance diagram for Grid\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_grid}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_grid_a4ac9ff4f63552b4c61ff90fcb35ad66c}{Grid}} ()
+\item 
+\mbox{\hyperlink{class_grid_a3661d0a7f998caaaf8627d7a67072116}{$\sim$\+Grid}} ()
+\item 
+void \mbox{\hyperlink{class_grid_a0868e8a5ebf55a8746637300bc7aa68b}{m\+\_\+\+Create\+Grid}} (unsigned int rows, unsigned int columns, unsigned int layers, sf\+::\+Rectangle\+Shape grid\+Location)
+\item 
+void \mbox{\hyperlink{class_grid_a0aa6c9b7aa63b06925be47ef0eeda314}{m\+\_\+\+Assign\+Neighbours}} ()
+\item 
+void \mbox{\hyperlink{class_grid_ac97a49844ee993f6afe89ae1518e5f44}{m\+\_\+\+Create\+Lake}} (int cellX, int cellY, int layer, int number\+Of\+Iterations)
+\item 
+void \mbox{\hyperlink{class_grid_a5e87248bee8835c61b1977407f5ef034}{m\+\_\+\+Create\+River}} (std\+::deque$<$ \mbox{\hyperlink{class_cells}{Cells}} $\ast$$>$ river\+Path, int river\+Width, int layer)
+\item 
+void \mbox{\hyperlink{class_grid_a32c88ba0de0530b6d4c1b0ab2cde31dc}{m\+\_\+\+Create\+Underground\+Water}} (int min\+Layer, int max\+Layer)
+\item 
+void \mbox{\hyperlink{class_grid_a8d5e70ea3e0fac523d409882b4c3949c}{m\+\_\+\+Create\+Rock}} (int layer)
+\item 
+void \mbox{\hyperlink{class_grid_a5b15f505b7508caeb457c0b218482164}{m\+\_\+\+Create\+Underground\+Rock}} (int min\+Layer, int max\+Layer)
+\item 
+void \mbox{\hyperlink{class_grid_a121458c828be458c452e5f6c80c07cc9}{m\+\_\+\+Create\+Upper\+Rock}} (int min\+Layer, int max\+Layer)
+\item 
+void \mbox{\hyperlink{class_grid_aa0ee683a771225bfdbe07ecd6c4341fb}{m\+\_\+\+Create\+Dirt}} (int layer)
+\item 
+void \mbox{\hyperlink{class_grid_a315b11046448a05d48d949eb296b593f}{m\+\_\+\+Create\+Underground\+Dirt}} (int min\+Layer, int max\+Layer)
+\item 
+void \mbox{\hyperlink{class_grid_a66df10e620798fde6b1455d9d49bc60c}{m\+\_\+\+Create\+Sky}} (int min\+Layer, int max\+Layer)
+\item 
+void \mbox{\hyperlink{class_grid_a86e0025cc46907e1c13658a28aa1439c}{m\+\_\+\+Assign\+Textures}} (std\+::map$<$ std\+::string, sf\+::\+Texture $>$ \&m\+\_\+\+Texture\+Map)
+\item 
+\mbox{\hyperlink{class_cells}{Cells}} $\ast$ \mbox{\hyperlink{class_grid_a12c587d1708736010999fa4e1e7601e0}{m\+\_\+\+Get\+Cell}} (int layer, int x, int y)
+\item 
+\mbox{\hyperlink{class_cells}{Cells}} $\ast$ \mbox{\hyperlink{class_grid_a7464f3bbe32feea62b940522e686fa3b}{m\+\_\+\+Get\+Random\+Dirt\+Cell}} (int layer)
+\item 
+\mbox{\hyperlink{class_cells}{Cells}} $\ast$ \mbox{\hyperlink{class_grid_ac1e06043497ba5c2b5c7e83d910f90a0}{m\+\_\+\+Convert\+World\+Pos\+To\+Grid\+Pos}} (sf\+::\+Vector2f current\+Pos, unsigned int layer)
+\item 
+unsigned int \mbox{\hyperlink{class_grid_a4a783e0c327cf99e7e831e511ce07847}{m\+\_\+\+Get\+Number\+Of\+Layers}} ()
+\item 
+unsigned int \mbox{\hyperlink{class_grid_aa14c1738133d778e8b2484afda051117}{m\+\_\+\+Get\+Number\+Of\+Rows}} ()
+\item 
+unsigned int \mbox{\hyperlink{class_grid_af11836b4b3d9fb8d5fe9da6bfae9a951}{m\+\_\+\+Get\+Number\+Of\+Columns}} ()
+\item 
+void \mbox{\hyperlink{class_grid_a7ffff576d982720579377833e17fd63f}{m\+\_\+\+Draw\+Grid}} (sf\+::\+Render\+Window \&window, unsigned int layer)
+\item 
+void \mbox{\hyperlink{class_grid_a07d1b32ae5330664bfd15466cffb1118}{m\+\_\+\+Check\+Items\+For\+Render}} (sf\+::\+Vector2f top\+Left, sf\+::\+Vector2f bottom\+Right, unsigned int layer)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_grid_a4ac9ff4f63552b4c61ff90fcb35ad66c}\label{class_grid_a4ac9ff4f63552b4c61ff90fcb35ad66c}} 
+\index{Grid@{Grid}!Grid@{Grid}}
+\index{Grid@{Grid}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{Grid()}{Grid()}}
+{\footnotesize\ttfamily Grid\+::\+Grid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_a3661d0a7f998caaaf8627d7a67072116}\label{class_grid_a3661d0a7f998caaaf8627d7a67072116}} 
+\index{Grid@{Grid}!````~Grid@{$\sim$\+Grid}}
+\index{````~Grid@{$\sim$\+Grid}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{$\sim$\+Grid()}{~Grid()}}
+{\footnotesize\ttfamily Grid\+::$\sim$\+Grid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_grid_a0aa6c9b7aa63b06925be47ef0eeda314}\label{class_grid_a0aa6c9b7aa63b06925be47ef0eeda314}} 
+\index{Grid@{Grid}!m\+\_\+\+Assign\+Neighbours@{m\+\_\+\+Assign\+Neighbours}}
+\index{m\+\_\+\+Assign\+Neighbours@{m\+\_\+\+Assign\+Neighbours}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Neighbours()}{m\_AssignNeighbours()}}
+{\footnotesize\ttfamily void Grid\+::m\+\_\+\+Assign\+Neighbours (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_a86e0025cc46907e1c13658a28aa1439c}\label{class_grid_a86e0025cc46907e1c13658a28aa1439c}} 
+\index{Grid@{Grid}!m\+\_\+\+Assign\+Textures@{m\+\_\+\+Assign\+Textures}}
+\index{m\+\_\+\+Assign\+Textures@{m\+\_\+\+Assign\+Textures}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Textures()}{m\_AssignTextures()}}
+{\footnotesize\ttfamily void Grid\+::m\+\_\+\+Assign\+Textures (\begin{DoxyParamCaption}\item[{std\+::map$<$ std\+::string, sf\+::\+Texture $>$ \&}]{m\+\_\+\+Texture\+Map }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_a07d1b32ae5330664bfd15466cffb1118}\label{class_grid_a07d1b32ae5330664bfd15466cffb1118}} 
+\index{Grid@{Grid}!m\+\_\+\+Check\+Items\+For\+Render@{m\+\_\+\+Check\+Items\+For\+Render}}
+\index{m\+\_\+\+Check\+Items\+For\+Render@{m\+\_\+\+Check\+Items\+For\+Render}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Check\+Items\+For\+Render()}{m\_CheckItemsForRender()}}
+{\footnotesize\ttfamily void Grid\+::m\+\_\+\+Check\+Items\+For\+Render (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right,  }\item[{unsigned int}]{layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_ac1e06043497ba5c2b5c7e83d910f90a0}\label{class_grid_ac1e06043497ba5c2b5c7e83d910f90a0}} 
+\index{Grid@{Grid}!m\+\_\+\+Convert\+World\+Pos\+To\+Grid\+Pos@{m\+\_\+\+Convert\+World\+Pos\+To\+Grid\+Pos}}
+\index{m\+\_\+\+Convert\+World\+Pos\+To\+Grid\+Pos@{m\+\_\+\+Convert\+World\+Pos\+To\+Grid\+Pos}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Convert\+World\+Pos\+To\+Grid\+Pos()}{m\_ConvertWorldPosToGridPos()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cells}{Cells}}$\ast$ Grid\+::m\+\_\+\+Convert\+World\+Pos\+To\+Grid\+Pos (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{current\+Pos,  }\item[{unsigned int}]{layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_aa0ee683a771225bfdbe07ecd6c4341fb}\label{class_grid_aa0ee683a771225bfdbe07ecd6c4341fb}} 
+\index{Grid@{Grid}!m\+\_\+\+Create\+Dirt@{m\+\_\+\+Create\+Dirt}}
+\index{m\+\_\+\+Create\+Dirt@{m\+\_\+\+Create\+Dirt}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Dirt()}{m\_CreateDirt()}}
+{\footnotesize\ttfamily void Grid\+::m\+\_\+\+Create\+Dirt (\begin{DoxyParamCaption}\item[{int}]{layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_a0868e8a5ebf55a8746637300bc7aa68b}\label{class_grid_a0868e8a5ebf55a8746637300bc7aa68b}} 
+\index{Grid@{Grid}!m\+\_\+\+Create\+Grid@{m\+\_\+\+Create\+Grid}}
+\index{m\+\_\+\+Create\+Grid@{m\+\_\+\+Create\+Grid}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Grid()}{m\_CreateGrid()}}
+{\footnotesize\ttfamily void Grid\+::m\+\_\+\+Create\+Grid (\begin{DoxyParamCaption}\item[{unsigned int}]{rows,  }\item[{unsigned int}]{columns,  }\item[{unsigned int}]{layers,  }\item[{sf\+::\+Rectangle\+Shape}]{grid\+Location }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_ac97a49844ee993f6afe89ae1518e5f44}\label{class_grid_ac97a49844ee993f6afe89ae1518e5f44}} 
+\index{Grid@{Grid}!m\+\_\+\+Create\+Lake@{m\+\_\+\+Create\+Lake}}
+\index{m\+\_\+\+Create\+Lake@{m\+\_\+\+Create\+Lake}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Lake()}{m\_CreateLake()}}
+{\footnotesize\ttfamily void Grid\+::m\+\_\+\+Create\+Lake (\begin{DoxyParamCaption}\item[{int}]{cellX,  }\item[{int}]{cellY,  }\item[{int}]{layer,  }\item[{int}]{number\+Of\+Iterations }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_a5e87248bee8835c61b1977407f5ef034}\label{class_grid_a5e87248bee8835c61b1977407f5ef034}} 
+\index{Grid@{Grid}!m\+\_\+\+Create\+River@{m\+\_\+\+Create\+River}}
+\index{m\+\_\+\+Create\+River@{m\+\_\+\+Create\+River}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+River()}{m\_CreateRiver()}}
+{\footnotesize\ttfamily void Grid\+::m\+\_\+\+Create\+River (\begin{DoxyParamCaption}\item[{std\+::deque$<$ \mbox{\hyperlink{class_cells}{Cells}} $\ast$$>$}]{river\+Path,  }\item[{int}]{river\+Width,  }\item[{int}]{layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_a8d5e70ea3e0fac523d409882b4c3949c}\label{class_grid_a8d5e70ea3e0fac523d409882b4c3949c}} 
+\index{Grid@{Grid}!m\+\_\+\+Create\+Rock@{m\+\_\+\+Create\+Rock}}
+\index{m\+\_\+\+Create\+Rock@{m\+\_\+\+Create\+Rock}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Rock()}{m\_CreateRock()}}
+{\footnotesize\ttfamily void Grid\+::m\+\_\+\+Create\+Rock (\begin{DoxyParamCaption}\item[{int}]{layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_a66df10e620798fde6b1455d9d49bc60c}\label{class_grid_a66df10e620798fde6b1455d9d49bc60c}} 
+\index{Grid@{Grid}!m\+\_\+\+Create\+Sky@{m\+\_\+\+Create\+Sky}}
+\index{m\+\_\+\+Create\+Sky@{m\+\_\+\+Create\+Sky}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Sky()}{m\_CreateSky()}}
+{\footnotesize\ttfamily void Grid\+::m\+\_\+\+Create\+Sky (\begin{DoxyParamCaption}\item[{int}]{min\+Layer,  }\item[{int}]{max\+Layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_a315b11046448a05d48d949eb296b593f}\label{class_grid_a315b11046448a05d48d949eb296b593f}} 
+\index{Grid@{Grid}!m\+\_\+\+Create\+Underground\+Dirt@{m\+\_\+\+Create\+Underground\+Dirt}}
+\index{m\+\_\+\+Create\+Underground\+Dirt@{m\+\_\+\+Create\+Underground\+Dirt}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Underground\+Dirt()}{m\_CreateUndergroundDirt()}}
+{\footnotesize\ttfamily void Grid\+::m\+\_\+\+Create\+Underground\+Dirt (\begin{DoxyParamCaption}\item[{int}]{min\+Layer,  }\item[{int}]{max\+Layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_a5b15f505b7508caeb457c0b218482164}\label{class_grid_a5b15f505b7508caeb457c0b218482164}} 
+\index{Grid@{Grid}!m\+\_\+\+Create\+Underground\+Rock@{m\+\_\+\+Create\+Underground\+Rock}}
+\index{m\+\_\+\+Create\+Underground\+Rock@{m\+\_\+\+Create\+Underground\+Rock}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Underground\+Rock()}{m\_CreateUndergroundRock()}}
+{\footnotesize\ttfamily void Grid\+::m\+\_\+\+Create\+Underground\+Rock (\begin{DoxyParamCaption}\item[{int}]{min\+Layer,  }\item[{int}]{max\+Layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_a32c88ba0de0530b6d4c1b0ab2cde31dc}\label{class_grid_a32c88ba0de0530b6d4c1b0ab2cde31dc}} 
+\index{Grid@{Grid}!m\+\_\+\+Create\+Underground\+Water@{m\+\_\+\+Create\+Underground\+Water}}
+\index{m\+\_\+\+Create\+Underground\+Water@{m\+\_\+\+Create\+Underground\+Water}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Underground\+Water()}{m\_CreateUndergroundWater()}}
+{\footnotesize\ttfamily void Grid\+::m\+\_\+\+Create\+Underground\+Water (\begin{DoxyParamCaption}\item[{int}]{min\+Layer,  }\item[{int}]{max\+Layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_a121458c828be458c452e5f6c80c07cc9}\label{class_grid_a121458c828be458c452e5f6c80c07cc9}} 
+\index{Grid@{Grid}!m\+\_\+\+Create\+Upper\+Rock@{m\+\_\+\+Create\+Upper\+Rock}}
+\index{m\+\_\+\+Create\+Upper\+Rock@{m\+\_\+\+Create\+Upper\+Rock}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Upper\+Rock()}{m\_CreateUpperRock()}}
+{\footnotesize\ttfamily void Grid\+::m\+\_\+\+Create\+Upper\+Rock (\begin{DoxyParamCaption}\item[{int}]{min\+Layer,  }\item[{int}]{max\+Layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_a7ffff576d982720579377833e17fd63f}\label{class_grid_a7ffff576d982720579377833e17fd63f}} 
+\index{Grid@{Grid}!m\+\_\+\+Draw\+Grid@{m\+\_\+\+Draw\+Grid}}
+\index{m\+\_\+\+Draw\+Grid@{m\+\_\+\+Draw\+Grid}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Grid()}{m\_DrawGrid()}}
+{\footnotesize\ttfamily void Grid\+::m\+\_\+\+Draw\+Grid (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{unsigned int}]{layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_a12c587d1708736010999fa4e1e7601e0}\label{class_grid_a12c587d1708736010999fa4e1e7601e0}} 
+\index{Grid@{Grid}!m\+\_\+\+Get\+Cell@{m\+\_\+\+Get\+Cell}}
+\index{m\+\_\+\+Get\+Cell@{m\+\_\+\+Get\+Cell}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Cell()}{m\_GetCell()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cells}{Cells}}$\ast$ Grid\+::m\+\_\+\+Get\+Cell (\begin{DoxyParamCaption}\item[{int}]{layer,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_af11836b4b3d9fb8d5fe9da6bfae9a951}\label{class_grid_af11836b4b3d9fb8d5fe9da6bfae9a951}} 
+\index{Grid@{Grid}!m\+\_\+\+Get\+Number\+Of\+Columns@{m\+\_\+\+Get\+Number\+Of\+Columns}}
+\index{m\+\_\+\+Get\+Number\+Of\+Columns@{m\+\_\+\+Get\+Number\+Of\+Columns}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Number\+Of\+Columns()}{m\_GetNumberOfColumns()}}
+{\footnotesize\ttfamily unsigned int Grid\+::m\+\_\+\+Get\+Number\+Of\+Columns (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_a4a783e0c327cf99e7e831e511ce07847}\label{class_grid_a4a783e0c327cf99e7e831e511ce07847}} 
+\index{Grid@{Grid}!m\+\_\+\+Get\+Number\+Of\+Layers@{m\+\_\+\+Get\+Number\+Of\+Layers}}
+\index{m\+\_\+\+Get\+Number\+Of\+Layers@{m\+\_\+\+Get\+Number\+Of\+Layers}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Number\+Of\+Layers()}{m\_GetNumberOfLayers()}}
+{\footnotesize\ttfamily unsigned int Grid\+::m\+\_\+\+Get\+Number\+Of\+Layers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_aa14c1738133d778e8b2484afda051117}\label{class_grid_aa14c1738133d778e8b2484afda051117}} 
+\index{Grid@{Grid}!m\+\_\+\+Get\+Number\+Of\+Rows@{m\+\_\+\+Get\+Number\+Of\+Rows}}
+\index{m\+\_\+\+Get\+Number\+Of\+Rows@{m\+\_\+\+Get\+Number\+Of\+Rows}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Number\+Of\+Rows()}{m\_GetNumberOfRows()}}
+{\footnotesize\ttfamily unsigned int Grid\+::m\+\_\+\+Get\+Number\+Of\+Rows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_grid_a7464f3bbe32feea62b940522e686fa3b}\label{class_grid_a7464f3bbe32feea62b940522e686fa3b}} 
+\index{Grid@{Grid}!m\+\_\+\+Get\+Random\+Dirt\+Cell@{m\+\_\+\+Get\+Random\+Dirt\+Cell}}
+\index{m\+\_\+\+Get\+Random\+Dirt\+Cell@{m\+\_\+\+Get\+Random\+Dirt\+Cell}!Grid@{Grid}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Random\+Dirt\+Cell()}{m\_GetRandomDirtCell()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cells}{Cells}}$\ast$ Grid\+::m\+\_\+\+Get\+Random\+Dirt\+Cell (\begin{DoxyParamCaption}\item[{int}]{layer }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{_grid_8h}{Grid.\+h}}\end{DoxyCompactItemize}

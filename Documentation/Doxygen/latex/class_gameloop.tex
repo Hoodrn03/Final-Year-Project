@@ -1,0 +1,298 @@
+\hypertarget{class_gameloop}{}\section{Gameloop Class Reference}
+\label{class_gameloop}\index{Gameloop@{Gameloop}}
+
+
+{\ttfamily \#include $<$Game\+Loop.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_gameloop_a18f9a1686565e206b40718ed787aeb97}{Gameloop}} ()
+\item 
+\mbox{\hyperlink{class_gameloop_ac0aff9533f00b23557a7d7b348b95007}{$\sim$\+Gameloop}} ()
+\item 
+int \mbox{\hyperlink{class_gameloop_ad295af6c73c59dac924e98443c83e926}{m\+\_\+\+Set\+Up}} ()
+\item 
+void \mbox{\hyperlink{class_gameloop_aa519481395dbc15336ccdf0ee3c62a6e}{m\+\_\+\+Create\+Main\+Menu\+Buttons}} ()
+\item 
+int \mbox{\hyperlink{class_gameloop_a81bdca7a10e6ada05aa7d49aac051b2a}{m\+\_\+\+Main\+Menu}} ()
+\item 
+void \mbox{\hyperlink{class_gameloop_a0c2cc3c326347e83886af3b2d7bfd422}{m\+\_\+\+Render\+Main\+Menu}} ()
+\item 
+void \mbox{\hyperlink{class_gameloop_a72364d9b616a3d5b8372045586bf9f7e}{m\+\_\+\+Begin\+Game}} ()
+\item 
+void \mbox{\hyperlink{class_gameloop_aec0cdc82daf752449dcd50839df2a0ba}{m\+\_\+\+Update}} ()
+\item 
+void \mbox{\hyperlink{class_gameloop_aedfd3bd058a404e998b7bfb828805d34}{m\+\_\+\+Update\+Buttons}} ()
+\item 
+void \mbox{\hyperlink{class_gameloop_a83ba5afb76dcab4bca8e039ce268615f}{m\+\_\+\+Update\+Pathfinding}} ()
+\item 
+void \mbox{\hyperlink{class_gameloop_a1c6fae011436c57d4009fb1d82f9aa1b}{m\+\_\+\+Draw\+Filter}} ()
+\item 
+void \mbox{\hyperlink{class_gameloop_a3b821efb88c89c1baa76b80880f40f71}{m\+\_\+\+Render\+Game}} ()
+\item 
+void \mbox{\hyperlink{class_gameloop_a5933a8857ab670ff36542a280660d30e}{m\+\_\+\+Load\+Textures\+Into\+Game}} ()
+\item 
+void \mbox{\hyperlink{class_gameloop_af8b85224ff509ae981a1d02b9dff7fa6}{m\+\_\+\+Resize\+All\+Items}} ()
+\item 
+void \mbox{\hyperlink{class_gameloop_ae7b1ebe386616dd1e7c49d7132c932b9}{m\+\_\+\+Check\+Framerate}} (bool print)
+\item 
+void \mbox{\hyperlink{class_gameloop_a957a1e49a0acd252fed9e76547528790}{m\+\_\+\+Update\+Delta\+Time}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_window}{Window}} \mbox{\hyperlink{class_gameloop_af9dba05c7f15135d2277c0641d1e3ed6}{m\+\_\+cl\+Window}}
+\item 
+\mbox{\hyperlink{class_event_handler}{Event\+Handler}} \mbox{\hyperlink{class_gameloop_a9c0e4ba2c76eb01dc9db00e38ec715f5}{m\+\_\+cl\+Event\+Handler}}
+\item 
+\mbox{\hyperlink{class_user_interface}{User\+Interface}} \mbox{\hyperlink{class_gameloop_abc125f36fd39f102f8fd445d6dcd2177}{m\+\_\+cl\+User\+Interface}}
+\item 
+\mbox{\hyperlink{class_font_manager}{Font\+Manager}} \mbox{\hyperlink{class_gameloop_a15154448022c37afed6b8e88ce3620df}{m\+\_\+cl\+Font\+Manager}}
+\item 
+\mbox{\hyperlink{class_texture_manager}{Texture\+Manager}} \mbox{\hyperlink{class_gameloop_a49235a9234f27b5555a979f088977659}{m\+\_\+cl\+Texture\+Manager}}
+\item 
+\mbox{\hyperlink{class_map}{Map}} \mbox{\hyperlink{class_gameloop_a45f56c3ccf5d7f2954fd0b12548605ed}{m\+\_\+cl\+Map}}
+\item 
+\mbox{\hyperlink{class_colonist_manager}{Colonist\+Manager}} \mbox{\hyperlink{class_gameloop_a62b8cd74b5504ccb88dbb48459ad0ffb}{m\+\_\+cl\+Colonist\+Manager}}
+\item 
+\mbox{\hyperlink{class_resource_management}{Resource\+Management}} \mbox{\hyperlink{class_gameloop_a19b6f5646a18db624cad3bbf62884473}{m\+\_\+cl\+Resource\+Management}}
+\item 
+\mbox{\hyperlink{class_mouse}{Mouse}} \mbox{\hyperlink{class_gameloop_ac63d068b8f158a2a41d14bd5f826bcc8}{m\+\_\+cl\+Mouse}}
+\item 
+\mbox{\hyperlink{class_building_manager}{Building\+Manager}} \mbox{\hyperlink{class_gameloop_a70679dd20e06d97dc834147be9df6c86}{m\+\_\+cl\+Building\+Manager}}
+\item 
+int \mbox{\hyperlink{class_gameloop_a6d770b1e4841ad3a8808f6ce886c2b41}{m\+\_\+\+Frame\+Rate}} = 0
+\item 
+float \mbox{\hyperlink{class_gameloop_aeac3893e086b10a9bbf455d3ed72745a}{m\+\_\+f\+Delta\+Time}} = 0
+\item 
+sf\+::\+Clock \mbox{\hyperlink{class_gameloop_a182c631047f14eea7648ea75f17237bf}{m\+\_\+\+Frame\+Rate\+Counter}}
+\item 
+sf\+::\+Clock \mbox{\hyperlink{class_gameloop_afab858e560227b167ab322d434ccf9e9}{m\+\_\+\+Delta\+Timer}}
+\item 
+std\+::thread \mbox{\hyperlink{class_gameloop_ad57f3b4c4ca7ebd5c08e37a03ec7c820}{l\+\_\+\+First}}
+\item 
+std\+::vector$<$ tgui\+::\+Button\+::\+Ptr $>$ \mbox{\hyperlink{class_gameloop_aa9a5171b1ec266ee56d8369062848bbc}{v\+\_\+\+Main\+Menu\+Buttons}}
+\item 
+float \mbox{\hyperlink{class_gameloop_a0b53e1d8923bc8e5e7d05a6522d4a713}{m\+\_\+f\+Window\+Width}}
+\item 
+float \mbox{\hyperlink{class_gameloop_aa4432f8c0b80f2426716ee6f0271826d}{m\+\_\+f\+Window\+Height}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_gameloop_a18f9a1686565e206b40718ed787aeb97}\label{class_gameloop_a18f9a1686565e206b40718ed787aeb97}} 
+\index{Gameloop@{Gameloop}!Gameloop@{Gameloop}}
+\index{Gameloop@{Gameloop}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{Gameloop()}{Gameloop()}}
+{\footnotesize\ttfamily Gameloop\+::\+Gameloop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_gameloop_ac0aff9533f00b23557a7d7b348b95007}\label{class_gameloop_ac0aff9533f00b23557a7d7b348b95007}} 
+\index{Gameloop@{Gameloop}!````~Gameloop@{$\sim$\+Gameloop}}
+\index{````~Gameloop@{$\sim$\+Gameloop}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{$\sim$\+Gameloop()}{~Gameloop()}}
+{\footnotesize\ttfamily Gameloop\+::$\sim$\+Gameloop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_gameloop_a72364d9b616a3d5b8372045586bf9f7e}\label{class_gameloop_a72364d9b616a3d5b8372045586bf9f7e}} 
+\index{Gameloop@{Gameloop}!m\+\_\+\+Begin\+Game@{m\+\_\+\+Begin\+Game}}
+\index{m\+\_\+\+Begin\+Game@{m\+\_\+\+Begin\+Game}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Begin\+Game()}{m\_BeginGame()}}
+{\footnotesize\ttfamily void Gameloop\+::m\+\_\+\+Begin\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_gameloop_ae7b1ebe386616dd1e7c49d7132c932b9}\label{class_gameloop_ae7b1ebe386616dd1e7c49d7132c932b9}} 
+\index{Gameloop@{Gameloop}!m\+\_\+\+Check\+Framerate@{m\+\_\+\+Check\+Framerate}}
+\index{m\+\_\+\+Check\+Framerate@{m\+\_\+\+Check\+Framerate}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Check\+Framerate()}{m\_CheckFramerate()}}
+{\footnotesize\ttfamily void Gameloop\+::m\+\_\+\+Check\+Framerate (\begin{DoxyParamCaption}\item[{bool}]{print }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_gameloop_aa519481395dbc15336ccdf0ee3c62a6e}\label{class_gameloop_aa519481395dbc15336ccdf0ee3c62a6e}} 
+\index{Gameloop@{Gameloop}!m\+\_\+\+Create\+Main\+Menu\+Buttons@{m\+\_\+\+Create\+Main\+Menu\+Buttons}}
+\index{m\+\_\+\+Create\+Main\+Menu\+Buttons@{m\+\_\+\+Create\+Main\+Menu\+Buttons}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Main\+Menu\+Buttons()}{m\_CreateMainMenuButtons()}}
+{\footnotesize\ttfamily void Gameloop\+::m\+\_\+\+Create\+Main\+Menu\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_gameloop_a1c6fae011436c57d4009fb1d82f9aa1b}\label{class_gameloop_a1c6fae011436c57d4009fb1d82f9aa1b}} 
+\index{Gameloop@{Gameloop}!m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}}
+\index{m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Filter()}{m\_DrawFilter()}}
+{\footnotesize\ttfamily void Gameloop\+::m\+\_\+\+Draw\+Filter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_gameloop_a5933a8857ab670ff36542a280660d30e}\label{class_gameloop_a5933a8857ab670ff36542a280660d30e}} 
+\index{Gameloop@{Gameloop}!m\+\_\+\+Load\+Textures\+Into\+Game@{m\+\_\+\+Load\+Textures\+Into\+Game}}
+\index{m\+\_\+\+Load\+Textures\+Into\+Game@{m\+\_\+\+Load\+Textures\+Into\+Game}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Load\+Textures\+Into\+Game()}{m\_LoadTexturesIntoGame()}}
+{\footnotesize\ttfamily void Gameloop\+::m\+\_\+\+Load\+Textures\+Into\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_gameloop_a81bdca7a10e6ada05aa7d49aac051b2a}\label{class_gameloop_a81bdca7a10e6ada05aa7d49aac051b2a}} 
+\index{Gameloop@{Gameloop}!m\+\_\+\+Main\+Menu@{m\+\_\+\+Main\+Menu}}
+\index{m\+\_\+\+Main\+Menu@{m\+\_\+\+Main\+Menu}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Main\+Menu()}{m\_MainMenu()}}
+{\footnotesize\ttfamily int Gameloop\+::m\+\_\+\+Main\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_gameloop_a3b821efb88c89c1baa76b80880f40f71}\label{class_gameloop_a3b821efb88c89c1baa76b80880f40f71}} 
+\index{Gameloop@{Gameloop}!m\+\_\+\+Render\+Game@{m\+\_\+\+Render\+Game}}
+\index{m\+\_\+\+Render\+Game@{m\+\_\+\+Render\+Game}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Render\+Game()}{m\_RenderGame()}}
+{\footnotesize\ttfamily void Gameloop\+::m\+\_\+\+Render\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_gameloop_a0c2cc3c326347e83886af3b2d7bfd422}\label{class_gameloop_a0c2cc3c326347e83886af3b2d7bfd422}} 
+\index{Gameloop@{Gameloop}!m\+\_\+\+Render\+Main\+Menu@{m\+\_\+\+Render\+Main\+Menu}}
+\index{m\+\_\+\+Render\+Main\+Menu@{m\+\_\+\+Render\+Main\+Menu}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Render\+Main\+Menu()}{m\_RenderMainMenu()}}
+{\footnotesize\ttfamily void Gameloop\+::m\+\_\+\+Render\+Main\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_gameloop_af8b85224ff509ae981a1d02b9dff7fa6}\label{class_gameloop_af8b85224ff509ae981a1d02b9dff7fa6}} 
+\index{Gameloop@{Gameloop}!m\+\_\+\+Resize\+All\+Items@{m\+\_\+\+Resize\+All\+Items}}
+\index{m\+\_\+\+Resize\+All\+Items@{m\+\_\+\+Resize\+All\+Items}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Resize\+All\+Items()}{m\_ResizeAllItems()}}
+{\footnotesize\ttfamily void Gameloop\+::m\+\_\+\+Resize\+All\+Items (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_gameloop_ad295af6c73c59dac924e98443c83e926}\label{class_gameloop_ad295af6c73c59dac924e98443c83e926}} 
+\index{Gameloop@{Gameloop}!m\+\_\+\+Set\+Up@{m\+\_\+\+Set\+Up}}
+\index{m\+\_\+\+Set\+Up@{m\+\_\+\+Set\+Up}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Up()}{m\_SetUp()}}
+{\footnotesize\ttfamily int Gameloop\+::m\+\_\+\+Set\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_gameloop_aec0cdc82daf752449dcd50839df2a0ba}\label{class_gameloop_aec0cdc82daf752449dcd50839df2a0ba}} 
+\index{Gameloop@{Gameloop}!m\+\_\+\+Update@{m\+\_\+\+Update}}
+\index{m\+\_\+\+Update@{m\+\_\+\+Update}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Update()}{m\_Update()}}
+{\footnotesize\ttfamily void Gameloop\+::m\+\_\+\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_gameloop_aedfd3bd058a404e998b7bfb828805d34}\label{class_gameloop_aedfd3bd058a404e998b7bfb828805d34}} 
+\index{Gameloop@{Gameloop}!m\+\_\+\+Update\+Buttons@{m\+\_\+\+Update\+Buttons}}
+\index{m\+\_\+\+Update\+Buttons@{m\+\_\+\+Update\+Buttons}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Update\+Buttons()}{m\_UpdateButtons()}}
+{\footnotesize\ttfamily void Gameloop\+::m\+\_\+\+Update\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_gameloop_a957a1e49a0acd252fed9e76547528790}\label{class_gameloop_a957a1e49a0acd252fed9e76547528790}} 
+\index{Gameloop@{Gameloop}!m\+\_\+\+Update\+Delta\+Time@{m\+\_\+\+Update\+Delta\+Time}}
+\index{m\+\_\+\+Update\+Delta\+Time@{m\+\_\+\+Update\+Delta\+Time}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Update\+Delta\+Time()}{m\_UpdateDeltaTime()}}
+{\footnotesize\ttfamily void Gameloop\+::m\+\_\+\+Update\+Delta\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_gameloop_a83ba5afb76dcab4bca8e039ce268615f}\label{class_gameloop_a83ba5afb76dcab4bca8e039ce268615f}} 
+\index{Gameloop@{Gameloop}!m\+\_\+\+Update\+Pathfinding@{m\+\_\+\+Update\+Pathfinding}}
+\index{m\+\_\+\+Update\+Pathfinding@{m\+\_\+\+Update\+Pathfinding}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Update\+Pathfinding()}{m\_UpdatePathfinding()}}
+{\footnotesize\ttfamily void Gameloop\+::m\+\_\+\+Update\+Pathfinding (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_gameloop_ad57f3b4c4ca7ebd5c08e37a03ec7c820}\label{class_gameloop_ad57f3b4c4ca7ebd5c08e37a03ec7c820}} 
+\index{Gameloop@{Gameloop}!l\+\_\+\+First@{l\+\_\+\+First}}
+\index{l\+\_\+\+First@{l\+\_\+\+First}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{l\+\_\+\+First}{l\_First}}
+{\footnotesize\ttfamily std\+::thread Gameloop\+::l\+\_\+\+First}
+
+\mbox{\Hypertarget{class_gameloop_a70679dd20e06d97dc834147be9df6c86}\label{class_gameloop_a70679dd20e06d97dc834147be9df6c86}} 
+\index{Gameloop@{Gameloop}!m\+\_\+cl\+Building\+Manager@{m\+\_\+cl\+Building\+Manager}}
+\index{m\+\_\+cl\+Building\+Manager@{m\+\_\+cl\+Building\+Manager}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+cl\+Building\+Manager}{m\_clBuildingManager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_building_manager}{Building\+Manager}} Gameloop\+::m\+\_\+cl\+Building\+Manager}
+
+\mbox{\Hypertarget{class_gameloop_a62b8cd74b5504ccb88dbb48459ad0ffb}\label{class_gameloop_a62b8cd74b5504ccb88dbb48459ad0ffb}} 
+\index{Gameloop@{Gameloop}!m\+\_\+cl\+Colonist\+Manager@{m\+\_\+cl\+Colonist\+Manager}}
+\index{m\+\_\+cl\+Colonist\+Manager@{m\+\_\+cl\+Colonist\+Manager}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+cl\+Colonist\+Manager}{m\_clColonistManager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_colonist_manager}{Colonist\+Manager}} Gameloop\+::m\+\_\+cl\+Colonist\+Manager}
+
+\mbox{\Hypertarget{class_gameloop_a9c0e4ba2c76eb01dc9db00e38ec715f5}\label{class_gameloop_a9c0e4ba2c76eb01dc9db00e38ec715f5}} 
+\index{Gameloop@{Gameloop}!m\+\_\+cl\+Event\+Handler@{m\+\_\+cl\+Event\+Handler}}
+\index{m\+\_\+cl\+Event\+Handler@{m\+\_\+cl\+Event\+Handler}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+cl\+Event\+Handler}{m\_clEventHandler}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_event_handler}{Event\+Handler}} Gameloop\+::m\+\_\+cl\+Event\+Handler}
+
+\mbox{\Hypertarget{class_gameloop_a15154448022c37afed6b8e88ce3620df}\label{class_gameloop_a15154448022c37afed6b8e88ce3620df}} 
+\index{Gameloop@{Gameloop}!m\+\_\+cl\+Font\+Manager@{m\+\_\+cl\+Font\+Manager}}
+\index{m\+\_\+cl\+Font\+Manager@{m\+\_\+cl\+Font\+Manager}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+cl\+Font\+Manager}{m\_clFontManager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_font_manager}{Font\+Manager}} Gameloop\+::m\+\_\+cl\+Font\+Manager}
+
+\mbox{\Hypertarget{class_gameloop_a45f56c3ccf5d7f2954fd0b12548605ed}\label{class_gameloop_a45f56c3ccf5d7f2954fd0b12548605ed}} 
+\index{Gameloop@{Gameloop}!m\+\_\+cl\+Map@{m\+\_\+cl\+Map}}
+\index{m\+\_\+cl\+Map@{m\+\_\+cl\+Map}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+cl\+Map}{m\_clMap}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_map}{Map}} Gameloop\+::m\+\_\+cl\+Map}
+
+\mbox{\Hypertarget{class_gameloop_ac63d068b8f158a2a41d14bd5f826bcc8}\label{class_gameloop_ac63d068b8f158a2a41d14bd5f826bcc8}} 
+\index{Gameloop@{Gameloop}!m\+\_\+cl\+Mouse@{m\+\_\+cl\+Mouse}}
+\index{m\+\_\+cl\+Mouse@{m\+\_\+cl\+Mouse}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+cl\+Mouse}{m\_clMouse}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_mouse}{Mouse}} Gameloop\+::m\+\_\+cl\+Mouse}
+
+\mbox{\Hypertarget{class_gameloop_a19b6f5646a18db624cad3bbf62884473}\label{class_gameloop_a19b6f5646a18db624cad3bbf62884473}} 
+\index{Gameloop@{Gameloop}!m\+\_\+cl\+Resource\+Management@{m\+\_\+cl\+Resource\+Management}}
+\index{m\+\_\+cl\+Resource\+Management@{m\+\_\+cl\+Resource\+Management}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+cl\+Resource\+Management}{m\_clResourceManagement}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_resource_management}{Resource\+Management}} Gameloop\+::m\+\_\+cl\+Resource\+Management}
+
+\mbox{\Hypertarget{class_gameloop_a49235a9234f27b5555a979f088977659}\label{class_gameloop_a49235a9234f27b5555a979f088977659}} 
+\index{Gameloop@{Gameloop}!m\+\_\+cl\+Texture\+Manager@{m\+\_\+cl\+Texture\+Manager}}
+\index{m\+\_\+cl\+Texture\+Manager@{m\+\_\+cl\+Texture\+Manager}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+cl\+Texture\+Manager}{m\_clTextureManager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_texture_manager}{Texture\+Manager}} Gameloop\+::m\+\_\+cl\+Texture\+Manager}
+
+\mbox{\Hypertarget{class_gameloop_abc125f36fd39f102f8fd445d6dcd2177}\label{class_gameloop_abc125f36fd39f102f8fd445d6dcd2177}} 
+\index{Gameloop@{Gameloop}!m\+\_\+cl\+User\+Interface@{m\+\_\+cl\+User\+Interface}}
+\index{m\+\_\+cl\+User\+Interface@{m\+\_\+cl\+User\+Interface}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+cl\+User\+Interface}{m\_clUserInterface}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_user_interface}{User\+Interface}} Gameloop\+::m\+\_\+cl\+User\+Interface}
+
+\mbox{\Hypertarget{class_gameloop_af9dba05c7f15135d2277c0641d1e3ed6}\label{class_gameloop_af9dba05c7f15135d2277c0641d1e3ed6}} 
+\index{Gameloop@{Gameloop}!m\+\_\+cl\+Window@{m\+\_\+cl\+Window}}
+\index{m\+\_\+cl\+Window@{m\+\_\+cl\+Window}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+cl\+Window}{m\_clWindow}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_window}{Window}} Gameloop\+::m\+\_\+cl\+Window}
+
+\mbox{\Hypertarget{class_gameloop_afab858e560227b167ab322d434ccf9e9}\label{class_gameloop_afab858e560227b167ab322d434ccf9e9}} 
+\index{Gameloop@{Gameloop}!m\+\_\+\+Delta\+Timer@{m\+\_\+\+Delta\+Timer}}
+\index{m\+\_\+\+Delta\+Timer@{m\+\_\+\+Delta\+Timer}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Delta\+Timer}{m\_DeltaTimer}}
+{\footnotesize\ttfamily sf\+::\+Clock Gameloop\+::m\+\_\+\+Delta\+Timer}
+
+\mbox{\Hypertarget{class_gameloop_aeac3893e086b10a9bbf455d3ed72745a}\label{class_gameloop_aeac3893e086b10a9bbf455d3ed72745a}} 
+\index{Gameloop@{Gameloop}!m\+\_\+f\+Delta\+Time@{m\+\_\+f\+Delta\+Time}}
+\index{m\+\_\+f\+Delta\+Time@{m\+\_\+f\+Delta\+Time}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+f\+Delta\+Time}{m\_fDeltaTime}}
+{\footnotesize\ttfamily float Gameloop\+::m\+\_\+f\+Delta\+Time = 0}
+
+\mbox{\Hypertarget{class_gameloop_a6d770b1e4841ad3a8808f6ce886c2b41}\label{class_gameloop_a6d770b1e4841ad3a8808f6ce886c2b41}} 
+\index{Gameloop@{Gameloop}!m\+\_\+\+Frame\+Rate@{m\+\_\+\+Frame\+Rate}}
+\index{m\+\_\+\+Frame\+Rate@{m\+\_\+\+Frame\+Rate}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Frame\+Rate}{m\_FrameRate}}
+{\footnotesize\ttfamily int Gameloop\+::m\+\_\+\+Frame\+Rate = 0}
+
+\mbox{\Hypertarget{class_gameloop_a182c631047f14eea7648ea75f17237bf}\label{class_gameloop_a182c631047f14eea7648ea75f17237bf}} 
+\index{Gameloop@{Gameloop}!m\+\_\+\+Frame\+Rate\+Counter@{m\+\_\+\+Frame\+Rate\+Counter}}
+\index{m\+\_\+\+Frame\+Rate\+Counter@{m\+\_\+\+Frame\+Rate\+Counter}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Frame\+Rate\+Counter}{m\_FrameRateCounter}}
+{\footnotesize\ttfamily sf\+::\+Clock Gameloop\+::m\+\_\+\+Frame\+Rate\+Counter}
+
+\mbox{\Hypertarget{class_gameloop_aa4432f8c0b80f2426716ee6f0271826d}\label{class_gameloop_aa4432f8c0b80f2426716ee6f0271826d}} 
+\index{Gameloop@{Gameloop}!m\+\_\+f\+Window\+Height@{m\+\_\+f\+Window\+Height}}
+\index{m\+\_\+f\+Window\+Height@{m\+\_\+f\+Window\+Height}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+f\+Window\+Height}{m\_fWindowHeight}}
+{\footnotesize\ttfamily float Gameloop\+::m\+\_\+f\+Window\+Height}
+
+\mbox{\Hypertarget{class_gameloop_a0b53e1d8923bc8e5e7d05a6522d4a713}\label{class_gameloop_a0b53e1d8923bc8e5e7d05a6522d4a713}} 
+\index{Gameloop@{Gameloop}!m\+\_\+f\+Window\+Width@{m\+\_\+f\+Window\+Width}}
+\index{m\+\_\+f\+Window\+Width@{m\+\_\+f\+Window\+Width}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{m\+\_\+f\+Window\+Width}{m\_fWindowWidth}}
+{\footnotesize\ttfamily float Gameloop\+::m\+\_\+f\+Window\+Width}
+
+\mbox{\Hypertarget{class_gameloop_aa9a5171b1ec266ee56d8369062848bbc}\label{class_gameloop_aa9a5171b1ec266ee56d8369062848bbc}} 
+\index{Gameloop@{Gameloop}!v\+\_\+\+Main\+Menu\+Buttons@{v\+\_\+\+Main\+Menu\+Buttons}}
+\index{v\+\_\+\+Main\+Menu\+Buttons@{v\+\_\+\+Main\+Menu\+Buttons}!Gameloop@{Gameloop}}
+\subsubsection{\texorpdfstring{v\+\_\+\+Main\+Menu\+Buttons}{v\_MainMenuButtons}}
+{\footnotesize\ttfamily std\+::vector$<$tgui\+::\+Button\+::\+Ptr$>$ Gameloop\+::v\+\_\+\+Main\+Menu\+Buttons}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{_game_loop_8h}{Game\+Loop.\+h}}\end{DoxyCompactItemize}

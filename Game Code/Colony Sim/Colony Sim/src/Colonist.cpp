@@ -160,9 +160,9 @@ void Colonist::m_UpdateInfoWindow(sf::Vector2f viewLowerBounds, sf::Vector2f vie
 
 void Colonist::m_UpdateCondition()
 {
-	int l_iConditionUpdateTime = 5; 
+	float l_fConditionUpdateTime = 15.f; 
 
-	if (m_ConditionTimer.getElapsedTime().asSeconds() >= l_iConditionUpdateTime)
+	if (m_ConditionTimer.getElapsedTime().asSeconds() >= l_fConditionUpdateTime)
 	{
 		m_ConditionTimer.restart();
 
@@ -485,7 +485,7 @@ int Colonist::m_FindNewPath(Cells * endCell)
 
 					do
 					{
-						l_clPathfinding.m_RunAStarAlgorithm(m_Obstructions, false); /*!< (Debugging) Change to true to add colour into the pathfinding*/
+						l_clPathfinding.m_RunAStarAlgorithm(m_Obstructions, false); /*!< (Debugging) Change to true to add colour into the pathfinding */
 
 						l_numberOfLoop++;
 

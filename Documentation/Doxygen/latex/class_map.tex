@@ -1,0 +1,203 @@
+\hypertarget{class_map}{}\section{Map Class Reference}
+\label{class_map}\index{Map@{Map}}
+
+
+{\ttfamily \#include $<$Game\+Map.\+h$>$}
+
+Inheritance diagram for Map\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_map}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_map_a0f5ad0fd4563497b4214038cbca8b582}{Map}} ()
+\item 
+\mbox{\hyperlink{class_map_aa403fbe09394ccf39747588f5168e3b2}{$\sim$\+Map}} ()
+\item 
+void \mbox{\hyperlink{class_map_a0f3b846f14a87030cf53d6fd32072cda}{m\+\_\+\+Set\+Up\+Game\+Map}} (sf\+::\+Vector2f dimentions, sf\+::\+Vector2f position)
+\item 
+void \mbox{\hyperlink{class_map_a2cc424825baa72efdc7ceb1580eabf3a}{m\+\_\+\+Create\+Grid}} ()
+\item 
+void \mbox{\hyperlink{class_map_a31635a85e9b5d86369ff0765d03dff93}{m\+\_\+\+Assign\+Textures}} (std\+::map$<$ std\+::string, sf\+::\+Texture $>$ \&m\+\_\+\+Texture\+Map)
+\item 
+void \mbox{\hyperlink{class_map_a50d9a80e029be4f056b8c5d73791b6c4}{m\+\_\+\+Update}} ()
+\item 
+void \mbox{\hyperlink{class_map_a44b30d85da0d39adb6b144af1ae98616}{m\+\_\+\+Generate\+Map}} ()
+\item 
+void \mbox{\hyperlink{class_map_a8d88a513b07b30ebd5e0a94ad6537e8b}{m\+\_\+\+Create\+Lake\+For\+Map}} ()
+\item 
+void \mbox{\hyperlink{class_map_a0fbb42a352131e4815bef949fdcd36d3}{m\+\_\+\+Create\+River\+For\+Map}} ()
+\item 
+int \mbox{\hyperlink{class_map_a91a657dd319b8fcec0c9ef17702cf2a2}{m\+\_\+\+Get\+Ground\+Level}} ()
+\item 
+int \mbox{\hyperlink{class_map_a2dd8826757e273671fc952dcd7c9c6b1}{m\+\_\+\+Get\+Current\+Level}} ()
+\item 
+\mbox{\hyperlink{class_grid}{Grid}} \& \mbox{\hyperlink{class_map_a50cc8967bbc1feed965946bf308e2401}{m\+\_\+\+Get\+Grid}} ()
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_map_ac8d0317e330bef1da2c965bd24f64412}{m\+\_\+\+Get\+Map\+Upper\+Bounds}} ()
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_map_adf5933cab79aee80497d72d87a169f62}{m\+\_\+\+Get\+Map\+Lower\+Bounds}} ()
+\item 
+void \mbox{\hyperlink{class_map_aa65945c61f28808b549a264a3b87219e}{m\+\_\+\+Draw\+Game\+Object}} (sf\+::\+Render\+Window \&window) override
+\item 
+void \mbox{\hyperlink{class_map_a47f69ae4c316d2efe45bd8a066e982c9}{m\+\_\+\+Draw\+Filter}} (sf\+::\+Vector2f top\+Left, sf\+::\+Vector2f bottom\+Right)
+\item 
+void \mbox{\hyperlink{class_map_aa44fadcea160127a186720c1ff44e533}{m\+\_\+\+Set\+Object\+Pos}} (float x, float y) override
+\item 
+void \mbox{\hyperlink{class_map_a024e4daa304e427c35119ae4baa01129}{m\+\_\+\+Check\+For\+Layer\+Change}} (int \&input\+Value)
+\item 
+void \mbox{\hyperlink{class_map_ae0ac864d328f94d30096184eb71e85cf}{m\+\_\+\+Increase\+Layer}} ()
+\item 
+void \mbox{\hyperlink{class_map_a59ab8311c6ea6ca42b00ae7e1ec2c10e}{m\+\_\+\+Descrease\+Layer}} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_map_a0f5ad0fd4563497b4214038cbca8b582}\label{class_map_a0f5ad0fd4563497b4214038cbca8b582}} 
+\index{Map@{Map}!Map@{Map}}
+\index{Map@{Map}!Map@{Map}}
+\subsubsection{\texorpdfstring{Map()}{Map()}}
+{\footnotesize\ttfamily Map\+::\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_map_aa403fbe09394ccf39747588f5168e3b2}\label{class_map_aa403fbe09394ccf39747588f5168e3b2}} 
+\index{Map@{Map}!````~Map@{$\sim$\+Map}}
+\index{````~Map@{$\sim$\+Map}!Map@{Map}}
+\subsubsection{\texorpdfstring{$\sim$\+Map()}{~Map()}}
+{\footnotesize\ttfamily Map\+::$\sim$\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_map_a31635a85e9b5d86369ff0765d03dff93}\label{class_map_a31635a85e9b5d86369ff0765d03dff93}} 
+\index{Map@{Map}!m\+\_\+\+Assign\+Textures@{m\+\_\+\+Assign\+Textures}}
+\index{m\+\_\+\+Assign\+Textures@{m\+\_\+\+Assign\+Textures}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Textures()}{m\_AssignTextures()}}
+{\footnotesize\ttfamily void Map\+::m\+\_\+\+Assign\+Textures (\begin{DoxyParamCaption}\item[{std\+::map$<$ std\+::string, sf\+::\+Texture $>$ \&}]{m\+\_\+\+Texture\+Map }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_map_a024e4daa304e427c35119ae4baa01129}\label{class_map_a024e4daa304e427c35119ae4baa01129}} 
+\index{Map@{Map}!m\+\_\+\+Check\+For\+Layer\+Change@{m\+\_\+\+Check\+For\+Layer\+Change}}
+\index{m\+\_\+\+Check\+For\+Layer\+Change@{m\+\_\+\+Check\+For\+Layer\+Change}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Check\+For\+Layer\+Change()}{m\_CheckForLayerChange()}}
+{\footnotesize\ttfamily void Map\+::m\+\_\+\+Check\+For\+Layer\+Change (\begin{DoxyParamCaption}\item[{int \&}]{input\+Value }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_map_a2cc424825baa72efdc7ceb1580eabf3a}\label{class_map_a2cc424825baa72efdc7ceb1580eabf3a}} 
+\index{Map@{Map}!m\+\_\+\+Create\+Grid@{m\+\_\+\+Create\+Grid}}
+\index{m\+\_\+\+Create\+Grid@{m\+\_\+\+Create\+Grid}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Grid()}{m\_CreateGrid()}}
+{\footnotesize\ttfamily void Map\+::m\+\_\+\+Create\+Grid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_map_a8d88a513b07b30ebd5e0a94ad6537e8b}\label{class_map_a8d88a513b07b30ebd5e0a94ad6537e8b}} 
+\index{Map@{Map}!m\+\_\+\+Create\+Lake\+For\+Map@{m\+\_\+\+Create\+Lake\+For\+Map}}
+\index{m\+\_\+\+Create\+Lake\+For\+Map@{m\+\_\+\+Create\+Lake\+For\+Map}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Lake\+For\+Map()}{m\_CreateLakeForMap()}}
+{\footnotesize\ttfamily void Map\+::m\+\_\+\+Create\+Lake\+For\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_map_a0fbb42a352131e4815bef949fdcd36d3}\label{class_map_a0fbb42a352131e4815bef949fdcd36d3}} 
+\index{Map@{Map}!m\+\_\+\+Create\+River\+For\+Map@{m\+\_\+\+Create\+River\+For\+Map}}
+\index{m\+\_\+\+Create\+River\+For\+Map@{m\+\_\+\+Create\+River\+For\+Map}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+River\+For\+Map()}{m\_CreateRiverForMap()}}
+{\footnotesize\ttfamily void Map\+::m\+\_\+\+Create\+River\+For\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_map_a59ab8311c6ea6ca42b00ae7e1ec2c10e}\label{class_map_a59ab8311c6ea6ca42b00ae7e1ec2c10e}} 
+\index{Map@{Map}!m\+\_\+\+Descrease\+Layer@{m\+\_\+\+Descrease\+Layer}}
+\index{m\+\_\+\+Descrease\+Layer@{m\+\_\+\+Descrease\+Layer}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Descrease\+Layer()}{m\_DescreaseLayer()}}
+{\footnotesize\ttfamily void Map\+::m\+\_\+\+Descrease\+Layer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_map_a47f69ae4c316d2efe45bd8a066e982c9}\label{class_map_a47f69ae4c316d2efe45bd8a066e982c9}} 
+\index{Map@{Map}!m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}}
+\index{m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Filter()}{m\_DrawFilter()}}
+{\footnotesize\ttfamily void Map\+::m\+\_\+\+Draw\+Filter (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_af1a0662ca445d878b163c4648f90259c}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_map_aa65945c61f28808b549a264a3b87219e}\label{class_map_aa65945c61f28808b549a264a3b87219e}} 
+\index{Map@{Map}!m\+\_\+\+Draw\+Game\+Object@{m\+\_\+\+Draw\+Game\+Object}}
+\index{m\+\_\+\+Draw\+Game\+Object@{m\+\_\+\+Draw\+Game\+Object}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Game\+Object()}{m\_DrawGameObject()}}
+{\footnotesize\ttfamily void Map\+::m\+\_\+\+Draw\+Game\+Object (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_a184ac59fd5167c55a54b50894e5b6721}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_map_a44b30d85da0d39adb6b144af1ae98616}\label{class_map_a44b30d85da0d39adb6b144af1ae98616}} 
+\index{Map@{Map}!m\+\_\+\+Generate\+Map@{m\+\_\+\+Generate\+Map}}
+\index{m\+\_\+\+Generate\+Map@{m\+\_\+\+Generate\+Map}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Generate\+Map()}{m\_GenerateMap()}}
+{\footnotesize\ttfamily void Map\+::m\+\_\+\+Generate\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_map_a2dd8826757e273671fc952dcd7c9c6b1}\label{class_map_a2dd8826757e273671fc952dcd7c9c6b1}} 
+\index{Map@{Map}!m\+\_\+\+Get\+Current\+Level@{m\+\_\+\+Get\+Current\+Level}}
+\index{m\+\_\+\+Get\+Current\+Level@{m\+\_\+\+Get\+Current\+Level}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Current\+Level()}{m\_GetCurrentLevel()}}
+{\footnotesize\ttfamily int Map\+::m\+\_\+\+Get\+Current\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_map_a50cc8967bbc1feed965946bf308e2401}\label{class_map_a50cc8967bbc1feed965946bf308e2401}} 
+\index{Map@{Map}!m\+\_\+\+Get\+Grid@{m\+\_\+\+Get\+Grid}}
+\index{m\+\_\+\+Get\+Grid@{m\+\_\+\+Get\+Grid}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Grid()}{m\_GetGrid()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_grid}{Grid}}\& Map\+::m\+\_\+\+Get\+Grid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_map_a91a657dd319b8fcec0c9ef17702cf2a2}\label{class_map_a91a657dd319b8fcec0c9ef17702cf2a2}} 
+\index{Map@{Map}!m\+\_\+\+Get\+Ground\+Level@{m\+\_\+\+Get\+Ground\+Level}}
+\index{m\+\_\+\+Get\+Ground\+Level@{m\+\_\+\+Get\+Ground\+Level}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Ground\+Level()}{m\_GetGroundLevel()}}
+{\footnotesize\ttfamily int Map\+::m\+\_\+\+Get\+Ground\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_map_adf5933cab79aee80497d72d87a169f62}\label{class_map_adf5933cab79aee80497d72d87a169f62}} 
+\index{Map@{Map}!m\+\_\+\+Get\+Map\+Lower\+Bounds@{m\+\_\+\+Get\+Map\+Lower\+Bounds}}
+\index{m\+\_\+\+Get\+Map\+Lower\+Bounds@{m\+\_\+\+Get\+Map\+Lower\+Bounds}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Map\+Lower\+Bounds()}{m\_GetMapLowerBounds()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Map\+::m\+\_\+\+Get\+Map\+Lower\+Bounds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_map_ac8d0317e330bef1da2c965bd24f64412}\label{class_map_ac8d0317e330bef1da2c965bd24f64412}} 
+\index{Map@{Map}!m\+\_\+\+Get\+Map\+Upper\+Bounds@{m\+\_\+\+Get\+Map\+Upper\+Bounds}}
+\index{m\+\_\+\+Get\+Map\+Upper\+Bounds@{m\+\_\+\+Get\+Map\+Upper\+Bounds}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Map\+Upper\+Bounds()}{m\_GetMapUpperBounds()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Map\+::m\+\_\+\+Get\+Map\+Upper\+Bounds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_map_ae0ac864d328f94d30096184eb71e85cf}\label{class_map_ae0ac864d328f94d30096184eb71e85cf}} 
+\index{Map@{Map}!m\+\_\+\+Increase\+Layer@{m\+\_\+\+Increase\+Layer}}
+\index{m\+\_\+\+Increase\+Layer@{m\+\_\+\+Increase\+Layer}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Increase\+Layer()}{m\_IncreaseLayer()}}
+{\footnotesize\ttfamily void Map\+::m\+\_\+\+Increase\+Layer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_map_aa44fadcea160127a186720c1ff44e533}\label{class_map_aa44fadcea160127a186720c1ff44e533}} 
+\index{Map@{Map}!m\+\_\+\+Set\+Object\+Pos@{m\+\_\+\+Set\+Object\+Pos}}
+\index{m\+\_\+\+Set\+Object\+Pos@{m\+\_\+\+Set\+Object\+Pos}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Object\+Pos()}{m\_SetObjectPos()}}
+{\footnotesize\ttfamily void Map\+::m\+\_\+\+Set\+Object\+Pos (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_ad1f8ea8eb3673b1af8215bf92cdc0df8}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_map_a0f3b846f14a87030cf53d6fd32072cda}\label{class_map_a0f3b846f14a87030cf53d6fd32072cda}} 
+\index{Map@{Map}!m\+\_\+\+Set\+Up\+Game\+Map@{m\+\_\+\+Set\+Up\+Game\+Map}}
+\index{m\+\_\+\+Set\+Up\+Game\+Map@{m\+\_\+\+Set\+Up\+Game\+Map}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Up\+Game\+Map()}{m\_SetUpGameMap()}}
+{\footnotesize\ttfamily void Map\+::m\+\_\+\+Set\+Up\+Game\+Map (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{dimentions,  }\item[{sf\+::\+Vector2f}]{position }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_map_a50d9a80e029be4f056b8c5d73791b6c4}\label{class_map_a50d9a80e029be4f056b8c5d73791b6c4}} 
+\index{Map@{Map}!m\+\_\+\+Update@{m\+\_\+\+Update}}
+\index{m\+\_\+\+Update@{m\+\_\+\+Update}!Map@{Map}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Update()}{m\_Update()}}
+{\footnotesize\ttfamily void Map\+::m\+\_\+\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_a3af5a7b470e09f13a1422439fc6a9ba8}{Game\+Object}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{_game_map_8h}{Game\+Map.\+h}}\end{DoxyCompactItemize}

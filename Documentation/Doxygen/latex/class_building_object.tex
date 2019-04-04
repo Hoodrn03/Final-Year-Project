@@ -1,0 +1,185 @@
+\hypertarget{class_building_object}{}\section{Building\+Object Class Reference}
+\label{class_building_object}\index{Building\+Object@{Building\+Object}}
+
+
+{\ttfamily \#include $<$Building\+Object.\+h$>$}
+
+Inheritance diagram for Building\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_building_object}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_building_object_aab54197a4f72381251c422e530b5282f}{Building\+Object}} ()
+\item 
+\mbox{\hyperlink{class_building_object_a0a6779902609501186267d00d363bcde}{$\sim$\+Building\+Object}} ()
+\item 
+void \mbox{\hyperlink{class_building_object_a77221935bdcf6ef2cad7cd80fb877da8}{m\+\_\+\+Setup\+Building\+Object}} (sf\+::\+Vector2f dimentions, sf\+::\+Vector2f position, std\+::string building\+Type, \mbox{\hyperlink{class_cells}{Cells}} $\ast$new\+Cell, float wood\+Required)
+\item 
+void \mbox{\hyperlink{class_building_object_a74cbc1ffd32e6c4db6c645df2657e740}{m\+\_\+\+Assign\+Texture}} (sf\+::\+Texture $\ast$new\+Texture)
+\item 
+void \mbox{\hyperlink{class_building_object_a35fc31e0f1c9a1323b7dfedc527fccff}{m\+\_\+\+Update}} () override
+\item 
+void \mbox{\hyperlink{class_building_object_a7e343d32ad1f6aaed5ed484b2aabe700}{m\+\_\+\+Draw\+Game\+Object}} (sf\+::\+Render\+Window \&window) override
+\item 
+void \mbox{\hyperlink{class_building_object_a05e1b08fb5edd953b00e6deade8bad9d}{m\+\_\+\+Draw\+Filter}} (sf\+::\+Vector2f top\+Left, sf\+::\+Vector2f bottom\+Right) override
+\item 
+void \mbox{\hyperlink{class_building_object_a54130a69a81268544ca715275f52bfb7}{m\+\_\+\+Draw\+Filter}} (sf\+::\+Vector2f top\+Left, sf\+::\+Vector2f bottom\+Right, int current\+Layer)
+\item 
+void \mbox{\hyperlink{class_building_object_aa6239662e4277d8e1933f9c8fd487511}{m\+\_\+\+Set\+Object\+Pos}} (float x, float y) override
+\item 
+\mbox{\hyperlink{class_cells}{Cells}} $\ast$ \mbox{\hyperlink{class_building_object_aba3f08ddf833026289c2c0d36d0c40e3}{m\+\_\+\+Get\+Current\+Cell}} ()
+\item 
+bool \mbox{\hyperlink{class_building_object_a1d21e6caaa8853c9e60be5d80a5a42c1}{m\+\_\+\+Check\+Building\+Bounds}} (float x, float y)
+\item 
+void \mbox{\hyperlink{class_building_object_a3fd4003a55d98f537edfb002fc3726c1}{m\+\_\+\+Work\+Building}} (float work\+Speed)
+\item 
+void \mbox{\hyperlink{class_building_object_ade01ec444234c24eedc0286b5a7c85eb}{m\+\_\+\+Add\+Wood\+To\+Building}} (float wood\+To\+Add)
+\item 
+float \mbox{\hyperlink{class_building_object_a4cababbd690030d994111fbe8c7603b1}{m\+\_\+\+Get\+Wood\+Needed}} ()
+\item 
+bool \mbox{\hyperlink{class_building_object_aee720b050f8fed6e7f8cf773df7b0a3d}{m\+\_\+\+Need\+Wood}} ()
+\item 
+std\+::string \mbox{\hyperlink{class_building_object_af79abc387ac3519eb23bcea55a56a5b0}{m\+\_\+\+Get\+Building\+Type}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_building_object_a2dd2d1f12b504e16b3bce3e8825badb7}{m\+\_\+b\+Finished\+Building}} = false
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_building_object_aab54197a4f72381251c422e530b5282f}\label{class_building_object_aab54197a4f72381251c422e530b5282f}} 
+\index{Building\+Object@{Building\+Object}!Building\+Object@{Building\+Object}}
+\index{Building\+Object@{Building\+Object}!Building\+Object@{Building\+Object}}
+\subsubsection{\texorpdfstring{Building\+Object()}{BuildingObject()}}
+{\footnotesize\ttfamily Building\+Object\+::\+Building\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_object_a0a6779902609501186267d00d363bcde}\label{class_building_object_a0a6779902609501186267d00d363bcde}} 
+\index{Building\+Object@{Building\+Object}!````~Building\+Object@{$\sim$\+Building\+Object}}
+\index{````~Building\+Object@{$\sim$\+Building\+Object}!Building\+Object@{Building\+Object}}
+\subsubsection{\texorpdfstring{$\sim$\+Building\+Object()}{~BuildingObject()}}
+{\footnotesize\ttfamily Building\+Object\+::$\sim$\+Building\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_building_object_ade01ec444234c24eedc0286b5a7c85eb}\label{class_building_object_ade01ec444234c24eedc0286b5a7c85eb}} 
+\index{Building\+Object@{Building\+Object}!m\+\_\+\+Add\+Wood\+To\+Building@{m\+\_\+\+Add\+Wood\+To\+Building}}
+\index{m\+\_\+\+Add\+Wood\+To\+Building@{m\+\_\+\+Add\+Wood\+To\+Building}!Building\+Object@{Building\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Add\+Wood\+To\+Building()}{m\_AddWoodToBuilding()}}
+{\footnotesize\ttfamily void Building\+Object\+::m\+\_\+\+Add\+Wood\+To\+Building (\begin{DoxyParamCaption}\item[{float}]{wood\+To\+Add }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_object_a74cbc1ffd32e6c4db6c645df2657e740}\label{class_building_object_a74cbc1ffd32e6c4db6c645df2657e740}} 
+\index{Building\+Object@{Building\+Object}!m\+\_\+\+Assign\+Texture@{m\+\_\+\+Assign\+Texture}}
+\index{m\+\_\+\+Assign\+Texture@{m\+\_\+\+Assign\+Texture}!Building\+Object@{Building\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Texture()}{m\_AssignTexture()}}
+{\footnotesize\ttfamily void Building\+Object\+::m\+\_\+\+Assign\+Texture (\begin{DoxyParamCaption}\item[{sf\+::\+Texture $\ast$}]{new\+Texture }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_object_a1d21e6caaa8853c9e60be5d80a5a42c1}\label{class_building_object_a1d21e6caaa8853c9e60be5d80a5a42c1}} 
+\index{Building\+Object@{Building\+Object}!m\+\_\+\+Check\+Building\+Bounds@{m\+\_\+\+Check\+Building\+Bounds}}
+\index{m\+\_\+\+Check\+Building\+Bounds@{m\+\_\+\+Check\+Building\+Bounds}!Building\+Object@{Building\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Check\+Building\+Bounds()}{m\_CheckBuildingBounds()}}
+{\footnotesize\ttfamily bool Building\+Object\+::m\+\_\+\+Check\+Building\+Bounds (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_object_a05e1b08fb5edd953b00e6deade8bad9d}\label{class_building_object_a05e1b08fb5edd953b00e6deade8bad9d}} 
+\index{Building\+Object@{Building\+Object}!m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}}
+\index{m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}!Building\+Object@{Building\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Filter()}{m\_DrawFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Building\+Object\+::m\+\_\+\+Draw\+Filter (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_af1a0662ca445d878b163c4648f90259c}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_building_object_a54130a69a81268544ca715275f52bfb7}\label{class_building_object_a54130a69a81268544ca715275f52bfb7}} 
+\index{Building\+Object@{Building\+Object}!m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}}
+\index{m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}!Building\+Object@{Building\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Filter()}{m\_DrawFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Building\+Object\+::m\+\_\+\+Draw\+Filter (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right,  }\item[{int}]{current\+Layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_object_a7e343d32ad1f6aaed5ed484b2aabe700}\label{class_building_object_a7e343d32ad1f6aaed5ed484b2aabe700}} 
+\index{Building\+Object@{Building\+Object}!m\+\_\+\+Draw\+Game\+Object@{m\+\_\+\+Draw\+Game\+Object}}
+\index{m\+\_\+\+Draw\+Game\+Object@{m\+\_\+\+Draw\+Game\+Object}!Building\+Object@{Building\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Game\+Object()}{m\_DrawGameObject()}}
+{\footnotesize\ttfamily void Building\+Object\+::m\+\_\+\+Draw\+Game\+Object (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_a184ac59fd5167c55a54b50894e5b6721}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_building_object_af79abc387ac3519eb23bcea55a56a5b0}\label{class_building_object_af79abc387ac3519eb23bcea55a56a5b0}} 
+\index{Building\+Object@{Building\+Object}!m\+\_\+\+Get\+Building\+Type@{m\+\_\+\+Get\+Building\+Type}}
+\index{m\+\_\+\+Get\+Building\+Type@{m\+\_\+\+Get\+Building\+Type}!Building\+Object@{Building\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Building\+Type()}{m\_GetBuildingType()}}
+{\footnotesize\ttfamily std\+::string Building\+Object\+::m\+\_\+\+Get\+Building\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_object_aba3f08ddf833026289c2c0d36d0c40e3}\label{class_building_object_aba3f08ddf833026289c2c0d36d0c40e3}} 
+\index{Building\+Object@{Building\+Object}!m\+\_\+\+Get\+Current\+Cell@{m\+\_\+\+Get\+Current\+Cell}}
+\index{m\+\_\+\+Get\+Current\+Cell@{m\+\_\+\+Get\+Current\+Cell}!Building\+Object@{Building\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Current\+Cell()}{m\_GetCurrentCell()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cells}{Cells}}$\ast$ Building\+Object\+::m\+\_\+\+Get\+Current\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_object_a4cababbd690030d994111fbe8c7603b1}\label{class_building_object_a4cababbd690030d994111fbe8c7603b1}} 
+\index{Building\+Object@{Building\+Object}!m\+\_\+\+Get\+Wood\+Needed@{m\+\_\+\+Get\+Wood\+Needed}}
+\index{m\+\_\+\+Get\+Wood\+Needed@{m\+\_\+\+Get\+Wood\+Needed}!Building\+Object@{Building\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Wood\+Needed()}{m\_GetWoodNeeded()}}
+{\footnotesize\ttfamily float Building\+Object\+::m\+\_\+\+Get\+Wood\+Needed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_object_aee720b050f8fed6e7f8cf773df7b0a3d}\label{class_building_object_aee720b050f8fed6e7f8cf773df7b0a3d}} 
+\index{Building\+Object@{Building\+Object}!m\+\_\+\+Need\+Wood@{m\+\_\+\+Need\+Wood}}
+\index{m\+\_\+\+Need\+Wood@{m\+\_\+\+Need\+Wood}!Building\+Object@{Building\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Need\+Wood()}{m\_NeedWood()}}
+{\footnotesize\ttfamily bool Building\+Object\+::m\+\_\+\+Need\+Wood (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_object_aa6239662e4277d8e1933f9c8fd487511}\label{class_building_object_aa6239662e4277d8e1933f9c8fd487511}} 
+\index{Building\+Object@{Building\+Object}!m\+\_\+\+Set\+Object\+Pos@{m\+\_\+\+Set\+Object\+Pos}}
+\index{m\+\_\+\+Set\+Object\+Pos@{m\+\_\+\+Set\+Object\+Pos}!Building\+Object@{Building\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Object\+Pos()}{m\_SetObjectPos()}}
+{\footnotesize\ttfamily void Building\+Object\+::m\+\_\+\+Set\+Object\+Pos (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_ad1f8ea8eb3673b1af8215bf92cdc0df8}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_building_object_a77221935bdcf6ef2cad7cd80fb877da8}\label{class_building_object_a77221935bdcf6ef2cad7cd80fb877da8}} 
+\index{Building\+Object@{Building\+Object}!m\+\_\+\+Setup\+Building\+Object@{m\+\_\+\+Setup\+Building\+Object}}
+\index{m\+\_\+\+Setup\+Building\+Object@{m\+\_\+\+Setup\+Building\+Object}!Building\+Object@{Building\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Setup\+Building\+Object()}{m\_SetupBuildingObject()}}
+{\footnotesize\ttfamily void Building\+Object\+::m\+\_\+\+Setup\+Building\+Object (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{dimentions,  }\item[{sf\+::\+Vector2f}]{position,  }\item[{std\+::string}]{building\+Type,  }\item[{\mbox{\hyperlink{class_cells}{Cells}} $\ast$}]{new\+Cell,  }\item[{float}]{wood\+Required }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_building_object_a35fc31e0f1c9a1323b7dfedc527fccff}\label{class_building_object_a35fc31e0f1c9a1323b7dfedc527fccff}} 
+\index{Building\+Object@{Building\+Object}!m\+\_\+\+Update@{m\+\_\+\+Update}}
+\index{m\+\_\+\+Update@{m\+\_\+\+Update}!Building\+Object@{Building\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Update()}{m\_Update()}}
+{\footnotesize\ttfamily void Building\+Object\+::m\+\_\+\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_a3af5a7b470e09f13a1422439fc6a9ba8}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_building_object_a3fd4003a55d98f537edfb002fc3726c1}\label{class_building_object_a3fd4003a55d98f537edfb002fc3726c1}} 
+\index{Building\+Object@{Building\+Object}!m\+\_\+\+Work\+Building@{m\+\_\+\+Work\+Building}}
+\index{m\+\_\+\+Work\+Building@{m\+\_\+\+Work\+Building}!Building\+Object@{Building\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Work\+Building()}{m\_WorkBuilding()}}
+{\footnotesize\ttfamily void Building\+Object\+::m\+\_\+\+Work\+Building (\begin{DoxyParamCaption}\item[{float}]{work\+Speed }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_building_object_a2dd2d1f12b504e16b3bce3e8825badb7}\label{class_building_object_a2dd2d1f12b504e16b3bce3e8825badb7}} 
+\index{Building\+Object@{Building\+Object}!m\+\_\+b\+Finished\+Building@{m\+\_\+b\+Finished\+Building}}
+\index{m\+\_\+b\+Finished\+Building@{m\+\_\+b\+Finished\+Building}!Building\+Object@{Building\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+b\+Finished\+Building}{m\_bFinishedBuilding}}
+{\footnotesize\ttfamily bool Building\+Object\+::m\+\_\+b\+Finished\+Building = false}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{_building_object_8h}{Building\+Object.\+h}}\end{DoxyCompactItemize}

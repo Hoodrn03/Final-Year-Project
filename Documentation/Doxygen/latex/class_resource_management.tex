@@ -1,0 +1,210 @@
+\hypertarget{class_resource_management}{}\section{Resource\+Management Class Reference}
+\label{class_resource_management}\index{Resource\+Management@{Resource\+Management}}
+
+
+{\ttfamily \#include $<$Resource\+Management.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_resource_management_a02281ce42dd7ad245f1bc2e15a0e3b55}{Resource\+Management}} ()
+\item 
+\mbox{\hyperlink{class_resource_management_ad448fc4b19d44fa4cad1bb7a4b9ecd29}{$\sim$\+Resource\+Management}} ()
+\item 
+void \mbox{\hyperlink{class_resource_management_af7b5fdb2f6e706f99558ff8a90150f41}{m\+\_\+\+Assign\+Font}} (sf\+::\+Font main\+Font)
+\item 
+void \mbox{\hyperlink{class_resource_management_a5fcb80797408756492abe32cf40ae85f}{m\+\_\+\+Assign\+Textures}} (std\+::map$<$ std\+::string, sf\+::\+Texture $>$ \&texture\+Map)
+\item 
+void \mbox{\hyperlink{class_resource_management_a2439d8ace4e693d37c5a422eaf422e38}{m\+\_\+\+Add\+Trees}} (int number\+Of\+Trees, float max\+Radius, int layer, \mbox{\hyperlink{class_grid}{Grid}} \&grid)
+\item 
+void \mbox{\hyperlink{class_resource_management_a97cf5550612a2e1cd82d44ae9e57f666}{m\+\_\+\+Add\+Wood\+Pile}} (\mbox{\hyperlink{class_wood_resource}{Wood\+Resource}} $\ast$cut\+Tree)
+\item 
+void \mbox{\hyperlink{class_resource_management_ac02284dd76b1cc071e1a16432a858aae}{m\+\_\+\+Draw\+Trees}} (sf\+::\+Render\+Window \&window)
+\item 
+void \mbox{\hyperlink{class_resource_management_a9e52ae158b5ea38f2d935d25a3536e34}{m\+\_\+\+Draw\+Wood\+Piles}} (sf\+::\+Render\+Window \&window)
+\item 
+void \mbox{\hyperlink{class_resource_management_adeebfc769325c37dadf5a25181786496}{m\+\_\+\+Draw\+Filter}} (sf\+::\+Vector2f top\+Left, sf\+::\+Vector2f bottom\+Right)
+\item 
+void \mbox{\hyperlink{class_resource_management_aeb7c4ef68841e3eeb7aa7569943af652}{m\+\_\+\+Draw\+Filter}} (sf\+::\+Vector2f top\+Left, sf\+::\+Vector2f bottom\+Right, int current\+Layer)
+\item 
+void \mbox{\hyperlink{class_resource_management_a3449b35ee0c369402fd27887f34ffb2c}{m\+\_\+\+Update}} ()
+\item 
+void \mbox{\hyperlink{class_resource_management_adb99960558a8c45eea8b0b1acf094933}{m\+\_\+\+Assign\+Action}} (\mbox{\hyperlink{defs_8h_ac4f8c89b962f2fa93febb5519cc2b4dc}{current\+Action}} new\+Action)
+\item 
+void \mbox{\hyperlink{class_resource_management_a09e1fc7bf33d2dad66dfa6e479f2f438}{m\+\_\+\+Select\+Resources}} (sf\+::\+Vector2f m\+\_\+\+Top\+Left, sf\+::\+Vector2f bottom\+Right)
+\item 
+\mbox{\hyperlink{class_wood_resource}{Wood\+Resource}} $\ast$ \mbox{\hyperlink{class_resource_management_a41493114486fc4b7dc6ebfc472254bc1}{m\+\_\+\+Find\+Closest\+Tree}} (sf\+::\+Vector2f other\+Object)
+\item 
+\mbox{\hyperlink{class_wood_pile}{Wood\+Pile}} $\ast$ \mbox{\hyperlink{class_resource_management_aff320c3220c97345cab6ea74df6cd33c}{m\+\_\+\+Find\+Closest\+Wood\+Pile}} (sf\+::\+Vector2f other\+Object)
+\item 
+void \mbox{\hyperlink{class_resource_management_ae7084b8a6de4ef34bcf21b42abb6502c}{m\+\_\+\+Delete\+Trees}} ()
+\item 
+void \mbox{\hyperlink{class_resource_management_a8fb29f2219b96d39a5a38c5bbb0cf5e9}{m\+\_\+\+Create\+Action\+Buttons}} (float window\+Width, float window\+Height)
+\item 
+void \mbox{\hyperlink{class_resource_management_a06d9993d12174e90a257f823a4212859}{m\+\_\+\+Draw\+Action\+Buttons}} ()
+\item 
+std\+::vector$<$ tgui\+::\+Button\+::\+Ptr $>$ \mbox{\hyperlink{class_resource_management_a7e05e6e59df2c766bb4513630de3bd31}{m\+\_\+\+Get\+Action\+Buttons}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+tgui\+::\+Button\+::\+Ptr \mbox{\hyperlink{class_resource_management_a081d6a06905b376b862c2baa74170f25}{m\+\_\+\+Action\+Button}}
+\item 
+bool \mbox{\hyperlink{class_resource_management_a44e194185578f2b0c63bea0e0a444b57}{m\+\_\+b\+Display\+Buttons}} = false
+\item 
+bool \mbox{\hyperlink{class_resource_management_ae5afb8912d93fa84581a9d7192a9fda1}{m\+\_\+b\+Buttons\+Created}} = false
+\item 
+bool \mbox{\hyperlink{class_resource_management_a013731a638632849d16516f3ac7250e3}{m\+\_\+b\+Buttons\+Removed}} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_resource_management_a02281ce42dd7ad245f1bc2e15a0e3b55}\label{class_resource_management_a02281ce42dd7ad245f1bc2e15a0e3b55}} 
+\index{Resource\+Management@{Resource\+Management}!Resource\+Management@{Resource\+Management}}
+\index{Resource\+Management@{Resource\+Management}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{Resource\+Management()}{ResourceManagement()}}
+{\footnotesize\ttfamily Resource\+Management\+::\+Resource\+Management (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_management_ad448fc4b19d44fa4cad1bb7a4b9ecd29}\label{class_resource_management_ad448fc4b19d44fa4cad1bb7a4b9ecd29}} 
+\index{Resource\+Management@{Resource\+Management}!````~Resource\+Management@{$\sim$\+Resource\+Management}}
+\index{````~Resource\+Management@{$\sim$\+Resource\+Management}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{$\sim$\+Resource\+Management()}{~ResourceManagement()}}
+{\footnotesize\ttfamily Resource\+Management\+::$\sim$\+Resource\+Management (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_resource_management_a2439d8ace4e693d37c5a422eaf422e38}\label{class_resource_management_a2439d8ace4e693d37c5a422eaf422e38}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Add\+Trees@{m\+\_\+\+Add\+Trees}}
+\index{m\+\_\+\+Add\+Trees@{m\+\_\+\+Add\+Trees}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Add\+Trees()}{m\_AddTrees()}}
+{\footnotesize\ttfamily void Resource\+Management\+::m\+\_\+\+Add\+Trees (\begin{DoxyParamCaption}\item[{int}]{number\+Of\+Trees,  }\item[{float}]{max\+Radius,  }\item[{int}]{layer,  }\item[{\mbox{\hyperlink{class_grid}{Grid}} \&}]{grid }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_management_a97cf5550612a2e1cd82d44ae9e57f666}\label{class_resource_management_a97cf5550612a2e1cd82d44ae9e57f666}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Add\+Wood\+Pile@{m\+\_\+\+Add\+Wood\+Pile}}
+\index{m\+\_\+\+Add\+Wood\+Pile@{m\+\_\+\+Add\+Wood\+Pile}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Add\+Wood\+Pile()}{m\_AddWoodPile()}}
+{\footnotesize\ttfamily void Resource\+Management\+::m\+\_\+\+Add\+Wood\+Pile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_wood_resource}{Wood\+Resource}} $\ast$}]{cut\+Tree }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_management_adb99960558a8c45eea8b0b1acf094933}\label{class_resource_management_adb99960558a8c45eea8b0b1acf094933}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Assign\+Action@{m\+\_\+\+Assign\+Action}}
+\index{m\+\_\+\+Assign\+Action@{m\+\_\+\+Assign\+Action}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Action()}{m\_AssignAction()}}
+{\footnotesize\ttfamily void Resource\+Management\+::m\+\_\+\+Assign\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{defs_8h_ac4f8c89b962f2fa93febb5519cc2b4dc}{current\+Action}}}]{new\+Action }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_management_af7b5fdb2f6e706f99558ff8a90150f41}\label{class_resource_management_af7b5fdb2f6e706f99558ff8a90150f41}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Assign\+Font@{m\+\_\+\+Assign\+Font}}
+\index{m\+\_\+\+Assign\+Font@{m\+\_\+\+Assign\+Font}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Font()}{m\_AssignFont()}}
+{\footnotesize\ttfamily void Resource\+Management\+::m\+\_\+\+Assign\+Font (\begin{DoxyParamCaption}\item[{sf\+::\+Font}]{main\+Font }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_management_a5fcb80797408756492abe32cf40ae85f}\label{class_resource_management_a5fcb80797408756492abe32cf40ae85f}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Assign\+Textures@{m\+\_\+\+Assign\+Textures}}
+\index{m\+\_\+\+Assign\+Textures@{m\+\_\+\+Assign\+Textures}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Textures()}{m\_AssignTextures()}}
+{\footnotesize\ttfamily void Resource\+Management\+::m\+\_\+\+Assign\+Textures (\begin{DoxyParamCaption}\item[{std\+::map$<$ std\+::string, sf\+::\+Texture $>$ \&}]{texture\+Map }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_management_a8fb29f2219b96d39a5a38c5bbb0cf5e9}\label{class_resource_management_a8fb29f2219b96d39a5a38c5bbb0cf5e9}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Create\+Action\+Buttons@{m\+\_\+\+Create\+Action\+Buttons}}
+\index{m\+\_\+\+Create\+Action\+Buttons@{m\+\_\+\+Create\+Action\+Buttons}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Action\+Buttons()}{m\_CreateActionButtons()}}
+{\footnotesize\ttfamily void Resource\+Management\+::m\+\_\+\+Create\+Action\+Buttons (\begin{DoxyParamCaption}\item[{float}]{window\+Width,  }\item[{float}]{window\+Height }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_management_ae7084b8a6de4ef34bcf21b42abb6502c}\label{class_resource_management_ae7084b8a6de4ef34bcf21b42abb6502c}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Delete\+Trees@{m\+\_\+\+Delete\+Trees}}
+\index{m\+\_\+\+Delete\+Trees@{m\+\_\+\+Delete\+Trees}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Delete\+Trees()}{m\_DeleteTrees()}}
+{\footnotesize\ttfamily void Resource\+Management\+::m\+\_\+\+Delete\+Trees (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_management_a06d9993d12174e90a257f823a4212859}\label{class_resource_management_a06d9993d12174e90a257f823a4212859}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Draw\+Action\+Buttons@{m\+\_\+\+Draw\+Action\+Buttons}}
+\index{m\+\_\+\+Draw\+Action\+Buttons@{m\+\_\+\+Draw\+Action\+Buttons}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Action\+Buttons()}{m\_DrawActionButtons()}}
+{\footnotesize\ttfamily void Resource\+Management\+::m\+\_\+\+Draw\+Action\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_management_adeebfc769325c37dadf5a25181786496}\label{class_resource_management_adeebfc769325c37dadf5a25181786496}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}}
+\index{m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Filter()}{m\_DrawFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Resource\+Management\+::m\+\_\+\+Draw\+Filter (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_management_aeb7c4ef68841e3eeb7aa7569943af652}\label{class_resource_management_aeb7c4ef68841e3eeb7aa7569943af652}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}}
+\index{m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Filter()}{m\_DrawFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Resource\+Management\+::m\+\_\+\+Draw\+Filter (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right,  }\item[{int}]{current\+Layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_management_ac02284dd76b1cc071e1a16432a858aae}\label{class_resource_management_ac02284dd76b1cc071e1a16432a858aae}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Draw\+Trees@{m\+\_\+\+Draw\+Trees}}
+\index{m\+\_\+\+Draw\+Trees@{m\+\_\+\+Draw\+Trees}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Trees()}{m\_DrawTrees()}}
+{\footnotesize\ttfamily void Resource\+Management\+::m\+\_\+\+Draw\+Trees (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_management_a9e52ae158b5ea38f2d935d25a3536e34}\label{class_resource_management_a9e52ae158b5ea38f2d935d25a3536e34}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Draw\+Wood\+Piles@{m\+\_\+\+Draw\+Wood\+Piles}}
+\index{m\+\_\+\+Draw\+Wood\+Piles@{m\+\_\+\+Draw\+Wood\+Piles}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Wood\+Piles()}{m\_DrawWoodPiles()}}
+{\footnotesize\ttfamily void Resource\+Management\+::m\+\_\+\+Draw\+Wood\+Piles (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_management_a41493114486fc4b7dc6ebfc472254bc1}\label{class_resource_management_a41493114486fc4b7dc6ebfc472254bc1}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Find\+Closest\+Tree@{m\+\_\+\+Find\+Closest\+Tree}}
+\index{m\+\_\+\+Find\+Closest\+Tree@{m\+\_\+\+Find\+Closest\+Tree}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Find\+Closest\+Tree()}{m\_FindClosestTree()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_wood_resource}{Wood\+Resource}}$\ast$ Resource\+Management\+::m\+\_\+\+Find\+Closest\+Tree (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{other\+Object }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_management_aff320c3220c97345cab6ea74df6cd33c}\label{class_resource_management_aff320c3220c97345cab6ea74df6cd33c}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Find\+Closest\+Wood\+Pile@{m\+\_\+\+Find\+Closest\+Wood\+Pile}}
+\index{m\+\_\+\+Find\+Closest\+Wood\+Pile@{m\+\_\+\+Find\+Closest\+Wood\+Pile}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Find\+Closest\+Wood\+Pile()}{m\_FindClosestWoodPile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_wood_pile}{Wood\+Pile}}$\ast$ Resource\+Management\+::m\+\_\+\+Find\+Closest\+Wood\+Pile (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{other\+Object }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_management_a7e05e6e59df2c766bb4513630de3bd31}\label{class_resource_management_a7e05e6e59df2c766bb4513630de3bd31}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Get\+Action\+Buttons@{m\+\_\+\+Get\+Action\+Buttons}}
+\index{m\+\_\+\+Get\+Action\+Buttons@{m\+\_\+\+Get\+Action\+Buttons}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Action\+Buttons()}{m\_GetActionButtons()}}
+{\footnotesize\ttfamily std\+::vector$<$tgui\+::\+Button\+::\+Ptr$>$ Resource\+Management\+::m\+\_\+\+Get\+Action\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_management_a09e1fc7bf33d2dad66dfa6e479f2f438}\label{class_resource_management_a09e1fc7bf33d2dad66dfa6e479f2f438}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Select\+Resources@{m\+\_\+\+Select\+Resources}}
+\index{m\+\_\+\+Select\+Resources@{m\+\_\+\+Select\+Resources}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Select\+Resources()}{m\_SelectResources()}}
+{\footnotesize\ttfamily void Resource\+Management\+::m\+\_\+\+Select\+Resources (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{m\+\_\+\+Top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_resource_management_a3449b35ee0c369402fd27887f34ffb2c}\label{class_resource_management_a3449b35ee0c369402fd27887f34ffb2c}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Update@{m\+\_\+\+Update}}
+\index{m\+\_\+\+Update@{m\+\_\+\+Update}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Update()}{m\_Update()}}
+{\footnotesize\ttfamily void Resource\+Management\+::m\+\_\+\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_resource_management_a081d6a06905b376b862c2baa74170f25}\label{class_resource_management_a081d6a06905b376b862c2baa74170f25}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+\+Action\+Button@{m\+\_\+\+Action\+Button}}
+\index{m\+\_\+\+Action\+Button@{m\+\_\+\+Action\+Button}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Action\+Button}{m\_ActionButton}}
+{\footnotesize\ttfamily tgui\+::\+Button\+::\+Ptr Resource\+Management\+::m\+\_\+\+Action\+Button}
+
+\mbox{\Hypertarget{class_resource_management_ae5afb8912d93fa84581a9d7192a9fda1}\label{class_resource_management_ae5afb8912d93fa84581a9d7192a9fda1}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+b\+Buttons\+Created@{m\+\_\+b\+Buttons\+Created}}
+\index{m\+\_\+b\+Buttons\+Created@{m\+\_\+b\+Buttons\+Created}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+b\+Buttons\+Created}{m\_bButtonsCreated}}
+{\footnotesize\ttfamily bool Resource\+Management\+::m\+\_\+b\+Buttons\+Created = false}
+
+\mbox{\Hypertarget{class_resource_management_a013731a638632849d16516f3ac7250e3}\label{class_resource_management_a013731a638632849d16516f3ac7250e3}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+b\+Buttons\+Removed@{m\+\_\+b\+Buttons\+Removed}}
+\index{m\+\_\+b\+Buttons\+Removed@{m\+\_\+b\+Buttons\+Removed}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+b\+Buttons\+Removed}{m\_bButtonsRemoved}}
+{\footnotesize\ttfamily bool Resource\+Management\+::m\+\_\+b\+Buttons\+Removed = false}
+
+\mbox{\Hypertarget{class_resource_management_a44e194185578f2b0c63bea0e0a444b57}\label{class_resource_management_a44e194185578f2b0c63bea0e0a444b57}} 
+\index{Resource\+Management@{Resource\+Management}!m\+\_\+b\+Display\+Buttons@{m\+\_\+b\+Display\+Buttons}}
+\index{m\+\_\+b\+Display\+Buttons@{m\+\_\+b\+Display\+Buttons}!Resource\+Management@{Resource\+Management}}
+\subsubsection{\texorpdfstring{m\+\_\+b\+Display\+Buttons}{m\_bDisplayButtons}}
+{\footnotesize\ttfamily bool Resource\+Management\+::m\+\_\+b\+Display\+Buttons = false}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{_resource_management_8h}{Resource\+Management.\+h}}\end{DoxyCompactItemize}

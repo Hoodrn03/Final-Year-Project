@@ -1,0 +1,353 @@
+\hypertarget{class_colonist}{}\section{Colonist Class Reference}
+\label{class_colonist}\index{Colonist@{Colonist}}
+
+
+{\ttfamily \#include $<$Colonist.\+h$>$}
+
+Inheritance diagram for Colonist\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_colonist}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_colonist_a6666c1c45bd7f52b423357828eaef598}{Colonist}} ()
+\item 
+\mbox{\hyperlink{class_colonist_a92d8c64b932a5eeeea9e873badb931cb}{$\sim$\+Colonist}} ()
+\item 
+int \mbox{\hyperlink{class_colonist_ae6111498494883c9509dc9f49cd2fa63}{m\+\_\+\+Create\+Colonist\+Body}} (sf\+::\+Vector2f dimentions, \mbox{\hyperlink{class_cells}{Cells}} $\ast$current\+Cell)
+\item 
+void \mbox{\hyperlink{class_colonist_a946c12abecdd1aa6c9be662eff8856ae}{m\+\_\+\+Assign\+Colonist\+Font}} (sf\+::\+Font \&new\+Font)
+\item 
+void \mbox{\hyperlink{class_colonist_a8c57004821ec2f9fc070c2f173c413e5}{m\+\_\+\+Update\+Current\+Cell}} (\mbox{\hyperlink{class_cells}{Cells}} $\ast$new\+Current\+Cell)
+\item 
+void \mbox{\hyperlink{class_colonist_ad51f196ece25322b1ab2a229875ac490}{m\+\_\+\+Update}} () override
+\item 
+void \mbox{\hyperlink{class_colonist_aef6c86dad183201cc5b4320869d73a6f}{m\+\_\+\+Update\+Info\+Window}} (sf\+::\+Vector2f view\+Lower\+Bounds, sf\+::\+Vector2f view\+Size)
+\item 
+void \mbox{\hyperlink{class_colonist_a5d7f2fdfe8edfbac71c00bd3f80db78b}{m\+\_\+\+Update\+Condition}} ()
+\item 
+void \mbox{\hyperlink{class_colonist_aa95eaa2ece608aceff02abbd69303721}{m\+\_\+\+Set\+Job}} (\mbox{\hyperlink{_colonist_8h_a7718e37d567b721003cf67cbd3125b4a}{job}} new\+Job)
+\item 
+void \mbox{\hyperlink{class_colonist_a9f7d167546dbc3cbbf79e9a8fdbb2c98}{m\+\_\+\+Idle\+Job}} ()
+\item 
+void \mbox{\hyperlink{class_colonist_a31ae6b8c4983b45489b77b92599fa971}{m\+\_\+\+Cut\+Trees}} ()
+\item 
+void \mbox{\hyperlink{class_colonist_ade6be47cebcac982789ba93d4bed5064}{m\+\_\+\+Build\+Building}} ()
+\item 
+\mbox{\hyperlink{_colonist_8h_a7718e37d567b721003cf67cbd3125b4a}{job}} \mbox{\hyperlink{class_colonist_aba477cb8f4eb974ffa72f1b519527922}{m\+\_\+\+Get\+Current\+Job}} ()
+\item 
+void \mbox{\hyperlink{class_colonist_acc420a406fbf716b24447baaeadb9136}{m\+\_\+\+Set\+Needed\+Wood}} (float wood\+Needed)
+\item 
+void \mbox{\hyperlink{class_colonist_ae7d7c74ff639334e6992142c01dd8f6f}{m\+\_\+\+Draw\+Game\+Object}} (sf\+::\+Render\+Window \&window) override
+\item 
+void \mbox{\hyperlink{class_colonist_a77963df06b74b1235341e235ba7b320e}{m\+\_\+\+Draw\+Filter}} (sf\+::\+Vector2f top\+Left, sf\+::\+Vector2f bottom\+Right) override
+\item 
+void \mbox{\hyperlink{class_colonist_a2cdc11f7d868611172ed36f67ea1393f}{m\+\_\+\+Draw\+Filter}} (sf\+::\+Vector2f top\+Left, sf\+::\+Vector2f bottom\+Right, unsigned int current\+Layer)
+\item 
+void \mbox{\hyperlink{class_colonist_a4dd53225a89bab611509a4d8fc0c2fb1}{m\+\_\+\+Set\+Object\+Pos}} (float x, float y) override
+\item 
+void \mbox{\hyperlink{class_colonist_a5baacaaf37c94daeb2a1ab21c8d9e42a}{m\+\_\+\+Set\+Current\+Layer}} (unsigned int new\+Layer)
+\item 
+int \mbox{\hyperlink{class_colonist_a8b03eca0f0e0cafcb2c1fd581b75b0a6}{m\+\_\+\+Get\+Current\+Layer}} ()
+\item 
+\mbox{\hyperlink{class_cells}{Cells}} $\ast$ \mbox{\hyperlink{class_colonist_a25bd76dec060d9bb7ee0b0d35f400443}{m\+\_\+\+Get\+Current\+Cell}} ()
+\item 
+void \mbox{\hyperlink{class_colonist_a350c571eddc4b145e0d05cce1668f76c}{m\+\_\+\+Follow\+Path}} ()
+\item 
+int \mbox{\hyperlink{class_colonist_a81892e1468ec705e99ba71c6e9ae3da3}{m\+\_\+\+Find\+New\+Path}} (\mbox{\hyperlink{class_cells}{Cells}} $\ast$end\+Cell)
+\item 
+void \mbox{\hyperlink{class_colonist_a87de13e9cf6d11006b46b60c220854e1}{m\+\_\+\+Assign\+Tree}} (\mbox{\hyperlink{class_wood_resource}{Wood\+Resource}} $\ast$new\+Target)
+\item 
+bool \mbox{\hyperlink{class_colonist_ad1a63535927eb3153249fd4081901311}{m\+\_\+\+At\+Target\+Tree}} ()
+\item 
+void \mbox{\hyperlink{class_colonist_a18c45b63f78136d73efcd67e92b06a73}{m\+\_\+\+Assign\+Build}} (\mbox{\hyperlink{class_building_object}{Building\+Object}} $\ast$new\+Target)
+\item 
+bool \mbox{\hyperlink{class_colonist_a385c46942c09d4824da79aec97ab6149}{m\+\_\+\+At\+Target\+Build}} ()
+\item 
+void \mbox{\hyperlink{class_colonist_ad137e98744bc418674f853a0c19d72a3}{m\+\_\+\+Reset\+Pathfinding}} ()
+\item 
+void \mbox{\hyperlink{class_colonist_a424fe6f992957fe97b1cc7008dfd9233}{m\+\_\+\+Set\+Interactable\+Object}} (\mbox{\hyperlink{class_building_object}{Building\+Object}} $\ast$new\+Target)
+\item 
+bool \mbox{\hyperlink{class_colonist_a7b5e8bd198ca9e077e9352908848e0a1}{m\+\_\+b\+At\+Interatable\+Object}} ()
+\item 
+bool \mbox{\hyperlink{class_colonist_a269c0b2ac4ebf5eb0fbf1286063765ff}{m\+\_\+\+Get\+Find\+New\+Path}} ()
+\item 
+void \mbox{\hyperlink{class_colonist_a4d5b1c31fff5922f67c8de7f5031fc5d}{m\+\_\+\+Create\+Path\+Line}} (int current\+Pos)
+\item 
+void \mbox{\hyperlink{class_colonist_abd0ac8d5315b88b193a0c288caa1e070}{m\+\_\+\+Select\+Colonist}} (bool selected)
+\item 
+bool \mbox{\hyperlink{class_colonist_ac2c3826ecc02ac228cb6c829a1ab2203}{m\+\_\+\+Get\+Selected\+Value}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_colonist_a5521900ae5f26798f055c2b4a6261626}{m\+\_\+b\+Need\+Sleep}} = false
+\item 
+unsigned int \mbox{\hyperlink{class_colonist_a7d052b658e17e5571229eec7ae9471f7}{m\+\_\+i\+Current\+Wood}} = 0
+\item 
+int \mbox{\hyperlink{class_colonist_a835f8bfb0683d483f0c9ace75d9bcf59}{m\+\_\+i\+Needed\+Wood}} = 0
+\item 
+unsigned int \mbox{\hyperlink{class_colonist_abea3166ef031870e52518bfe83a2340b}{m\+\_\+i\+Idle\+Counter}} = 0
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_colonist_a6666c1c45bd7f52b423357828eaef598}\label{class_colonist_a6666c1c45bd7f52b423357828eaef598}} 
+\index{Colonist@{Colonist}!Colonist@{Colonist}}
+\index{Colonist@{Colonist}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{Colonist()}{Colonist()}}
+{\footnotesize\ttfamily Colonist\+::\+Colonist (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_a92d8c64b932a5eeeea9e873badb931cb}\label{class_colonist_a92d8c64b932a5eeeea9e873badb931cb}} 
+\index{Colonist@{Colonist}!````~Colonist@{$\sim$\+Colonist}}
+\index{````~Colonist@{$\sim$\+Colonist}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{$\sim$\+Colonist()}{~Colonist()}}
+{\footnotesize\ttfamily Colonist\+::$\sim$\+Colonist (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_colonist_a18c45b63f78136d73efcd67e92b06a73}\label{class_colonist_a18c45b63f78136d73efcd67e92b06a73}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Assign\+Build@{m\+\_\+\+Assign\+Build}}
+\index{m\+\_\+\+Assign\+Build@{m\+\_\+\+Assign\+Build}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Build()}{m\_AssignBuild()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Assign\+Build (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_building_object}{Building\+Object}} $\ast$}]{new\+Target }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_a946c12abecdd1aa6c9be662eff8856ae}\label{class_colonist_a946c12abecdd1aa6c9be662eff8856ae}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Assign\+Colonist\+Font@{m\+\_\+\+Assign\+Colonist\+Font}}
+\index{m\+\_\+\+Assign\+Colonist\+Font@{m\+\_\+\+Assign\+Colonist\+Font}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Colonist\+Font()}{m\_AssignColonistFont()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Assign\+Colonist\+Font (\begin{DoxyParamCaption}\item[{sf\+::\+Font \&}]{new\+Font }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_a87de13e9cf6d11006b46b60c220854e1}\label{class_colonist_a87de13e9cf6d11006b46b60c220854e1}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Assign\+Tree@{m\+\_\+\+Assign\+Tree}}
+\index{m\+\_\+\+Assign\+Tree@{m\+\_\+\+Assign\+Tree}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Assign\+Tree()}{m\_AssignTree()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Assign\+Tree (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_wood_resource}{Wood\+Resource}} $\ast$}]{new\+Target }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_a385c46942c09d4824da79aec97ab6149}\label{class_colonist_a385c46942c09d4824da79aec97ab6149}} 
+\index{Colonist@{Colonist}!m\+\_\+\+At\+Target\+Build@{m\+\_\+\+At\+Target\+Build}}
+\index{m\+\_\+\+At\+Target\+Build@{m\+\_\+\+At\+Target\+Build}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+At\+Target\+Build()}{m\_AtTargetBuild()}}
+{\footnotesize\ttfamily bool Colonist\+::m\+\_\+\+At\+Target\+Build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_ad1a63535927eb3153249fd4081901311}\label{class_colonist_ad1a63535927eb3153249fd4081901311}} 
+\index{Colonist@{Colonist}!m\+\_\+\+At\+Target\+Tree@{m\+\_\+\+At\+Target\+Tree}}
+\index{m\+\_\+\+At\+Target\+Tree@{m\+\_\+\+At\+Target\+Tree}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+At\+Target\+Tree()}{m\_AtTargetTree()}}
+{\footnotesize\ttfamily bool Colonist\+::m\+\_\+\+At\+Target\+Tree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_a7b5e8bd198ca9e077e9352908848e0a1}\label{class_colonist_a7b5e8bd198ca9e077e9352908848e0a1}} 
+\index{Colonist@{Colonist}!m\+\_\+b\+At\+Interatable\+Object@{m\+\_\+b\+At\+Interatable\+Object}}
+\index{m\+\_\+b\+At\+Interatable\+Object@{m\+\_\+b\+At\+Interatable\+Object}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+b\+At\+Interatable\+Object()}{m\_bAtInteratableObject()}}
+{\footnotesize\ttfamily bool Colonist\+::m\+\_\+b\+At\+Interatable\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_ade6be47cebcac982789ba93d4bed5064}\label{class_colonist_ade6be47cebcac982789ba93d4bed5064}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Build\+Building@{m\+\_\+\+Build\+Building}}
+\index{m\+\_\+\+Build\+Building@{m\+\_\+\+Build\+Building}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Build\+Building()}{m\_BuildBuilding()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Build\+Building (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_ae6111498494883c9509dc9f49cd2fa63}\label{class_colonist_ae6111498494883c9509dc9f49cd2fa63}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Create\+Colonist\+Body@{m\+\_\+\+Create\+Colonist\+Body}}
+\index{m\+\_\+\+Create\+Colonist\+Body@{m\+\_\+\+Create\+Colonist\+Body}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Colonist\+Body()}{m\_CreateColonistBody()}}
+{\footnotesize\ttfamily int Colonist\+::m\+\_\+\+Create\+Colonist\+Body (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{dimentions,  }\item[{\mbox{\hyperlink{class_cells}{Cells}} $\ast$}]{current\+Cell }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_a4d5b1c31fff5922f67c8de7f5031fc5d}\label{class_colonist_a4d5b1c31fff5922f67c8de7f5031fc5d}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Create\+Path\+Line@{m\+\_\+\+Create\+Path\+Line}}
+\index{m\+\_\+\+Create\+Path\+Line@{m\+\_\+\+Create\+Path\+Line}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Create\+Path\+Line()}{m\_CreatePathLine()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Create\+Path\+Line (\begin{DoxyParamCaption}\item[{int}]{current\+Pos }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_a31ae6b8c4983b45489b77b92599fa971}\label{class_colonist_a31ae6b8c4983b45489b77b92599fa971}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Cut\+Trees@{m\+\_\+\+Cut\+Trees}}
+\index{m\+\_\+\+Cut\+Trees@{m\+\_\+\+Cut\+Trees}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Cut\+Trees()}{m\_CutTrees()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Cut\+Trees (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_a77963df06b74b1235341e235ba7b320e}\label{class_colonist_a77963df06b74b1235341e235ba7b320e}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}}
+\index{m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Filter()}{m\_DrawFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Draw\+Filter (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_af1a0662ca445d878b163c4648f90259c}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_colonist_a2cdc11f7d868611172ed36f67ea1393f}\label{class_colonist_a2cdc11f7d868611172ed36f67ea1393f}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}}
+\index{m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Filter()}{m\_DrawFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Draw\+Filter (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right,  }\item[{unsigned int}]{current\+Layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_ae7d7c74ff639334e6992142c01dd8f6f}\label{class_colonist_ae7d7c74ff639334e6992142c01dd8f6f}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Draw\+Game\+Object@{m\+\_\+\+Draw\+Game\+Object}}
+\index{m\+\_\+\+Draw\+Game\+Object@{m\+\_\+\+Draw\+Game\+Object}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Game\+Object()}{m\_DrawGameObject()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Draw\+Game\+Object (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_a184ac59fd5167c55a54b50894e5b6721}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_colonist_a81892e1468ec705e99ba71c6e9ae3da3}\label{class_colonist_a81892e1468ec705e99ba71c6e9ae3da3}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Find\+New\+Path@{m\+\_\+\+Find\+New\+Path}}
+\index{m\+\_\+\+Find\+New\+Path@{m\+\_\+\+Find\+New\+Path}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Find\+New\+Path()}{m\_FindNewPath()}}
+{\footnotesize\ttfamily int Colonist\+::m\+\_\+\+Find\+New\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cells}{Cells}} $\ast$}]{end\+Cell }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_a350c571eddc4b145e0d05cce1668f76c}\label{class_colonist_a350c571eddc4b145e0d05cce1668f76c}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Follow\+Path@{m\+\_\+\+Follow\+Path}}
+\index{m\+\_\+\+Follow\+Path@{m\+\_\+\+Follow\+Path}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Follow\+Path()}{m\_FollowPath()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Follow\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_a25bd76dec060d9bb7ee0b0d35f400443}\label{class_colonist_a25bd76dec060d9bb7ee0b0d35f400443}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Get\+Current\+Cell@{m\+\_\+\+Get\+Current\+Cell}}
+\index{m\+\_\+\+Get\+Current\+Cell@{m\+\_\+\+Get\+Current\+Cell}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Current\+Cell()}{m\_GetCurrentCell()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cells}{Cells}}$\ast$ Colonist\+::m\+\_\+\+Get\+Current\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_aba477cb8f4eb974ffa72f1b519527922}\label{class_colonist_aba477cb8f4eb974ffa72f1b519527922}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Get\+Current\+Job@{m\+\_\+\+Get\+Current\+Job}}
+\index{m\+\_\+\+Get\+Current\+Job@{m\+\_\+\+Get\+Current\+Job}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Current\+Job()}{m\_GetCurrentJob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_colonist_8h_a7718e37d567b721003cf67cbd3125b4a}{job}} Colonist\+::m\+\_\+\+Get\+Current\+Job (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_a8b03eca0f0e0cafcb2c1fd581b75b0a6}\label{class_colonist_a8b03eca0f0e0cafcb2c1fd581b75b0a6}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Get\+Current\+Layer@{m\+\_\+\+Get\+Current\+Layer}}
+\index{m\+\_\+\+Get\+Current\+Layer@{m\+\_\+\+Get\+Current\+Layer}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Current\+Layer()}{m\_GetCurrentLayer()}}
+{\footnotesize\ttfamily int Colonist\+::m\+\_\+\+Get\+Current\+Layer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_a269c0b2ac4ebf5eb0fbf1286063765ff}\label{class_colonist_a269c0b2ac4ebf5eb0fbf1286063765ff}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Get\+Find\+New\+Path@{m\+\_\+\+Get\+Find\+New\+Path}}
+\index{m\+\_\+\+Get\+Find\+New\+Path@{m\+\_\+\+Get\+Find\+New\+Path}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Find\+New\+Path()}{m\_GetFindNewPath()}}
+{\footnotesize\ttfamily bool Colonist\+::m\+\_\+\+Get\+Find\+New\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_ac2c3826ecc02ac228cb6c829a1ab2203}\label{class_colonist_ac2c3826ecc02ac228cb6c829a1ab2203}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Get\+Selected\+Value@{m\+\_\+\+Get\+Selected\+Value}}
+\index{m\+\_\+\+Get\+Selected\+Value@{m\+\_\+\+Get\+Selected\+Value}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Selected\+Value()}{m\_GetSelectedValue()}}
+{\footnotesize\ttfamily bool Colonist\+::m\+\_\+\+Get\+Selected\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_a9f7d167546dbc3cbbf79e9a8fdbb2c98}\label{class_colonist_a9f7d167546dbc3cbbf79e9a8fdbb2c98}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Idle\+Job@{m\+\_\+\+Idle\+Job}}
+\index{m\+\_\+\+Idle\+Job@{m\+\_\+\+Idle\+Job}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Idle\+Job()}{m\_IdleJob()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Idle\+Job (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_ad137e98744bc418674f853a0c19d72a3}\label{class_colonist_ad137e98744bc418674f853a0c19d72a3}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Reset\+Pathfinding@{m\+\_\+\+Reset\+Pathfinding}}
+\index{m\+\_\+\+Reset\+Pathfinding@{m\+\_\+\+Reset\+Pathfinding}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Reset\+Pathfinding()}{m\_ResetPathfinding()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Reset\+Pathfinding (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_abd0ac8d5315b88b193a0c288caa1e070}\label{class_colonist_abd0ac8d5315b88b193a0c288caa1e070}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Select\+Colonist@{m\+\_\+\+Select\+Colonist}}
+\index{m\+\_\+\+Select\+Colonist@{m\+\_\+\+Select\+Colonist}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Select\+Colonist()}{m\_SelectColonist()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Select\+Colonist (\begin{DoxyParamCaption}\item[{bool}]{selected }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_a5baacaaf37c94daeb2a1ab21c8d9e42a}\label{class_colonist_a5baacaaf37c94daeb2a1ab21c8d9e42a}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Set\+Current\+Layer@{m\+\_\+\+Set\+Current\+Layer}}
+\index{m\+\_\+\+Set\+Current\+Layer@{m\+\_\+\+Set\+Current\+Layer}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Current\+Layer()}{m\_SetCurrentLayer()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Set\+Current\+Layer (\begin{DoxyParamCaption}\item[{unsigned int}]{new\+Layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_a424fe6f992957fe97b1cc7008dfd9233}\label{class_colonist_a424fe6f992957fe97b1cc7008dfd9233}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Set\+Interactable\+Object@{m\+\_\+\+Set\+Interactable\+Object}}
+\index{m\+\_\+\+Set\+Interactable\+Object@{m\+\_\+\+Set\+Interactable\+Object}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Interactable\+Object()}{m\_SetInteractableObject()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Set\+Interactable\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_building_object}{Building\+Object}} $\ast$}]{new\+Target }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_aa95eaa2ece608aceff02abbd69303721}\label{class_colonist_aa95eaa2ece608aceff02abbd69303721}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Set\+Job@{m\+\_\+\+Set\+Job}}
+\index{m\+\_\+\+Set\+Job@{m\+\_\+\+Set\+Job}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Job()}{m\_SetJob()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Set\+Job (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_colonist_8h_a7718e37d567b721003cf67cbd3125b4a}{job}}}]{new\+Job }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_acc420a406fbf716b24447baaeadb9136}\label{class_colonist_acc420a406fbf716b24447baaeadb9136}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Set\+Needed\+Wood@{m\+\_\+\+Set\+Needed\+Wood}}
+\index{m\+\_\+\+Set\+Needed\+Wood@{m\+\_\+\+Set\+Needed\+Wood}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Needed\+Wood()}{m\_SetNeededWood()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Set\+Needed\+Wood (\begin{DoxyParamCaption}\item[{float}]{wood\+Needed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_a4dd53225a89bab611509a4d8fc0c2fb1}\label{class_colonist_a4dd53225a89bab611509a4d8fc0c2fb1}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Set\+Object\+Pos@{m\+\_\+\+Set\+Object\+Pos}}
+\index{m\+\_\+\+Set\+Object\+Pos@{m\+\_\+\+Set\+Object\+Pos}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Object\+Pos()}{m\_SetObjectPos()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Set\+Object\+Pos (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_ad1f8ea8eb3673b1af8215bf92cdc0df8}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_colonist_ad51f196ece25322b1ab2a229875ac490}\label{class_colonist_ad51f196ece25322b1ab2a229875ac490}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Update@{m\+\_\+\+Update}}
+\index{m\+\_\+\+Update@{m\+\_\+\+Update}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Update()}{m\_Update()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_game_object_a3af5a7b470e09f13a1422439fc6a9ba8}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_colonist_a5d7f2fdfe8edfbac71c00bd3f80db78b}\label{class_colonist_a5d7f2fdfe8edfbac71c00bd3f80db78b}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Update\+Condition@{m\+\_\+\+Update\+Condition}}
+\index{m\+\_\+\+Update\+Condition@{m\+\_\+\+Update\+Condition}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Update\+Condition()}{m\_UpdateCondition()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Update\+Condition (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_a8c57004821ec2f9fc070c2f173c413e5}\label{class_colonist_a8c57004821ec2f9fc070c2f173c413e5}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Update\+Current\+Cell@{m\+\_\+\+Update\+Current\+Cell}}
+\index{m\+\_\+\+Update\+Current\+Cell@{m\+\_\+\+Update\+Current\+Cell}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Update\+Current\+Cell()}{m\_UpdateCurrentCell()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Update\+Current\+Cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cells}{Cells}} $\ast$}]{new\+Current\+Cell }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_colonist_aef6c86dad183201cc5b4320869d73a6f}\label{class_colonist_aef6c86dad183201cc5b4320869d73a6f}} 
+\index{Colonist@{Colonist}!m\+\_\+\+Update\+Info\+Window@{m\+\_\+\+Update\+Info\+Window}}
+\index{m\+\_\+\+Update\+Info\+Window@{m\+\_\+\+Update\+Info\+Window}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Update\+Info\+Window()}{m\_UpdateInfoWindow()}}
+{\footnotesize\ttfamily void Colonist\+::m\+\_\+\+Update\+Info\+Window (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{view\+Lower\+Bounds,  }\item[{sf\+::\+Vector2f}]{view\+Size }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_colonist_a5521900ae5f26798f055c2b4a6261626}\label{class_colonist_a5521900ae5f26798f055c2b4a6261626}} 
+\index{Colonist@{Colonist}!m\+\_\+b\+Need\+Sleep@{m\+\_\+b\+Need\+Sleep}}
+\index{m\+\_\+b\+Need\+Sleep@{m\+\_\+b\+Need\+Sleep}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+b\+Need\+Sleep}{m\_bNeedSleep}}
+{\footnotesize\ttfamily bool Colonist\+::m\+\_\+b\+Need\+Sleep = false}
+
+\mbox{\Hypertarget{class_colonist_a7d052b658e17e5571229eec7ae9471f7}\label{class_colonist_a7d052b658e17e5571229eec7ae9471f7}} 
+\index{Colonist@{Colonist}!m\+\_\+i\+Current\+Wood@{m\+\_\+i\+Current\+Wood}}
+\index{m\+\_\+i\+Current\+Wood@{m\+\_\+i\+Current\+Wood}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+i\+Current\+Wood}{m\_iCurrentWood}}
+{\footnotesize\ttfamily unsigned int Colonist\+::m\+\_\+i\+Current\+Wood = 0}
+
+\mbox{\Hypertarget{class_colonist_abea3166ef031870e52518bfe83a2340b}\label{class_colonist_abea3166ef031870e52518bfe83a2340b}} 
+\index{Colonist@{Colonist}!m\+\_\+i\+Idle\+Counter@{m\+\_\+i\+Idle\+Counter}}
+\index{m\+\_\+i\+Idle\+Counter@{m\+\_\+i\+Idle\+Counter}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+i\+Idle\+Counter}{m\_iIdleCounter}}
+{\footnotesize\ttfamily unsigned int Colonist\+::m\+\_\+i\+Idle\+Counter = 0}
+
+\mbox{\Hypertarget{class_colonist_a835f8bfb0683d483f0c9ace75d9bcf59}\label{class_colonist_a835f8bfb0683d483f0c9ace75d9bcf59}} 
+\index{Colonist@{Colonist}!m\+\_\+i\+Needed\+Wood@{m\+\_\+i\+Needed\+Wood}}
+\index{m\+\_\+i\+Needed\+Wood@{m\+\_\+i\+Needed\+Wood}!Colonist@{Colonist}}
+\subsubsection{\texorpdfstring{m\+\_\+i\+Needed\+Wood}{m\_iNeededWood}}
+{\footnotesize\ttfamily int Colonist\+::m\+\_\+i\+Needed\+Wood = 0}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{_colonist_8h}{Colonist.\+h}}\end{DoxyCompactItemize}

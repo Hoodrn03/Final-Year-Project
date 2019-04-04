@@ -1,0 +1,101 @@
+\hypertarget{class_game_object}{}\section{Game\+Object Class Reference}
+\label{class_game_object}\index{Game\+Object@{Game\+Object}}
+
+
+{\ttfamily \#include $<$Game\+Object.\+h$>$}
+
+Inheritance diagram for Game\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.761006cm]{class_game_object}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_game_object_a3af5a7b470e09f13a1422439fc6a9ba8}{m\+\_\+\+Update}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_game_object_a184ac59fd5167c55a54b50894e5b6721}{m\+\_\+\+Draw\+Game\+Object}} (sf\+::\+Render\+Window \&window)=0
+\item 
+virtual void \mbox{\hyperlink{class_game_object_af1a0662ca445d878b163c4648f90259c}{m\+\_\+\+Draw\+Filter}} (sf\+::\+Vector2f top\+Left, sf\+::\+Vector2f bottom\+Right)=0
+\item 
+virtual void \mbox{\hyperlink{class_game_object_ad1f8ea8eb3673b1af8215bf92cdc0df8}{m\+\_\+\+Set\+Object\+Pos}} (float x, float y)=0
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_game_object_a3ab12f6c943557e7ab6d9f56f4bb4953}{m\+\_\+\+Get\+Object\+Pos}} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_game_object_a8d07ca1aef7f289bb8cbdca91c0f3f82}{m\+\_\+\+Game\+Object\+Pos}}
+\item 
+\mbox{\hyperlink{_game_object_8h_a9609a9a703d8f2cd54b9490ab5375b1f}{draw\+Item}} \mbox{\hyperlink{class_game_object_a2e0b93a38fc8523e1be5790e647e6be3}{m\+\_\+\+Draw\+Item}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_object_af1a0662ca445d878b163c4648f90259c}\label{class_game_object_af1a0662ca445d878b163c4648f90259c}} 
+\index{Game\+Object@{Game\+Object}!m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}}
+\index{m\+\_\+\+Draw\+Filter@{m\+\_\+\+Draw\+Filter}!Game\+Object@{Game\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Filter()}{m\_DrawFilter()}}
+{\footnotesize\ttfamily virtual void Game\+Object\+::m\+\_\+\+Draw\+Filter (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{top\+Left,  }\item[{sf\+::\+Vector2f}]{bottom\+Right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_cells_a9c7eea82ba5ab8a840bbdcc0be25200f}{Cells}}, \mbox{\hyperlink{class_colonist_a77963df06b74b1235341e235ba7b320e}{Colonist}}, \mbox{\hyperlink{class_map_a47f69ae4c316d2efe45bd8a066e982c9}{Map}}, \mbox{\hyperlink{class_building_object_a05e1b08fb5edd953b00e6deade8bad9d}{Building\+Object}}, \mbox{\hyperlink{class_wood_resource_a08e9ac9417b6337b4fe8afcb97783acf}{Wood\+Resource}}, and \mbox{\hyperlink{class_wood_pile_a4434a4c1251a6719b76825a7546ca04c}{Wood\+Pile}}.
+
+\mbox{\Hypertarget{class_game_object_a184ac59fd5167c55a54b50894e5b6721}\label{class_game_object_a184ac59fd5167c55a54b50894e5b6721}} 
+\index{Game\+Object@{Game\+Object}!m\+\_\+\+Draw\+Game\+Object@{m\+\_\+\+Draw\+Game\+Object}}
+\index{m\+\_\+\+Draw\+Game\+Object@{m\+\_\+\+Draw\+Game\+Object}!Game\+Object@{Game\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Game\+Object()}{m\_DrawGameObject()}}
+{\footnotesize\ttfamily virtual void Game\+Object\+::m\+\_\+\+Draw\+Game\+Object (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_cells_a09ab1aeac5c986cc28f52754fafd8c66}{Cells}}, \mbox{\hyperlink{class_colonist_ae7d7c74ff639334e6992142c01dd8f6f}{Colonist}}, \mbox{\hyperlink{class_map_aa65945c61f28808b549a264a3b87219e}{Map}}, \mbox{\hyperlink{class_building_object_a7e343d32ad1f6aaed5ed484b2aabe700}{Building\+Object}}, \mbox{\hyperlink{class_wood_resource_a8f2336619be4467ba0eba87ded7b7474}{Wood\+Resource}}, and \mbox{\hyperlink{class_wood_pile_aacdd6153eacdeaf06cddf83cca50da03}{Wood\+Pile}}.
+
+\mbox{\Hypertarget{class_game_object_a3ab12f6c943557e7ab6d9f56f4bb4953}\label{class_game_object_a3ab12f6c943557e7ab6d9f56f4bb4953}} 
+\index{Game\+Object@{Game\+Object}!m\+\_\+\+Get\+Object\+Pos@{m\+\_\+\+Get\+Object\+Pos}}
+\index{m\+\_\+\+Get\+Object\+Pos@{m\+\_\+\+Get\+Object\+Pos}!Game\+Object@{Game\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Get\+Object\+Pos()}{m\_GetObjectPos()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Game\+Object\+::m\+\_\+\+Get\+Object\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_game_object_ad1f8ea8eb3673b1af8215bf92cdc0df8}\label{class_game_object_ad1f8ea8eb3673b1af8215bf92cdc0df8}} 
+\index{Game\+Object@{Game\+Object}!m\+\_\+\+Set\+Object\+Pos@{m\+\_\+\+Set\+Object\+Pos}}
+\index{m\+\_\+\+Set\+Object\+Pos@{m\+\_\+\+Set\+Object\+Pos}!Game\+Object@{Game\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Set\+Object\+Pos()}{m\_SetObjectPos()}}
+{\footnotesize\ttfamily virtual void Game\+Object\+::m\+\_\+\+Set\+Object\+Pos (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_colonist_a4dd53225a89bab611509a4d8fc0c2fb1}{Colonist}}, \mbox{\hyperlink{class_cells_a5d900205d8d5fc3d3b41b664d51994c4}{Cells}}, \mbox{\hyperlink{class_map_aa44fadcea160127a186720c1ff44e533}{Map}}, \mbox{\hyperlink{class_building_object_aa6239662e4277d8e1933f9c8fd487511}{Building\+Object}}, \mbox{\hyperlink{class_wood_resource_afa9f748e3dea5f08c18dd831f04d9287}{Wood\+Resource}}, and \mbox{\hyperlink{class_wood_pile_a8faa580584607dea772076b7d856daf8}{Wood\+Pile}}.
+
+\mbox{\Hypertarget{class_game_object_a3af5a7b470e09f13a1422439fc6a9ba8}\label{class_game_object_a3af5a7b470e09f13a1422439fc6a9ba8}} 
+\index{Game\+Object@{Game\+Object}!m\+\_\+\+Update@{m\+\_\+\+Update}}
+\index{m\+\_\+\+Update@{m\+\_\+\+Update}!Game\+Object@{Game\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Update()}{m\_Update()}}
+{\footnotesize\ttfamily virtual void Game\+Object\+::m\+\_\+\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_cells_a524d410412de7030016b99a4d8b0c1cc}{Cells}}, \mbox{\hyperlink{class_colonist_ad51f196ece25322b1ab2a229875ac490}{Colonist}}, \mbox{\hyperlink{class_building_object_a35fc31e0f1c9a1323b7dfedc527fccff}{Building\+Object}}, \mbox{\hyperlink{class_wood_resource_a8ba1b597aacbdd74be37d0ab18d95008}{Wood\+Resource}}, \mbox{\hyperlink{class_map_a50d9a80e029be4f056b8c5d73791b6c4}{Map}}, and \mbox{\hyperlink{class_wood_pile_a008e8dc7b168ab4e0bcc946c240d0a32}{Wood\+Pile}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_game_object_a2e0b93a38fc8523e1be5790e647e6be3}\label{class_game_object_a2e0b93a38fc8523e1be5790e647e6be3}} 
+\index{Game\+Object@{Game\+Object}!m\+\_\+\+Draw\+Item@{m\+\_\+\+Draw\+Item}}
+\index{m\+\_\+\+Draw\+Item@{m\+\_\+\+Draw\+Item}!Game\+Object@{Game\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Draw\+Item}{m\_DrawItem}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_game_object_8h_a9609a9a703d8f2cd54b9490ab5375b1f}{draw\+Item}} Game\+Object\+::m\+\_\+\+Draw\+Item\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_game_object_a8d07ca1aef7f289bb8cbdca91c0f3f82}\label{class_game_object_a8d07ca1aef7f289bb8cbdca91c0f3f82}} 
+\index{Game\+Object@{Game\+Object}!m\+\_\+\+Game\+Object\+Pos@{m\+\_\+\+Game\+Object\+Pos}}
+\index{m\+\_\+\+Game\+Object\+Pos@{m\+\_\+\+Game\+Object\+Pos}!Game\+Object@{Game\+Object}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Game\+Object\+Pos}{m\_GameObjectPos}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Game\+Object\+::m\+\_\+\+Game\+Object\+Pos\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{_game_object_8h}{Game\+Object.\+h}}\end{DoxyCompactItemize}
