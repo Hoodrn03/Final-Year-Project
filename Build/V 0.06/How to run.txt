@@ -1,0 +1,3 @@
+Begin by starting the shortcut it should open the required
+exe files and start the game, if this doesn't work enter the
+data files and run the coloniy sim application manually. 
