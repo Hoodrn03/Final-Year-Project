@@ -117,7 +117,7 @@ void Gameloop::m_CreateMainMenuButtons()
 
 int Gameloop::m_MainMenu()
 {
-	m_BeginGame(); /*!< Use to skip to the main game. */
+	// m_BeginGame(); /*!< Use to skip to the main game. */
 
 	// Init pregame logic. 
 

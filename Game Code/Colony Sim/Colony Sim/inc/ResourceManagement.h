@@ -140,7 +140,7 @@ public:
 
 	WoodResource * m_FindClosestTree(sf::Vector2f otherObject);
 
-	WoodPile * m_FindClosestWoodPile(sf::Vector2f otherObject); 
+	WoodPile * m_FindClosestWoodPile(sf::Vector2f W); 
 
 	//--------------------------------------------------------
 	//					Mark for Deletion
